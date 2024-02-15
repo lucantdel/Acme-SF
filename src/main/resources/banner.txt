@@ -1,0 +1,14 @@
+      .o.                                                   .oooooo..o oooooooooooo 
+     .888.                                                 d8P'    `Y8 `888'     `8 
+    .8"888.      .ooooo.  ooo. .oo.  .oo.    .ooooo.       Y88bo.       888         
+   .8' `888.    d88' `"Y8 `888P"Y88bP"Y88b  d88' `88b       `"Y8888o.   888oooo8    
+  .88ooo8888.   888        888   888   888  888ooo888           `"Y88b  888    "    
+ .8'     `888.  888   .o8  888   888   888  888    .o      oo     .d8P  888         
+o88o     o8888o `Y8bod8P' o888o o888o o888o `Y8bod8P'      8""88888P'  o888o        
+                                                                                    
+                                                                                    
+                                                                                                     
+Application:          ${acme.application.versioned-name}
+Application endpoint: http://localhost:${server.port}${server.servlet.contextPath}
+Database endpoint:    ${spring.datasource.url}
+Powered by:           Spring Boot ${spring-boot.version}, ${acme.framework.display-name} ${acme.framework.version}
