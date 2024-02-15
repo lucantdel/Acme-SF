@@ -22,6 +22,8 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.77858342F" action="https://www.wikidex.net/wiki/WikiDex"/>
 			<acme:menu-suboption code="master.menu.anonymous.lucantdel" action="https://chat.openai.com/"/>
+			<acme:menu-suboption code="master.menu.anonymous.mohabu2" action="https://www.amazon.es/"/>
+			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
