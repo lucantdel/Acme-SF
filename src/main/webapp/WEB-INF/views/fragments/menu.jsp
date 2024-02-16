@@ -24,6 +24,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.lucantdel" action="https://chat.openai.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.mohabu2" action="https://www.amazon.es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.jualopvei" action="https://www.reddit.com/"/>
+			<acme:menu-suboption code="master.menu.anonymous.alvvazcon" action="https://midu.dev/"/>
 			
 		</acme:menu-option>
 
