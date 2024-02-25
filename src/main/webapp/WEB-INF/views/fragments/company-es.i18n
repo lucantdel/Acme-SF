@@ -10,10 +10,10 @@
 
 master.company.title = La empresa
 master.company.text = \
-	Acme SF D01, Inc. es una empresa ficticia que ofrece un proyecto starter para los \
+	Acme SF , Inc. es una empresa ficticia que ofrece un proyecto starter para los \
 	estudiantes de la asignatura Diseño y Pruebas de la titulación de \
 	Ingeniería del Software en la Universidad de Seville. 
-master.company.name = Acme SF D01, Inc.
+master.company.name = Acme SF , Inc.
 master.company.address = Av. de la Reina Mercedes, s/n, 41012 Sevilla, España
 master.company.phone = +34 699 77 55 33
 master.company.email = contact-c1.005@acmesf.com
