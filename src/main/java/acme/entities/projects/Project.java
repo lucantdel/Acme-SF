@@ -21,12 +21,13 @@ import lombok.Setter;
 @Setter
 public class Project extends AbstractEntity {
 
-	/**
-	 * 
-	 */
+	// Serialisation identifier -----------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "[A-Z]{3}-[0-9]{4}")
+	// Attributes -------------------------------------------------------------
+
+	@Pattern(regexp = "[A-Z]{3}-\\d{4}")
 	@NotBlank
 	@Column(unique = true)
 	protected String			code;
@@ -47,6 +48,8 @@ public class Project extends AbstractEntity {
 
 	@URL
 	protected String			link;
+
+	protected boolean			draftMode;
 
 
 	protected boolean hasFatalErrors() {
