@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,13 +43,13 @@ public class Project extends AbstractEntity {
 
 	@NotNull
 	@Min(0)
-	protected Double			cost;
+	protected Money				cost;
 
 	@URL
 	protected String			link;
 
 
-	public Boolean isFatalErrors() {
+	protected Boolean isFatalErrors() {
 		return !(this.indication != null && !this.indication.isEmpty());
 	}
 
