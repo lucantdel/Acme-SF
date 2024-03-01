@@ -49,7 +49,7 @@ public class Project extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	protected boolean			draftMode;
+	protected boolean			published;
 
 
 	protected boolean hasFatalErrors() {
