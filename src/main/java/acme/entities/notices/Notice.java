@@ -36,16 +36,16 @@ public class Notice extends AbstractEntity {
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	private String				title;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	@Pattern(regexp = "^\\w+ - \\w+, \\w+$")
 	private String				author;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	private String				message;
 
 	@Email
