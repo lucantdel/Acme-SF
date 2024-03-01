@@ -49,7 +49,7 @@ public class Project extends AbstractEntity {
 	protected String			link;
 
 
-	protected Boolean isFatalErrors() {
+	protected boolean hasFatalErrors() {
 		return !(this.indication != null && !this.indication.isEmpty());
 	}
 
