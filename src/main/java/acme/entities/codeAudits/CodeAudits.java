@@ -46,6 +46,10 @@ public class CodeAudits extends AbstractEntity {
 	@Length(max = 101)
 	private String				correctiveActions;
 
+	@NotNull
+	@NotBlank
+	private String				mark;
+
 	@URL
 	private String				optionalLink;
 	//	// Derived attributes -----------------------------------------------------
