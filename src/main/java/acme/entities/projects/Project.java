@@ -51,9 +51,13 @@ public class Project extends AbstractEntity {
 
 	protected boolean			published;
 
+	// Derived attributes ----------------------------------------------------
+
 
 	protected boolean hasFatalErrors() {
 		return !(this.indication != null && !this.indication.isEmpty());
 	}
+
+	// Relationships ----------------------------------------------------------
 
 }
