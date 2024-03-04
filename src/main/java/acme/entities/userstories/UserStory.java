@@ -36,7 +36,7 @@ public class UserStory extends AbstractEntity {
 
 	@NotNull
 	@Min(1)
-	protected Integer			estimatedCost;
+	protected Integer			estimatedCost; // in hours
 
 	@NotBlank
 	@Length(max = 100)
@@ -51,7 +51,8 @@ public class UserStory extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	@ManyToOne
+	@NotNull
+	@ManyToOne(optional = false)
 	protected Project			project;
 
 }
