@@ -19,6 +19,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.projects.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -69,7 +70,6 @@ public class Sponsorship extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 	@ManyToOne(optional = false)
-	private String				projectSponsored;
-	//private Project				projectSponsored;
+	private Project				projectSponsored;
 
 }
