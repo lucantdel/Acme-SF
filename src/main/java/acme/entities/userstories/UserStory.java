@@ -28,24 +28,24 @@ public class UserStory extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 75)
-	protected String			title;
+	private String				title;
 
 	@NotBlank
 	@Length(max = 100)
-	protected String			description;
+	private String				description;
 
 	@NotNull
 	@Min(1)
-	protected Integer			estimatedCost; // in hours
+	private Integer				estimatedCost; // in hours
 
 	@NotBlank
 	@Length(max = 100)
-	protected String			acceptanceCriteria;
+	private String				acceptanceCriteria;
 
-	protected Priority			priority;
+	private Priority			priority;
 
 	@URL
-	protected String			link;
+	private String				link;
 
 	// Derived attributes -----------------------------------------------------
 
@@ -53,6 +53,6 @@ public class UserStory extends AbstractEntity {
 
 	@NotNull
 	@ManyToOne(optional = false)
-	protected Project			project;
+	private Project				project;
 
 }
