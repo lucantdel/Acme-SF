@@ -7,6 +7,9 @@ user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза 
 user-account-administrator-02,true,"UserIdentity{name: 'Administrator1', surname: 'Acme1', email: 'administrator1@acme.com'}",administrator1,administrator1
 user-account-administrator-03,true,"UserIdentity{name: 'Administrator2', surname: 'Acme2', email: 'administrator2@acme.com'}",administrator2,administrator2
 
+user-account-manager-01,true,"UserIdentity{name: 'Pep', surname: 'Guardiola', email: 'pepguardiola@acme.com'}",manager1,manager1
+user-account-manager-02,true,"UserIdentity{name: 'Jose', surname: 'Mourinho', email: 'josemourinho@acme.com'}",manager2,manager2
+
 user-account-sponsor-01,true,"UserIdentity{name: 'Pepe', surname: 'Perez', email: 'pepe@acme.com'}",sponsor1,sponsor1
 user-account-sponsor-02,true,"UserIdentity{name: 'Jose', surname: 'Antonanzas', email: 'jose@acme.com'}",sponsor2,sponsor2
 
