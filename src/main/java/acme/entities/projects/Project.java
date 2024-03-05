@@ -30,31 +30,31 @@ public class Project extends AbstractEntity {
 	@Pattern(regexp = "[A-Z]{3}-\\d{4}")
 	@NotBlank
 	@Column(unique = true)
-	protected String			code;
+	private String				code;
 
 	@NotBlank
 	@Length(max = 75)
-	protected String			title;
+	private String				title;
 
 	@NotBlank
 	@Length(max = 100)
-	protected String			projectAbstract;
+	private String				projectAbstract;
 
-	protected String			indication;
+	private String				indication;
 
 	@NotNull
 	@Min(0)
-	protected Money				cost;
+	private Money				cost;
 
 	@URL
-	protected String			link;
+	private String				link;
 
-	protected boolean			published;
+	private boolean				published;
 
 	// Derived attributes ----------------------------------------------------
 
 
-	protected boolean hasFatalErrors() {
+	public boolean hasFatalErrors() {
 		return !(this.indication != null && !this.indication.isEmpty());
 	}
 

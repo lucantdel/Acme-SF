@@ -33,29 +33,29 @@ public class Claim extends AbstractEntity {
 	@Pattern(regexp = "C-\\d{4}")
 	@NotBlank
 	@Column(unique = true)
-	protected String			code;
+	private String				code;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	protected Date				instantiationMoment;
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@Length(max = 75)
-	protected String			heading;
+	private String				heading;
 
 	@NotBlank
 	@Length(max = 100)
-	protected String			description;
+	private String				description;
 
 	@NotBlank
 	@Length(max = 100)
-	protected String			departament;
+	private String				departament;
 
 	@Email
-	protected String			email;
+	private String				email;
 
 	@URL
-	protected String			link;
+	private String				link;
 
 	// Derived attributes ----------------------------------------------------
 
