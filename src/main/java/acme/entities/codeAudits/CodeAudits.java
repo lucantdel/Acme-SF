@@ -43,7 +43,7 @@ public class CodeAudits extends AbstractEntity {
 	private CodeAuditsStatus	type;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	private String				correctiveActions;
 
 	@NotNull
