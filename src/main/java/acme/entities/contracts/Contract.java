@@ -8,13 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import acme.entities.projects.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -50,6 +53,10 @@ public class Contract {
 	@Size(max = 100)
 	private String	goals;
 
+	@Max(9999999999L)
 	private double	budget;
+
+	@OneToOne
+	private Project	project;
 
 }
