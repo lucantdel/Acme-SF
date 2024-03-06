@@ -1,3 +1,4 @@
+
 package acme.roles;
 
 import javax.persistence.Entity;
@@ -17,30 +18,30 @@ import lombok.Setter;
 @Setter
 public class Client extends AbstractRole {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    // Attributes -------------------------------------------------------------
 
-    // Identification with pattern "CLI-[0-9]{4}"
-    @Pattern(regexp = "CLI-[0-9]{4}", message = "Identification must match pattern CLI-[0-9]{4}")
-    @NotBlank
-    private String identification;
+	//Enumerado for type of client
+	public enum Type {
+		COMPANY, INDIVIDUAL
+	}
 
-    // Company name
-    @NotBlank
-    @Length(max = 75)
-    private String companyName;
 
-    // Type (either "company" or "individual")
-    @NotBlank
-    private String type;
+	@Pattern(regexp = "CLI-[0-9]{4}", message = "Identification must match pattern CLI-[0-9]{4}")
+	@NotBlank
+	private String	identification;
 
-    // Email
-    @Email
-    @NotBlank
-    private String email;
+	@NotBlank
+	@Length(max = 75)
+	private String	companyName;
 
-    @URL
-    private String optionalLink;
+	private Type	type;
+
+	@Email
+	@NotBlank
+	private String	email;
+
+	@URL
+	private String	optionalLink;
 
 }
