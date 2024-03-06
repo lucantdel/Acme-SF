@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.banner;
 
 import java.util.Date;
 
@@ -44,7 +44,7 @@ public class Banner extends AbstractEntity {
 	private String				picture;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	private String				slogan;
 
 	@URL
