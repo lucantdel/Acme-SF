@@ -11,32 +11,32 @@ public class ManagerDashboard extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-	private Integer				mustUserStories;
+	protected Integer			mustUserStories;
 
-	private Integer				shouldUserStories;
+	protected Integer			shouldUserStories;
 
-	private Integer				couldUserStories;
+	protected Integer			couldUserStories;
 
-	private Integer				wontUserStories;
+	protected Integer			wontUserStories;
 
-	private Double				avgUserStoryEstimatedCost;
+	protected Double			avgUserStoryEstimatedCost;
 
-	private Double				devUserStoryEstimatedCost;
+	protected Double			devUserStoryEstimatedCost;
 
-	private Double				minUserStoryEstimatedCost;
+	protected Double			minUserStoryEstimatedCost;
 
-	private Double				maxUserStoryEstimatedCost;
+	protected Double			maxUserStoryEstimatedCost;
 
-	private Double				avgProjectCost;
+	protected Double			avgProjectCost;
 
-	private Double				devProjectCost;
+	protected Double			devProjectCost;
 
-	private Double				minProjectCost;
+	protected Double			minProjectCost;
 
-	private Double				maxProjectCost;
+	protected Double			maxProjectCost;
 
 }

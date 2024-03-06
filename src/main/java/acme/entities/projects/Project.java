@@ -1,12 +1,6 @@
 
 package acme.entities.projects;
 
-
-public class Project {
-
-
-package acme.entities.projects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Min;
@@ -29,33 +23,33 @@ public class Project extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Pattern(regexp = "[A-Z]{3}-\\d{4}")
 	@NotBlank
 	@Column(unique = true)
-	private String				code;
+	protected String			code;
 
 	@NotBlank
 	@Length(max = 75)
-	private String				title;
+	protected String			title;
 
 	@NotBlank
 	@Length(max = 100)
-	private String				projectAbstract;
+	protected String			projectAbstract;
 
-	private String				indication;
+	protected String			indication;
 
 	@NotNull
 	@Min(0)
-	private Money				cost;
+	protected Money				cost;
 
 	@URL
-	private String				link;
+	protected String			link;
 
-	private boolean				published;
+	protected boolean			published;
 
 	// Derived attributes ----------------------------------------------------
 
@@ -65,6 +59,5 @@ public class Project extends AbstractEntity {
 	}
 
 	// Relationships ----------------------------------------------------------
-
 
 }

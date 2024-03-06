@@ -26,36 +26,36 @@ public class Claim extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Pattern(regexp = "C-\\d{4}")
 	@NotBlank
 	@Column(unique = true)
-	private String				code;
+	protected String			code;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	private Date				instantiationMoment;
+	protected Date				instantiationMoment;
 
 	@NotBlank
 	@Length(max = 75)
-	private String				heading;
+	protected String			heading;
 
 	@NotBlank
 	@Length(max = 100)
-	private String				description;
+	protected String			description;
 
 	@NotBlank
 	@Length(max = 100)
-	private String				departament;
+	protected String			departament;
 
 	@Email
-	private String				email;
+	protected String			email;
 
 	@URL
-	private String				link;
+	protected String			link;
 
 	// Derived attributes ----------------------------------------------------
 

@@ -22,30 +22,30 @@ public class UserStory extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@NotBlank
 	@Length(max = 75)
-	private String				title;
+	protected String			title;
 
 	@NotBlank
 	@Length(max = 100)
-	private String				description;
+	protected String			description;
 
 	@NotNull
 	@Min(1)
-	private Integer				estimatedCost; // in hours
+	protected Integer			estimatedCost; // in hours
 
 	@NotBlank
 	@Length(max = 100)
-	private String				acceptanceCriteria;
+	protected String			acceptanceCriteria;
 
-	private Priority			priority;
+	protected Priority			priority;
 
 	@URL
-	private String				link;
+	protected String			link;
 
 	// Derived attributes -----------------------------------------------------
 
@@ -53,6 +53,6 @@ public class UserStory extends AbstractEntity {
 
 	@NotNull
 	@ManyToOne(optional = false)
-	private Project				project;
+	protected Project			project;
 
 }
