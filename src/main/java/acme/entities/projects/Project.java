@@ -1,6 +1,12 @@
 
 package acme.entities.projects;
 
+
+public class Project {
+
+
+package acme.entities.projects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Min;
@@ -59,5 +65,6 @@ public class Project extends AbstractEntity {
 	}
 
 	// Relationships ----------------------------------------------------------
+
 
 }
