@@ -18,6 +18,12 @@ public class AuditorDashboard extends AbstractForm {
 
 	Integer						totalNumberOfCodeAuditsStatic;
 	Integer						totalNumberOfCodeAuditsDinamic;
+	Integer						totalNumbreOfTypesOfAuditRecords;
+
+	Double						averageNumberOfAuditRecords;
+	Integer						minimunNumberOfAuditRecords;
+	Integer						maximunNumberOfAuditRecords;
+
 	Duration					avegageTimeOfThePeriodLenght;
 	Duration					deviationTimeOfThePeriodLenght;
 	Duration					minimunTimeOfThePeriodLenght;
