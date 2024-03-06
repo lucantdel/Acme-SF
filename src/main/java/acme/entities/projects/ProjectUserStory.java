@@ -17,18 +17,18 @@ public class ProjectUserStory extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@NotNull
 	@Valid
 	@ManyToOne
-	private Project				project;
+	protected Project			project;
 
 	@NotNull
 	@Valid
 	@ManyToOne
-	private UserStory			userStory;
+	protected UserStory			userStory;
 
 }
