@@ -23,7 +23,7 @@ public class Project extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
@@ -40,7 +40,7 @@ public class Project extends AbstractEntity {
 	@Length(max = 100)
 	protected String			projectAbstract;
 
-	protected String			indication;
+	protected boolean			indication;
 
 	@NotNull
 	@Min(0)
@@ -52,11 +52,6 @@ public class Project extends AbstractEntity {
 	protected boolean			published;
 
 	// Derived attributes ----------------------------------------------------
-
-
-	protected boolean hasFatalErrors() {
-		return !(this.indication != null && !this.indication.isEmpty());
-	}
 
 	// Relationships ----------------------------------------------------------
 
