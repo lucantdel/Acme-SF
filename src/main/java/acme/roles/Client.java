@@ -21,7 +21,6 @@ public class Client extends AbstractRole {
 	private static final long serialVersionUID = 1L;
 
 
-	//Enumerado for type of client
 	public enum Type {
 		COMPANY, INDIVIDUAL
 	}
