@@ -1,8 +1,6 @@
 
 package acme.forms;
 
-import java.util.Map;
-
 import acme.client.data.AbstractForm;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,11 +18,10 @@ public class DeveloperDashboard extends AbstractForm {
 	Integer						totalNumberOfTrainingModulesWithUpdateMoment;
 	Integer						totalNumberOfTrainingSessionsWithLink;
 
-	//String represents the code of a TrainingModule and  Double is the associated value
-	Map<String, Double>			averageTimeByTM;
-	Map<String, Double>			minimumTimeByTM;
-	Map<String, Double>			maximumTimeByTM;
-	Map<String, Double>			standardDeviationTimeByTM;
+	Double						averageTimeByTM;
+	Double						minimumTimeByTM;
+	Double						maximumTimeByTM;
+	Double						standardDeviationTimeByTM;
 
 	// Derived attributes -----------------------------------------------------
 
