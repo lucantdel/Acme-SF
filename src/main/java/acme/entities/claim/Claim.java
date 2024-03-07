@@ -49,7 +49,7 @@ public class Claim extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 100)
-	protected String			departament;
+	protected String			department;
 
 	@Email
 	protected String			email;
