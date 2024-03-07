@@ -1,15 +1,10 @@
 
 package acme.entities.projects;
 
-
-public class Project {
-
-
-package acme.entities.projects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -19,6 +14,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
+import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,42 +25,40 @@ public class Project extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Pattern(regexp = "[A-Z]{3}-\\d{4}")
 	@NotBlank
 	@Column(unique = true)
-	private String				code;
+	protected String			code;
 
 	@NotBlank
 	@Length(max = 75)
-	private String				title;
+	protected String			title;
 
 	@NotBlank
 	@Length(max = 100)
-	private String				projectAbstract;
+	protected String			projectAbstract;
 
-	private String				indication;
+	protected boolean			indication;
 
 	@NotNull
-	@Min(0)
-	private Money				cost;
+	protected Money				cost;
 
 	@URL
-	private String				link;
+	protected String			link;
 
-	private boolean				published;
+	protected boolean			published;
 
 	// Derived attributes ----------------------------------------------------
 
-
-	public boolean hasFatalErrors() {
-		return !(this.indication != null && !this.indication.isEmpty());
-	}
-
 	// Relationships ----------------------------------------------------------
 
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	protected Manager			manager;
 
 }

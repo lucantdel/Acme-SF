@@ -1,5 +1,5 @@
 
-package acme.entities.userstories;
+package acme.entities.projects;
 
 public enum Priority {
 
