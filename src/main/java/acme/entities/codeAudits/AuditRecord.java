@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -24,25 +25,38 @@ public class AuditRecord extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	//	// Attributes -------------------------------------------------------------
 
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "AU-[0-9]{4}-[0-9]{3}")
-	private String				code;
+	protected String			code;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	private Date				startDate;
+	protected Date				startDate;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	private Date				finishDate;
+	protected Date				finishDate;
 
-	private Mark				mark;
+	@Pattern(regexp = "A\\+|A|B|C|F|F-")
+	protected String			score;
 
 	@URL
-	private String				optionalLink;
+	protected String			optionalLink;
+
+	//	// Derived attributes -----------------------------------------------------
+
+	//	// Relationships -----------------------------------------------------
+
+	@ManyToOne
+	protected CodeAudits		codeAudits;
+
+	//	@NotNull
+	//	@ManyToOne(optional = false)
+	//	protected auditor 			auditor;
+
 }
