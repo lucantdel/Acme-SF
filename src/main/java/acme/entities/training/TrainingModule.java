@@ -2,7 +2,6 @@
 package acme.entities.training;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -62,13 +61,9 @@ public class TrainingModule extends AbstractEntity {
 
 
 	@Transient
-	public Integer totalTime(final List<TrainingSession> lsTS) {
-		int tiempoSuma = 0;
-		for (TrainingSession ts : lsTS)
-			if (ts.getTrainingModule().getCode().equals(this.code))
-				//geTime() reuturns miliseconds thats why we divide it by 3600
-				tiempoSuma += (ts.getStartPeriod().getTime() - ts.getEndPeriod().getTime()) / 3600;
-		return tiempoSuma;
+	public Integer totalTime() {
+		//This is the sum of the periods of times of associated trainingSessions.
+		return null;
 
 	}
 
