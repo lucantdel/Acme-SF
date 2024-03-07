@@ -2,6 +2,7 @@
 package acme.forms;
 
 import acme.client.data.AbstractForm;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,12 +32,12 @@ public class ManagerDashboard extends AbstractForm {
 
 	int							maxUserStoryEstimatedCost;
 
-	double						avgProjectCost;
+	Money						avgProjectCost;
 
-	double						devProjectCost;
+	Money						devProjectCost;
 
-	double						minProjectCost;
+	Money						minProjectCost;
 
-	double						maxProjectCost;
+	Money						maxProjectCost;
 
 }
