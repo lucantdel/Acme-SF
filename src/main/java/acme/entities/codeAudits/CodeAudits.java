@@ -52,8 +52,17 @@ public class CodeAudits extends AbstractEntity {
 
 	@URL
 	private String				optionalLink;
+
 	//	// Derived attributes -----------------------------------------------------
 
 	//	// Relationships ----------------------------------------------------------
+
+	//	@NotNull
+	//	@ManyToOne(optional = false)
+	//	private project 			project;
+
+	//	@NotNull
+	//	@ManyToOne(optional = false)
+	//	private auditor 			auditor;
 
 }
