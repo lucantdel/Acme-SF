@@ -1,8 +1,6 @@
 
 package acme.forms;
 
-import java.time.Duration;
-
 import acme.client.data.AbstractForm;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,10 +22,10 @@ public class AuditorDashboard extends AbstractForm {
 	Integer						minimunNumberOfAuditRecords;
 	Integer						maximunNumberOfAuditRecords;
 
-	Duration					avegageTimeOfThePeriodLenght;
-	Duration					deviationTimeOfThePeriodLenght;
-	Duration					minimunTimeOfThePeriodLenght;
-	Duration					maximumTimeOfThePeriodLenght;
+	Double						avegageTimeOfThePeriodLenght;
+	Double						deviationTimeOfThePeriodLenght;
+	Double						minimunTimeOfThePeriodLenght;
+	Double						maximumTimeOfThePeriodLenght;
 
 	// Derived attributes -----------------------------------------------------
 
