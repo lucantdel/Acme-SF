@@ -74,6 +74,8 @@ public class TrainingSession extends AbstractEntity {
 	@NotNull
 	@Valid
 	@ManyToOne()
+  
 	protected Developer			developer;
+
 
 }
