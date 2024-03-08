@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -26,35 +27,38 @@ public class Notice extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				instantiationMoment;
+	protected Date				instantiationMoment;
 
 	@NotBlank
 	@Length(max = 75)
-	private String				title;
+	protected String			title;
+
+	@NotBlank
+	@Length(max = 100)
+	protected String			message;
+
+	@Email
+	protected String			emailAddress;
+
+	@URL
+	protected String			link;
+
+	// Derived attributes -----------------------------------------------------
+
+	// uso de username, name and surname que despues podremos hacer cuando lo demos en los services
 
 	@NotBlank
 	@Length(max = 75)
 	@Pattern(regexp = "^\\w+ - \\w+, \\w+$")
-	private String				author;
-
-	@NotBlank
-	@Length(max = 100)
-	private String				message;
-
-	@Email
-	private String				emailAddress;
-
-	@URL
-	private String				link;
-
-	// Derived attributes -----------------------------------------------------
+	@Transient
+	protected String			author;
 
 	// Relationships ----------------------------------------------------------
 
