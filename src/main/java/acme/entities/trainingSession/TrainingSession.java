@@ -1,5 +1,5 @@
 
-package acme.entities.training;
+package acme.entities.trainingSession;
 
 import java.util.Date;
 
@@ -18,6 +18,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.trainingModule.TrainingModule;
 import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
@@ -53,8 +54,6 @@ public class TrainingSession extends AbstractEntity {
 	@Length(max = 75)
 	protected String			instructor;
 
-	protected Difficulty		difficultyLevel;
-
 	@NotBlank
 	@Email
 	protected String			contactEmail;
@@ -74,8 +73,7 @@ public class TrainingSession extends AbstractEntity {
 	@NotNull
 	@Valid
 	@ManyToOne()
-  
-	protected Developer			developer;
 
+	protected Developer			developer;
 
 }
