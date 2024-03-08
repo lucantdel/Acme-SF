@@ -57,7 +57,7 @@ public class CodeAudits extends AbstractEntity {
 
 
 	@Transient
-	public String Mark() {
+	protected String Mark() {
 		//The mark is the mode of the marks of its associated codeRecords
 		return null;
 	}
