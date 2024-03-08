@@ -15,14 +15,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Developer extends AbstractRole {
-	/*
-	 * here is a new project-specific role called developer, which has the following profile data:
-	 * degree (not blank, shorter than 76 characters),
-	 * a specialisation (not blank, shorter than 101 characters),
-	 * list of skills (not blank, shorter than 101 characters),
-	 * an email, and an optional link with further information
-	 */
+public class Sponsor extends AbstractRole {
+
 	// Serialisation identifier -----------------------------------------------
 
 	protected static final long	serialVersionUID	= 1L;
@@ -31,20 +25,16 @@ public class Developer extends AbstractRole {
 
 	@NotBlank
 	@Length(max = 75)
-	protected String			degree;
+	protected String			name;
 
 	@NotBlank
 	@Length(max = 100)
-	protected String			specialisation;
-
-	@NotBlank
-	@Length(max = 100)
-	protected String			skills;
-
-	@NotBlank
-	@Email
-	protected String			contactEmail;
+	protected String			expectedBenefits;
 
 	@URL
-	protected String			link;
+	protected String			webpage;
+
+	@Email
+	protected String			email;
+
 }

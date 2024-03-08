@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
@@ -55,8 +56,8 @@ public class AuditRecord extends AbstractEntity {
 	@ManyToOne
 	protected CodeAudits		codeAudits;
 
-	//	@NotNull
-	//	@ManyToOne(optional = false)
-	//	protected auditor 			auditor;
+	@NotNull
+	@ManyToOne(optional = false)
+	protected Auditor			auditor;
 
 }

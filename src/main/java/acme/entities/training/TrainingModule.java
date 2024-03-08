@@ -2,19 +2,13 @@
 package acme.entities.training;
 
 import java.util.Date;
-import java.util.List;
-
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import javax.persistence.Transient;
-
-import javax.persistence.Transient;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -35,43 +29,42 @@ import lombok.Setter;
 public class TrainingModule extends AbstractEntity {
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	@NotBlank
 	@Column(unique = true)
-	private String				code;
+	protected String			code;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
 	@NotNull
-	private Date				creationMoment;
+	protected Date				creationMoment;
 
 	@NotBlank
 	@Length(max = 100)
-	private String				details;
+	protected String			details;
 
 	@NotNull
 
-	private Difficulty			difficultyLevel;
+	protected Difficulty		difficultyLevel;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	private Date				updateMoment;
+	protected Date				updateMoment;
 
 	@URL
-	private String				link;
+	protected String			link;
 
 	// Derived attributes ----------------------------------------------------
 
 
 	@Transient
-	public Integer totalTime() {
+	protected Integer totalTime() {
 		//This is the sum of the periods of times of associated trainingSessions.
 		return null;
-
 
 	}
 
@@ -81,7 +74,6 @@ public class TrainingModule extends AbstractEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private Project project;
-
+	protected Project project;
 
 }
