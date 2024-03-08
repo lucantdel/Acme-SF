@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -83,12 +85,17 @@ public class CodeAudits extends AbstractEntity {
 
 	//	// Relationships ----------------------------------------------------------
 
-	//	@NotNull
-	//	@ManyToOne(optional = false)
-	//	protected project 			project;
 
-	//	@NotNull
-	//	@ManyToOne(optional = false)
-	//	protected auditor 			auditor;
+	@NotNull
+	@ManyToOne(optional = false)
+	protected project		project;
+
+	@NotNull
+	@ManyToOne(optional = false)
+	protected auditor		auditor;
+
+	@NotNull
+	@OneToOne(optional = false)
+	protected AuditRecord	auditRecord;
 
 }
