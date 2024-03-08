@@ -19,6 +19,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.projects.Project;
+import acme.roles.Sponsor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -58,7 +59,7 @@ public class Sponsorship extends AbstractEntity {
 	protected TypeOfSponsorship	type;
 
 	@Email
-	protected String			contactEmail;
+	protected String			email;
 
 	@URL
 	protected String			link;
@@ -70,16 +71,10 @@ public class Sponsorship extends AbstractEntity {
 	@ManyToOne(optional = false)
 	protected Project			project;
 
-	// un mismo patrocinio es realizado por su respectivo y unico patrocinador que lo realiza,
-	// pero un patrocinador puede hacer varios patrocinios
-	//  (Podría implementarla como @ManyToOne desde Sponsor, aunque esto contemplaría que un mismo patrocinio pueda ser realizados por varios patrocinadores)
-	// luego debe ser @OneToOne
+	//	finalmente será implemnetada como @NotNull @ManyTone hasta Sponsor ya que asi un sponsor puede hacer varios patrocinios y un sponsorship es ralizado por unicamente un sponsor
+	// hacinedo asi una relacion 1..N a 1 desde sponsorship a sponsor
+	@NotNull
+	@ManyToOne(optional = false)
+	protected Sponsor			sponsor;
 
-	/*
-	 * @NotNull
-	 * 
-	 * @OneToOne(optional = false)
-	 * // protected Sponsor sponsor;
-	 * protected String sponsor;
-	 */
 }

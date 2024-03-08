@@ -1,0 +1,3 @@
+key,key:userAccount,name,expected-benefits,webpage,email
+sponsor-01,user-account-sponsor01,Manuel,Beneficios grandes,https://www.amazon.es/sponsor1,sponsor1@gmail.com
+sponsor-02,user-account-sponsor02,Juan,Beneficios pequenos,https://www.netflix.es/sponso2,sponsor2@gmail.com
