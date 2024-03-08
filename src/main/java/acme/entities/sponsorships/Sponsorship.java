@@ -1,28 +1,32 @@
 
-package acme.entities.notices;
+package acme.entities.sponsorships;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.projects.Project;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Notice extends AbstractEntity {
+public class Sponsorship extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -30,26 +34,34 @@ public class Notice extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
+	@Column(unique = true)
+	@NotBlank
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
+	private String				code;
+
 	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				instantiationMoment;
+	private Date				moment;
+
+	@Future
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				startDuration;
+
+	@Future
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				finalDuration;
+
+	@Min(0)
+	private Double				amount;
 
 	@NotBlank
-	@Length(max = 75)
-	private String				title;
-
-	@NotBlank
-	@Length(max = 75)
-	@Pattern(regexp = "^\\w+ - \\w+, \\w+$")
-	private String				author;
-
-	@NotBlank
-	@Length(max = 100)
-	private String				message;
+	private TypeOfSponsorship	type;
 
 	@Email
-	private String				emailAddress;
+	private String				contactEmail;
 
 	@URL
 	private String				link;
@@ -57,14 +69,7 @@ public class Notice extends AbstractEntity {
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
-
-	//	// Constructor ----------------------------------------------------------
-	// He pensado en hacer un constructor para aplicar la regla de negocio de author mientras no tenemos service
-	//	public Notice(@Past final Date instantiationMoment, @NotBlank final String title, final String username, final String surname, final String name, @NotBlank final String message) {
-	//		this.instantiationMoment = instantiationMoment;
-	//		this.title = title;
-	//		this.author = username + " - " + surname + ", " + name;
-	//		this.message = message;
-	//	}
+	@ManyToOne(optional = false)
+	private Project				projectSponsored;
 
 }
