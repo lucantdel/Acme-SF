@@ -2,12 +2,16 @@
 package acme.entities.training;
 
 import java.util.Date;
+import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import javax.persistence.Transient;
 
 import javax.persistence.Transient;
 
@@ -67,6 +71,7 @@ public class TrainingModule extends AbstractEntity {
 	public Integer totalTime() {
 		//This is the sum of the periods of times of associated trainingSessions.
 		return null;
+
 
 	}
 
