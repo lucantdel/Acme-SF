@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>315</x>
-      <y>108</y>
+      <y>198</y>
       <w>351</w>
       <h>153</h>
     </coordinates>
@@ -15,9 +15,9 @@ _Claim_
 --
 + code:String {Unique,NotBlank,Pattern(C-[0-9]{4})}
 + intantiation moment:Date {Temporal(TIMESTAMP),Past)
-+ heading:String {NotBlank,Length(0,76)}
-+ description:String {NotBlank,Length(0,101)}
-+ department:String {NotBlank,Length(0,101)}
++ heading:String {NotBlank,Length(0,75)}
++ description:String {NotBlank,Length(0,100)}
++ department:String {NotBlank,Length(0,100)}
 + optional email address:String {Email}
 + optional link;String {URL}
 </panel_attributes>
@@ -27,8 +27,8 @@ _Claim_
     <id>UMLClass</id>
     <coordinates>
       <x>990</x>
-      <y>117</y>
-      <w>342</w>
+      <y>207</y>
+      <w>387</w>
       <h>162</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
@@ -36,9 +36,9 @@ _Objective_
 bg=green
 --
 + instantiation moment:Date {Temporal(TIMESTAMP),Past)
-+ title:String {NotBlank, Lenght(0,76)}
++ title:String {NotBlank, Lenght(0,75)}
 + priority: Priority
-+ description:String {NotBlank, Length(0,101)}
++ description:String {NotBlank, Length(0,100)}
 + status: boolean
 + start duration: Date {Past, Temporal(TIMESTAMP)}
 + end duration: Date {PastOrPresent, Temporal(TIMESTAMP)}
@@ -50,7 +50,7 @@ bg=green
     <id>UMLClass</id>
     <coordinates>
       <x>315</x>
-      <y>306</y>
+      <y>396</y>
       <w>333</w>
       <h>153</h>
     </coordinates>
@@ -58,12 +58,12 @@ bg=green
 bg=green
 _Risk_
 --
-+ reference: String{Unique,NotBlank, Pattern(R-[0-9]{3}}
++ reference: String{Unique,NotBlank, Pattern(R-[0-9]{3})}
 + identification date: Date {Temporal(TIMESTAMP), Past}
 + impact: double {Min(0)}
 + probability: double {Range(0,100)}
 + / value:double {Transient}
-+ description:String {NotBlank,Length(0,101)}
++ description:String {NotBlank,Length(0,100)}
 + optional link:String {URL}
 </panel_attributes>
     <additional_attributes/>
@@ -72,7 +72,7 @@ _Risk_
     <id>UMLClass</id>
     <coordinates>
       <x>972</x>
-      <y>441</y>
+      <y>531</y>
       <w>351</w>
       <h>153</h>
     </coordinates>
@@ -81,9 +81,9 @@ Notice
 bg=green
 --
 + instantiation moment: Date {Temporal(TIMESTAMP), Past}
-+ title: String {NotBlank, Length(0,76)}
-+ author: String {NotBlank, Length(0,76)}
-+ message: String {NotBlank, Length(0,101)}
++ title: String {NotBlank, Length(0,75)}
++ author: String {NotBlank, Length(0,75)}
++ message: String {NotBlank, Length(0,100)}
 + email address: String {Email}
 + link: String {NotBlank, URL}
 </panel_attributes>
@@ -93,7 +93,7 @@ bg=green
     <id>UMLClass</id>
     <coordinates>
       <x>315</x>
-      <y>486</y>
+      <y>576</y>
       <w>396</w>
       <h>126</h>
     </coordinates>
@@ -105,7 +105,7 @@ bg=green
 + start display period: Date {Past, Temporal(TIMESTAMP)}
 + end display period: Date {PastOrPresent, Temporal(TIMESTAMP)}
 + picture: String {URL}
-+ slogan: String {NotBlank, Max(76)}
++ slogan: String {NotBlank, Max(75)}
 + link: String {NotBlank, URL}
 
 </panel_attributes>
@@ -115,7 +115,7 @@ bg=green
     <id>UMLClass</id>
     <coordinates>
       <x>1107</x>
-      <y>315</y>
+      <y>405</y>
       <w>117</w>
       <h>99</h>
     </coordinates>
@@ -134,7 +134,7 @@ _Priority_
     <id>UMLNote</id>
     <coordinates>
       <x>99</x>
-      <y>342</y>
+      <y>432</y>
       <w>153</w>
       <h>54</h>
     </coordinates>
@@ -148,7 +148,7 @@ bg=orange</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>243</x>
-      <y>360</y>
+      <y>450</y>
       <w>90</w>
       <h>63</h>
     </coordinates>
@@ -159,7 +159,7 @@ bg=orange</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>756</x>
-      <y>432</y>
+      <y>522</y>
       <w>189</w>
       <h>108</h>
     </coordinates>
@@ -178,7 +178,7 @@ bg=orange</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>936</x>
-      <y>477</y>
+      <y>567</y>
       <w>54</w>
       <h>54</h>
     </coordinates>
@@ -189,7 +189,7 @@ bg=orange</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>495</y>
+      <y>585</y>
       <w>252</w>
       <h>45</h>
     </coordinates>
@@ -202,7 +202,7 @@ bg=orange</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>243</x>
-      <y>513</y>
+      <y>603</y>
       <w>90</w>
       <h>45</h>
     </coordinates>
@@ -213,7 +213,7 @@ bg=orange</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>243</x>
-      <y>549</y>
+      <y>639</y>
       <w>90</w>
       <h>36</h>
     </coordinates>
@@ -224,7 +224,7 @@ bg=orange</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>558</y>
+      <y>648</y>
       <w>252</w>
       <h>45</h>
     </coordinates>
@@ -237,7 +237,7 @@ bg=orange</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>720</x>
-      <y>243</y>
+      <y>270</y>
       <w>252</w>
       <h>45</h>
     </coordinates>
@@ -250,7 +250,7 @@ bg=orange</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>720</x>
-      <y>306</y>
+      <y>342</y>
       <w>252</w>
       <h>45</h>
     </coordinates>
@@ -263,29 +263,29 @@ bg=orange</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>963</x>
-      <y>225</y>
+      <y>288</y>
       <w>45</w>
-      <h>63</h>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;50.0;30.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;30.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>963</x>
-      <y>243</y>
+      <y>333</y>
       <w>45</w>
-      <h>90</h>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;80.0;30.0;10.0</additional_attributes>
+    <additional_attributes>10.0;20.0;30.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1377</x>
-      <y>171</y>
+      <x>1395</x>
+      <y>261</y>
       <w>162</w>
       <h>45</h>
     </coordinates>
@@ -297,12 +297,23 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1323</x>
-      <y>189</y>
-      <w>72</w>
+      <x>1386</x>
+      <y>279</y>
+      <w>27</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>60.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1368</x>
+      <y>270</y>
+      <w>45</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>30.0;10.0;10.0;40.0</additional_attributes>
   </element>
 </diagram>
