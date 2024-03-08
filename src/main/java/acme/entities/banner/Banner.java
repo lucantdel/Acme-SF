@@ -37,7 +37,11 @@ public class Banner extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
 	@NotNull
-	private Date				finalMoment;
+	private Date				displayPeriodStart;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	private Date				displayPeriodEnd;
 
 	@URL
 	@Length(max = 255)
@@ -52,6 +56,15 @@ public class Banner extends AbstractEntity {
 	private String				webDoc;
 
 	// Derived attributes -----------------------------------------------------
+
+
+	public void validateDisplayPeriod() {
+		if (this.displayPeriodStart != null && this.displayPeriodEnd != null) {
+			long differenceInDays = (this.displayPeriodEnd.getTime() - this.displayPeriodStart.getTime()) / 86400000;
+			if (differenceInDays < 7)
+				throw new IllegalArgumentException("La duración debe ser de al menos una semana");
+		}
+	}
 
 	// Relationships ----------------------------------------------------------
 
