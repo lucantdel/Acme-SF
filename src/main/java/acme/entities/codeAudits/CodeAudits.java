@@ -1,10 +1,17 @@
 
 package acme.entities.codeAudits;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -26,43 +33,69 @@ public class CodeAudits extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	//	// Attributes -------------------------------------------------------------
 
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
-	private String				code;
+	protected String			code;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	private Date				execution;
+	protected Date				execution;
 
 	@NotNull
-	private CodeAuditsStatus	type;
+	protected CodeAuditsStatus	type;
 
 	@NotBlank
 	@Length(max = 100)
-	private String				correctiveActions;
+	protected String			correctiveActions;
 
 	@NotNull
 	@NotBlank
-	private String				mark;
+	protected String			mark;
 
 	@URL
-	private String				optionalLink;
+	protected String			optionalLink;
 
 	//	// Derived attributes -----------------------------------------------------
 
+
+	@NotNull
+	@NotBlank
+	public static String Mark(final List<String> marks) {
+		Map<String, Long> scoreFrequency = marks.stream().collect(Collectors.groupingBy(String::toString, Collectors.counting()));
+
+		long maxFrequency = 0;
+		String mark = null;
+		List<String> ls = new ArrayList<>();
+
+		for (Map.Entry<String, Long> entry : scoreFrequency.entrySet())
+			if (entry.getValue() > maxFrequency) {
+				maxFrequency = entry.getValue();
+				mark = entry.getKey();
+				ls.add(mark);
+			}
+		if (ls.size() > 1)
+			Collections.shuffle(ls);
+		return ls.get(0);
+	}
+
 	//	// Relationships ----------------------------------------------------------
 
-	//	@NotNull
-	//	@ManyToOne(optional = false)
-	//	private project 			project;
 
-	//	@NotNull
-	//	@ManyToOne(optional = false)
-	//	private auditor 			auditor;
+	@NotNull
+	@ManyToOne(optional = false)
+	protected project		project;
+
+	@NotNull
+	@ManyToOne(optional = false)
+	protected auditor		auditor;
+
+	@NotNull
+	@OneToOne(optional = false)
+	protected AuditRecord	auditRecord;
 
 }
