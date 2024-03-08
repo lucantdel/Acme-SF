@@ -45,7 +45,7 @@ public class Notice extends AbstractEntity {
 	protected String			message;
 
 	@Email
-	protected String			emailAddress;
+	protected String			email;
 
 	@URL
 	protected String			link;
@@ -54,7 +54,6 @@ public class Notice extends AbstractEntity {
 
 	// uso de username, name and surname que despues podremos hacer cuando lo demos en los services
 
-	@NotBlank
 	@Length(max = 75)
 	@Pattern(regexp = "^\\w+ - \\w+, \\w+$")
 	@Transient

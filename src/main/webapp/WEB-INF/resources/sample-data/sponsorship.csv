@@ -1,0 +1,3 @@
+key,code,moment,start-duration,final-duration,amount,type,email,link,key:project,key:sponsor
+sponsorship-01,ABC-123,2021/10/28 13:00,2025/09/27 13:00,2025/11/27 13:00,10000,FINANCIAL,amazon@gmail.com,https://www.amazon.es/,project-01,sponsor-01
+sponsorship-02,DEF-456,2021/10/01 13:00,2025/01/01 13:00,2021/03/01 13:00,1,INKIND,netflix@gmail.com,https://www.netflix.es/,project-02,sponsor-02
