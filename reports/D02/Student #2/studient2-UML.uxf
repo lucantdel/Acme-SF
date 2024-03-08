@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>330</y>
+      <w>480</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Contract
+--
++ code: String {Pattern(“[A-Z]{1,3}-[0-9]{3}”), NotNull, NotBlank,Unique}
++ moment: Date {NotNull,Past, Temporal(TIMESTAMP)}
++ provider: String {NotNull, NotBlank, Length(max=75)}
++ customer: String {NotNull, NotBlank, Length(max=75)}
++ goals: String {NotNull, NotBlank, Length(max=100)}
++ budget: Money {NotNull}
++ draftMode: Boolean
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>960</x>
+      <y>330</y>
+      <w>450</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+ProgressLog
+--
++ record id: String {Pattern(“PG-[A-Z]{1,2}-[0-9]{4}”),NotNull NotBlank,Unique}
++ completeness: Integer {NotNull, Min{1}}
++ comment: String {NotNull, NotBlank, Length(max=100)}
++ moment: Date {Past, Temporal(TIMESTAMP), NotNull}
++ responsible: String (NotNull, NotBlank, Length(max=75))
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>30</x>
+      <y>380</y>
+      <w>260</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>- budget: 
+Less than or equal to the corresponding
+project cost.
+bg=#f9901e</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>580</y>
+      <w>450</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Client
+--
+identification: String {Pattern(“CLI-[0-9]{4}”),NotNull, NotBlank,Unique}
+company: String {NotNull, NotBlank, Length(max=75)}
+type: Type {NotNull}
+email: String {Email, NotNull, NotBlank}
+link: String{URL}
+bg=#dea1fb</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>590</y>
+      <w>140</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+ClientType
+--
++ COMPANY
++ INDIVIDUAL
+bg=gray
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>850</x>
+      <y>380</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
+
+m2= 1..*</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>410</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>480</y>
+      <w>110</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+
+created by ^
+m1=1
+m2=  0..*
+</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>180</y>
+      <w>70</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+rules ^
+m1=1
+m2= 1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>30</y>
+      <w>430</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Project
+--
++ code: String{NotNull, NotBlank, Unique, Pattern("[A-Z]{3}-[0-9]{4}")}
++ title: String {NotBlank, Length(max=75), NotNull}
++ abstrac: String{NotBlank, Length(max=100), NotNull}
++ cost: Money {Valid,NotNull)
++ indication: boolean{Transient, NotNull}
++ link: String {URL}
++ draftMode: boolean
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
