@@ -10,7 +10,11 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import javax.persistence.Transient;
+
+import javax.persistence.Transient;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -49,6 +53,8 @@ public class TrainingModule extends AbstractEntity {
 	@Length(max = 100)
 	private String				details;
 
+	@NotNull
+
 	private Difficulty			difficultyLevel;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -62,13 +68,10 @@ public class TrainingModule extends AbstractEntity {
 
 
 	@Transient
-	public Integer totalTime(final List<TrainingSession> lsTS) {
-		int tiempoSuma = 0;
-		for (TrainingSession ts : lsTS)
-			if (ts.getTrainingModule().getCode().equals(this.code))
-				//geTime() reuturns miliseconds thats why we divide it by 3600
-				tiempoSuma += (ts.getStartPeriod().getTime() - ts.getEndPeriod().getTime()) / 3600;
-		return tiempoSuma;
+	public Integer totalTime() {
+		//This is the sum of the periods of times of associated trainingSessions.
+		return null;
+
 
 	}
 
