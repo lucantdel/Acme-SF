@@ -1,10 +1,15 @@
 
-package acme.entities.projects;
+package acme.entities.training;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -13,44 +18,49 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.client.data.datatypes.Money;
-import acme.roles.Manager;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Project extends AbstractEntity {
-
+public class TrainingSession extends AbstractEntity {
 	// Serialisation identifier -----------------------------------------------
 
-	protected static final long	serialVersionUID	= 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-	@Pattern(regexp = "[A-Z]{3}-\\d{4}")
+	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}")
 	@NotBlank
 	@Column(unique = true)
-	protected String			code;
+	private String				code;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	private Date				startPeriod;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	private Date				endPeriod;
 
 	@NotBlank
 	@Length(max = 75)
-	protected String			title;
+	private String				location;
 
 	@NotBlank
-	@Length(max = 100)
-	protected String			projectAbstract;
+	@Length(max = 75)
+	private String				instructor;
 
-	protected boolean			indication;
+	private Difficulty			difficultyLevel;
 
-	@NotNull
-	protected Money				cost;
+	@NotBlank
+	@Email
+	private String				contactEmail;
 
 	@URL
-	protected String			link;
-
-	protected boolean			published;
+	private String				link;
 
 	// Derived attributes ----------------------------------------------------
 
@@ -59,6 +69,7 @@ public class Project extends AbstractEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	protected Manager			manager;
+	private TrainingModule		trainingModule;
+
 
 }

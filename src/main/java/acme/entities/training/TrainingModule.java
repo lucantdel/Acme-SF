@@ -1,64 +1,87 @@
 
-package acme.entities.projects;
+package acme.entities.training;
+
+import java.util.Date;
+import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import javax.persistence.Transient;
+
+import javax.persistence.Transient;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.client.data.datatypes.Money;
-import acme.roles.Manager;
+import acme.entities.projects.Project;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Project extends AbstractEntity {
-
+public class TrainingModule extends AbstractEntity {
 	// Serialisation identifier -----------------------------------------------
 
-	protected static final long	serialVersionUID	= 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-	@Pattern(regexp = "[A-Z]{3}-\\d{4}")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	@NotBlank
 	@Column(unique = true)
-	protected String			code;
+	private String				code;
 
-	@NotBlank
-	@Length(max = 75)
-	protected String			title;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Past
+	@NotNull
+	private Date				creationMoment;
 
 	@NotBlank
 	@Length(max = 100)
-	protected String			projectAbstract;
-
-	protected boolean			indication;
+	private String				details;
 
 	@NotNull
-	protected Money				cost;
+
+	private Difficulty			difficultyLevel;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Past
+	private Date				updateMoment;
 
 	@URL
-	protected String			link;
-
-	protected boolean			published;
+	private String				link;
 
 	// Derived attributes ----------------------------------------------------
 
+
+	@Transient
+	public Integer totalTime() {
+		//This is the sum of the periods of times of associated trainingSessions.
+		return null;
+
+
+	}
+
 	// Relationships ----------------------------------------------------------
+
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	protected Manager			manager;
+	private Project project;
+
 
 }

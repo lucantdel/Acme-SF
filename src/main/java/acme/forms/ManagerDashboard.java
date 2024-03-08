@@ -2,6 +2,7 @@
 package acme.forms;
 
 import acme.client.data.AbstractForm;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,32 +12,32 @@ public class ManagerDashboard extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-	private Integer				mustUserStories;
+	int							mustUserStories;
 
-	private Integer				shouldUserStories;
+	int							shouldUserStories;
 
-	private Integer				couldUserStories;
+	int							couldUserStories;
 
-	private Integer				wontUserStories;
+	int							wontUserStories;
 
-	private Double				avgUserStoryEstimatedCost;
+	double						avgUserStoryEstimatedCost;
 
-	private Double				devUserStoryEstimatedCost;
+	double						devUserStoryEstimatedCost;
 
-	private Double				minUserStoryEstimatedCost;
+	int							minUserStoryEstimatedCost;
 
-	private Double				maxUserStoryEstimatedCost;
+	int							maxUserStoryEstimatedCost;
 
-	private Double				avgProjectCost;
+	Money						avgProjectCost;
 
-	private Double				devProjectCost;
+	Money						devProjectCost;
 
-	private Double				minProjectCost;
+	Money						minProjectCost;
 
-	private Double				maxProjectCost;
+	Money						maxProjectCost;
 
 }
