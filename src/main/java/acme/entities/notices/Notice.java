@@ -45,7 +45,7 @@ public class Notice extends AbstractEntity {
 	protected String			message;
 
 	@Email
-	protected String			emailAddress;
+	protected String			email;
 
 	@URL
 	protected String			link;

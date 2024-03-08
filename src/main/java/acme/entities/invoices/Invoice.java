@@ -8,9 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import javax.persistence.Transient;
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -52,11 +50,12 @@ public class Invoice extends AbstractEntity {
 	protected Date				dueDate;
 
 	@NotNull
-	@Min(0)
+	// cantidad no nula, no puede ser min(0)
+	@Min(1)
 	protected double			quantity;
 
 	@Min(0)
-	protected double			taxApplied;
+	protected double			tax;
 
 	@URL
 	protected String			link;
@@ -67,7 +66,7 @@ public class Invoice extends AbstractEntity {
 	@Min(0)
 	@Transient
 	public double totalAmount() {
-		return this.quantity + this.taxApplied;
+		return this.quantity + this.tax;
 	}
 
 	// Relationships ----------------------------------------------------------
@@ -77,6 +76,5 @@ public class Invoice extends AbstractEntity {
 	@ManyToOne(optional = false)
 
 	protected Sponsorship sponsorship;
-
 
 }
