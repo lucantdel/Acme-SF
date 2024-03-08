@@ -13,3 +13,5 @@ user-account-sponsor-01,true,"UserIdentity{name: 'Pepe', surname: 'Perez', email
 user-account-sponsor-02,true,"UserIdentity{name: 'Jose', surname: 'Antonanzas', email: 'jose@acme.com'}",sponsor2,sponsor2
 user-account-developer-01,true,"UserIdentity{name: 'Rand', surname: 'Althor', email: 'rand@acme.com'}",developer1,developer1
 user-account-developer-02,true,"UserIdentity{name: 'John', surname: 'Carter', email: 'john@acme.com'}",developer2,developer2
+user-account-client-01,true,"UserIdentity{name: 'pepito', surname: 'Althor', email: '25dsa@acme.com'}",client1,client1
+user-account-client-02,true,"UserIdentity{name: 'jose', surname: 'Carter', email: 'asdds@acme.com'}",client2,client2
