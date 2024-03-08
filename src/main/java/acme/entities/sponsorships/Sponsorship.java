@@ -59,7 +59,7 @@ public class Sponsorship extends AbstractEntity {
 	protected TypeOfSponsorship	type;
 
 	@Email
-	protected String			contactEmail;
+	protected String			email;
 
 	@URL
 	protected String			link;

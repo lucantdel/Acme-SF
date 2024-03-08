@@ -1,0 +1,3 @@
+key,key:sponsorship,code,registration-time,due-date,quantity,tax,link
+invoice-01,sponsor-01,IN-1234-5678,2021-09-27,2021-07-27,10000,20,https://www.amazon.es/
+invoice-02,sponsor-02,IN-0001-9999,2021-09-28,2021-07-28,1,0,https://www.netflix.es/
