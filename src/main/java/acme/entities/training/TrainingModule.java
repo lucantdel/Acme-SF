@@ -4,6 +4,7 @@ package acme.entities.training;
 import java.util.Date;
 import java.util.List;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -78,5 +79,6 @@ public class TrainingModule extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Project project;
+
 
 }
