@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
@@ -76,9 +75,9 @@ public class Sponsorship extends AbstractEntity {
 	//  (Podría implementarla como @ManyToOne desde Sponsor, aunque esto contemplaría que un mismo patrocinio pueda ser realizados por varios patrocinadores)
 	// luego debe ser @OneToOne
 
-	@NotNull
-	@OneToOne(optional = false)
-	//	protected Sponsor		sponsor;
-	protected String			sponsor;
+	//	@NotNull
+	//	@OneToOne(optional = false)
+	//	//	protected Sponsor		sponsor;
+	//	protected String			sponsor;
 
 }

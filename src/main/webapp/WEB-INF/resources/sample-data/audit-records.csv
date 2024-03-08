@@ -1,11 +1,11 @@
-key,startDate,finishDate,score,optionalLink,codeAudits,auditor
-AU-001,"2022-01-10T12:00:00","2022-01-15T14:30:00","A+",http://example.com/audit-001,CodeAudits-001,auditor-001
-AU-002,"2022-01-15T14:30:00","2022-01-20T10:45:00","B",http://example.com/audit-002,CodeAudits-002,auditor-002
-AU-003,"2022-01-20T10:45:00","2022-01-25T08:15:00","C",http://example.com/audit-003,CodeAudits-003,auditor-003
-AU-004,"2022-01-25T08:15:00","2022-01-30T16:45:00","F-",http://example.com/audit-004,CodeAudits-004,auditor-004
-AU-005,"2022-01-30T16:45:00","2022-02-05T11:30:00","B",http://example.com/audit-005,CodeAudits-005,auditor-005
-AU-006,"2022-02-05T11:30:00","2022-02-10T09:00:00","C",http://example.com/audit-006,CodeAudits-006,auditor-006
-AU-007,"2022-02-10T09:00:00","2022-02-15T14:30:00","A",http://example.com/audit-007,CodeAudits-007,auditor-007
-AU-008,"2022-02-15T14:30:00","2022-02-20T10:45:00","B",http://example.com/audit-008,CodeAudits-008,auditor-008
-AU-009,"2022-02-20T10:45:00","2022-02-25T08:15:00","C",http://example.com/audit-009,CodeAudits-009,auditor-009
-AU-010,"2022-02-25T08:15:00","2022-03-01T16:45:00","A",http://example.com/audit-010,CodeAudits-010,auditor-010
+code,start-date,finish-date,score,optional-link,key:code-audits,key:auditor
+AUR-001,"1987/07/22 03:45","1994/10/11 12:30","A+",http://example.com/audit-001,AUD-001,auditor-01
+AUR-002,"1998/03/15 14:30","2005/11/28 19:45","B",http://example.com/audit-002,AUD-002,auditor-02
+AUR-003,"2004/09/28 21:15","2011/06/09 02:30","C",http://example.com/audit-003,AUD-003,auditor-03
+AUR-004,"2010/05/11 02:00","2017/01/23 07:15","F-",http://example.com/audit-004,AUD-004,auditor-04
+AUR-005,"2016/10/24 07:45","2023/08/05 12:00","B",http://example.com/audit-005,AUD-005,auditor-05
+AUR-006,"2022/04/06 12:30","2029/01/17 17:45","C",http://example.com/audit-006,AUD-006,auditor-06
+AUR-007,"2027/11/19 17:15","2034/06/30 22:30","A",http://example.com/audit-007,AUD-007,auditor-07
+AUR-008,"2033/06/02 21:00","2040/01/13 02:15","B",http://example.com/audit-008,AUD-008,auditor-08
+AUR-009,"2039/01/15 01:45","2045/08/27 07:00","C",http://example.com/audit-009,AUD-009,auditor-09
+AUR-010,"2044/08/28 06:30","2051/04/10 11:45","A",http://example.com/audit-010,AUD-010,auditor-10
