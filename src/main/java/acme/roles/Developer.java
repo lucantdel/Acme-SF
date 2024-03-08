@@ -25,26 +25,26 @@ public class Developer extends AbstractRole {
 	 */
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@NotBlank
 	@Length(max = 75)
-	private String				degree;
+	protected String			degree;
 
 	@NotBlank
 	@Length(max = 100)
-	private String				specialisation;
+	protected String			specialisation;
 
 	@NotBlank
 	@Length(max = 100)
-	private String				skills;
+	protected String			skills;
 
 	@NotBlank
 	@Email
-	private String				contactEmail;
+	protected String			contactEmail;
 
 	@URL
-	private String				link;
+	protected String			link;
 }
