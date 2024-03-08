@@ -1,0 +1,11 @@
+key,startDate,finishDate,score,optionalLink,codeAudits,auditor
+AU-001,"2022-01-10T12:00:00","2022-01-15T14:30:00","A+",http://example.com/audit-001,CodeAudits-001,auditor-001
+AU-002,"2022-01-15T14:30:00","2022-01-20T10:45:00","B",http://example.com/audit-002,CodeAudits-002,auditor-002
+AU-003,"2022-01-20T10:45:00","2022-01-25T08:15:00","C",http://example.com/audit-003,CodeAudits-003,auditor-003
+AU-004,"2022-01-25T08:15:00","2022-01-30T16:45:00","F-",http://example.com/audit-004,CodeAudits-004,auditor-004
+AU-005,"2022-01-30T16:45:00","2022-02-05T11:30:00","B",http://example.com/audit-005,CodeAudits-005,auditor-005
+AU-006,"2022-02-05T11:30:00","2022-02-10T09:00:00","C",http://example.com/audit-006,CodeAudits-006,auditor-006
+AU-007,"2022-02-10T09:00:00","2022-02-15T14:30:00","A",http://example.com/audit-007,CodeAudits-007,auditor-007
+AU-008,"2022-02-15T14:30:00","2022-02-20T10:45:00","B",http://example.com/audit-008,CodeAudits-008,auditor-008
+AU-009,"2022-02-20T10:45:00","2022-02-25T08:15:00","C",http://example.com/audit-009,CodeAudits-009,auditor-009
+AU-010,"2022-02-25T08:15:00","2022-03-01T16:45:00","A",http://example.com/audit-010,CodeAudits-010,auditor-010

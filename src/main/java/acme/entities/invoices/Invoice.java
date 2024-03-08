@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import javax.persistence.Transient;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -43,6 +46,7 @@ public class Invoice extends AbstractEntity {
 	protected Date				registrationTime;
 
 	// al menos un mes de antelación al registrationTime
+
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				dueDate;
@@ -59,13 +63,20 @@ public class Invoice extends AbstractEntity {
 
 	// Derived attributes -----------------------------------------------------
 
+
 	@Min(0)
-	protected double			totalAmount			= this.quantity + this.taxApplied;
+	@Transient
+	public double totalAmount() {
+		return this.quantity + this.taxApplied;
+	}
 
 	// Relationships ----------------------------------------------------------
 
+
 	@NotNull
 	@ManyToOne(optional = false)
-	protected Sponsorship		sponsorship;
+
+	protected Sponsorship sponsorship;
+
 
 }
