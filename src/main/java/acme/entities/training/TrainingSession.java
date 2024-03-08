@@ -28,39 +28,39 @@ import lombok.Setter;
 public class TrainingSession extends AbstractEntity {
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}")
 	@NotBlank
 	@Column(unique = true)
-	private String				code;
+	protected String			code;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				startPeriod;
+	protected Date				startPeriod;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				endPeriod;
+	protected Date				endPeriod;
 
 	@NotBlank
 	@Length(max = 75)
-	private String				location;
+	protected String			location;
 
 	@NotBlank
 	@Length(max = 75)
-	private String				instructor;
+	protected String			instructor;
 
-	private Difficulty			difficultyLevel;
+	protected Difficulty		difficultyLevel;
 
 	@NotBlank
 	@Email
-	private String				contactEmail;
+	protected String			contactEmail;
 
 	@URL
-	private String				link;
+	protected String			link;
 
 	// Derived attributes ----------------------------------------------------
 
@@ -69,10 +69,13 @@ public class TrainingSession extends AbstractEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private TrainingModule		trainingModule;
+	protected TrainingModule	trainingModule;
 
 	@NotNull
 	@Valid
 	@ManyToOne()
-	private Developer			developer;
+  
+	protected Developer			developer;
+
+
 }
