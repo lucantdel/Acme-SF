@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>5</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>155</x>
-      <y>380</y>
-      <w>210</w>
-      <h>85</h>
+      <x>248</x>
+      <y>376</y>
+      <w>336</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -19,17 +19,17 @@ _TrainingModule_
 + difficultyLevel: Dificulty
 + updateMoment: Date {Past, Temporal(TIMESTAMP)}
 + link: String {URL}
-+ / totalTime: Integer {Min(0)} 
++ / totalTime: Integer {Transient} 
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>385</x>
-      <y>330</y>
-      <w>65</w>
-      <h>55</h>
+      <x>616</x>
+      <y>296</y>
+      <w>104</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enumerator&gt;&gt;
 bg=yellow
@@ -46,9 +46,9 @@ _Difficulty_
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>370</y>
-      <w>140</w>
-      <h>25</h>
+      <y>360</y>
+      <w>224</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>The updateMoment must be any moment
 after creationMoment
@@ -58,10 +58,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>135</x>
-      <y>380</y>
-      <w>30</w>
-      <h>65</h>
+      <x>216</x>
+      <y>376</y>
+      <w>48</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;110.0</additional_attributes>
@@ -69,10 +69,10 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>155</x>
-      <y>240</y>
-      <w>210</w>
-      <h>85</h>
+      <x>248</x>
+      <y>152</y>
+      <w>336</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -92,9 +92,9 @@ _TrainingSession_
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>255</y>
-      <w>140</w>
-      <h>25</h>
+      <y>176</y>
+      <w>224</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>The startPeriod must be at the very least 
 one week after creationMoment
@@ -104,10 +104,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>135</x>
-      <y>265</y>
-      <w>30</w>
-      <h>15</h>
+      <x>216</x>
+      <y>192</y>
+      <w>48</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
@@ -115,10 +115,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>135</x>
-      <y>275</y>
-      <w>30</w>
-      <h>60</h>
+      <x>216</x>
+      <y>208</y>
+      <w>48</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;100.0;40.0;10.0</additional_attributes>
@@ -127,9 +127,9 @@ bg=orange</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>310</y>
-      <w>140</w>
-      <h>25</h>
+      <y>264</y>
+      <w>224</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>The endPeriod must be at the very least 
 one week after startPeriod
@@ -139,10 +139,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>320</y>
-      <w>65</w>
-      <h>70</h>
+      <x>416</x>
+      <y>280</y>
+      <w>104</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
@@ -153,10 +153,10 @@ Composed Of ^</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>250</y>
-      <w>160</w>
-      <h>65</h>
+      <x>720</x>
+      <y>168</y>
+      <w>256</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -173,10 +173,10 @@ _Developer_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>275</y>
-      <w>100</w>
-      <h>25</h>
+      <x>576</x>
+      <y>208</y>
+      <w>160</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
 m1= 0..*
@@ -187,10 +187,10 @@ is managed &gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>505</x>
-      <y>395</y>
-      <w>50</w>
-      <h>55</h>
+      <x>808</x>
+      <y>400</y>
+      <w>80</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>bg=pink
 &lt;&lt;Entity&gt;&gt;
@@ -206,10 +206,10 @@ _Project_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>415</y>
-      <w>155</w>
-      <h>25</h>
+      <x>576</x>
+      <y>432</y>
+      <w>248</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
@@ -221,9 +221,9 @@ is about &gt;</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>415</y>
-      <w>140</w>
-      <h>50</h>
+      <y>432</y>
+      <w>224</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>the totalTime is calculated by adding all 
 the periods of the TrainingSessions 
@@ -236,10 +236,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>135</x>
-      <y>440</y>
-      <w>30</w>
-      <h>25</h>
+      <x>216</x>
+      <y>472</y>
+      <w>48</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;30.0</additional_attributes>
