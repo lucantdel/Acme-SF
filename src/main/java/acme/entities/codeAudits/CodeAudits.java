@@ -70,10 +70,6 @@ public class CodeAudits extends AbstractEntity {
 	protected Project		project;
 
 	@NotNull
-	@ManyToOne(optional = false)
-	protected Auditor		auditor;
-
-	@NotNull
 	@OneToOne(optional = false)
 	protected AuditRecord	auditRecord;
 
