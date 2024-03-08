@@ -71,10 +71,12 @@ public class Sponsorship extends AbstractEntity {
 	@ManyToOne(optional = false)
 	protected Project			project;
 
+
 	//	finalmente será implemnetada como @NotNull @ManyTone hasta Sponsor ya que asi un sponsor puede hacer varios patrocinios y un sponsorship es ralizado por unicamente un sponsor
 	// hacinedo asi una relacion 1..N a 1 desde sponsorship a sponsor
 	@NotNull
 	@ManyToOne(optional = false)
 	protected Sponsor			sponsor;
+
 
 }

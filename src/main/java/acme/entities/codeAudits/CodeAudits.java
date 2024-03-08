@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -67,10 +66,6 @@ public class CodeAudits extends AbstractEntity {
 
 	@NotNull
 	@ManyToOne(optional = false)
-	protected Project		project;
-
-	@NotNull
-	@OneToOne(optional = false)
-	protected AuditRecord	auditRecord;
+	protected Project project;
 
 }
