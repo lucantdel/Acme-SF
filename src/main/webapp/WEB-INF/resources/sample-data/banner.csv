@@ -1,0 +1,11 @@
+key,updateMoment,displayPeriodStart,displayPeriodEnd,picture,slogan,webDoc
+"BNR-001","2022-03-01T12:00:00","2022-03-10T14:30:00","2022-03-17T10:45:00","http://example.com/picture-001","Slogan 1","http://example.com/web-doc-001"
+"BNR-002","2022-03-05T14:30:00","2022-03-15T10:45:00","2022-03-22T08:15:00","http://example.com/picture-002","Slogan 2","http://example.com/web-doc-002"
+"BNR-003","2022-03-10T10:45:00","2022-03-20T16:45:00","2022-03-27T11:30:00","http://example.com/picture-003","Slogan 3","http://example.com/web-doc-003"
+"BNR-004","2022-03-15T08:15:00","2022-03-25T11:30:00","2022-03-30T09:00:00","http://example.com/picture-004","Slogan 4","http://example.com/web-doc-004"
+"BNR-005","2022-03-20T16:45:00","2022-03-30T09:00:00","2022-04-05T14:30:00","http://example.com/picture-005","Slogan 5","http://example.com/web-doc-005"
+"BNR-006","2022-03-25T11:30:00","2022-04-01T14:30:00","2022-04-08T09:00:00","http://example.com/picture-006","Slogan 6","http://example.com/web-doc-006"
+"BNR-007","2022-03-30T09:00:00","2022-04-05T14:30:00","2022-04-12T10:45:00","http://example.com/picture-007","Slogan 7","http://example.com/web-doc-007"
+"BNR-008","2022-04-01T14:30:00","2022-04-08T09:00:00","2022-04-15T14:30:00","http://example.com/picture-008","Slogan 8","http://example.com/web-doc-008"
+"BNR-009","2022-04-05T14:30:00","2022-04-12T10:45:00","2022-04-19T16:45:00","http://example.com/picture-009","Slogan 9","http://example.com/web-doc-009"
+"BNR-010","2022-04-08T09:00:00","2022-04-15T14:30:00","2022-04-22T11:30:00","http://example.com/picture-010","Slogan 10","http://example.com/web-doc-010"
