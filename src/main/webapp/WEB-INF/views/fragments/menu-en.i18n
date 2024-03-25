@@ -19,11 +19,16 @@ master.menu.sign-out = Sign out
 
 master.menu.anonymous = Anonymous
 master.menu.anonymous.favourite-link = Favourite link
-master.menu.anonymous.77858342F = 77858342F: Orta Perez Manuel
+master.menu.anonymous.manorper = 77858342F: Orta Perez Manuel
 master.menu.anonymous.lucantdel = 29536902A: Antoñanzas del Villar, Lucas
 master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
 master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
+
+# master.menu.objectives ######################################################
+
+master.menu.objectives = Objectives
+master.menu.objectives.objectives-list = List
 
 # master.menu.administrator ###################################################
 

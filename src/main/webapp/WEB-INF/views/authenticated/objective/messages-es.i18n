@@ -1,0 +1,4 @@
+authenticated.objective.list.title = Listado de objectivos
+authenticated.objective.list.label.title = Título
+authenticated.objective.list.label.instantiationMoment = Momento de instanciación
+authenticated.objective.list.label.priority = Prioridad
