@@ -25,7 +25,11 @@
 			<acme:menu-suboption code="master.menu.anonymous.mohabu2" action="https://www.amazon.es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.jualopvei" action="https://www.reddit.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.alvvazcon" action="https://midu.dev/"/>
-			
+		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.list-objectives" action="/authenticated/objective/list"/>
+			<acme:menu-separator/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -35,10 +39,6 @@
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.objectives" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.objectives.objectives-list" action="/authenticated/objective/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">

@@ -25,10 +25,10 @@ master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
 master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 
-# master.menu.objectives ######################################################
+# master.menu.authenticated ######################################################
 
-master.menu.objectives = Objectives
-master.menu.objectives.objectives-list = List
+master.menu.authenticated = Authenticated
+master.menu.authenticated.list-objectives = List objectives
 
 # master.menu.administrator ###################################################
 
