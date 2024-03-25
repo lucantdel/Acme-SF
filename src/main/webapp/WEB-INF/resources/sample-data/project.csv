@@ -1,4 +1,4 @@
-key,code,title,projectAbstract,indication,cost,link,published,key:manager
+key,code,title,projectAbstract,indication,cost,link,draftMode,key:manager
 project-01,LVF-1725,社會,1'; DROP TABLE users--,true,1165.22 EUR,http://ocn.ne.jp,false,manager-01
 project-02,LEC-3781,ajfsbduhb,0/0,false,6923.20 USD,,false,manager-02
 project-03,JIA-3288,"""''''""'""",aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,true,4351.90 GBP,http://washingtonpost.com/,false,manager-01
