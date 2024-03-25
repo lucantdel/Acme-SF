@@ -1,4 +1,5 @@
 authenticated.objective.list.title = Listing of objectives
+
 authenticated.objective.list.label.title = Title
 authenticated.objective.list.label.instantiationMoment = Instantiation moment
 authenticated.objective.list.label.priority = Priority

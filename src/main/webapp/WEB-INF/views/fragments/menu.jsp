@@ -20,11 +20,13 @@
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
-			<acme:menu-suboption code="master.menu.anonymous.77858342F" action="https://www.wikidex.net/wiki/WikiDex"/>
+			<acme:menu-suboption code="master.menu.anonymous.manortper" action="https://www.wikidex.net/wiki/WikiDex"/>
 			<acme:menu-suboption code="master.menu.anonymous.lucantdel" action="https://chat.openai.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.mohabu2" action="https://www.amazon.es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.jualopvei" action="https://www.reddit.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.alvvazcon" action="https://midu.dev/"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.anonymous.list-projects" action="/any/project/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
