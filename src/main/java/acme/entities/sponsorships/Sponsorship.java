@@ -56,7 +56,7 @@ public class Sponsorship extends AbstractEntity {
 	protected double			amount;
 
 	@NotNull
-	protected TypeOfSponsorship	type;
+	protected SponsorshipType	type;
 
 	@Email
 	protected String			email;
