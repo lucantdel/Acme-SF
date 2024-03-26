@@ -1,0 +1,4 @@
+key,systemCurrency,aceptedCurrencies
+CRN-001,EUR,USD
+CRN-002,EUR,EUR
+CRN-003,EUR,GBP
