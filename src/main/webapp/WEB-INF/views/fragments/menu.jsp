@@ -26,6 +26,8 @@
 			<acme:menu-suboption code="master.menu.anonymous.jualopvei" action="https://www.reddit.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.alvvazcon" action="https://midu.dev/"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-contracts" action="/any/contract/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-progressLogs" action="/any/progressLog/list/"/>
+			
 		</acme:menu-option>
 			
 
