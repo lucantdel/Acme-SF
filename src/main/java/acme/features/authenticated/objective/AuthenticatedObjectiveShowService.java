@@ -1,17 +1,15 @@
 
 package acme.features.authenticated.objective;
 
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.objectives.Objective;
+import acme.entities.objectives.ObjectivePriority;
 
 @Service
 public class AuthenticatedObjectiveShowService extends AbstractService<Authenticated, Objective> {
@@ -29,13 +27,10 @@ public class AuthenticatedObjectiveShowService extends AbstractService<Authentic
 		boolean status;
 		int id;
 		Objective objective;
-		Date deadline;
 
 		id = super.getRequest().getData("id", int.class);
 		objective = this.repository.findOneObjectiveById(id);
-		deadline = MomentHelper.deltaFromCurrentMoment(-30, ChronoUnit.DAYS);
-		status = MomentHelper.isAfter(objective.getInstantiationMoment(), deadline);
-
+		status = objective != null;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -54,9 +49,13 @@ public class AuthenticatedObjectiveShowService extends AbstractService<Authentic
 	public void unbind(final Objective object) {
 		assert object != null;
 
+		SelectChoices choices;
 		Dataset dataset;
 
+		choices = SelectChoices.from(ObjectivePriority.class, object.getPriority());
+
 		dataset = super.unbind(object, "instantiationMoment", "title", "description", "priority", "status", "startMoment", "endMoment", "optionalLink");
+		dataset.put("priorities", choices);
 
 		super.getResponse().addData(dataset);
 	}

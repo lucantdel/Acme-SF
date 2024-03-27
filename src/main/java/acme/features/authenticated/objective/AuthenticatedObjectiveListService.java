@@ -1,16 +1,13 @@
 
 package acme.features.authenticated.objective;
 
-import java.time.temporal.ChronoUnit;
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.objectives.Objective;
 
@@ -33,10 +30,8 @@ public class AuthenticatedObjectiveListService extends AbstractService<Authentic
 	@Override
 	public void load() {
 		Collection<Objective> objects;
-		Date deadline;
 
-		deadline = MomentHelper.deltaFromCurrentMoment(-30, ChronoUnit.DAYS);
-		objects = this.repository.findRecentObjectives(deadline);
+		objects = this.repository.findMany();
 
 		super.getBuffer().addData(objects);
 	}
