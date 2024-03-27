@@ -1,5 +1,15 @@
 authenticated.objective.list.title = Listado de objectivos
+authenticated.objective.form.title = Detalles de objectivo
 
 authenticated.objective.list.label.title = Título
 authenticated.objective.list.label.instantiationMoment = Momento de instanciación
 authenticated.objective.list.label.priority = Prioridad
+
+authenticated.objective.form.label.title = Título:
+authenticated.objective.form.label.description = Descripción:
+authenticated.objective.form.label.priority = Prioridad:
+authenticated.objective.form.label.status = Estado (crítico)
+authenticated.objective.form.label.instantiationMoment = Momento de instanciación:
+authenticated.objective.form.label.startMoment = Momento de inicio:
+authenticated.objective.form.label.endMoment = Momento final:
+authenticated.objective.form.label.optionalLink = Enlace opcional:

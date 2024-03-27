@@ -19,4 +19,7 @@ public interface AuthenticatedObjectiveRepository extends AbstractRepository {
 	@Query("select o from Objective o where o.instantiationMoment >= :deadline")
 	Collection<Objective> findRecentObjectives(Date deadline);
 
+	@Query("select o from Objective o")
+	Collection<Objective> findMany();
+
 }
