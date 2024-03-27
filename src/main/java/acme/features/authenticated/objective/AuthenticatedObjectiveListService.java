@@ -31,7 +31,7 @@ public class AuthenticatedObjectiveListService extends AbstractService<Authentic
 	public void load() {
 		Collection<Objective> objects;
 
-		objects = this.repository.findMany();
+		objects = this.repository.findAllObjectives();
 
 		super.getBuffer().addData(objects);
 	}
