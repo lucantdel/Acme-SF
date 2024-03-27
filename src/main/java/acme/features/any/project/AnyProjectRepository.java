@@ -18,4 +18,7 @@ public interface AnyProjectRepository extends AbstractRepository {
 	@Query("select p from Project p")
 	Collection<Project> findMany();
 
+	@Query("select p from Project p where p.draftMode = false")
+	Collection<Project> findPublishedProjects();
+
 }

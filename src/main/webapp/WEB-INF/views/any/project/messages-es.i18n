@@ -5,8 +5,8 @@ any.project.list.label.code = Código
 any.project.list.label.title = Título
 any.project.list.label.cost = Coste
 
-any.project.form.label.code = Código
-any.project.form.label.title = Título
-any.project.form.label.projectAbstract = Resumen del proyecto
-any.project.form.label.cost = Coste
-any.project.form.label.link = Enlace
+any.project.form.label.code = Código:
+any.project.form.label.title = Título:
+any.project.form.label.projectAbstract = Resumen del proyecto:
+any.project.form.label.cost = Coste:
+any.project.form.label.link = Enlace:
