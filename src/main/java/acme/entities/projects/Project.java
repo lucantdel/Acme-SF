@@ -50,7 +50,7 @@ public class Project extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	protected boolean			published;
+	protected boolean			draftMode;
 
 	// Derived attributes ----------------------------------------------------
 
