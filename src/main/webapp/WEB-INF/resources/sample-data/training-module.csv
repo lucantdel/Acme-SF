@@ -1,7 +1,16 @@
 key,code,creationMoment,details,difficultyLevel,updateMoment,link,key:project
-training-module-01,CCC-123,2021/10/08 10:00,"sdsd",Basic,2021/11/08 09:00,"https://twitter.com","project-01"
-training-module-02,SDA-222,2021/05/05 09:35,"HOLLAAAAA",Basic,2021/10/08 17:00,"https://asddsaddd.com","project-02"
-training-module-03,SDW-335,2021/08/05 14:00,"dsfuhcecee5514asa d edfaeewwnuih",Advanced,2021/11/09 10:30,,"project-01"
-training-module-04,AAA-000,2021/02/19 17:00,"SDIDYUDDDDDDDDDDDDDDDDDDDD",Advanced,2021/3/08 11:00,null,"project-03"
-training-module-05,VGE-568,2022/02/12 14:40,"a",Advanced,2022/02/12 15:00,"https://tw1225.za","project-02"
-training-module-06,ZZZ-999,2022/01/30 14:30,"osidah8ue55AAAS",Intermediate,2022/02/08 20:00,"https://ASDO.net","project-01"
+training-module-01,CCC-123,2021/10/08 10:00,sdsd,Basic,2021/11/08 09:00,https://twitter.com,project-01
+training-module-02,SDA-222,2021/05/05 09:35,HOLLAAAAA,Basic,2021/10/08 17:00,https://asddsaddd.com,project-02
+training-module-03,SDW-335,2021/08/05 14:00,dsfuhcecee5514asa d edfaeewwnuih,Advanced,2021/11/09 10:30,,project-01
+training-module-04,AAA-000,2021/02/19 17:00,SDIDYUDDDDDDDDDDDDDDDDDDDD,Advanced,2021/3/08 11:00,null,project-03
+training-module-05,VGE-568,2022/02/12 14:40,a,Advanced,2022/02/12 15:00,https://tw1225.za,project-02
+training-module-06,ZZZ-999,2022/01/30 14:30,osidah8ue55AAAS,Intermediate,2022/02/08 20:00,https://ASDO.net,project-01
+training-module-07,ZPU-559,2022/02/28 10:27,osiShnh h lorem ipsum cosas que pasan,Basic,,https://sajbdnnnsjiwsYYGs.za,project-01
+training-module-08,BDI-248,2021/12/22 18:15,trolololoas dice au9sgc eouit$$$A7WSD OIJSAD W,Basic,null,https://WHYafrew3stilher&sf.za,project-01
+training-module-09,PYV-248,2021/11/02 12:38,123 Vamos a contar mentiras,Intermediate,null,https://yu7isnDDasd.es,project-02
+training-module-10,PYV-958,2022/01/05 12:38,In the beginning there was me!!,Basic,null,https://foajsJBSIE23fhde.es,project-03
+training-module-11,PPU-856,2021/11/11 08:50,DO YOU WANT TO KNOW MORE?,Intermediate,null,https://GOcryGO.com,project-01
+training-module-12,NAM-246,2021/10/05 12:05,HELLO; HOW are you 3 doing?!!,Basic,null,https://666numberOfTheBeast.us,project-01
+training-module-13,KIL-158,2021/12/02 15:16,¿Vamos a pasarlo bien?,Basic,null,null,project-02
+training-module-14,OUV-647,2021/12/02 18:38,WAAAAAAAGHHHH!!!!,Intermediate,null,https://yu7isnDDasd.es,project-02
+training-module-15,PAW-469,2022/01/10 12:00,Stuff,Advanced,2021/11/18 11:00,https://yu7isnDDasd.es,project-03
