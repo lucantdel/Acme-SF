@@ -39,27 +39,21 @@ public class Objective extends AbstractEntity {
 	@Length(max = 100)
 	private String				description;
 
-
-	public enum Priority {
-		Low, Medium, High
-	}
-
-
 	@Enumerated(EnumType.STRING)
-	private Priority	priority;
+	private ObjectivePriority	priority;
 
-	private boolean		status;
+	private boolean				status;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date		startMoment;
+	private Date				startMoment;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	@PastOrPresent
-	private Date		endMoment;
+	private Date				endMoment;
 
 	@URL
-	private String		optionalLink;
+	private String				optionalLink;
 
 }
