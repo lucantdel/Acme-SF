@@ -9,6 +9,4 @@
 	<acme:input-textarea code="any.project.form.label.projectAbstract" path="projectAbstract"/>
 	<acme:input-money code="any.project.form.label.cost" path="cost"/>
 	<acme:input-url code="any.project.form.label.link" path="link"/>
-	
-	<%-- <acme:button code="any.project.form.button.duties" action="/any/duty/list?masterId=${id}"/> --%>
 </acme:form>

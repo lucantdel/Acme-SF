@@ -25,8 +25,9 @@ master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
 master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 master.menu.anonymous.list-projects = List projects
+master.menu.anonymous.list-contracts = List of contracts
 
-# master.menu.authenticated ######################################################
+# master.menu.authenticated ###################################################
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.list-objectives = List objectives
@@ -45,10 +46,15 @@ master.menu.administrator.shut-down = Shut down
 master.menu.provider = Provider
 master.menu.provider.favourite-link = Favourite link
 
-# master.menu.consumer ##########################################################
+# master.menu.consumer ########################################################
 
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
+
+# master.menu.manager #########################################################
+
+master.menu.manager = Manager
+master.menu.manager.list-projects = List projects
 
 # master.menu.user-account ####################################################
 
@@ -58,7 +64,3 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
-
-# master.menu.anonymous.list-contracts ####################################################
- master.menu.anonymous.list-contracts = List of contracts
-

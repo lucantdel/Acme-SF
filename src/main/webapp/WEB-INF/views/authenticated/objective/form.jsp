@@ -12,6 +12,4 @@
 	<acme:input-moment code="authenticated.objective.form.label.startMoment" path="startMoment"/>
 	<acme:input-moment code="authenticated.objective.form.label.endMoment" path="endMoment"/>
 	<acme:input-url code="authenticated.objective.form.label.optionalLink" path="optionalLink"/>
-
-	<%-- <acme:button code="authenticated.objective.form.button.duties" action="/any/duty/list?masterId=${id}"/> --%>
 </acme:form>

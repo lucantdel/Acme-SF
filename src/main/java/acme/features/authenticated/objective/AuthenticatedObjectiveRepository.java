@@ -20,6 +20,6 @@ public interface AuthenticatedObjectiveRepository extends AbstractRepository {
 	Collection<Objective> findRecentObjectives(Date deadline);
 
 	@Query("select o from Objective o")
-	Collection<Objective> findMany();
+	Collection<Objective> findAllObjectives();
 
 }
