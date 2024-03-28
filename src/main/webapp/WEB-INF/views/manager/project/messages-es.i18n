@@ -1,0 +1,15 @@
+manager.project.list.title= Listado de tus proyectos
+manager.project.form.title= Detalles de proyectos
+
+manager.project.list.label.code = Código
+manager.project.list.label.title = Título
+manager.project.list.label.cost = Coste
+manager.project.list.label.draftMode = Borrador
+
+manager.project.form.label.code = Código:
+manager.project.form.label.title = Título:
+manager.project.form.label.projectAbstract = Resumen de proyecto:
+manager.project.label.indication = Indicación (errores críticos)
+manager.project.form.label.cost = Coste:
+manager.project.form.label.link = Enlace:
+manager.project.label.draftMode = Borrador
