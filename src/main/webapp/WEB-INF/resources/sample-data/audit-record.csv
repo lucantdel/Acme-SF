@@ -1,0 +1,11 @@
+key,startDate,finishDate,score,optionalLink,key:code-audit,key:auditor
+audit-record-01,"2022-01-10T12:00:00","2022-01-15T14:30:00","A+",http://example.com/audit-001,code-audit-01,auditor-01
+audit-record-02,"2022-01-15T14:30:00","2022-01-20T10:45:00","B",http://example.com/audit-002,code-audit-02,auditor-02
+audit-record-03,"2022-01-20T10:45:00","2022-01-25T08:15:00","C",http://example.com/audit-003,code-audit-03,auditor-03
+audit-record-04,"2022-01-25T08:15:00","2022-01-30T16:45:00","F-",http://example.com/audit-004,code-audit-04,auditor-04
+audit-record-05,"2022-01-30T16:45:00","2022-02-05T11:30:00","B",http://example.com/audit-005,code-audit-05,auditor-05
+audit-record-06,"2022-02-05T11:30:00","2022-02-10T09:00:00","C",http://example.com/audit-006,code-audit-06,auditor-06
+audit-record-07,"2022-02-10T09:00:00","2022-02-15T14:30:00","A",http://example.com/audit-007,code-audit-07,auditor-07
+audit-record-08,"2022-02-15T14:30:00","2022-02-20T10:45:00","B",http://example.com/audit-008,code-audit-08,auditor-08
+audit-record-09,"2022-02-20T10:45:00","2022-02-25T08:15:00","C",http://example.com/audit-009,code-audit-09,auditor-09
+audit-record-10,"2022-02-25T08:15:00","2022-03-01T16:45:00","A",http://example.com/audit-010,code-audit-10,auditor-10

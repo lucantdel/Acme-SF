@@ -19,6 +19,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.projects.Project;
+import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -66,6 +67,10 @@ public class CodeAudits extends AbstractEntity {
 
 	@NotNull
 	@ManyToOne(optional = false)
-	protected Project project;
+	protected Project	project;
+
+	@NotNull
+	@ManyToOne(optional = false)
+	protected Auditor	auditor;
 
 }
