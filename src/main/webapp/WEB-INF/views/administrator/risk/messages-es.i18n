@@ -1,0 +1,14 @@
+administrator.risk.list.title = Listado de Riesgos
+administrator.risk.form.title = Detalles de riesgo
+
+administrator.risk.list.label.reference = Referencia
+administrator.risk.list.label.value = Valor
+administrator.risk.list.label.identificationDate = Fecha de Identificación
+
+administrator.risk.form.label.reference = Referencia:
+administrator.risk.form.label.identificationDate = Fecha de Identificación:
+administrator.risk.form.label.impact = Impacto:
+administrator.risk.form.label.probability = Probabilidad:
+administrator.risk.form.label.description = Descripción:
+administrator.risk.form.label.value = Valor:
+administrator.risk.form.label.optionalLink = Link:
