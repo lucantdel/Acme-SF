@@ -25,7 +25,7 @@ master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
 master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 master.menu.anonymous.list-projects = List projects
-master.menu.anonymous.list-contracts = List of contracts
+master.menu.anonymous.list-contracts = List contracts
 
 # master.menu.authenticated ###################################################
 
@@ -54,7 +54,7 @@ master.menu.consumer.favourite-link = Favourite link
 # master.menu.manager #########################################################
 
 master.menu.manager = Manager
-master.menu.manager.list-projects = List projects
+master.menu.manager.list-projects = List my projects
 
 # master.menu.user-account ####################################################
 

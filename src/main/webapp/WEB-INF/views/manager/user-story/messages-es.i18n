@@ -1,0 +1,13 @@
+manager.user-story.list.title = Listado de historias de usuario
+manager.user-story.form.title = Detalles de historia de usuario
+
+manager.user-story.list.label.title = Título
+manager.user-story.list.label.estimatedCost = Coste estimado
+manager.user-story.list.label.priority = Prioridad
+
+manager.user-story.form.label.title = Título:
+manager.user-story.form.label.description = Descripción:
+manager.user-story.form.label.estimatedCost = Coste estimado:
+manager.user-story.form.label.acceptanceCriteria = Criterio de aceptación:
+manager.user-story.form.label.priority = Prioridad:
+manager.user-story.form.label.link = Enlace:
