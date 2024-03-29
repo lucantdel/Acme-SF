@@ -55,7 +55,7 @@ public class AuditRecord extends AbstractEntity {
 	//	// Relationships -----------------------------------------------------
 
 	@ManyToOne
-	protected CodeAudits		codeAudits;
+	protected CodeAudit			codeAudit;
 
 	@NotNull
 	@ManyToOne(optional = false)
