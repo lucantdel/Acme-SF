@@ -1,0 +1,13 @@
+manager.user-story.list.title = Listing of user stories
+manager.user-story.form.title = User story form
+
+manager.user-story.list.label.title = Title
+manager.user-story.list.label.estimatedCost = Estimated cost
+manager.user-story.list.label.priority = Priority
+
+manager.user-story.form.label.title = Title:
+manager.user-story.form.label.description = Description:
+manager.user-story.form.label.estimatedCost = Estimated cost:
+manager.user-story.form.label.acceptanceCriteria = Acceptance criteria:
+manager.user-story.form.label.priority = Priority:
+manager.user-story.form.label.link = Link:

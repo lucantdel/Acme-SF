@@ -13,3 +13,5 @@ manager.project.label.indication = Indication (critical errors)
 manager.project.form.label.cost = Cost:
 manager.project.form.label.link = Link:
 manager.project.label.draftMode = Draft
+
+manager.project.form.button.user-stories-list = List user stories
