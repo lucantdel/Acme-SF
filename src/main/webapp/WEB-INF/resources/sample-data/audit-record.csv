@@ -1,0 +1,11 @@
+key,code,startDate,finishDate,score,optionalLink,key:code-audit,key:auditor
+audit-record-01,AU-1234-321,"2021/10/08 12:00","2021/10/08 16:00","A+",http://example.com/audit-001,code-audit-01,auditor-01
+audit-record-02,AU-1743-980,"2021/10/07 12:00","2021/10/07 16:00","B",http://example.com/audit-002,code-audit-02,auditor-02
+audit-record-03,AU-9876-000,"2021/10/06 12:00","2021/10/06 16:00","C",http://example.com/audit-003,code-audit-03,auditor-01
+audit-record-04,AU-1274-422,"2021/10/05 12:00","2021/10/05 17:00","F-",http://example.com/audit-004,code-audit-04,auditor-02
+audit-record-05,AU-0000-111,"2021/10/04 12:00","2021/10/04 19:00","B",http://example.com/audit-005,code-audit-05,auditor-02
+audit-record-06,AU-2222-333,"2021/10/03 12:00","2021/10/03 18:00","C",http://example.com/audit-006,code-audit-06,auditor-02
+audit-record-07,AU-9310-112,"2021/10/02 12:00","2021/10/02 16:00","A",http://example.com/audit-007,code-audit-07,auditor-02
+audit-record-08,AU-1234-000,"2021/10/01 12:00","2021/10/01 16:00","B",http://example.com/audit-008,code-audit-08,auditor-01
+audit-record-09,AU-9812-333,"2021/10/11 12:00","2021/10/11 17:00","C",http://example.com/audit-009,code-audit-09,auditor-02
+audit-record-10,AU-8732-123,"2021/10/12 12:00","2021/10/12 19:00","A",http://example.com/audit-010,code-audit-10,auditor-01
