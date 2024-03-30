@@ -20,6 +20,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.projects.Project;
+import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -58,11 +59,12 @@ public class TrainingModule extends AbstractEntity {
 	@URL
 	protected String			link;
 
+	protected boolean			draftMode;
 	// Derived attributes ----------------------------------------------------
 
 
 	@Transient
-	protected Integer totalTime() {
+	public Integer totalTime() {
 		//This is the sum of the periods of times of associated trainingSessions.
 		return null;
 
@@ -74,6 +76,11 @@ public class TrainingModule extends AbstractEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	protected Project project;
+	protected Project	project;
+
+	@NotNull
+	@Valid
+	@ManyToOne()
+	protected Developer	developer;
 
 }
