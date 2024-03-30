@@ -15,3 +15,5 @@ developer.trainingModule.form.label.difficultyLevel = Nivel de Dificultad:
 developer.trainingModule.form.label.project = Proyecto:
 developer.trainingModule.form.label.Link = Link:
 developer.trainingModule.form.label.totaltime = Tiempo Total:
+
+developer.trainingModule.form.button.training-session-list = Listado de Sessiones de Entrenamiento
