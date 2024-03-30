@@ -1,0 +1,14 @@
+developer.training-session.list.title = Listado de Módulos de Entrenamiento
+developer.training-session.form.title = Detalles de Módulo de Entrenamiento
+
+developer.trainingSession.list.label.code = Código
+developer.trainingSession.list.label.startPeriod =  Fecha Inicio
+developer.trainingSession.list.label.endPeriod = Fecha Fín
+
+developer.trainingSession.form.label.code = Código:
+developer.trainingSession.form.label.startPeriod = Fecha Inicio:
+developer.trainingSession.form.label.endPeriod = Fecha Fín:
+developer.trainingSession.form.label.location = Localizción:
+developer.trainingSession.form.label.instructor = Instructor:
+developer.trainingSession.form.label.contactEmail = Correo de Contacto:
+developer.trainingSession.form.label.Link = Link:

@@ -12,4 +12,7 @@
 	<acme:input-textbox code="developer.trainingModule.form.label.project" path="project"/>
 	<acme:input-integer code="developer.trainingModule.form.label.totaltime" path="totalTime"/>
 	<acme:input-url code="developer.trainingModule.form.label.link" path="link"/>
+	
+	<acme:button code="developer.trainingModule.form.button.training-session-list" action="/developer/training-session/list?trainingModuleId=${id}"/>
+	
 </acme:form>
