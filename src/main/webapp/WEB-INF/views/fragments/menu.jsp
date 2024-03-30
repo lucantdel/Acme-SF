@@ -28,6 +28,7 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.list-projects" action="/any/project/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-contracts" action="/any/contract/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
