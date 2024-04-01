@@ -1,0 +1,8 @@
+administrator.system-configuration.form.label.acceptedCurrencies = Divisas Aceptadas
+administrator.system-configuration.form.label.systemCurrency = Divisa del sistema
+
+administrator.config.form.button.update = Update
+
+administrator.config.form.error.systemCurrency = La divisia seleccionada debe ser una de las aceptadas
+
+administrator.system-configuration.form.title = configuración del sistema

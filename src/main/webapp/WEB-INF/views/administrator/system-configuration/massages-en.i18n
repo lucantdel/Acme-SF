@@ -1,0 +1,8 @@
+administrator.system-configuration.form.label.acceptedCurrencies = Accepted Currencies
+administrator.system-configuration.form.label.systemCurrency = System Currency
+
+administrator.config.form.button.update = Update
+
+administrator.config.form.error.systemCurrency = Selected system currency has to be one of the accepted ones
+
+administrator.system-configuration.form.title =system configuration
