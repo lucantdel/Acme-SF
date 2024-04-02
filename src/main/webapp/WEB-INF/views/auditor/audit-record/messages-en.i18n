@@ -1,0 +1,14 @@
+auditor.audit-record.list.title = Listing of Audit Records
+auditor.audit-record.form.title = Audit Records form
+
+
+auditor.auditRecord.list.label.code = Code
+auditor.auditRecord.form.label.score = Score:
+auditor.auditRecord.form.label.codeAudit = CodeAudit:
+
+
+auditor.auditRecord.form.label.code = Code:
+auditor.auditRecord.form.label.startDate = StartDate:
+auditor.auditRecord.form.label.finishDate = FinishDate:
+auditor.auditRecord.form.label.score = Score:
+auditor.auditRecord.form.label.codeAudit = CodeAudit:

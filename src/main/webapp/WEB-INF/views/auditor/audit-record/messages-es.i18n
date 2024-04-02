@@ -1,0 +1,15 @@
+auditor.audit-record.list.title = Listado de Records de Auditoria
+auditor.audit-record.form.title = Detalles de Records de Auditoria
+
+
+auditor.auditRecord.list.label.code = Codigo
+auditor.auditRecord.form.label.score = Puntuacion:
+auditor.auditRecord.form.label.codeAudit = CodeAudit:
+
+
+
+auditor.auditRecord.form.label.code = Codigo:
+auditor.auditRecord.form.label.startDate = Fecha Inicio:
+auditor.auditRecord.form.label.finishDate = Fecha Final:
+auditor.auditRecord.form.label.score = Puntuacion:
+auditor.auditRecord.form.label.codeAudit = CodeAudit:

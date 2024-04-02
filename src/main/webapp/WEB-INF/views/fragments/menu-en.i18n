@@ -67,6 +67,7 @@ master.menu.developer.list-training-modules = List my training modules
 
 master.menu.auditor = Auditor
 master.menu.auditor.list-code-audits = List my code audits
+master.menu.auditor.list-audit-records = List my Audit Records
 
 # master.menu.user-account ####################################################
 

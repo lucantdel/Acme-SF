@@ -68,6 +68,8 @@ master.menu.developer.list-training-modules = Ver mis módulos de entrenamiento
 
 master.menu.auditor = Auditor
 master.menu.auditor.list-code-audits = Ver mis auditorias de codigo
+master.menu.auditor.list-audit-records = Ver mis Records de auditorias
+
 
 # master.menu.user-account ####################################################
 
