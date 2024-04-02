@@ -25,7 +25,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		CodeAudit codeAudit;
 
 		id = super.getRequest().getData("id", int.class);
-		codeAudit = this.rp.findCodeAuditById();
+		codeAudit = this.rp.findCodeAuditById(id);
 		status = codeAudit != null && !codeAudit.isDraftMode();
 
 		super.getResponse().setAuthorised(status);

@@ -13,7 +13,7 @@ import acme.entities.codeAudits.CodeAudit;
 public interface AuditorCodeAuditRepository extends AbstractRepository {
 
 	@Query("select c from CodeAudit c where c.id = :id")
-	CodeAudit findCodeAuditById();
+	CodeAudit findCodeAuditById(int id);
 
 	@Query("select c from CodeAudit c where c.draftMode = false")
 	Collection<CodeAudit> findCreatedCodeAudits();
