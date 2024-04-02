@@ -1,5 +1,5 @@
 
-package acme.entities.currency_system;
+package acme.entities.systemConfiguration;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
@@ -12,16 +12,16 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class CurrencySystem extends AbstractEntity {
+public class SystemConfiguration extends AbstractEntity {
 
 	protected static final long	serialVersionUID	= 1L;
+
+	@Pattern(regexp = "^([A-Z]{3},)*[A-Z]{3}$")
+	@NotNull
+	protected String			acceptedCurrencies;
 
 	@Pattern(regexp = "^[A-Z]{3}$")
 	@NotNull
 	protected String			systemCurrency;
-
-	@Pattern(regexp = "^([A-Z]{3},)*[A-Z]{3}$")
-	@NotNull
-	protected String			aceptedCurrencies;
 
 }
