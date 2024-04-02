@@ -1,0 +1,16 @@
+auditor.code-audit.list.title = Listing of Code Audits
+auditor.code-audit.form.title = Code Audits form
+
+
+auditor.codeAudit.list.label.code = Code
+auditor.codeAudit.list.label.execution = Execution
+auditor.codeAudit.list.label.type = Type
+auditor.codeAudit.list.label.project = Project
+
+
+auditor.codeAudit.form.label.code = Code:
+auditor.codeAudit.form.label.execution = Execution:
+auditor.codeAudit.form.label.type = Type:
+auditor.codeAudit.form.label.correctiveActions = Correctiveactions:
+auditor.codeAudit.form.label.optionalLink = OptionalLink:
+auditor.codeAudit.form.label.project = Project:
