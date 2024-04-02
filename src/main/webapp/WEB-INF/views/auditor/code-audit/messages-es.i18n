@@ -1,0 +1,15 @@
+auditor.code-audit.list.title = Listado de auditorias de codigo
+auditor.code-audit.form.title = Detalles de auditorias de codigo
+
+auditor.codeAudit.list.label.code = Codigo
+auditor.codeAudit.list.label.execution = Tiempo de ejecucion
+auditor.codeAudit.list.label.type = Tipo
+auditor.codeAudit.list.label.project = Proyecto
+
+
+auditor.codeAudit.form.label.code = Codigo:
+auditor.codeAudit.form.label.execution = Tiempo de ejecucion:
+auditor.codeAudit.form.label.type = Tipo:
+auditor.codeAudit.form.label.correctiveActions = Acciones correctivas:
+auditor.codeAudit.form.label.optionalLink = Link Opcional:
+auditor.codeAudit.form.label.project = Proyecto:

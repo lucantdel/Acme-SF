@@ -64,6 +64,11 @@ master.menu.manager.list-projects = Ver mis proyectos
 master.menu.developer = Developer
 master.menu.developer.list-training-modules = Ver mis módulos de entrenamiento
 
+# master.menu.auditor #########################################################
+
+master.menu.auditor = Auditor
+master.menu.auditor.list-code-audits = Ver mis auditorias de codigo
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
