@@ -1,8 +1,6 @@
 
 package acme.features.auditors.codeAudits;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +23,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		CodeAudit codeAudit;
 
 		id = super.getRequest().getData("id", int.class);
-		codeAudit = this.rp.findCodeAuditById();
+		codeAudit = this.rp.findCodeAuditById(id);
 		status = codeAudit != null && !codeAudit.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
@@ -33,11 +31,13 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 	@Override
 	public void load() {
-		Collection<CodeAudit> objects;
+		CodeAudit object;
+		int id;
 
-		objects = this.rp.findCreatedCodeAudits();
+		id = super.getRequest().getData("id", int.class);
+		object = this.rp.findCodeAuditById(id);
 
-		super.getBuffer().addData(objects);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
