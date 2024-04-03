@@ -28,6 +28,16 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 
 		super.getResponse().setAuthorised(status);
 	}
+	@Override
+	public void load() {
+		AuditRecord object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.rp.findAuditRecordById(id);
+
+		super.getBuffer().addData(object);
+	}
 
 	@Override
 	public void unbind(final AuditRecord object) {
