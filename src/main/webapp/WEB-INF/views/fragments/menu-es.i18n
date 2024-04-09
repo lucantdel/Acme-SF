@@ -24,7 +24,7 @@ master.menu.anonymous.lucantdel = 29536902A: Antoñanzas del Villar, Lucas
 master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
 master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
-master.menu.anonymous.list-projects = Ver proyectos
+master.menu.anonymous.list-projects = Ver proyectos 
 master.menu.anonymous.list-contracts = Ver contratos
 master.menu.anonymous.list-trainingModules = Ver módulos de entrenamiento
 
@@ -32,7 +32,7 @@ master.menu.anonymous.list-trainingModules = Ver módulos de entrenamiento
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.list-objectives = Ver objectivos
-
+master.menu.authenticated.list-projects = Ver proyectos 
 
 # master.menu.administrator ###################################################
 
