@@ -1,0 +1,9 @@
+# messages-en.i18n
+
+administrator.banner.form.title = Banner form
+
+administrator.banner.form.button.create = Create
+administrator.banner.form.button.update = Update
+administrator.banner.form.button.delete = Delete
+ 
+administrator.banner.delete.banner-linked = The banner is linked to a proxy or a job
