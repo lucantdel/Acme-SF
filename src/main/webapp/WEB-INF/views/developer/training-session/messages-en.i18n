@@ -11,4 +11,4 @@ developer.trainingSession.form.label.endPeriod = End Date:
 developer.trainingSession.form.label.location = Location:
 developer.trainingSession.form.label.instructor = Instructor:
 developer.trainingSession.form.label.contactEmail = Contact Email:
-developer.trainingSession.form.label.Link = Link:
+developer.trainingSession.form.label.link = Link:

@@ -1,19 +1,19 @@
-developer.training-module.list.title = Listing of training Module
-developer.training-module.form.title = Training Module form
+any.training-module.list.title = Listing of training Module
+any.training-module.form.title = Training Module form
 
-developer.trainingModule.list.label.code = Code
-developer.trainingModule.list.label.creationMoment = Creation Moment
-developer.trainingModule.list.label.difficultyLevel = Difficulty Level
-developer.trainingModule.list.label.project = Project
-developer.trainingModule.list.label.draftMode = Is draft
+any.trainingModule.list.label.code = Code
+any.trainingModule.list.label.creationMoment = Creation Moment
+any.trainingModule.list.label.difficultyLevel = Difficulty Level
+any.trainingModule.list.label.project = Project
+any.trainingModule.list.label.draftMode = Is draft
 
-developer.trainingModule.form.label.code = Code:
-developer.trainingModule.form.label.creationMoment = Creation Moment:
-developer.trainingModule.form.label.updateMoment = Update Moment:
-developer.trainingModule.form.label.details = Details:
-developer.trainingModule.form.label.difficultyLevel = Difficulty Level:
-developer.trainingModule.form.label.project = Project:
-developer.trainingModule.form.label.Link = Link:
-developer.trainingModule.form.label.totaltime = Total Time:
+any.trainingModule.form.label.code = Code:
+any.trainingModule.form.label.creationMoment = Creation Moment:
+any.trainingModule.form.label.updateMoment = Update Moment:
+any.trainingModule.form.label.details = Details:
+any.trainingModule.form.label.difficultyLevel = Difficulty Level:
+any.trainingModule.form.label.project = Project:
+any.trainingModule.form.label.link = Link:
+any.trainingModule.form.label.totaltime = Total Time:
 
-developer.trainingModule.form.button.training-session-list = Listing of Training Sessions
+any.trainingModule.form.button.training-session-list = Listing of Training Sessions
