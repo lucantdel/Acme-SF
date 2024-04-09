@@ -1,19 +1,19 @@
-any.training-module.list.title = Listado de Módulos de Entrenamiento
-any.training-module.form.title = Detalles de Módulo de Entrenamiento
+developer.training-module.list.title = Listado de Módulos de Entrenamiento
+developer.training-module.form.title = Detalles de Módulo de Entrenamiento
 
-any.trainingModule.list.label.code = Código
-any.trainingModule.list.label.creationMoment = Moment de Creación
-any.trainingModule.list.label.difficultyLevel =  Nivel de Dificultad
-any.trainingModule.list.label.project = Proyecto
-any.trainingModule.list.label.draftMode = Es Borrador
+developer.trainingModule.list.label.code = Código
+developer.trainingModule.list.label.creationMoment = Moment de Creación
+developer.trainingModule.list.label.difficultyLevel =  Nivel de Dificultad
+developer.trainingModule.list.label.project = Proyecto
+developer.trainingModule.list.label.draftMode = Es Borrador
 
-any.trainingModule.form.label.code = Código:
-any.trainingModule.form.label.creationMoment = Momento de Creación:
-any.trainingModule.form.label.updateMoment = Momento de Actualización:
-any.trainingModule.form.label.details = Detalles:
-any.trainingModule.form.label.difficultyLevel = Nivel de Dificultad:
-any.trainingModule.form.label.project = Proyecto:
-any.trainingModule.form.label.Link = Link:
-any.trainingModule.form.label.totaltime = Tiempo Total:
+developer.trainingModule.form.label.code = Código:
+developer.trainingModule.form.label.creationMoment = Momento de Creación:
+developer.trainingModule.form.label.updateMoment = Momento de Actualización:
+developer.trainingModule.form.label.details = Detalles:
+developer.trainingModule.form.label.difficultyLevel = Nivel de Dificultad:
+developer.trainingModule.form.label.project = Proyecto:
+developer.trainingModule.form.label.link = Link:
+developer.trainingModule.form.label.totaltime = Tiempo Total:
 
-any.trainingModule.form.button.training-session-list = Listado de Sessiones de Entrenamiento
+developer.trainingModule.form.button.training-session-list = Listado de Sessiones de Entrenamiento
