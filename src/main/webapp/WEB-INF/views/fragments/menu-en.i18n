@@ -26,7 +26,7 @@ master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 master.menu.anonymous.list-projects = List projects
 master.menu.anonymous.list-contracts = List contracts
-master.menu.anonymous.list-claim = List claims
+master.menu.anonymous.list-claims = List claims
 master.menu.anonymous.list-trainingModules = List of training modules
 
 # master.menu.authenticated ###################################################
@@ -34,7 +34,7 @@ master.menu.anonymous.list-trainingModules = List of training modules
 master.menu.authenticated = Authenticated
 master.menu.authenticated.list-objectives = List objectives
 master.menu.authenticated.list-projects = List projects
-master.menu.authenticated.list-claim = List claims
+master.menu.authenticated.list-claims = List claims
 
 # master.menu.administrator ###################################################
 
