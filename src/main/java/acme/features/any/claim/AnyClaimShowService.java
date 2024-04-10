@@ -28,7 +28,7 @@ public class AnyClaimShowService extends AbstractService<Any, Claim> {
 
 		id = super.getRequest().getData("id", int.class);
 		claim = this.repository.findOneClaimById(id);
-		status = claim != null;
+		status = claim != null && !claim.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}

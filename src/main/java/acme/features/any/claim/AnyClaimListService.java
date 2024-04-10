@@ -31,7 +31,7 @@ public class AnyClaimListService extends AbstractService<Any, Claim> {
 	public void load() {
 		Collection<Claim> objects;
 
-		objects = this.repository.findMany();
+		objects = this.repository.findPublishedClaims();
 
 		super.getBuffer().addData(objects);
 	}

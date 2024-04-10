@@ -12,10 +12,10 @@ import acme.entities.claim.Claim;
 @Repository
 public interface AnyClaimRepository extends AbstractRepository {
 
-	@Query("select c from Claim c where c.id = :id")
+	@Query("select p from Claim p where p.id = :id")
 	Claim findOneClaimById(int id);
 
-	@Query("select c from Claim c")
-	Collection<Claim> findMany();
+	@Query("select p from Claim p where p.draftMode = false")
+	Collection<Claim> findPublishedClaims();
 
 }
