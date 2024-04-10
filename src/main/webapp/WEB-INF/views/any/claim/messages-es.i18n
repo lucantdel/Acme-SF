@@ -1,13 +1,9 @@
 any.claim.list.title = Listado de denuncias
 any.claim.form.title = Detalles de la denuncia
 
-any.claim.list.label.code = Código:
-any.claim.list.label.instantiationMoment = Momento de la instanciación:
-any.claim.list.label.heading = Encabezado:
-any.claim.list.label.description = Descripción:
-any.claim.list.label.department = Departamento:
-any.claim.list.label.email = Correo Electrónico:
-any.claim.list.label.link = Enlace:
+any.claim.list.label.code = Código
+any.claim.list.label.instantiationMoment = Momento de la instanciación
+any.claim.list.label.heading = Encabezado
 
 any.claim.form.label.code = Código:
 any.claim.form.label.instantiationMoment = Momento de la instanciación:

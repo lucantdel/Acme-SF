@@ -9,6 +9,6 @@
 	<acme:input-textbox code="any.claim.form.label.heading" path="heading"/>
 	<acme:input-textarea code="any.claim.form.label.description" path="description"/>
 	<acme:input-textarea code="any.claim.form.label.department" path="department"/>
-	<acme:input-money code="any.claim.form.label.email" path="email"/>
+	<acme:input-textbox code="any.claim.form.label.email" path="email"/>
 	<acme:input-url code="any.claim.form.label.link" path="link"/>
 </acme:form>

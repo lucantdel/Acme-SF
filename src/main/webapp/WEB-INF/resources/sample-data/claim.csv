@@ -1,11 +1,11 @@
-key,code,instantiationMoment,heading,description,department,email,link
-claim-01,C-0001,2021/08/10 12:00,"Refund Request","Faulty vacuum cleaner purchased.","Customer Service","customer.service@example.com",
-claim-02,C-3053,2021/08/01 12:30,"Transaction Issue","Unauthorized transaction on credit card.","Finance","greg@acme.com","https://open.spotify.com/intl-es"
-claim-03,C-4444,2021/04/22 22:00,"Missing Package","Package not delivered as expected.","Shipping","customer@gmail.com","https://tracking.link"
-claim-04,C-4893,2021/02/27 19:00,"Device Malfunction","Smartphone malfunction after purchase.","Technical Support","support@company.com",
-claim-05,C-9900,2021/06/30 08:00,"Billing Discrepancy","Overcharged on monthly internet bill.","Billing","customer@example.com","https://billing.service.com"
-claim-06,C-1234,2021/09/15 10:00,"Clothing Issue","Defective jeans received.","Retail","customer.service@example.com","https://www.store.com/contact"
-claim-07,C-2345,2021/07/20 14:45,"Internet Outage","Frequent internet outages experienced.","Technical Support","support@provider.com","https://www.provider.com/support"
-claim-08,C-3456,2021/11/05 16:20,"Billing Error","Overcharged for utilities.","Billing","billing@utilityco.com","https://www.utilityco.com/customer-service"
-claim-09,C-4567,2021/10/10 09:30,"Flight Delay Compensation","Flight delayed, missed meeting.","Customer Service","claims@airline.com","https://www.airline.com/claim-form"
-claim-10,C-5678,2021/12/03 11:55,"Damaged Shipment","Received package with damaged electronics.","Shipping","support@ecommerce.com","https://www.ecommerce.com/support"
+key,code,instantiationMoment,heading,description,department,email,link,draftMode
+claim-01,C-0001,2021/08/10 12:00,"Refund Request","Faulty vacuum cleaner purchased.","Customer Service","customer.service@example.com",,true
+claim-02,C-3053,2021/08/01 12:30,"Transaction Issue","Unauthorized transaction on credit card.","Finance","greg@acme.com","https://open.spotify.com/intl-es",true
+claim-03,C-4444,2021/04/22 22:00,"Missing Package","Package not delivered as expected.","Shipping","customer@gmail.com","https://tracking.link",true
+claim-04,C-4893,2021/02/27 19:00,"Device Malfunction","Smartphone malfunction after purchase.","Technical Support","support@company.com",,true
+claim-05,C-9900,2021/06/30 08:00,"Billing Discrepancy","Overcharged on monthly internet bill.","Billing","customer@example.com","https://billing.service.com",true
+claim-06,C-1234,2021/09/15 10:00,"Clothing Issue","Defective jeans received.","Retail","customer.service@example.com","https://www.store.com/contact",true
+claim-07,C-2345,2021/07/20 14:45,"Internet Outage","Frequent internet outages experienced.","Technical Support","support@provider.com","https://www.provider.com/support",true
+claim-08,C-3456,2021/11/05 16:20,"Billing Error","Overcharged for utilities.","Billing","billing@utilityco.com","https://www.utilityco.com/customer-service",true
+claim-09,C-4567,2021/10/10 09:30,"Flight Delay Compensation","Flight delayed, missed meeting.","Customer Service","claims@airline.com","https://www.airline.com/claim-form",false
+claim-10,C-5678,2021/12/03 11:55,"Damaged Shipment","Received package with damaged electronics.","Shipping","support@ecommerce.com","https://www.ecommerce.com/support",false
