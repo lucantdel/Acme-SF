@@ -1,0 +1,18 @@
+any.claim.list.title = Listing of claims
+any.claim.form.title = Claim form
+
+any.claim.list.label.code = Code:
+any.claim.list.label.instantiationMoment = Instantiation moment:
+any.claim.list.label.heading = Heading:
+any.claim.list.label.description = Description:
+any.claim.list.label.department = Department:
+any.claim.list.label.email = Email:
+any.claim.list.label.link = Link:
+
+any.claim.form.label.code = Code:
+any.claim.form.label.instantiationMoment = Instantiation moment:
+any.claim.form.label.heading = Heading:
+any.claim.form.label.description = Description:
+any.claim.form.label.department = Department:
+any.claim.form.label.email = Email:
+any.claim.form.label.link = Link:
