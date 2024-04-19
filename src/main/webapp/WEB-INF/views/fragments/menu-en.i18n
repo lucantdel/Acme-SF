@@ -64,6 +64,7 @@ master.menu.manager.list-projects = List my projects
 
 master.menu.developer = Developer
 master.menu.developer.list-training-modules = List my training modules
+master.menu.developer.developer-dashboard = Dashboard
 
 # master.menu.auditor #########################################################
 

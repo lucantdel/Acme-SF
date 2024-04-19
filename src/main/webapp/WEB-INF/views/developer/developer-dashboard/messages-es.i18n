@@ -1,0 +1,6 @@
+developer.developer-dashboard.form.title = Panel de indicadores de desarollador
+
+developer.developer-dashboard.form.title.general-indicators = Indicadores generales
+
+developer.developer-dashboard.form.label.total-number-tm-with-update-moment = Numero total de modulos de entrenamiento con fecha de actualización
+developer.developer-dashboard.form.label.total-number-ts-with-link = Numero total de sesiones de entrenamiento con un enlace
