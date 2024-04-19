@@ -35,6 +35,7 @@
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.list-objectives" action="/authenticated/objective/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.list-projects" action="/any/project/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
