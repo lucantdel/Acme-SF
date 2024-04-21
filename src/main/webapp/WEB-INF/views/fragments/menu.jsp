@@ -52,8 +52,15 @@
 			<acme:menu-suboption code="master.menu.administrator.list-risks" action="/administrator/risk/list"/>
 		</acme:menu-option>
 		
+		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
+			<acme:menu-suboption code="master.menu.manager.list-projects" action="/manager/project/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.manager.manager-dashboard" action="/manager/manager-dashboard/show"/>
+		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
 			<acme:menu-suboption code="master.menu.developer.list-training-modules" action="/developer/training-module/list"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.developer.developer-dashboard" action="/developer/developer-dashboard/show"/>
 		</acme:menu-option>
 		
@@ -68,10 +75,6 @@
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
-			<acme:menu-suboption code="master.menu.manager.list-projects" action="/manager/project/list"/>
 		</acme:menu-option>
 	</acme:menu-left>
 
