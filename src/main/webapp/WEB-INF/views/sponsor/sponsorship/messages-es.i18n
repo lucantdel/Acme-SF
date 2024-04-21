@@ -1,0 +1,16 @@
+any.project.list.title = Listado de patrocinios
+any.project.form.title = Detalles de Patrocinios
+
+any.project.list.label.code = Código
+any.project.list.label.moment = Momento
+any.project.list.label.amount = Cantidad
+any.project.list.label.type = Tipo
+
+any.project.form.label.code = Código:
+any.project.form.label.moment = Momento:
+any.project.form.label.startDuration = Duración Inicial:
+any.project.form.label.finalDuration = Duración Final:
+any.project.form.label.amount = Cantidad:
+any.project.form.label.type = Tipo:
+any.project.form.label.email = Correo Electrónico:
+any.project.form.label.link = Enlace:

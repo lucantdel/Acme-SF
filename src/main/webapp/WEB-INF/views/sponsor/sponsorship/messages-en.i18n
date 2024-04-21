@@ -1,0 +1,16 @@
+any.project.list.title = Listing of sponsorships
+any.project.form.title = Sponsorship form
+
+any.project.list.label.code = Code
+any.project.list.label.moment = Moment
+any.project.list.label.amount = Amount
+any.project.list.label.type = Type
+
+any.project.form.label.code = Code:
+any.project.form.label.moment = Moment:
+any.project.form.label.startDuration = Start Duration:
+any.project.form.label.finalDuration = Final Duration:
+any.project.form.label.amount = Amount:
+any.project.form.label.type = Type:
+any.project.form.label.email = Email:
+any.project.form.label.link = Link:
