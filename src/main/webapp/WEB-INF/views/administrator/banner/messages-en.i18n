@@ -1,9 +1,25 @@
 # messages-en.i18n
 
-administrator.banner.form.title = Banner form
+administrator.banner.form.title = banner form
+administrator.banner.list.title = Listing of banners
+
+administrator.banner.form.label.updateMoment = update Moment:
+administrator.banner.form.label.displayPeriodStart = period Start:
+administrator.banner.form.label.displayPeriodEnd = period End:
+administrator.banner.form.label.picture = picture:
+administrator.banner.form.label.slogan = slogan:
+administrator.banner.form.label.webDoc = webDoc:
 
 administrator.banner.form.button.create = Create
 administrator.banner.form.button.update = Update
 administrator.banner.form.button.delete = Delete
  
-administrator.banner.delete.banner-linked = The banner is linked to a proxy or a job
+administrator.banner.list.label.updateMoment = update Moment
+administrator.banner.list.label.displayPeriodStart = period Start
+administrator.banner.list.label.displayPeriodEnd = period End
+administrator.banner.list.label.picture = picture
+administrator.banner.list.label.slogan = slogan
+administrator.banner.list.label.webDoc = webDoc
+
+administrator.banner.list.button.create = Create
+

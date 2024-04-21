@@ -14,13 +14,19 @@ import acme.entities.banner.Banner;
 public class AdministratorBannerController extends AbstractController<Administrator, Banner> {
 
 	@Autowired
+	private AdministratorBannerListService		listService;
+
+	@Autowired
+	private AdministratorBannerShowService		showService;
+
+	@Autowired
 	private AdministratorBannerCreateService	createService;
 
 	@Autowired
 	private AdministratorBannerUpdateService	updateService;
 
-	//	@Autowired
-	//	private AdministratorBannerDeleteService	deleteService;
+	@Autowired
+	private AdministratorBannerDeleteService	deleteService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -28,8 +34,10 @@ public class AdministratorBannerController extends AbstractController<Administra
 	@PostConstruct
 	protected void initialise() {
 
+		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
-		//super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("delete", this.deleteService);
 	}
 }
