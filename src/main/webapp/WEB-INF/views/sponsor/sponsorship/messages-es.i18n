@@ -1,16 +1,16 @@
-any.project.list.title = Listado de patrocinios
-any.project.form.title = Detalles de Patrocinios
+sponsor.sponsorship.list.title = Listado de patrocinios
+sponsor.sponsorship.form.title = Detalles de Patrocinios
 
-any.project.list.label.code = Código
-any.project.list.label.moment = Momento
-any.project.list.label.amount = Cantidad
-any.project.list.label.type = Tipo
+sponsor.sponsorship.list.label.code = Código
+sponsor.sponsorship.list.label.moment = Momento
+sponsor.sponsorship.list.label.amount = Cantidad
+sponsor.sponsorship.list.label.type = Tipo
 
-any.project.form.label.code = Código:
-any.project.form.label.moment = Momento:
-any.project.form.label.startDuration = Duración Inicial:
-any.project.form.label.finalDuration = Duración Final:
-any.project.form.label.amount = Cantidad:
-any.project.form.label.type = Tipo:
-any.project.form.label.email = Correo Electrónico:
-any.project.form.label.link = Enlace:
+sponsor.sponsorship.form.label.code = Código:
+sponsor.sponsorship.form.label.moment = Momento:
+sponsor.sponsorship.form.label.startDuration = Duración Inicial:
+sponsor.sponsorship.form.label.finalDuration = Duración Final:
+sponsor.sponsorship.form.label.amount = Cantidad:
+sponsor.sponsorship.form.label.type = Tipo:
+sponsor.sponsorship.form.label.email = Correo Electrónico:
+sponsor.sponsorship.form.label.link = Enlace:
