@@ -42,7 +42,7 @@ public class AdministratorRiskListService extends AbstractService<Administrator,
 		Dataset dataset;
 
 		dataset = super.unbind(object, "reference", "identificationDate");
-		dataset.put("value", object.value());
+		dataset.put("estimatedValue", object.estimatedValue());
 
 		super.getResponse().addData(dataset);
 	}

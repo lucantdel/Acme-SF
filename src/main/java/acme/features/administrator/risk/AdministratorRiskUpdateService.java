@@ -10,8 +10,7 @@ import acme.client.services.AbstractService;
 import acme.entities.risks.Risk;
 
 @Service
-public class AdministratorRiskShowService extends AbstractService<Administrator, Risk> {
-
+public class AdministratorRiskUpdateService extends AbstractService<Administrator, Risk> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -28,7 +27,7 @@ public class AdministratorRiskShowService extends AbstractService<Administrator,
 
 		id = super.getRequest().getData("id", int.class);
 		risk = this.repository.findOneRiskById(id);
-		status = risk != null;
+		status = risk != null && super.getRequest().getPrincipal().hasRole(Administrator.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -45,15 +44,42 @@ public class AdministratorRiskShowService extends AbstractService<Administrator,
 	}
 
 	@Override
+	public void bind(final Risk object) {
+		assert object != null;
+
+		super.bind(object, "reference", "identificationDate", "impact", "probability", "description", "optionalLink");
+	}
+
+	@Override
+	public void validate(final Risk object) {
+		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("reference")) {
+			Risk existing;
+
+			existing = this.repository.findOneRiskByReferece(object.getReference());
+			super.state(existing == null || existing.equals(object), "reference", "administrator.risk.form.error.duplicated");
+		}
+
+	}
+
+	@Override
+	public void perform(final Risk object) {
+		assert object != null;
+		if (object.getImpact() == null)
+			object.setImpact(0.0);
+		if (object.getProbability() == null)
+			object.setProbability(0.0);
+		this.repository.save(object);
+	}
+
+	@Override
 	public void unbind(final Risk object) {
 		assert object != null;
 
 		Dataset dataset;
 
 		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "optionalLink");
-		dataset.put("estimatedValue", object.estimatedValue());
 
 		super.getResponse().addData(dataset);
 	}
-
 }
