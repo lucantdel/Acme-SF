@@ -64,7 +64,6 @@ public class Banner extends AbstractEntity {
 			long differenceInDays = (this.displayPeriodEnd.getTime() - this.displayPeriodStart.getTime()) / 86400000;
 			if (differenceInDays < 7)
 				res = false;
-			//throw new IllegalArgumentException("La duración debe ser de al menos una semana");
 		}
 		return res;
 	}
