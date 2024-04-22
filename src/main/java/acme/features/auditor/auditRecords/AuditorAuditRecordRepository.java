@@ -1,5 +1,5 @@
 
-package acme.features.auditors.auditRecords;
+package acme.features.auditor.auditRecords;
 
 import java.util.Collection;
 

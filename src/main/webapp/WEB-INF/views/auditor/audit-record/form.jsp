@@ -10,4 +10,13 @@
 		<acme:input-textbox code="auditor.auditRecord.form.label.score" path="score"/>
 		<acme:input-textbox code="auditor.auditRecord.form.label.codeAudit" path="codeAudit"/>
 		
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
+			<acme:submit code="auditor.auditRecord.form.button.update" action="/auditor/audit-record/update"/>
+			<acme:submit code="auditor.auditRecord.form.button.delete" action="/auditor/audit-record/delete"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="auditor.auditRecord.form.button.create" action="/auditor/audit-record/create"/>
+		</jstl:when>		
+	</jstl:choose>		
 </acme:form>

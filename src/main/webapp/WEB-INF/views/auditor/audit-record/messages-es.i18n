@@ -6,10 +6,14 @@ auditor.auditRecord.list.label.code = Codigo
 auditor.auditRecord.form.label.score = Puntuacion:
 auditor.auditRecord.form.label.codeAudit = CodeAudit:
 
-
+auditor.auditRecord.form.button.create = Crear
+auditor.auditRecord.form.button.update = Editar
+auditor.auditRecord.form.button.delete = Borrar
 
 auditor.auditRecord.form.label.code = Codigo:
 auditor.auditRecord.form.label.startDate = Fecha Inicio:
 auditor.auditRecord.form.label.finishDate = Fecha Final:
 auditor.auditRecord.form.label.score = Puntuacion:
 auditor.auditRecord.form.label.codeAudit = CodeAudit:
+
+auditor.auditRecord.list.button.create = Crear

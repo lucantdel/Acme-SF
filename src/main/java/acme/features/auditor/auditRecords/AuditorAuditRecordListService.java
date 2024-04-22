@@ -1,5 +1,5 @@
 
-package acme.features.auditors.codeAudits;
+package acme.features.auditor.auditRecords;
 
 import java.util.Collection;
 
@@ -8,37 +8,33 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.codeAudits.CodeAudit;
+import acme.entities.codeAudits.AuditRecord;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditListService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorAuditRecordListService extends AbstractService<Auditor, AuditRecord> {
 
 	@Autowired
-	private AuditorCodeAuditRepository rp;
+	private AuditorAuditRecordRepository rp;
 
 
 	@Override
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
 	}
-
 	@Override
 	public void load() {
-		Collection<CodeAudit> objects;
-
-		objects = this.rp.findCreatedCodeAudits();
-
+		Collection<AuditRecord> objects;
+		objects = this.rp.findPublishedAuditRecords();
 		super.getBuffer().addData(objects);
 	}
-
 	@Override
-	public void unbind(final CodeAudit object) {
+	public void unbind(final AuditRecord object) {
 		assert object != null;
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "execution", "type", "project");
+		dataset = super.unbind(object, "code", "score", "codeAudit");
 
 		super.getResponse().addData(dataset);
 	}

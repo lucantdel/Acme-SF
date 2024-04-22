@@ -6,9 +6,15 @@ auditor.auditRecord.list.label.code = Code
 auditor.auditRecord.form.label.score = Score:
 auditor.auditRecord.form.label.codeAudit = CodeAudit:
 
+auditor.auditRecord.form.button.create = Create
+auditor.auditRecord.form.button.update = Update
+auditor.auditRecord.form.button.delete = Delete
+
 
 auditor.auditRecord.form.label.code = Code:
 auditor.auditRecord.form.label.startDate = StartDate:
 auditor.auditRecord.form.label.finishDate = FinishDate:
 auditor.auditRecord.form.label.score = Score:
 auditor.auditRecord.form.label.codeAudit = CodeAudit:
+
+auditor.auditRecord.list.button.create = Create
