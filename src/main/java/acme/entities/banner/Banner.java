@@ -58,12 +58,15 @@ public class Banner extends AbstractEntity {
 	// Derived attributes -----------------------------------------------------
 
 
-	public void validateDisplayPeriod() {
+	public boolean validateDisplayPeriod() {
+		boolean res = true;
 		if (this.displayPeriodStart != null && this.displayPeriodEnd != null) {
 			long differenceInDays = (this.displayPeriodEnd.getTime() - this.displayPeriodStart.getTime()) / 86400000;
 			if (differenceInDays < 7)
-				throw new IllegalArgumentException("La duración debe ser de al menos una semana");
+				res = false;
+			//throw new IllegalArgumentException("La duración debe ser de al menos una semana");
 		}
+		return res;
 	}
 
 	// Relationships ----------------------------------------------------------

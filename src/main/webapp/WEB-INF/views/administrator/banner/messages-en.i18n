@@ -23,3 +23,4 @@ administrator.banner.list.label.webDoc = webDoc
 
 administrator.banner.list.button.create = Create
 
+administrator.banner.error.period = The period must be at least 1 week long
