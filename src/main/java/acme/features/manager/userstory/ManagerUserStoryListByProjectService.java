@@ -1,5 +1,5 @@
 
-package acme.features.manager.project;
+package acme.features.manager.userstory;
 
 import java.util.Collection;
 import java.util.Locale;
@@ -9,16 +9,16 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.projects.Project;
+import acme.entities.projects.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerProjectListService extends AbstractService<Manager, Project> {
+public class ManagerUserStoryListByProjectService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private ManagerUserStoryRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -30,23 +30,22 @@ public class ManagerProjectListService extends AbstractService<Manager, Project>
 
 	@Override
 	public void load() {
-		Collection<Project> objects;
-		int managerId;
+		Collection<UserStory> objects;
+		int masterId;
 
-		managerId = super.getRequest().getPrincipal().getActiveRoleId();
-
-		objects = this.repository.findProjectsByManagerId(managerId);
+		masterId = super.getRequest().getData("masterId", int.class);
+		objects = this.repository.findUserStoriesByProjectId(masterId);
 
 		super.getBuffer().addData(objects);
 	}
 
 	@Override
-	public void unbind(final Project object) {
+	public void unbind(final UserStory object) {
 		assert object != null;
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "cost");
+		dataset = super.unbind(object, "title", "estimatedCost", "priority");
 
 		if (object.isDraftMode()) {
 			final Locale local = super.getRequest().getLocale();
