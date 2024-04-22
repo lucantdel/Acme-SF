@@ -41,6 +41,9 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	@Override
 	public void validate(final Banner object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
+			super.state(object.validateDisplayPeriod() == true, "displayPeriodEnd", "administrator.banner.error.period");
+
 	}
 
 	@Override

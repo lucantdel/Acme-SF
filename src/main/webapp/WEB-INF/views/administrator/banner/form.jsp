@@ -9,7 +9,10 @@
 	<acme:input-moment code="administrator.banner.form.label.updateMoment" path="updateMoment"/>
 	<acme:input-moment code="administrator.banner.form.label.displayPeriodStart" path="displayPeriodStart"/>
 	<acme:input-moment code="administrator.banner.form.label.displayPeriodEnd" path="displayPeriodEnd"/>
+	<acme:input-textbox code="administrator.banner.form.label.picture" path="picture"/>
 	<acme:input-textbox code="administrator.banner.form.label.slogan" path="slogan"/>
+	<acme:input-textbox code="administrator.banner.form.label.webDoc" path="webDoc"/>
+	
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
