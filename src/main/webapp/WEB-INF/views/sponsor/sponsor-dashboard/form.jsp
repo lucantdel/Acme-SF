@@ -4,7 +4,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <h2>
-	<acme:message code="sponsor.dashboard.form.title.sponshorship-indicators"/>
+	<acme:message code="sponsor.dashboard.form.title.sponsorship-indicators"/>
 </h2>
 
 <table class="table table-sm">

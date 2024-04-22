@@ -30,7 +30,7 @@ public interface SponsorDashboardRepository extends AbstractRepository {
 	double maxSponsorshipsAmount();
 
 	// Promedio, desviación, mínimo y máximo de la cantidad de facturas
-	@Query("select avg(iquantity) from Invoice i")
+	@Query("select avg(i.quantity) from Invoice i")
 	double avgInvoicesQuantity();
 
 	@Query("select stddev(i.quantity) from Invoice i")
