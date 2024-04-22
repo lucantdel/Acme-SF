@@ -60,6 +60,7 @@ master.menu.consumer.favourite-link = Enlace favorito
 master.menu.manager = Manager
 master.menu.manager.list-my-projects = Ver mis proyectos
 master.menu.manager.list-my-user-stories = Ver mis historias de usuario
+master.menu.manager.list-my-project-user-story = Ver mis relaciones proyecto - historia de usuario
 master.menu.manager.manager-dashboard = Dashboard
 
 # master.menu.developer #########################################################
