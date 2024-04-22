@@ -1,0 +1,26 @@
+# messages-es.i18n
+
+
+administrator.banner.form.title = detalles de Banner
+administrator.banner.list.title = listado de banners
+
+administrator.banner.form.label.updateMoment = Momento de editado:
+administrator.banner.form.label.displayPeriodStart = Comienzo de Periodo:
+administrator.banner.form.label.displayPeriodEnd = Final de periodo:
+administrator.banner.form.label.picture = foto:
+administrator.banner.form.label.slogan = slogan:
+administrator.banner.form.label.webDoc = web asociada:
+
+administrator.banner.form.button.create = Crear
+administrator.banner.form.button.update = Editar
+administrator.banner.form.button.delete = Borrar
+ 
+administrator.banner.list.label.updateMoment = Momento de editado:
+administrator.banner.list.label.displayPeriodStart = Comienzo de Periodo:
+administrator.banner.list.label.displayPeriodEnd = Final de periodo:
+administrator.banner.list.label.picture = foto:
+administrator.banner.list.label.slogan = slogan:
+administrator.banner.list.label.webDoc = web asociada:
+
+administrator.banner.list.button.create = Create
+
