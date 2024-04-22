@@ -24,7 +24,7 @@ master.menu.anonymous.lucantdel = 29536902A: Antoñanzas del Villar, Lucas
 master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
 master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
-master.menu.anonymous.list-projects = Ver proyectos
+master.menu.anonymous.list-projects = Ver proyectos 
 master.menu.anonymous.list-contracts = Ver contratos
 master.menu.anonymous.list-trainingModules = Ver módulos de entrenamiento
 
@@ -32,7 +32,7 @@ master.menu.anonymous.list-trainingModules = Ver módulos de entrenamiento
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.list-objectives = Ver objectivos
-
+master.menu.authenticated.list-projects = Ver proyectos 
 
 # master.menu.administrator ###################################################
 
@@ -42,8 +42,11 @@ master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
+
 master.menu.administrator.list-risks = Ver de riesgos
 master.menu.administrator.list-banner = listado de banners
+master.menu.administrator.list-risks = Ver riesgos
+
 master.menu.administrator.system-configuration = Configuración del Sistema
 
 # master.menu.provider ########################################################
@@ -60,11 +63,18 @@ master.menu.consumer.favourite-link = Enlace favorito
 
 master.menu.manager = Manager
 master.menu.manager.list-projects = Ver mis proyectos
+master.menu.developer.developer-dashboard = Dashboard
+
+# master.menu.sponsor #########################################################
+
+master.menu.sponsor = Patrocinador
+master.menu.sponsor.list-sponsorships = Listado de mis patrocinios
 
 # master.menu.developer #########################################################
 
 master.menu.developer = Developer
 master.menu.developer.list-training-modules = Ver mis módulos de entrenamiento
+master.menu.developer.developer-dashboard = Panel de indicadores
 
 # master.menu.auditor #########################################################
 

@@ -1,5 +1,5 @@
-developer.training-session.list.title = Listing of training Module
-developer.training-session.form.title = Training Module form
+developer.training-session.list.title = Listing of Training Sessions
+developer.training-session.form.title = Training Session form
 
 developer.trainingSession.list.label.code = Code
 developer.trainingSession.list.label.startPeriod = Start Date
@@ -11,4 +11,4 @@ developer.trainingSession.form.label.endPeriod = End Date:
 developer.trainingSession.form.label.location = Location:
 developer.trainingSession.form.label.instructor = Instructor:
 developer.trainingSession.form.label.contactEmail = Contact Email:
-developer.trainingSession.form.label.Link = Link:
+developer.trainingSession.form.label.link = Link:

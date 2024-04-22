@@ -1,11 +1,11 @@
 key,code,title,projectAbstract,indication,cost,link,draftMode,key:manager
-project-01,LVF-1725,社會,1'; DROP TABLE users--,true,1165.22 EUR,http://ocn.ne.jp,false,manager-01
-project-02,LEC-3781,ajfsbduhb,0/0,false,6923.20 USD,,false,manager-02
-project-03,JIA-3288,"""''''""'""",aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,true,4351.90 GBP,http://washingtonpost.com/,false,manager-01
-project-04,LVF-1700,iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii,-1,false,3626.16 EUR,https://cornell.edu,false,manager-02
-project-05,NEY-9682,dsoa,␢,true,0000.90 GBP,http://jiathis.com/placerat/ante.jpg,false,manager-01
-project-06,SCR-7503,울란바토르,dsasd,false,9949.06 GBP,null,true,manager-02
-project-07,LVF-1721,1'; DROP TABLE users--,(ﾉಥ益ಥ）ﾉ﻿ ┻━┻,true,6132.77 EUR,,true,manager-01
-project-08,DFL-2370,Œ„´‰ˇÁ¨ˆØ∏”’,␢,false,9641.91 USD,http://imgur.com/sit/amet/consectetuer/adipiscing,true,manager-02
-project-09,OCL-0592,Ω≈ç√∫˜µ≤≥÷,和製漢語,false,4699.72 GBP,,true,manager-01
-project-10,TKL-2611,¡™£¢∞§¶•ªº–≠,"""'""'""''''""",true,25.22 EUR,http://businesswire.com/,true,manager-02
+project-01,LVF-1725,Social Media Campaign,"Launch social media marketing campaign to boost brand engagement.",false,75923.80 EUR,http://ocn.ne.jp,false,manager-01
+project-02,LEC-3781,Market Research,"Conduct market research to analyze automotive industry trends.",false,93524.50 USD,,false,manager-02
+project-03,JIA-3288,Product Development,"Develop eco-friendly product for household cleaning industry.",false,65783.20 GBP,http://washingtonpost.com/,false,manager-01
+project-04,LVF-1700,Business Expansion Plan,"Create plan to enter new markets and diversify revenue streams.",false,82011.70 EUR,https://cornell.edu,false,manager-02
+project-05,NEY-9682,Website Redesign,"Redesign website to improve user experience and increase conversions.",false,50341.60 GBP,http://jiathis.com/placerat/ante.jpg,false,manager-01
+project-06,SCR-7503,Market Entry Strategy,"Develop strategy for launching products in Mongolian market.",false,70213.40 GBP,,false,manager-01
+project-07,LVF-1721,Product Launch Event,"Plan large-scale event for new product launch.",true,59057.90 EUR,,true,manager-01
+project-08,DFL-2370,Brand Identity Design,"Create brand identity design to resonate with target audience.",false,81536.80 USD,http://imgur.com/sit/amet/consectetuer/adipiscing,true,manager-02
+project-09,OCL-0592,Localization Strategy,"Develop strategy to adapt products for Japanese market.",false,69649.20 GBP,,true,manager-01
+project-10,TKL-2611,Content Marketing Campaign,"Launch content marketing campaign to attract target audience.",true,54923.30 EUR,http://businesswire.com/,true,manager-02
