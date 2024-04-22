@@ -16,11 +16,13 @@ administrator.banner.form.button.update = Editar
 administrator.banner.form.button.delete = Borrar
  
 administrator.banner.list.label.updateMoment = Momento de editado:
-administrator.banner.list.label.displayPeriodStart = Comienzo de Periodo:
-administrator.banner.list.label.displayPeriodEnd = Final de periodo:
+administrator.banner.list.label.displayPeriodStart = Comienzo del Periodo:
+administrator.banner.list.label.displayPeriodEnd = Final del periodo:
 administrator.banner.list.label.picture = foto:
 administrator.banner.list.label.slogan = slogan:
 administrator.banner.list.label.webDoc = web asociada:
 
-administrator.banner.list.button.create = Create
+administrator.banner.list.button.create = Crear
+administrator.banner.error.period = El periodo debe durar al menos 1 semana.
+
 
