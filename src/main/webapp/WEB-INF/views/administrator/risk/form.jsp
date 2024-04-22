@@ -11,4 +11,9 @@
 	<acme:input-textarea code="administrator.risk.form.label.description" path="description"/>
 	<acme:input-double code="administrator.risk.form.label.value" path="value"/>
 	<acme:input-url code="administrator.risk.form.label.optionalLink" path="optionalLink"/>
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
+			<acme:submit code="administrator.risk.form.button.delete" action="/administrator/risk/delete"/>
+		</jstl:when>	
+	</jstl:choose>	
 </acme:form>

@@ -21,6 +21,9 @@ public class AdministratorRiskController extends AbstractController<Administrato
 	@Autowired
 	private AdministratorRiskShowService	showService;
 
+	@Autowired
+	private AdministratorRiskDeleteService	deleteService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -28,5 +31,6 @@ public class AdministratorRiskController extends AbstractController<Administrato
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("delete", this.deleteService);
 	}
 }
