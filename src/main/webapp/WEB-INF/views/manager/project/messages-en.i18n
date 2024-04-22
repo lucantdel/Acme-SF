@@ -9,9 +9,8 @@ manager.project.list.label.draftMode = Draft
 manager.project.form.label.code = Code:
 manager.project.form.label.title = Title:
 manager.project.form.label.projectAbstract = Project Abstract:
-manager.project.label.indication = Indication (critical errors)
+manager.project.form.label.indication = Indication (critical errors)
 manager.project.form.label.cost = Cost:
 manager.project.form.label.link = Link:
-manager.project.label.draftMode = Draft
 
 manager.project.form.button.user-stories-list = List user stories

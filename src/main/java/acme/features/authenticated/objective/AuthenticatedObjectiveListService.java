@@ -42,7 +42,7 @@ public class AuthenticatedObjectiveListService extends AbstractService<Authentic
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "instantiationMoment", "title", "priority");
+		dataset = super.unbind(object, "title", "startMoment", "endMoment", "priority");
 
 		super.getResponse().addData(dataset);
 	}

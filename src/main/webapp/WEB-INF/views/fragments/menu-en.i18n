@@ -32,6 +32,7 @@ master.menu.anonymous.list-trainingModules = List of training modules
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.list-objectives = List objectives
+master.menu.authenticated.list-projects = List projects
 
 # master.menu.administrator ###################################################
 
@@ -59,11 +60,19 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.manager = Manager
 master.menu.manager.list-projects = List my projects
+master.menu.manager.manager-dashboard = Dashboard
+
+# master.menu.sponsor #########################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.list-sponsorships = List my sponsorships
+master.menu.sponsor.sponsor-dashboard = Dashboard
 
 # master.menu.developer #########################################################
 
 master.menu.developer = Developer
 master.menu.developer.list-training-modules = List my training modules
+master.menu.developer.developer-dashboard = Dashboard
 
 # master.menu.auditor #########################################################
 
