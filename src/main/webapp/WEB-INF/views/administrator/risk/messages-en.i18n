@@ -17,4 +17,4 @@ administrator.risk.form.error.duplicated= This reference already exists, choose 
 administrator.form.risk.button.create=Post
 administrator.risk.form.button.delete=Delete
 administrator.risk.form.button.update=Update
-administrator.risk.form.placeholder.probability=Must be between 0,0-100,0
+administrator.risk.form.placeholder.probability=Must be between 0.0-100.0

@@ -61,6 +61,10 @@ public class AdministratorRiskCreateService extends AbstractService<Administrato
 	@Override
 	public void perform(final Risk object) {
 		assert object != null;
+		if (object.getImpact() == null)
+			object.setImpact(0.0);
+		if (object.getProbability() == null)
+			object.setProbability(0.0);
 
 		this.repository.save(object);
 	}
