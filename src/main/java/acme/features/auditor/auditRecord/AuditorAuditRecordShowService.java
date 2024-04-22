@@ -1,5 +1,5 @@
 
-package acme.features.auditor.auditRecords;
+package acme.features.auditor.auditRecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

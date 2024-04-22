@@ -1,5 +1,5 @@
 
-package acme.features.auditor.auditRecords;
+package acme.features.auditor.auditRecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,16 +10,19 @@ import acme.entities.codeAudits.AuditRecord;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, AuditRecord> {
+public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, AuditRecord> {
 
 	@Autowired
-	protected AuditorAuditRecordRepository repository;
+	private AuditorAuditRecordRepository repository;
+
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
 	}
+
 	@Override
 	public void load() {
 		AuditRecord object;
@@ -44,7 +47,8 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	public void perform(final AuditRecord object) {
 		assert object != null;
 
-		this.repository.save(object);
+		this.repository.delete(object);
+
 	}
 
 	@Override
