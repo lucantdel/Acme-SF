@@ -37,7 +37,8 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
-		assert !object.isDraftMode();
+		if (!super.getBuffer().getErrors().hasErrors("finishDate"))
+			super.state(object.validatePeriod() == true, "finishDate", "auditor.auditRecord.error.period");
 	}
 	@Override
 	public void perform(final AuditRecord object) {

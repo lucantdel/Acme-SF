@@ -25,7 +25,7 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 	@Override
 	public void load() {
 		Collection<AuditRecord> objects;
-		objects = this.rp.findPublishedAuditRecords();
+		objects = this.rp.findAllAuditRecords();
 		super.getBuffer().addData(objects);
 	}
 	@Override
@@ -34,7 +34,7 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "score", "codeAudit");
+		dataset = super.unbind(object, "code", "score", "draftMode", "codeAudit");
 
 		super.getResponse().addData(dataset);
 	}

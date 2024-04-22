@@ -8,7 +8,12 @@
 		<acme:input-textbox code="auditor.auditRecord.form.label.startDate" path="startDate"/>
 		<acme:input-textbox code="auditor.auditRecord.form.label.finishDate" path="finishDate"/>
 		<acme:input-textbox code="auditor.auditRecord.form.label.score" path="score"/>
+		<acme:input-textbox code="auditor.auditRecord.form.label.optionalLink" path="optionalLink"/>
+		<acme:input-textbox code="auditor.auditRecord.form.label.draftMode" path="draftMode"/>
 		<acme:input-textbox code="auditor.auditRecord.form.label.codeAudit" path="codeAudit"/>
+		
+		
+		
 		
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
