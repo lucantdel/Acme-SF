@@ -22,7 +22,15 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		Risk risk;
+
+		id = super.getRequest().getData("id", int.class);
+		risk = this.repository.findOneRiskById(id);
+		status = risk != null && super.getRequest().getPrincipal().hasRole(Administrator.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -40,7 +48,7 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 	public void bind(final Risk object) {
 		assert object != null;
 
-		super.bind(object, "name", "description", "moreInfo");
+		super.bind(object, "reference", "identificationDate", "impact", "probability", "description", "optionalLink");
 	}
 
 	@Override
@@ -63,7 +71,6 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 		Dataset dataset;
 
 		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "optionalLink");
-		dataset.put("value", object.value());
 
 		super.getResponse().addData(dataset);
 	}

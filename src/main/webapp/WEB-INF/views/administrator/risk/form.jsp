@@ -9,7 +9,9 @@
 	<acme:input-double code="administrator.risk.form.label.impact" path="impact"/>
 	<acme:input-double code="administrator.risk.form.label.probability" path="probability"/>
 	<acme:input-textarea code="administrator.risk.form.label.description" path="description"/>
-	<acme:input-double code="administrator.risk.form.label.value" path="value"/>
+	<jstl:if test="${_command == 'show'}">
+		<acme:input-double code="administrator.risk.form.label.value" path="value" readonly="true"/>
+	</jstl:if>
 	<acme:input-url code="administrator.risk.form.label.optionalLink" path="optionalLink"/>
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
