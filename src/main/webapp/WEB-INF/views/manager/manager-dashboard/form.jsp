@@ -111,8 +111,8 @@
 				yAxes : [
 					{
 						ticks : {
-							suggestedMin : 0.0,
-							suggestedMax : 5.0
+							suggestedMin : 0,
+							suggestedMax : 5
 						}
 					}
 				]
