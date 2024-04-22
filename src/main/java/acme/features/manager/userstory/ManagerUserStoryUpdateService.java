@@ -1,8 +1,6 @@
 
 package acme.features.manager.userstory;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +35,8 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 	}
 
 	@Override
-	public void validate(final Collection<UserStory> objects) {
-		super.validate(objects);
+	public void validate(final UserStory object) {
+		super.validate(object);
 	}
 
 	@Override
@@ -47,8 +45,8 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 	}
 
 	@Override
-	public void unbind(final Collection<UserStory> objects) {
-		super.unbind(objects);
+	public void unbind(final UserStory object) {
+		super.unbind(object);
 	}
 
 }
