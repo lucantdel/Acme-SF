@@ -43,6 +43,7 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 master.menu.administrator.list-risks = List of risks
+master.menu.administrator.list-banner = List of banners
 master.menu.administrator.system-configuration = System Configuration
 
 # master.menu.provider ########################################################
@@ -59,6 +60,13 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.manager = Manager
 master.menu.manager.list-projects = List my projects
+master.menu.manager.manager-dashboard = Dashboard
+
+# master.menu.sponsor #########################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.list-sponsorships = List my sponsorships
+master.menu.sponsor.sponsor-dashboard = Dashboard
 
 # master.menu.developer #########################################################
 
