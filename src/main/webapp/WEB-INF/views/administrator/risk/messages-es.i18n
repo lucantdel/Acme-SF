@@ -4,6 +4,7 @@ administrator.risk.form.title = Detalles de riesgo
 administrator.risk.list.label.reference = Referencia
 administrator.risk.list.label.value = Valor
 administrator.risk.list.label.identificationDate = Fecha de Identificación
+administrator.risk.list.button.create= Crear
 
 administrator.risk.form.label.reference = Referencia:
 administrator.risk.form.label.identificationDate = Fecha de Identificación:
@@ -12,3 +13,8 @@ administrator.risk.form.label.probability = Probabilidad:
 administrator.risk.form.label.description = Descripción:
 administrator.risk.form.label.value = Valor:
 administrator.risk.form.label.optionalLink = Link:
+administrator.risk.form.error.duplicated= Está referencia ya existe, elige otra
+administrator.form.risk.button.create=Postear
+administrator.risk.form.button.delete=Borrar
+administrator.risk.form.button.update=Actualizar
+administrator.risk.form.placeholder.probability=Debe valer entre 0,0-100,0

@@ -10,8 +10,7 @@ import acme.client.services.AbstractService;
 import acme.entities.risks.Risk;
 
 @Service
-public class AdministratorRiskDeleteService extends AbstractService<Administrator, Risk> {
-
+public class AdministratorRiskUpdateService extends AbstractService<Administrator, Risk> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -54,6 +53,12 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 	@Override
 	public void validate(final Risk object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("reference")) {
+			Risk existing;
+
+			existing = this.repository.findOneRiskByReferece(object.getReference());
+			super.state(existing == null || existing.equals(object), "reference", "administrator.risk.form.error.duplicated");
+		}
 
 	}
 
@@ -61,7 +66,7 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 	public void perform(final Risk object) {
 		assert object != null;
 
-		this.repository.delete(object);
+		this.repository.save(object);
 	}
 
 	@Override
@@ -71,7 +76,6 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 		Dataset dataset;
 
 		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "optionalLink");
-		dataset.put("estimatedValue", object.estimatedValue());
 
 		super.getResponse().addData(dataset);
 	}

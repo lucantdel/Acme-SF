@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.risks.Risk;
 
 @Service
-public class AdministratorRiskDeleteService extends AbstractService<Administrator, Risk> {
-
+public class AdministratorRiskCreateService extends AbstractService<Administrator, Risk> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -23,12 +23,8 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-		Risk risk;
 
-		id = super.getRequest().getData("id", int.class);
-		risk = this.repository.findOneRiskById(id);
-		status = risk != null && super.getRequest().getPrincipal().hasRole(Administrator.class);
+		status = super.getRequest().getPrincipal().hasRole(Administrator.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -36,11 +32,9 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 	@Override
 	public void load() {
 		Risk object;
-		int id;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneRiskById(id);
-
+		object = new Risk();
+		object.setIdentificationDate(MomentHelper.getCurrentMoment());
 		super.getBuffer().addData(object);
 	}
 
@@ -55,13 +49,20 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 	public void validate(final Risk object) {
 		assert object != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("reference")) {
+			Risk existing;
+
+			existing = this.repository.findOneRiskByReferece(object.getReference());
+			super.state(existing == null, "reference", "administrator.risk.form.error.duplicated");
+		}
+
 	}
 
 	@Override
 	public void perform(final Risk object) {
 		assert object != null;
 
-		this.repository.delete(object);
+		this.repository.save(object);
 	}
 
 	@Override
@@ -71,7 +72,6 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 		Dataset dataset;
 
 		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "optionalLink");
-		dataset.put("estimatedValue", object.estimatedValue());
 
 		super.getResponse().addData(dataset);
 	}
