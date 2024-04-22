@@ -1,6 +1,7 @@
 
 package acme.features.developers.trainingmodule;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.projects.Project;
 import acme.entities.trainingModule.Difficulty;
 import acme.entities.trainingModule.TrainingModule;
 import acme.roles.Developer;
@@ -80,10 +82,16 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		Dataset dataset;
 		SelectChoices choicesDifficulty;
 		int totaltime = 0;
+		SelectChoices projectsChoices;
+		Collection<Project> projects;
 
 		choicesDifficulty = SelectChoices.from(Difficulty.class, object.getDifficultyLevel());
+		projects = this.repository.findAllProjects();
+		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "developer", "project");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "developer");
+		dataset.put("project", projectsChoices.getSelected().getKey());
+		dataset.put("projects", projectsChoices);
 		dataset.put("totalTime", totaltime);
 		dataset.put("difficultyLevel", choicesDifficulty);
 
