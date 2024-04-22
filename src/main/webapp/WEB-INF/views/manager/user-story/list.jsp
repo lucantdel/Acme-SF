@@ -9,3 +9,5 @@
 	<acme:list-column code="manager.user-story.list.label.priority" path="priority" width="25%"/>
 	<acme:list-column code="manager.user-story.list.label.draftMode" path="draftMode" width="25%"/>
 </acme:list>
+
+<acme:button test="${showCreate}" code="manager.user-story.list.button.create" action="/manager/user-story/create?masterId=${masterId}"/>

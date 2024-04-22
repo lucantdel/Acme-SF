@@ -4,6 +4,7 @@ manager.user-story.form.title = User story form
 manager.user-story.list.label.title = Title
 manager.user-story.list.label.estimatedCost = Estimated cost
 manager.user-story.list.label.priority = Priority
+manager.user-story.list.label.draftMode = Draft
 
 manager.user-story.form.label.title = Title:
 manager.user-story.form.label.description = Description:

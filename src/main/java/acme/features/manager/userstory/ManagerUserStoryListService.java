@@ -31,10 +31,10 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 	@Override
 	public void load() {
 		Collection<UserStory> objects;
-		int projectId;
+		int masterId;
 
-		projectId = super.getRequest().getData("projectId", int.class);
-		objects = this.repository.findUserStoriesByProjectId(projectId);
+		masterId = super.getRequest().getData("masterId", int.class);
+		objects = this.repository.findUserStoriesByProjectId(masterId);
 
 		super.getBuffer().addData(objects);
 	}
