@@ -16,7 +16,6 @@
 	<acme:input-integer code="developer.trainingModule.form.label.totaltime" path="totalTime"/>
 	<acme:input-url code="developer.trainingModule.form.label.link" path="link"/>
 	
-	<acme:button code="developer.trainingModule.form.button.training-session-list" action="/developer/training-session/list?trainingModuleId=${id}"/>
 		
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode == false}">
