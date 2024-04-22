@@ -21,18 +21,17 @@ public class DeveloperTrainingModuleController extends AbstractController<Develo
 	@Autowired
 	private DeveloperTrainingModuleShowService		showService;
 
-	/*
-	 * @Autowired
-	 * private DeveloperTrainingModuleCreateService createService;
-	 * 
-	 * @Autowired
-	 * private DeveloperTrainingModuleUpdateService updateService;
-	 */
+	@Autowired
+	private DeveloperTrainingModuleCreateService	createService;
+
+	@Autowired
+	private DeveloperTrainingModuleUpdateService	updateService;
+
 	@Autowired
 	private DeveloperTrainingModuleDeleteService	deleteService;
 
-	//@Autowired
-	//private DeveloperTrainingModulePublishService	publishService;
+	@Autowired
+	private DeveloperTrainingModulePublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -42,13 +41,12 @@ public class DeveloperTrainingModuleController extends AbstractController<Develo
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("delete", this.deleteService);
-		/*
-		 * super.addBasicCommand("create", this.createService);
-		 * super.addBasicCommand("update", this.updateService);
-		 * 
-		 * 
-		 * super.addCustomCommand("publish", "update", this.publishService);
-		 */
+
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
+
+		super.addCustomCommand("publish", "update", this.publishService);
+
 	}
 
 }
