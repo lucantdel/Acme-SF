@@ -5,6 +5,10 @@ auditor.codeAudit.list.label.code = Codigo
 auditor.codeAudit.list.label.execution = Tiempo de ejecucion
 auditor.codeAudit.list.label.type = Tipo
 auditor.codeAudit.list.label.project = Proyecto
+auditor.codeAudit.list.label.auditor = Auditor
+auditor.codeAudit.list.label.Mark = Nota
+auditor.codeAudit.list.button.create = Crear
+
 
 
 auditor.codeAudit.form.label.code = Codigo:
@@ -13,3 +17,11 @@ auditor.codeAudit.form.label.type = Tipo:
 auditor.codeAudit.form.label.correctiveActions = Acciones correctivas:
 auditor.codeAudit.form.label.optionalLink = Link Opcional:
 auditor.codeAudit.form.label.project = Proyecto:
+auditor.codeAudit.form.label.draftMode = Modo Borrador
+
+auditor.codeAudit.form.button.create = Crear
+auditor.codeAudit.form.button.delete = Borrar
+auditor.codeAudit.form.button.update = Editar
+auditor.codeAudit.form.button.publish = Publicar
+
+auditor.codeAudit.error.Mark = La nota debe ser porlomenos una C

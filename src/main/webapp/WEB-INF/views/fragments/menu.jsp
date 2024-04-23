@@ -30,6 +30,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.list-projects" action="/any/project/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-contracts" action="/any/contract/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-claims" action="/any/claim/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-sponsorships" action="/any/sponsorship/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
 		</acme:menu-option>
 
@@ -37,6 +38,7 @@
 			<acme:menu-suboption code="master.menu.authenticated.list-objectives" action="/authenticated/objective/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.list-projects" action="/any/project/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.list-claims" action="/any/claim/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -48,19 +50,36 @@
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/dashboard/show"/>
+			<acme:menu-suboption code="master.menu.administrator.list-banner" action="/administrator/banner/list"/>
+			
+
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/show"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.list-risks" action="/administrator/risk/list"/>
 		</acme:menu-option>
 		
+		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
+			<acme:menu-suboption code="master.menu.manager.list-projects" action="/manager/project/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.manager.manager-dashboard" action="/manager/manager-dashboard/show"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
+			<acme:menu-suboption code="master.menu.sponsor.list-sponsorships" action="/sponsor/sponsorship/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.sponsor.sponsor-dashboard" action="/sponsor/sponsor-dashboard/show"/>
+		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
 			<acme:menu-suboption code="master.menu.developer.list-training-modules" action="/developer/training-module/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.developer.developer-dashboard" action="/developer/developer-dashboard/show"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
-			<acme:menu-suboption code="master.menu.auditor.list-code-audits" action="/auditor/code-audit/list"/>
-			<acme:menu-suboption code="master.menu.auditor.list-audit-records" action="/auditor/audit-record/list"/>
+			<acme:menu-suboption code="master.menu.auditor.list-mine-code-audits" action="/auditor/code-audit/list-mine"/>
+			<acme:menu-suboption code="master.menu.auditor.list-mine-audit-records" action="/auditor/audit-record/list-mine"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
@@ -69,10 +88,6 @@
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
-			<acme:menu-suboption code="master.menu.manager.list-projects" action="/manager/project/list"/>
 		</acme:menu-option>
 	</acme:menu-left>
 

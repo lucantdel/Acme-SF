@@ -4,6 +4,7 @@ manager.user-story.form.title = Detalles de historia de usuario
 manager.user-story.list.label.title = Título
 manager.user-story.list.label.estimatedCost = Coste estimado
 manager.user-story.list.label.priority = Prioridad
+manager.user-story.list.label.draftMode = Borrador
 
 manager.user-story.form.label.title = Título:
 manager.user-story.form.label.description = Descripción:

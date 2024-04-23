@@ -11,5 +11,5 @@
 	<acme:input-money code="manager.project.form.label.cost" path="cost"/>
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
 	
-	<acme:button code="manager.project.form.button.user-stories-list" action="/manager/user-story/list?projectId=${id}"/>
+	<acme:button code="manager.project.form.button.user-stories-list" action="/manager/user-story/list?masterId=${id}"/>
 </acme:form>

@@ -2,7 +2,6 @@
 package acme.forms;
 
 import acme.client.data.AbstractForm;
-import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,27 +16,24 @@ public class ManagerDashboard extends AbstractForm {
 	// Attributes -------------------------------------------------------------
 
 	int							mustUserStories;
-
 	int							shouldUserStories;
-
 	int							couldUserStories;
-
 	int							wontUserStories;
 
 	double						avgUserStoryEstimatedCost;
-
 	double						devUserStoryEstimatedCost;
-
 	int							minUserStoryEstimatedCost;
-
 	int							maxUserStoryEstimatedCost;
 
-	Money						avgProjectCost;
+	// TODO: HAY QUE CAMBIAR TODOS LOS DE ABAJO A TIPO Money
 
-	Money						devProjectCost;
+	double						avgProjectCost;
+	double						devProjectCost;
+	double						minProjectCost;
+	double						maxProjectCost;
 
-	Money						minProjectCost;
+	// Derived attributes -----------------------------------------------------
 
-	Money						maxProjectCost;
+	// Relationships ----------------------------------------------------------
 
 }

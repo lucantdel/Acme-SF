@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.projects.Project;
+import acme.entities.trainingModule.Difficulty;
 import acme.entities.trainingModule.TrainingModule;
-import acme.entities.trainingSession.TrainingSession;
 import acme.roles.Developer;
 
 @Service
@@ -53,15 +54,19 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		assert object != null;
 
 		Dataset dataset;
+		SelectChoices choicesDifficulty;
+		SelectChoices projectsChoices;
+		Collection<Project> projects;
 
-		Collection<TrainingSession> objectsTS = this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId());
-		int totaltime = 0;
-		for (TrainingSession ts : objectsTS)
-			totaltime += MomentHelper.computeDuration(ts.getStartPeriod(), ts.getEndPeriod()).toHoursPart();
+		choicesDifficulty = SelectChoices.from(Difficulty.class, object.getDifficultyLevel());
+		projects = this.repository.findAllProjects();
+		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "developer");
-		dataset.put("totalTime", totaltime);
-		dataset.put("project", object.getProject().getCode());
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "developer", "totalEstimatedTime");
+		dataset.put("project", projectsChoices.getSelected().getKey());
+		dataset.put("projects", projectsChoices);
+		dataset.put("difficultyLevel", choicesDifficulty);
+		dataset.put("numberOfTrainingSessions", (int) this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId()).stream().count());
 
 		super.getResponse().addData(dataset);
 	}

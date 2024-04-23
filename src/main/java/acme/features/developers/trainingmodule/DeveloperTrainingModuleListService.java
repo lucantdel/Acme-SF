@@ -46,6 +46,7 @@ public class DeveloperTrainingModuleListService extends AbstractService<Develope
 		dataset = super.unbind(object, "code", "creationMoment", "developer", "difficultyLevel");
 		dataset.put("project", object.getProject().getCode());
 		dataset.put("draftMode", object.isDraftMode());
+		dataset.put("numberOfTrainingSessions", (int) this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId()).stream().count());
 		super.getResponse().addData(dataset);
 	}
 }

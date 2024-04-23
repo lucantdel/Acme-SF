@@ -1,5 +1,5 @@
-developer.training-session.list.title = Listing of training Module
-developer.training-session.form.title = Training Module form
+developer.training-session.list.title = Listing of Training Sessions
+developer.training-session.form.title = Training Session form
 
 developer.trainingSession.list.label.code = Code
 developer.trainingSession.list.label.startPeriod = Start Date
