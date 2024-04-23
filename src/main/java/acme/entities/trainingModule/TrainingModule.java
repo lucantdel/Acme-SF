@@ -8,8 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -49,7 +49,6 @@ public class TrainingModule extends AbstractEntity {
 	protected String			details;
 
 	@NotNull
-
 	protected Difficulty		difficultyLevel;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -59,28 +58,27 @@ public class TrainingModule extends AbstractEntity {
 	@URL
 	protected String			link;
 
+	@NotNull
+	@Min(35)
+	//el debe valer como minimo 35 ya que una training session debe durar 1 semana 
+	//y hay 5 dias laborables que van desde las 9:00-17:00 con aproxiumadamente 1 hora de descanso (7 horas aprox.)
+	protected Integer			totalEstimatedTime;
+
+	@NotNull
 	protected boolean			draftMode;
+
 	// Derived attributes ----------------------------------------------------
 
-
-	@Transient
-	public Integer totalTime() {
-		//This is the sum of the periods of times of associated trainingSessions.
-		return null;
-
-	}
-
 	// Relationships ----------------------------------------------------------
-
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	protected Project	project;
+	protected Project			project;
 
 	@NotNull
 	@Valid
 	@ManyToOne()
-	protected Developer	developer;
+	protected Developer			developer;
 
 }

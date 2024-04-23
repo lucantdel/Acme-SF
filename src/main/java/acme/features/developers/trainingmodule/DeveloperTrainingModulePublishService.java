@@ -15,8 +15,7 @@ import acme.entities.trainingModule.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleShowService extends AbstractService<Developer, TrainingModule> {
-
+public class DeveloperTrainingModulePublishService extends AbstractService<Developer, TrainingModule> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -28,12 +27,14 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-		TrainingModule trainingModule;
+		int masterId;
+		TrainingModule object;
+		Developer developer;
 
-		id = super.getRequest().getData("id", int.class);
-		trainingModule = this.repository.findOneTrainingModuleById(id);
-		status = trainingModule != null;
+		masterId = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneTrainingModuleById(masterId);
+		developer = object == null ? null : object.getDeveloper();
+		status = object != null && object.isDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -50,6 +51,34 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 	}
 
 	@Override
+	public void bind(final TrainingModule object) {
+		assert object != null;
+
+		super.bind(object, "code", "details", "difficultyLevel", "link", "project");
+
+	}
+
+	@Override
+	public void validate(final TrainingModule object) {
+		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			TrainingModule existing;
+
+			existing = this.repository.findOneTrainingModuleByReference(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "developer.training-module.form.error.duplicated-tm-code");
+		}
+
+	}
+
+	@Override
+	public void perform(final TrainingModule object) {
+		assert object != null;
+
+		object.setDraftMode(false);
+		this.repository.save(object);
+	}
+
+	@Override
 	public void unbind(final TrainingModule object) {
 		assert object != null;
 
@@ -62,11 +91,12 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "developer", "totalEstimatedTime");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "updateMoment", "link", "draftMode", "developer", "totalEstimatedTime");
 		dataset.put("project", projectsChoices.getSelected().getKey());
 		dataset.put("projects", projectsChoices);
 		dataset.put("difficultyLevel", choicesDifficulty);
 
 		super.getResponse().addData(dataset);
 	}
+
 }
