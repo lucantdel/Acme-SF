@@ -26,6 +26,7 @@ master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 master.menu.anonymous.list-projects = Ver proyectos 
 master.menu.anonymous.list-contracts = Ver contratos
+master.menu.anonymous.list-sponsorships = Ver patrocinios
 master.menu.anonymous.list-trainingModules = Ver módulos de entrenamiento
 
 # master.menu.authenticated ###################################################

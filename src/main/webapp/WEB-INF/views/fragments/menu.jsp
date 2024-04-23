@@ -29,6 +29,7 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.list-projects" action="/any/project/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-contracts" action="/any/contract/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-sponsorships" action="/any/sponsorship/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
 		</acme:menu-option>
 

@@ -1,0 +1,16 @@
+any.sponsorship.list.title = Listado de patrocinios
+any.sponsorship.form.title = Detalles de Patrocinios
+
+any.sponsorship.list.label.code = Código
+any.sponsorship.list.label.moment = Momento
+any.sponsorship.list.label.amount = Cantidad
+any.sponsorship.list.label.type = Tipo
+
+any.sponsorship.form.label.code = Código:
+any.sponsorship.form.label.moment = Momento:
+any.sponsorship.form.label.startDuration = Duración Inicial:
+any.sponsorship.form.label.finalDuration = Duración Final:
+any.sponsorship.form.label.amount = Cantidad:
+any.sponsorship.form.label.type = Tipo:
+any.sponsorship.form.label.email = Correo Electrónico:
+any.sponsorship.form.label.link = Enlace:
