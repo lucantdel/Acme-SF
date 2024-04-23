@@ -18,7 +18,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.contracts.Contract;
+import acme.entities.contract.Contract;
 import lombok.Getter;
 import lombok.Setter;
 
