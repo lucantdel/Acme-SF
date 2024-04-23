@@ -10,12 +10,10 @@ import acme.entities.codeAudits.AuditRecord;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, AuditRecord> {
+public class AuditorAuditRecordPublishService extends AbstractService<Auditor, AuditRecord> {
 
 	@Autowired
-	private AuditorAuditRecordRepository repository;
-
-	// AbstractService interface ----------------------------------------------
+	protected AuditorAuditRecordRepository repository;
 
 
 	@Override
@@ -32,7 +30,6 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 
 		super.getResponse().setAuthorised(status);
 	}
-
 	@Override
 	public void load() {
 		AuditRecord object;
@@ -47,7 +44,7 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit", "auditor");
+		super.bind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit");
 	}
 	@Override
 	public void validate(final AuditRecord object) {
@@ -56,9 +53,9 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 	@Override
 	public void perform(final AuditRecord object) {
 		assert object != null;
+		object.setDraftMode(false);
 
-		this.repository.delete(object);
-
+		this.repository.save(object);
 	}
 
 	@Override
