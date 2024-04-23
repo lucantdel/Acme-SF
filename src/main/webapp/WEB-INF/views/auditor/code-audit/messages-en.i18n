@@ -22,9 +22,13 @@ auditor.codeAudit.form.label.correctiveActions = Correctiveactions:
 auditor.codeAudit.form.label.optionalLink = OptionalLink:
 auditor.codeAudit.form.label.project = Project:
 auditor.codeAudit.form.label.draftMode = DraftMode
+auditor.codeAudit.form.label.Mark = Mark
+
 auditor.codeAudit.form.button.create = Create
 auditor.codeAudit.form.button.delete = Delete
 auditor.codeAudit.form.button.update = Update
 auditor.codeAudit.form.button.publish = Publish
+
+auditor.codeAudit.error.Mark = Mark must be at least C
 
 

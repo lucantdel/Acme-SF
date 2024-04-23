@@ -7,13 +7,17 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.codeAudits.CodeAudit;
+import acme.features.auditor.auditRecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
 @Service
 public class AuditorCodeAuditPublishService extends AbstractService<Auditor, CodeAudit> {
 
 	@Autowired
-	protected AuditorCodeAuditRepository repository;
+	protected AuditorCodeAuditRepository	repository;
+
+	@Autowired
+	protected AuditorAuditRecordRepository	rp;
 
 
 	@Override
@@ -53,6 +57,10 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("Mark"))
+
+			super.state(!object.Mark(this.rp.getScoreOfAsociatedAuditRecords(object)).trim().equals("F") && !object.Mark(this.rp.getScoreOfAsociatedAuditRecords(object)).trim().equals("F-"), "Mark", "auditor.codeAudit.error.Mark");
 	}
 	@Override
 	public void perform(final CodeAudit object) {

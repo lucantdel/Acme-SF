@@ -32,6 +32,7 @@ public class AuditorCodeAuditController extends AbstractController<Auditor, Code
 
 	@Autowired
 	private AuditorCodeAuditListMineService	listMineService;
+
 	@Autowired
 	private AuditorCodeAuditPublishService	publishService;
 
