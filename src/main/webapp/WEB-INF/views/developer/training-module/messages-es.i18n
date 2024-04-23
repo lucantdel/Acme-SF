@@ -6,6 +6,7 @@ developer.trainingModule.list.label.creationMoment = Moment de Creación
 developer.trainingModule.list.label.difficultyLevel =  Nivel de Dificultad
 developer.trainingModule.list.label.project = Proyecto
 developer.trainingModule.list.label.draftMode = Es Borrador
+developer.trainingModule.list.label.numberOfTrainingSessions= Nº de Sesiones de Entrenamiento Asociadas
 
 developer.trainingModule.list.button.create = Crear
 
@@ -17,7 +18,7 @@ developer.trainingModule.form.label.difficultyLevel = Nivel de Dificultad:
 developer.trainingModule.form.label.project = Proyecto:
 developer.trainingModule.form.label.link = Link:
 developer.trainingModule.form.label.totaltime = Tiempo Estimado Total:
-
+developer.trainingModule.form.label.numberOfTrainingSessions= Nº de Sesiones de Entrenamiento Asociadas:
 
 developer.trainingModule.form.button.training-session-list = Listado de Sesiones de Entrenamiento
 developer.trainingModule.form.button.update = Actualizar
@@ -27,6 +28,7 @@ developer.trainingModule.form.button.create = Crear
 
 developer.training-module.form.error.duplicated-tm-code = Este codigo ya esta cogido, introduzca otro
 developer.training-module.form.error.updateMoment = El momento de actualización debe ser despues del momento de creación
+developer.training-module.form.error.numberOfTrainingSessions = Debe de existir al menos 1 session de entrenamiento antes de poder publicar este modulo
 
 
 

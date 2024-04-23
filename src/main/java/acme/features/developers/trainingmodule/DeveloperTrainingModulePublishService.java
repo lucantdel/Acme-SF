@@ -67,6 +67,12 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 			existing = this.repository.findOneTrainingModuleByReference(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "developer.training-module.form.error.duplicated-tm-code");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("numberOfTrainingSessions")) {
+			int numTotalTS;
+
+			numTotalTS = (int) this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId()).stream().count();
+			super.state(0 < numTotalTS, "numberOfTrainingSessions", "developer.training-module.form.error.numberOfTrainingSessions");
+		}
 
 	}
 
@@ -95,6 +101,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		dataset.put("project", projectsChoices.getSelected().getKey());
 		dataset.put("projects", projectsChoices);
 		dataset.put("difficultyLevel", choicesDifficulty);
+		dataset.put("numberOfTrainingSessions", (int) this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId()).stream().count());
 
 		super.getResponse().addData(dataset);
 	}
