@@ -41,8 +41,10 @@
 
 <jstl:if test="${banner != null}">
 	<div class="panel-body" style="margin: 1em 0em 1em 0em; text-align: center;">	
-		<a href="${banner.slogan}" target="_blank">
+		<a href="${banner.webDoc}" target="_blank">
 			<img src="${banner.picture}" alt="${banner.slogan}" class="img-fluid rounded" style="border-style: solid;"/>
 		</a>
 	</div>
 </jstl:if>
+
+
