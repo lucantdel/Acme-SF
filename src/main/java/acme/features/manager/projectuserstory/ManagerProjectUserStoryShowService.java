@@ -22,6 +22,7 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 
 	@Override
 	public void authorise() {
+		// TODO
 		//		boolean status;
 		//		int masterId;
 		//		ProjectUserStory pus;

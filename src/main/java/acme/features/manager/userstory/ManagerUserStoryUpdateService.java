@@ -4,8 +4,11 @@ package acme.features.manager.userstory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.projects.UserStory;
+import acme.entities.projects.UserStoryPriority;
 import acme.roles.Manager;
 
 @Service
@@ -21,32 +24,62 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 
 	@Override
 	public void authorise() {
-		super.authorise();
+		boolean status;
+		UserStory us;
+		Manager manager;
+
+		us = this.repository.findOneUserStoryById(super.getRequest().getData("id", int.class));
+		manager = this.repository.findManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		status = us.getManager().equals(manager) && us.isDraftMode();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		super.load();
+		UserStory object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneUserStoryById(id);
+
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final UserStory object) {
-		super.bind(object);
+		assert object != null;
+
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
 	}
 
 	@Override
 	public void validate(final UserStory object) {
-		super.validate(object);
+		// TODO: Mensajes de error por restricciones
+		assert object != null;
 	}
 
 	@Override
 	public void perform(final UserStory object) {
-		super.perform(object);
+		// TODO: comprobar si hay dependencias con otras entidades y actualizarlas
+		assert object != null;
+
+		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final UserStory object) {
-		super.unbind(object);
+		assert object != null;
+
+		SelectChoices priorities;
+		Dataset dataset;
+
+		priorities = SelectChoices.from(UserStoryPriority.class, object.getPriority());
+
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
+		dataset.put("priorities", priorities);
+
+		super.getResponse().addData(dataset);
 	}
 
 }

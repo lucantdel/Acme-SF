@@ -25,7 +25,19 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = true;
+		Collection<UserStory> uss;
+		int managerId;
+		Manager manager;
+
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		uss = this.repository.findUserStoriesByManagerId(managerId);
+		manager = this.repository.findManagerById(managerId);
+		for (UserStory us : uss)
+			status = us.getManager().equals(manager) && status;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

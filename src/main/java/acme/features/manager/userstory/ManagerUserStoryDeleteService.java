@@ -25,12 +25,10 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
 		UserStory us;
 		Manager manager;
 
-		id = super.getRequest().getData("id", int.class);
-		us = this.repository.findOneUserStoryById(id);
+		us = this.repository.findOneUserStoryById(super.getRequest().getData("id", int.class));
 		manager = this.repository.findManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		status = us.getManager().equals(manager) && us.isDraftMode();
 
@@ -57,11 +55,13 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 	@Override
 	public void validate(final UserStory object) {
+		// TODO: Mensajes de error por restricciones
 		assert object != null;
 	}
 
 	@Override
 	public void perform(final UserStory object) {
+		// TODO: comprobar si hay dependencias con otras entidades y eliminarlas
 		assert object != null;
 
 		this.repository.delete(object);
