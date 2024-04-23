@@ -60,6 +60,7 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 
 		Date moment = MomentHelper.getCurrentMoment();
 
+		//super.bind(object, "code", "details", "difficultyLevel", "link", "project");
 		super.bind(object, "code", "details", "difficultyLevel", "link", "project");
 		object.setCreationMoment(moment);
 	}
@@ -94,10 +95,9 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "developer");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "updateMoment", "link", "draftMode", "developer", "totalEstimatedTime");
 		dataset.put("project", projectsChoices.getSelected().getKey());
 		dataset.put("projects", projectsChoices);
-		dataset.put("totalTime", totaltime);
 		dataset.put("difficultyLevel", choicesDifficulty);
 
 		super.getResponse().addData(dataset);

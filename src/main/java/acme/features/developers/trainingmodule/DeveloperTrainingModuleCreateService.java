@@ -2,7 +2,6 @@
 package acme.features.developers.trainingmodule;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +40,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		object = new TrainingModule();
 		object.setDraftMode(true);
 		object.setDeveloper(developer);
+		object.setCreationMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(object);
 	}
@@ -49,10 +49,9 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		Date moment = MomentHelper.getCurrentMoment();
+		super.bind(object, "code", "details", "difficultyLevel", "updateMoment", "link", "project", "totalEstimatedTime");
+		super.bind(object, "code", "details", "difficultyLevel", "creationMoment", "link", "project", "totalEstimatedTime");
 
-		super.bind(object, "code", "details", "difficultyLevel", "link", "project");
-		object.setCreationMoment(moment);
 	}
 
 	@Override
@@ -80,7 +79,6 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 		Dataset dataset;
 		SelectChoices choicesDifficulty;
-		int totaltime = 0;
 		SelectChoices projectsChoices;
 		Collection<Project> projects;
 
@@ -88,10 +86,9 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "developer");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "link", "draftMode", "developer", "totalEstimatedTime");
 		dataset.put("project", projectsChoices.getSelected().getKey());
 		dataset.put("projects", projectsChoices);
-		dataset.put("totalTime", totaltime);
 		dataset.put("difficultyLevel", choicesDifficulty);
 
 		super.getResponse().addData(dataset);

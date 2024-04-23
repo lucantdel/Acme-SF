@@ -55,7 +55,6 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 
 		Dataset dataset;
 		SelectChoices choicesDifficulty;
-		int totaltime = 0;
 		SelectChoices projectsChoices;
 		Collection<Project> projects;
 
@@ -63,10 +62,9 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "developer");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "developer", "totalEstimatedTime");
 		dataset.put("project", projectsChoices.getSelected().getKey());
 		dataset.put("projects", projectsChoices);
-		dataset.put("totalTime", totaltime);
 		dataset.put("difficultyLevel", choicesDifficulty);
 
 		super.getResponse().addData(dataset);

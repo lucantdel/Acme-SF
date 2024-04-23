@@ -5,15 +5,20 @@
 
 <acme:form>
 	<acme:input-textbox code="developer.trainingModule.form.label.code" path="code"/>
-	<acme:input-moment code="developer.trainingModule.form.label.creationMoment" path="creationMoment" readonly="true"/>
-	<acme:input-moment code="developer.trainingModule.form.label.updateMoment" path="updateMoment" readonly="true"/>
+	<jstl:if test="${_command == 'create'}">
+		<acme:input-moment code="developer.trainingModule.form.label.creationMoment" path="creationMoment" />
+	</jstl:if>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+		<acme:input-moment code="developer.trainingModule.form.label.creationMoment" path="creationMoment" readonly="true"/>
+		<acme:input-moment code="developer.trainingModule.form.label.updateMoment" path="updateMoment" />
+	</jstl:if>
 	<acme:input-textarea code="developer.trainingModule.form.label.details" path="details"/>
 	
 	<acme:input-select code="developer.trainingModule.form.label.difficultyLevel" path="difficultyLevel" choices="${difficultyLevel}" />
 	
 	<acme:input-select code="developer.trainingModule.form.label.project" path="project" choices="${projects}"/>
 	
-	<acme:input-integer code="developer.trainingModule.form.label.totaltime" path="totalTime"/>
+	<acme:input-integer code="developer.trainingModule.form.label.totaltime" path="totalEstimatedTime"/>
 	<acme:input-url code="developer.trainingModule.form.label.link" path="link"/>
 	
 		
