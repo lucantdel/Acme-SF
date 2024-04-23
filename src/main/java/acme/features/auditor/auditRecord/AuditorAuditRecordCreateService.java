@@ -7,13 +7,17 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.codeAudits.AuditRecord;
+import acme.features.auditor.codeAudits.AuditorCodeAuditRepository;
 import acme.roles.Auditor;
 
 @Service
 public class AuditorAuditRecordCreateService extends AbstractService<Auditor, AuditRecord> {
 
 	@Autowired
-	protected AuditorAuditRecordRepository repository;
+	protected AuditorAuditRecordRepository	rp;
+
+	@Autowired
+	protected AuditorCodeAuditRepository	repository;
 
 
 	@Override

@@ -1,9 +1,12 @@
 
 package acme.features.auditor.codeAudits;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.codeAudits.CodeAudit;
@@ -11,37 +14,28 @@ import acme.features.auditor.auditRecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditListMineService extends AbstractService<Auditor, CodeAudit> {
 
 	@Autowired
 	private AuditorCodeAuditRepository		rp;
-
 	@Autowired
-	private AuditorAuditRecordRepository	repository;
+	protected AuditorAuditRecordRepository	repository;
 
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		CodeAudit codeAudit;
-
-		id = super.getRequest().getData("id", int.class);
-		codeAudit = this.rp.findCodeAuditById(id);
-		status = codeAudit != null;
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		CodeAudit object;
-		int id;
+		Collection<CodeAudit> objects;
+		Principal principal;
+		principal = super.getRequest().getPrincipal();
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.rp.findCodeAuditById(id);
+		objects = this.rp.findCodeAuditsByAuditorId(principal.getActiveRoleId());
 
-		super.getBuffer().addData(object);
+		super.getBuffer().addData(objects);
 	}
 
 	@Override
@@ -50,9 +44,10 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode", "auditor");
+		dataset = super.unbind(object, "code", "execution", "type", "project", "auditor");
 		String mark = object.Mark(this.repository.getScoreOfAsociatedAuditRecords(object));
 		dataset.put("Mark", mark);
+
 		super.getResponse().addData(dataset);
 	}
 }

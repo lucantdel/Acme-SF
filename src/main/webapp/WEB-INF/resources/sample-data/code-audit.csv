@@ -3,7 +3,7 @@ code-audit-01,ABC-123,"2021/10/08 12:00",Static,"Enhance user authentication",ht
 code-audit-02,ATD-964,"2021/10/12 12:00",Static,"Optimize database queries",http://example.com/code-audits-005,project-02,auditor-02,false
 code-audit-03,HGY-888,"2021/10/07 12:00",Dinamic,"Update encryption algorithms",http://example.com/code-audits-006,project-03,auditor-01,false
 code-audit-04,YTR-908,"2021/10/06 12:00",Dinamic,"Implement logging mechanism",http://example.com/code-audits-007,project-04,auditor-02,true
-code-audit-05,EEE-123,"2021/10/05 12:00",Dinamic,"Fix input validation issues",http://example.com/code-audits-008,project-05,auditor-01,false
+code-audit-05,EEE-123,"2021/10/05 12:00",Dinamic,"Fix input validation issues",http://example.com/code-audits-008,project-05,auditor-01,true
 code-audit-06,BHF-124,"2021/10/04 12:00",Static,"Enhance error handling",http://example.com/code-audits-009,project-06,auditor-02,true
 code-audit-07,POI-449,"2021/10/03 12:00",Static,"Optimize frontend performance",http://example.com/code-audits-010,project-07,auditor-01,true
 code-audit-08,QWE-123,"2021/10/02 12:00",Dinamic,"Implement secure file uploads",http://example.com/code-audits-011,project-08,auditor-01,true

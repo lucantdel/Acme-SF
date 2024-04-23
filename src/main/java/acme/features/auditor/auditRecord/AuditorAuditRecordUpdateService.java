@@ -18,7 +18,17 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		AuditRecord ra;
+		Auditor auditor;
+		masterId = super.getRequest().getData("id", int.class);
+
+		ra = this.repository.findAuditRecordById(masterId);
+		auditor = ra == null ? null : ra.getAuditor();
+		status = ra != null && ra.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
+
+		super.getResponse().setAuthorised(status);
 	}
 	@Override
 	public void load() {
@@ -34,7 +44,7 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit", "auditor");
+		super.bind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit");
 	}
 	@Override
 	public void validate(final AuditRecord object) {

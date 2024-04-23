@@ -80,7 +80,7 @@ master.menu.developer.developer-dashboard = Panel de indicadores
 # master.menu.auditor #########################################################
 
 master.menu.auditor = Auditor
-master.menu.auditor.list-code-audits = Ver mis auditorias de codigo
+master.menu.auditor.list-mine-code-audits = Ver mis auditorias de codigo
 master.menu.auditor.list-audit-records = Ver mis Records de auditorias
 
 
