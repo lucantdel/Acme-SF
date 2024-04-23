@@ -87,7 +87,6 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 
 		Dataset dataset;
 		SelectChoices choicesDifficulty;
-		int totaltime = 0;
 		SelectChoices projectsChoices;
 		Collection<Project> projects;
 
@@ -99,6 +98,7 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		dataset.put("project", projectsChoices.getSelected().getKey());
 		dataset.put("projects", projectsChoices);
 		dataset.put("difficultyLevel", choicesDifficulty);
+		dataset.put("numberOfTrainingSessions", (int) this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId()).stream().count());
 
 		super.getResponse().addData(dataset);
 	}

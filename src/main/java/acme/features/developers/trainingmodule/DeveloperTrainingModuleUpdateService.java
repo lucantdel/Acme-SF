@@ -99,6 +99,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		dataset.put("project", projectsChoices.getSelected().getKey());
 		dataset.put("projects", projectsChoices);
 		dataset.put("difficultyLevel", choicesDifficulty);
+		dataset.put("numberOfTrainingSessions", (int) this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId()).stream().count());
 
 		super.getResponse().addData(dataset);
 	}
