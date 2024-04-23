@@ -1,0 +1,6 @@
+developer.developer-dashboard.form.title = Developer dashboard
+
+developer.developer-dashboard.form.title.general-indicators= General indicators
+
+developer.developer-dashboard.form.label.total-number-tm-with-update-moment = Total number of training modules with an update moment
+developer.developer-dashboard.form.label.total-number-ts-with-link = Total number of training sessions with a link

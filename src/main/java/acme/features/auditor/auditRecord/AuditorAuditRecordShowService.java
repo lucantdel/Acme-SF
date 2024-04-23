@@ -1,5 +1,5 @@
 
-package acme.features.auditors.auditRecords;
+package acme.features.auditor.auditRecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 
 		id = super.getRequest().getData("id", int.class);
 		auditRecord = this.rp.findAuditRecordById(id);
-		status = auditRecord != null && !auditRecord.isDraftMode();
+		status = auditRecord != null;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -45,7 +45,7 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startDate", "finishDate", "score", "codeAudit", "auditor");
+		dataset = super.unbind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit", "auditor");
 
 		super.getResponse().addData(dataset);
 	}

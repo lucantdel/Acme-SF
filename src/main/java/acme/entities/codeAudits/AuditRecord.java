@@ -52,15 +52,26 @@ public class AuditRecord extends AbstractEntity {
 
 	protected boolean			draftMode;
 
+
 	//	// Derived attributes -----------------------------------------------------
+	public boolean validatePeriod() {
+		boolean res = true;
+		if (this.startDate != null && this.finishDate != null) {
+			long differenceInHours = (this.finishDate.getTime() - this.startDate.getTime()) / 3600;
+			if (differenceInHours < 1)
+				res = false;
+		}
+		return res;
+	}
 
 	//	// Relationships -----------------------------------------------------
 
+
 	@ManyToOne
-	protected CodeAudit			codeAudit;
+	protected CodeAudit	codeAudit;
 
 	@NotNull
 	@ManyToOne(optional = false)
-	protected Auditor			auditor;
+	protected Auditor	auditor;
 
 }
