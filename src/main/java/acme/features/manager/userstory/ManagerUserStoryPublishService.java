@@ -55,7 +55,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 
 	@Override
 	public void validate(final UserStory object) {
-		// TODO: Mensajes de error por restricciones
+		// TODO: Mensajes de error por restricciones (MISMAS QUE UPDATE Y CREATE)
 		assert object != null;
 	}
 

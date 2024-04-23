@@ -7,3 +7,5 @@
 	<acme:list-column code="manager.project-user-story.list.label.project-title" path="projectTitle" width="50%"/>
 	<acme:list-column code="manager.project-user-story.list.label.user-story-title" path="userStoryTitle" width="50%"/>
 </acme:list>
+
+<acme:button test="${showCreate}" code="manager.project-user-story.list.button.create" action="/manager/project-user-story/create"/>

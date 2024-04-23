@@ -4,5 +4,10 @@ manager.project-user-story.form.title = Project - User Story relation form
 manager.project-user-story.list.label.project-title = Project title
 manager.project-user-story.list.label.user-story-title = User story title
 
+manager.project-user-story.list.button.create = Create
+
 manager.project-user-story.form.label.project-title = Project title
 manager.project-user-story.form.label.user-story-title = User story title
+
+manager.project-user-story.form.button.create = Create
+manager.project-user-story.form.button.delete = Delete

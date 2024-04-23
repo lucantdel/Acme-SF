@@ -1,12 +1,17 @@
 
 package acme.features.manager.projectuserstory;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
+import acme.entities.projects.UserStory;
 import acme.roles.Manager;
 
 @Service
@@ -49,12 +54,24 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 	public void unbind(final ProjectUserStory object) {
 		assert object != null;
 
+		int managerId;
+		Collection<Project> projects;
+		Collection<UserStory> userStories;
+		SelectChoices projectChoices;
+		SelectChoices userStoryChoices;
 		Dataset dataset;
 
-		dataset = this.unbind(object, "project", "userStory");
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 
-		dataset.put("projectTitle", object.getProject().getTitle());
-		dataset.put("userStoryTitle", object.getUserStory().getTitle());
+		projects = this.repository.findProjectsByManagerId(managerId);
+		userStories = this.repository.findUserStoriesByManagerId(managerId);
+
+		projectChoices = SelectChoices.from(projects, "title", object.getProject());
+		userStoryChoices = SelectChoices.from(userStories, "title", object.getUserStory());
+
+		dataset = super.unbind(object, "project", "userStory");
+		dataset.put("projectChoices", projectChoices);
+		dataset.put("userStoryChoices", userStoryChoices);
 
 		super.getResponse().addData(dataset);
 	}
