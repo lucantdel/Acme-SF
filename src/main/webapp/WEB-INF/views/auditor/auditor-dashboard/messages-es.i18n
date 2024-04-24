@@ -1,0 +1,15 @@
+auditor.dashboard.form.title.code-audits-indicators = Indicadores de Auditorias de codigo  y Registros de Auditorias
+
+auditor.dashboard.form.label.code-audits-dinamic = Numero de Auditorias de codigo de tipo Dinamic
+auditor.dashboard.form.label.code-audits-static = Numero de Auditorias de codigo de tipo Static
+auditor.dashboard.form.label.avr-audit-records = Media de Registros de Auditorias por Auditoria de Codigo
+auditor.dashboard.form.label.max-audit-records = Maximo numero de Registros de Auditorias de las Auditorias de Codigo
+auditor.dashboard.form.label.min-audit-records = Minimo numero de Registros de Auditorias de las Auditorias de Codigo
+auditor.dashboard.form.label.dev-audit-records = Desviacion media del numero de Registros de Auditorias por Auditorias de Codigo
+
+auditor.dashboard.form.title.period-audit-records-indicators = Indicadores de los Periodos de los Registros de Audiorias
+
+auditor.dashboard.form.label.max-period-audit-records = Maximo Periodo de tiempo
+auditor.dashboard.form.label.min-period-audit-records = Minimo Periodo de tiempo
+auditor.dashboard.form.label.avr-period-audit-records = Periodo de tiempo medio
+auditor.dashboard.form.label.dev-period-audit-records = Desviacion media del periodo de timepo

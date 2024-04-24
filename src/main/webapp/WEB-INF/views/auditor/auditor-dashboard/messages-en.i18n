@@ -1,0 +1,15 @@
+auditor.dashboard.form.title.code-audits-indicators = Code Audit and Audit Records Indicators
+
+auditor.dashboard.form.label.code-audits-dinamic = Number of CodeAudits type Dinamic
+auditor.dashboard.form.label.code-audits-static = Number of CodeAudits type Static
+auditor.dashboard.form.label.avr-audit-records = Average Number of AuditRecords per Code Audit
+auditor.dashboard.form.label.max-audit-records = Minimum Number of AuditRecords per Code Audit
+auditor.dashboard.form.label.min-audit-records = Maximum Number of AuditRecords per Code Audit
+auditor.dashboard.form.label.dev-audit-records = Deviation of AuditRecords per Code Audit
+
+auditor.dashboard.form.title.period-audit-records-indicators = Audit Records time period indicators
+
+auditor.dashboard.form.label.max-period-audit-records = Maximun period of Audit Records
+auditor.dashboard.form.label.min-period-audit-records = Minimun period of Audit Records
+auditor.dashboard.form.label.avr-period-audit-records = Maximun period of Audit Records
+auditor.dashboard.form.label.dev-period-audit-records = Deviation of period of Audit Records
