@@ -92,3 +92,9 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+
+# master.menu.client #############################################
+
+master.menu.client = Client
+master.menu.client.contract = Contracts
+master.menu.client.progress-log = Progress logs
