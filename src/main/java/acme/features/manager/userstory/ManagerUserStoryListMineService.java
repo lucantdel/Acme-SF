@@ -13,7 +13,7 @@ import acme.entities.projects.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryListService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryListMineService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -25,7 +25,19 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = true;
+		Collection<UserStory> uss;
+		int managerId;
+		Manager manager;
+
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		uss = this.repository.findUserStoriesByManagerId(managerId);
+		manager = this.repository.findManagerById(managerId);
+		for (UserStory us : uss)
+			status = us.getManager().equals(manager) && status;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -33,8 +45,8 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 		Collection<UserStory> objects;
 		int masterId;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		objects = this.repository.findUserStoriesByProjectId(masterId);
+		masterId = super.getRequest().getPrincipal().getActiveRoleId();
+		objects = this.repository.findUserStoriesByManagerId(masterId);
 
 		super.getBuffer().addData(objects);
 	}

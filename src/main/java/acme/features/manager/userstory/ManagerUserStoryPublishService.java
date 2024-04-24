@@ -12,7 +12,7 @@ import acme.entities.projects.UserStoryPriority;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryShowService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryPublishService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -30,7 +30,7 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 
 		us = this.repository.findOneUserStoryById(super.getRequest().getData("id", int.class));
 		manager = this.repository.findManagerById(super.getRequest().getPrincipal().getActiveRoleId());
-		status = us.getManager().equals(manager);
+		status = us.getManager().equals(manager) && us.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -44,6 +44,27 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 		object = this.repository.findOneUserStoryById(id);
 
 		super.getBuffer().addData(object);
+	}
+
+	@Override
+	public void bind(final UserStory object) {
+		assert object != null;
+
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+	}
+
+	@Override
+	public void validate(final UserStory object) {
+		// TODO: Mensajes de error por restricciones (MISMAS QUE UPDATE Y CREATE)
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final UserStory object) {
+		assert object != null;
+
+		object.setDraftMode(false);
+		this.repository.save(object);
 	}
 
 	@Override
