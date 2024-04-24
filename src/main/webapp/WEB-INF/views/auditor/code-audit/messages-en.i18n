@@ -6,6 +6,13 @@ auditor.codeAudit.list.label.code = Code
 auditor.codeAudit.list.label.execution = Execution
 auditor.codeAudit.list.label.type = Type
 auditor.codeAudit.list.label.project = Project
+auditor.codeAudit.list.label.auditor = Auditor
+auditor.codeAudit.list.label.Mark = Mark
+auditor.codeAudit.list.button.create = Create
+
+
+
+
 
 
 auditor.codeAudit.form.label.code = Code:
@@ -14,3 +21,14 @@ auditor.codeAudit.form.label.type = Type:
 auditor.codeAudit.form.label.correctiveActions = Correctiveactions:
 auditor.codeAudit.form.label.optionalLink = OptionalLink:
 auditor.codeAudit.form.label.project = Project:
+auditor.codeAudit.form.label.draftMode = DraftMode
+auditor.codeAudit.form.label.Mark = Mark
+
+auditor.codeAudit.form.button.create = Create
+auditor.codeAudit.form.button.delete = Delete
+auditor.codeAudit.form.button.update = Update
+auditor.codeAudit.form.button.publish = Publish
+
+auditor.codeAudit.error.Mark = Mark must be at least C
+
+

@@ -1,7 +1,10 @@
 
 package acme.forms;
 
+import java.util.Map;
+
 import acme.client.data.AbstractForm;
+import acme.datatypes.Statistics;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,32 +12,14 @@ import lombok.Setter;
 @Setter
 public class ClientDashboard extends AbstractForm {
 
-	private static final long	serialVersionUID	= 1L;
+	// Serialisation identifier -----------------------------------------------
+
+	protected static final long		serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-	// Total number of progress logs with completeness rate below 25%
-	private Integer				totalProgressLogsBelow25;
+	private Map<String, Integer>	numCompletenessProgressLogs;
 
-	// Total number of progress logs with completeness rate between 25% and 50%
-	private Integer				totalProgressLogs25To50;
-
-	// Total number of progress logs with completeness rate between 50% and 75%
-	private Integer				totalProgressLogs50To75;
-
-	// Total number of progress logs with completeness rate above 75%
-	private Integer				totalProgressLogsAbove75;
-
-	// Average budget of the contracts
-	private double				avgContractBudget;
-
-	// Deviation of the contract budgets
-	private double				devContractBudget;
-
-	// Minimum contract budget
-	private double				minContractBudget;
-
-	// Maximum contract budget
-	private double				maxContractBudget;
+	private Statistics				contractBudgetStatistics;
 
 }

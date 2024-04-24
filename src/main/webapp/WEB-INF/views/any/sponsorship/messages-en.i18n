@@ -1,0 +1,16 @@
+any.sponsorship.list.title = Listing of sponsorships
+any.sponsorship.form.title = Sponsorship form
+
+any.sponsorship.list.label.code = Code
+any.sponsorship.list.label.moment = Moment
+any.sponsorship.list.label.amount = Amount
+any.sponsorship.list.label.type = Type
+
+any.sponsorship.form.label.code = Code:
+any.sponsorship.form.label.moment = Moment:
+any.sponsorship.form.label.startDuration = Start Duration:
+any.sponsorship.form.label.finalDuration = Final Duration:
+any.sponsorship.form.label.amount = Amount:
+any.sponsorship.form.label.type = Type:
+any.sponsorship.form.label.email = Email:
+any.sponsorship.form.label.link = Link:

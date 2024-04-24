@@ -25,7 +25,8 @@ master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
 master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 master.menu.anonymous.list-projects = List projects
-master.menu.anonymous.list-contracts = List contracts
+master.menu.anonymous.list-claims = List claims
+master.menu.anonymous.list-sponsorships = List sponsorships
 master.menu.anonymous.list-trainingModules = List of training modules
 
 # master.menu.authenticated ###################################################
@@ -33,6 +34,7 @@ master.menu.anonymous.list-trainingModules = List of training modules
 master.menu.authenticated = Authenticated
 master.menu.authenticated.list-objectives = List objectives
 master.menu.authenticated.list-projects = List projects
+master.menu.authenticated.list-trainingModules = List of training modules
 
 # master.menu.administrator ###################################################
 
@@ -43,6 +45,7 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 master.menu.administrator.list-risks = List of risks
+master.menu.administrator.list-banner = List of banners
 master.menu.administrator.system-configuration = System Configuration
 
 # master.menu.provider ########################################################
@@ -63,6 +66,12 @@ master.menu.manager.list-my-user-stories = List my user stories
 master.menu.manager.list-my-project-user-story = List my project - user story relations
 master.menu.manager.manager-dashboard = Dashboard
 
+# master.menu.sponsor #########################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.list-sponsorships = List my sponsorships
+master.menu.sponsor.sponsor-dashboard = Dashboard
+
 # master.menu.developer #########################################################
 
 master.menu.developer = Developer
@@ -72,8 +81,8 @@ master.menu.developer.developer-dashboard = Dashboard
 # master.menu.auditor #########################################################
 
 master.menu.auditor = Auditor
-master.menu.auditor.list-code-audits = List my code audits
-master.menu.auditor.list-audit-records = List my Audit Records
+master.menu.auditor.list-mine-code-audits = List my code audits
+master.menu.auditor.list-mine-audit-records = List my Audit Records
 
 # master.menu.user-account ####################################################
 
@@ -83,3 +92,10 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+
+# master.menu.client #############################################
+
+master.menu.client = Client
+master.menu.client.contract = Contracts
+master.menu.client.client-dashboard = Client dashboard
+master.menu.client.progress-log = Progress logs

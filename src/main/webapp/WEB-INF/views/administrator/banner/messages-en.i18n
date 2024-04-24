@@ -1,0 +1,35 @@
+# messages-en.i18n
+
+administrator.banner.form.title = banner form
+administrator.banner.list.title = Listing of banners
+
+administrator.banner.form.label.updateMoment = update Moment:
+administrator.banner.form.label.displayPeriodStart = period Start:
+administrator.banner.form.label.displayPeriodEnd = period End:
+administrator.banner.form.label.picture = picture:
+administrator.banner.form.label.slogan = slogan:
+administrator.banner.form.label.webDoc = webDoc:
+
+administrator.banner.form.button.create = Create
+administrator.banner.form.button.update = Update
+administrator.banner.form.button.delete = Delete
+ 
+administrator.banner.list.label.updateMoment = update Moment
+administrator.banner.list.label.displayPeriodStart = period Start
+administrator.banner.list.label.displayPeriodEnd = period End
+administrator.banner.list.label.picture = picture
+administrator.banner.list.label.slogan = slogan
+administrator.banner.list.label.webDoc = webDoc
+
+administrator.banner.list.button.create = Create
+
+administrator.banner.error.periodEnd = The Finish Date must no be before the Start Date
+administrator.banner.error.periodEnd2 = The period must be at least 1 week long
+administrator.banner.error.periodEnd3 = There cant be a finish date without start date
+administrator.banner.error.periodStart = The Start Date must not be after the End Date
+administrator.banner.error.updateMoment = The Update moment cant be before the Start Date
+administrator.banner.error.updateMoment2 = The Update moment cant be after the End Date
+administrator.banner.error.updateMoment3 = There cant be an update date whitout start date
+
+
+
