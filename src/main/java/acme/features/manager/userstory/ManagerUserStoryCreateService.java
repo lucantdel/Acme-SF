@@ -36,7 +36,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		UserStory object;
 		Manager manager;
 
-		manager = this.repository.findManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new UserStory();
 		object.setManager(manager);
 		object.setDraftMode(true);

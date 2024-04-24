@@ -9,3 +9,7 @@
 	<acme:list-column code="manager.project.list.label.cost" path="cost" width="25%"/>
 	<acme:list-column code="manager.project.list.label.draftMode" path="draftMode" width="25%"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="manager.project.list.button.create" action="/manager/project/create"/>
+</jstl:if>

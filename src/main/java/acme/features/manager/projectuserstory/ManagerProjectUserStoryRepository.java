@@ -22,7 +22,7 @@ public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 	Collection<ProjectUserStory> findProjectUserStoryByManagerId(int id);
 
 	@Query("select m from Manager m where m.id = :id")
-	Manager findManagerById(int id);
+	Manager findOneManagerById(int id);
 
 	@Query("select p from Project p where p.id = :id")
 	Project findOneProjectById(int id);

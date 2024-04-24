@@ -33,7 +33,7 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 
 		uss = this.repository.findUserStoriesByManagerId(managerId);
-		manager = this.repository.findManagerById(managerId);
+		manager = this.repository.findOneManagerById(managerId);
 		for (UserStory us : uss)
 			status = us.getManager().equals(manager) && status;
 

@@ -47,8 +47,8 @@ public class ManagerProjectUserStoryListMineService extends AbstractService<Mana
 
 		dataset = this.unbind(object, "project", "userStory");
 
-		dataset.put("projectTitle", object.getProject().getTitle());
-		dataset.put("userStoryTitle", object.getUserStory().getTitle());
+		dataset.put("project", object.getProject().getTitle());
+		dataset.put("userStory", object.getUserStory().getTitle());
 
 		super.getResponse().addData(dataset);
 	}

@@ -32,7 +32,7 @@ public class ManagerUserStoryListByProjectService extends AbstractService<Manage
 		Project project;
 		// TODO: comprobar tambien que todas las historias de usuario que aparecen son del manager logueado
 		masterId = super.getRequest().getData("masterId", int.class);
-		manager = this.repository.findManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		project = this.repository.findOneProjectById(masterId);
 
 		status = project.getManager().equals(manager);
