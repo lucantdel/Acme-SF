@@ -1,33 +1,29 @@
 
-package acme.features.any.contract;
+package acme.features.client.contract;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.contracts.Contract;
+import acme.entities.contract.Contract;
+import acme.roles.Client;
 
 @Service
-public class AnyContractShowService extends AbstractService<Any, Contract> {
-
-	// Internal state ---------------------------------------------------------
+public class ClientContractShowService extends AbstractService<Client, Contract> {
 
 	@Autowired
-	private AnyContractRepository repository;
-
-	// AbstractService interface ----------------------------------------------
+	protected ClientContractRepository repository;
 
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
 		Contract contract;
+		int id;
+		boolean status;
 
 		id = super.getRequest().getData("id", int.class);
-		contract = this.repository.findOneContractById(id);
+		contract = this.repository.getContractById(id);
 		status = contract != null;
 
 		super.getResponse().setAuthorised(status);
@@ -39,7 +35,7 @@ public class AnyContractShowService extends AbstractService<Any, Contract> {
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneContractById(id);
+		object = this.repository.getContractById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -50,9 +46,8 @@ public class AnyContractShowService extends AbstractService<Any, Contract> {
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
-
+		dataset = super.unbind(object, "code", "moment", "provider", "customer", "goals", "budget", "project", "draftMode");
+		dataset.put("projectTitle", object.getProject().getCode());
 		super.getResponse().addData(dataset);
 	}
-
 }

@@ -1,0 +1,25 @@
+client.contract.list.title = Listado de contratos
+
+client.contract.form.title = Formulario de contrato
+
+client.contract.list.label.code = Código
+client.contract.list.label.moment = Momento de Instanciación
+client.contract.list.label.provider = Nombre del Proveedor
+client.contract.list.label.customer = Nombre del Cliente
+client.contract.list.label.project = Proyecto
+
+client.contract.form.label.code = Código
+client.contract.form.label.moment = Momento de Instanciación
+client.contract.form.label.provider = Nombre del Proveedor
+client.contract.form.label.customer = Nombre del Cliente
+client.contract.form.label.goals = Objetivos
+client.contract.form.label.budget = Presupuesto
+client.contract.form.label.project = Proyecto
+client.contract.form.label.draftMode = Modo borrador
+
+client.contract.list.button.create = Crear Contrato
+
+client.contract.form.button.create = Crear
+client.contract.form.button.update = Actualizar
+client.contract.form.button.delete = Eliminar
+client.contract.form.button.publish = Publicar
