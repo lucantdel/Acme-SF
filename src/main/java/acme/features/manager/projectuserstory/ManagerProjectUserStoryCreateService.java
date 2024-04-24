@@ -84,8 +84,8 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 
 		dataset = super.unbind(object, "project", "userStory");
 		dataset.replace("project", projectChoices.getSelected().getKey());
-		dataset.replace("userStory", userStoryChoices.getSelected().getKey());
 		dataset.put("projectChoices", projectChoices);
+		dataset.replace("userStory", userStoryChoices.getSelected().getKey());
 		dataset.put("userStoryChoices", userStoryChoices);
 
 		super.getResponse().addData(dataset);
