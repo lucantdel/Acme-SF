@@ -5,22 +5,25 @@ auditor.audit-record.form.title = Detalles de Records de Auditoria
 auditor.auditRecord.list.label.code = Codigo
 auditor.auditRecord.list.label.score = Puntuacion:
 auditor.auditRecord.list.label.codeAudit = CodeAudit:
-auditor.auditRecord.list.label.draftMode = Modo de Edicion:
+auditor.auditRecord.list.label.draftMode = Modo Borrador:
 
-auditor.auditRecord.form.button.create = Crear
-auditor.auditRecord.form.button.update = Editar
-auditor.auditRecord.form.button.delete = Borrar
+auditor.auditRecord.list.button.create = Crear
+
+
 
 auditor.auditRecord.form.label.code = Codigo:
 auditor.auditRecord.form.label.startDate = Fecha Inicio:
 auditor.auditRecord.form.label.finishDate = Fecha Final:
 auditor.auditRecord.form.label.score = Puntuacion:
-auditor.auditRecord.form.label.codeAudit = CodeAudit:
-auditor.auditRecord.form.label.draftMode = Modo de Edicion:
+auditor.auditRecord.form.label.codeAudit = Auditoria de Codigo:
+auditor.auditRecord.form.label.draftMode = Modo Borrador:
 auditor.auditRecord.form.label.optionalLink = Link:
 
+auditor.auditRecord.form.button.publish = Publicar
+auditor.auditRecord.form.button.create = Crear
+auditor.auditRecord.form.button.update = Editar
+auditor.auditRecord.form.button.delete = Borrar
 
 
-auditor.auditRecord.list.button.create = Crear
 
 auditor.auditRecord.error.period = El periodo debe durar al menos 1h.

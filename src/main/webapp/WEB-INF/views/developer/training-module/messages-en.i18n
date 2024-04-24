@@ -5,6 +5,10 @@ developer.trainingModule.list.label.code = Code
 developer.trainingModule.list.label.creationMoment = Creation Moment
 developer.trainingModule.list.label.difficultyLevel = Difficulty Level
 developer.trainingModule.list.label.project = Project
+developer.trainingModule.list.label.draftMode = Is Draft
+developer.trainingModule.list.label.numberOfTrainingSessions= Nº of Associated Training Sessions
+
+developer.trainingModule.list.button.create = Create
 
 developer.trainingModule.form.label.code = Code:
 developer.trainingModule.form.label.creationMoment = Creation Moment:
@@ -13,7 +17,21 @@ developer.trainingModule.form.label.details = Details:
 developer.trainingModule.form.label.difficultyLevel = Difficulty Level:
 developer.trainingModule.form.label.project = Project:
 developer.trainingModule.form.label.link = Link:
-developer.trainingModule.form.label.totaltime = Total Time:
-
+developer.trainingModule.form.label.totaltime = Total Estimated Time:
+developer.trainingModule.form.label.numberOfTrainingSessions=Nº of Associated Training Sessions:
 
 developer.trainingModule.form.button.training-session-list = List of Training Sessions
+developer.trainingModule.form.button.update = Update
+developer.trainingModule.form.button.delete = Borrar
+developer.trainingModule.form.button.publish = Publish
+developer.trainingModule.form.button.create = Create
+
+developer.training-module.form.error.duplicated-tm-code = This code is already taken, choose another
+developer.training-module.form.error.updateMoment = The update moment must be after the creation moment
+developer.training-module.form.error.numberOfTrainingSessions = There must be exist at least 1 associated training session before publishing this module
+ 
+
+
+
+
+

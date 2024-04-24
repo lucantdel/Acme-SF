@@ -1,0 +1,21 @@
+any.claim.list.title = Listado de reclamaciones
+any.claim.form.title = Detalles de la reclamación
+
+any.claim.list.label.code = Código
+any.claim.list.label.instantiationMoment = Momento de la instanciación
+any.claim.list.label.heading = Encabezado
+
+any.claim.form.label.code = Código:
+any.claim.form.label.heading = Encabezado:
+any.claim.form.label.description = Descripción:
+any.claim.form.label.department = Departamento:
+any.claim.form.label.email = Correo Electrónico:
+any.claim.form.label.link = Enlace:
+
+any.claim.form.button.publish = Publicar
+any.claim.form.button.create = Crear
+any.claim.list.button.create = Crear
+
+any.claim.form.label.confirm = Confirmar
+any.claim.form.error.not-confirmed = Debes confirmar
+any.claim.form.error.duplicated-code = Código duplicado

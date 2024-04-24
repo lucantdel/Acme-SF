@@ -28,12 +28,16 @@
 			<acme:menu-suboption code="master.menu.anonymous.alvvazcon" action="https://midu.dev/"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.list-projects" action="/any/project/list"/>
-			<acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
+
+			<acme:menu-suboption code="master.menu.anonymous.list-claims" action="/any/claim/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-sponsorships" action="/any/sponsorship/list"/>
+      <acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.list-objectives" action="/authenticated/objective/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.list-projects" action="/any/project/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -55,7 +59,9 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
-			<acme:menu-suboption code="master.menu.manager.list-projects" action="/manager/project/list"/>
+			<acme:menu-suboption code="master.menu.manager.list-my-projects" action="/manager/project/list"/>
+			<acme:menu-suboption code="master.menu.manager.list-my-user-stories" action="/manager/user-story/list-mine"/>
+			<acme:menu-suboption code="master.menu.manager.list-my-project-user-story" action="/manager/project-user-story/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.manager.manager-dashboard" action="/manager/manager-dashboard/show"/>
 		</acme:menu-option>
@@ -73,8 +79,8 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
-			<acme:menu-suboption code="master.menu.auditor.list-code-audits" action="/auditor/code-audit/list"/>
-			<acme:menu-suboption code="master.menu.auditor.list-audit-records" action="/auditor/audit-record/list"/>
+			<acme:menu-suboption code="master.menu.auditor.list-mine-code-audits" action="/auditor/code-audit/list-mine"/>
+			<acme:menu-suboption code="master.menu.auditor.list-mine-audit-records" action="/auditor/audit-record/list-mine"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">

@@ -7,13 +7,17 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.codeAudits.CodeAudit;
+import acme.features.auditor.auditRecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
 @Service
 public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAudit> {
 
 	@Autowired
-	private AuditorCodeAuditRepository rp;
+	private AuditorCodeAuditRepository		rp;
+
+	@Autowired
+	private AuditorAuditRecordRepository	repository;
 
 
 	@Override
@@ -24,7 +28,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		id = super.getRequest().getData("id", int.class);
 		codeAudit = this.rp.findCodeAuditById(id);
-		status = codeAudit != null && !codeAudit.isDraftMode();
+		status = codeAudit != null;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -46,8 +50,9 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project");
-
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode", "auditor");
+		String mark = object.Mark(this.repository.getScoreOfAsociatedAuditRecords(object));
+		dataset.put("Mark", mark);
 		super.getResponse().addData(dataset);
 	}
 }

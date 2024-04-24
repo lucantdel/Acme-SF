@@ -25,6 +25,8 @@ master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
 master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 master.menu.anonymous.list-projects = List projects
+master.menu.anonymous.list-claims = List claims
+master.menu.anonymous.list-sponsorships = List sponsorships
 master.menu.anonymous.list-trainingModules = List of training modules
 
 # master.menu.authenticated ###################################################
@@ -32,6 +34,7 @@ master.menu.anonymous.list-trainingModules = List of training modules
 master.menu.authenticated = Authenticated
 master.menu.authenticated.list-objectives = List objectives
 master.menu.authenticated.list-projects = List projects
+master.menu.authenticated.list-trainingModules = List of training modules
 
 # master.menu.administrator ###################################################
 
@@ -58,7 +61,9 @@ master.menu.consumer.favourite-link = Favourite link
 # master.menu.manager #########################################################
 
 master.menu.manager = Manager
-master.menu.manager.list-projects = List my projects
+master.menu.manager.list-my-projects = List my projects
+master.menu.manager.list-my-user-stories = List my user stories
+master.menu.manager.list-my-project-user-story = List my project - user story relations
 master.menu.manager.manager-dashboard = Dashboard
 
 # master.menu.sponsor #########################################################
@@ -76,8 +81,8 @@ master.menu.developer.developer-dashboard = Dashboard
 # master.menu.auditor #########################################################
 
 master.menu.auditor = Auditor
-master.menu.auditor.list-code-audits = List my code audits
-master.menu.auditor.list-audit-records = List my Audit Records
+master.menu.auditor.list-mine-code-audits = List my code audits
+master.menu.auditor.list-mine-audit-records = List my Audit Records
 
 # master.menu.user-account ####################################################
 

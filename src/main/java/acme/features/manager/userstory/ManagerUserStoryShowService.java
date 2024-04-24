@@ -25,12 +25,13 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-		UserStory userStory;
+		UserStory us;
+		Manager manager;
 
-		id = super.getRequest().getData("id", int.class);
-		userStory = this.repository.findOneUserStoryById(id);
-		status = userStory != null;
+		us = this.repository.findOneUserStoryById(super.getRequest().getData("id", int.class));
+		manager = this.repository.findManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		status = us.getManager().equals(manager);
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -49,13 +50,13 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 	public void unbind(final UserStory object) {
 		assert object != null;
 
-		SelectChoices choices;
+		SelectChoices priorities;
 		Dataset dataset;
 
-		choices = SelectChoices.from(UserStoryPriority.class, object.getPriority());
+		priorities = SelectChoices.from(UserStoryPriority.class, object.getPriority());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
-		dataset.put("priorities", choices);
+		dataset.put("priorities", priorities);
 
 		super.getResponse().addData(dataset);
 	}
