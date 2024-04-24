@@ -1,0 +1,428 @@
+diff --git a/src/main/java/acme/datatypes/Statistics.java b/src/main/java/acme/datatypes/Statistics.java
+new file mode 100644
+index 0000000..04c3fd6
+--- /dev/null
++++ b/src/main/java/acme/datatypes/Statistics.java
+@@ -0,0 +1,27 @@
++
++package acme.datatypes;
++
++import lombok.AllArgsConstructor;
++import lombok.Getter;
++import lombok.Setter;
++
++@Getter
++@Setter
++@AllArgsConstructor
++public class Statistics {
++
++	public Statistics() {
++	}
++
++
++	int		count;
++
++	double	average;
++
++	double	deviation;
++
++	double	minimum;
++
++	double	maximum;
++
++}
+diff --git a/src/main/java/acme/features/client/dashboard/ClientDashboardController.java b/src/main/java/acme/features/client/dashboard/ClientDashboardController.java
+new file mode 100644
+index 0000000..2fe05f5
+--- /dev/null
++++ b/src/main/java/acme/features/client/dashboard/ClientDashboardController.java
+@@ -0,0 +1,27 @@
++
++package acme.features.client.dashboard;
++
++import javax.annotation.PostConstruct;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Controller;
++
++import acme.client.controllers.AbstractController;
++import acme.forms.ClientDashboard;
++import acme.roles.Client;
++
++@Controller
++public class ClientDashboardController extends AbstractController<Client, ClientDashboard> {
++	// Internal state ---------------------------------------------------------
++
++	@Autowired
++	protected ClientDashboardShowService showService;
++
++	// Constructors -----------------------------------------------------------
++
++
++	@PostConstruct
++	protected void initialise() {
++		super.addBasicCommand("show", this.showService);
++	}
++}
+diff --git a/src/main/java/acme/features/client/dashboard/ClientDashboardRepository.java b/src/main/java/acme/features/client/dashboard/ClientDashboardRepository.java
+new file mode 100644
+index 0000000..f9efed8
+--- /dev/null
++++ b/src/main/java/acme/features/client/dashboard/ClientDashboardRepository.java
+@@ -0,0 +1,41 @@
++
++package acme.features.client.dashboard;
++
++import java.util.Optional;
++
++import org.springframework.data.jpa.repository.Query;
++import org.springframework.stereotype.Repository;
++
++import acme.client.repositories.AbstractRepository;
++import acme.roles.Client;
++
++@Repository
++public interface ClientDashboardRepository extends AbstractRepository {
++
++	@Query("select count(pl) from ProgressLogs pl where pl.contract.client = :client and pl.completenessPercentage <=25 and pl.draftMode=false")
++	Optional<Integer> findNumOfprogressLogsLess25(Client client);
++
++	@Query("select count(pl) from ProgressLogs pl where pl.contract.client = :client and pl.completenessPercentage <= 50 and 25 <= pl.completenessPercentage and pl.draftMode=false")
++	Optional<Integer> findNumOfProgressLogsWithRate25To50(Client client);
++
++	@Query("select count(pl) from ProgressLogs pl where pl.contract.client = :client and pl.completenessPercentage <= 75 and 50 <= pl.completenessPercentage and pl.draftMode=false")
++	Optional<Integer> findNumOfProgressLogsWithRate50To75(Client client);
++
++	@Query("select count(pl) from ProgressLogs pl where pl.contract.client = :client and 75 <= pl.completenessPercentage and pl.draftMode=false")
++	Optional<Integer> findNumOfProgressLogsWithRateOver75(Client client);
++
++	@Query("select avg(c.budget.amount) from Contract c where c.client = :client and c.draftMode=false")
++	Optional<Double> findAverageContractBudget(Client client);
++
++	@Query("select max(c.budget.amount) from Contract c where c.client = :client and c.draftMode=false")
++	Optional<Double> findMaxContractBudget(Client client);
++
++	@Query("select min(c.budget.amount) from Contract c where c.client = :client and c.draftMode=false")
++	Optional<Double> findMinContractBudget(Client client);
++
++	@Query("select stddev(c.budget.amount) from Contract c where c.client = :client and c.draftMode=false")
++	Optional<Double> findLinearDevContractBudget(Client client);
++
++	@Query("select m from Client m where m.userAccount.id = :id")
++	Client findOneClientByUserAccountId(int id);
++}
+diff --git a/src/main/java/acme/features/client/dashboard/ClientDashboardShowService.java b/src/main/java/acme/features/client/dashboard/ClientDashboardShowService.java
+new file mode 100644
+index 0000000..b04e4e2
+--- /dev/null
++++ b/src/main/java/acme/features/client/dashboard/ClientDashboardShowService.java
+@@ -0,0 +1,79 @@
++
++package acme.features.client.dashboard;
++
++import java.util.HashMap;
++import java.util.Map;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Service;
++
++import acme.client.data.accounts.Principal;
++import acme.client.data.models.Dataset;
++import acme.client.services.AbstractService;
++import acme.datatypes.Statistics;
++import acme.forms.ClientDashboard;
++import acme.roles.Client;
++
++@Service
++public class ClientDashboardShowService extends AbstractService<Client, ClientDashboard> {
++
++	// Internal state ---------------------------------------------------------
++
++	@Autowired
++	protected ClientDashboardRepository repository;
++
++	// AbstractService interface ----------------------------------------------
++
++
++	@Override
++	public void authorise() {
++		super.getResponse().setAuthorised(true);
++	}
++
++	@Override
++	public void load() {
++		final ClientDashboard dashboard = new ClientDashboard();
++
++		Principal principal;
++		int userAccountId;
++		principal = super.getRequest().getPrincipal();
++		userAccountId = principal.getAccountId();
++		final Client client = this.repository.findOneClientByUserAccountId(userAccountId);
++
++		final double findAverageContractBudget = this.repository.findAverageContractBudget(client).orElse(0.0);
++		final double findMaxContractBudget = this.repository.findMaxContractBudget(client).orElse(0.0);
++		final double findMinContractBudget = this.repository.findMinContractBudget(client).orElse(0.0);
++		final double findLinearDevContractBudget = this.repository.findLinearDevContractBudget(client).orElse(0.0);
++		final Statistics contractBudgetStatistics = new Statistics();
++		contractBudgetStatistics.setAverage(findAverageContractBudget);
++		contractBudgetStatistics.setMinimum(findMinContractBudget);
++		contractBudgetStatistics.setMaximum(findMaxContractBudget);
++		contractBudgetStatistics.setDeviation(findLinearDevContractBudget);
++		dashboard.setContractBudgetStatistics(contractBudgetStatistics);
++
++		final Map<String, Integer> progressLogsCompleteness = new HashMap<String, Integer>();
++
++		final Integer progressLogsWithRateBelow25 = this.repository.findNumOfprogressLogsLess25(client).orElse(0);
++		final Integer progressLogsWithRate25To50 = this.repository.findNumOfProgressLogsWithRate25To50(client).orElse(0);
++		final Integer progressLogsWithRate50To75 = this.repository.findNumOfProgressLogsWithRate50To75(client).orElse(0);
++		final Integer progressLogsWithRateOver75 = this.repository.findNumOfProgressLogsWithRateOver75(client).orElse(0);
++
++		progressLogsCompleteness.put("less25", progressLogsWithRateBelow25);
++		progressLogsCompleteness.put("25to50", progressLogsWithRate25To50);
++		progressLogsCompleteness.put("50to75", progressLogsWithRate50To75);
++		progressLogsCompleteness.put("over75", progressLogsWithRateOver75);
++		dashboard.setNumCompletenessProgressLogs(progressLogsCompleteness);
++
++		super.getBuffer().addData(dashboard);
++	}
++
++	@Override
++	public void unbind(final ClientDashboard object) {
++		Dataset dataset;
++
++		dataset = super.unbind(object, "contractBudgetStatistics", "numCompletenessProgressLogs");
++
++		super.getResponse().addData(dataset);
++	}
++
++}
+diff --git a/src/main/java/acme/forms/ClientDashboard.java b/src/main/java/acme/forms/ClientDashboard.java
+index 148a385..d505382 100644
+--- a/src/main/java/acme/forms/ClientDashboard.java
++++ b/src/main/java/acme/forms/ClientDashboard.java
+@@ -1,7 +1,10 @@
+ 
+ package acme.forms;
+ 
++import java.util.Map;
++
+ import acme.client.data.AbstractForm;
++import acme.datatypes.Statistics;
+ import lombok.Getter;
+ import lombok.Setter;
+ 
+@@ -9,32 +12,14 @@ import lombok.Setter;
+ @Setter
+ public class ClientDashboard extends AbstractForm {
+ 
+-	private static final long	serialVersionUID	= 1L;
+-
+-	// Attributes -------------------------------------------------------------
+-
+-	// Total number of progress logs with completeness rate below 25%
+-	private Integer				totalProgressLogsBelow25;
++	// Serialisation identifier -----------------------------------------------
+ 
+-	// Total number of progress logs with completeness rate between 25% and 50%
+-	private Integer				totalProgressLogs25To50;
++	protected static final long		serialVersionUID	= 1L;
+ 
+-	// Total number of progress logs with completeness rate between 50% and 75%
+-	private Integer				totalProgressLogs50To75;
+-
+-	// Total number of progress logs with completeness rate above 75%
+-	private Integer				totalProgressLogsAbove75;
+-
+-	// Average budget of the contracts
+-	private double				avgContractBudget;
+-
+-	// Deviation of the contract budgets
+-	private double				devContractBudget;
++	// Attributes -------------------------------------------------------------
+ 
+-	// Minimum contract budget
+-	private double				minContractBudget;
++	private Map<String, Integer>	numCompletenessProgressLogs;
+ 
+-	// Maximum contract budget
+-	private double				maxContractBudget;
++	private Statistics				contractBudgetStatistics;
+ 
+ }
+diff --git a/src/main/webapp/WEB-INF/views/client/client-dashboard/form.jsp b/src/main/webapp/WEB-INF/views/client/client-dashboard/form.jsp
+new file mode 100644
+index 0000000..09df00d
+--- /dev/null
++++ b/src/main/webapp/WEB-INF/views/client/client-dashboard/form.jsp
+@@ -0,0 +1,77 @@
++
++
++<%@page language="java"%>
++
++<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
++<%@taglib prefix="acme" uri="http://acme-framework.org/"%>
++
++<table class="table table-sm">
++	<tr>
++		<th scope="row">
++			<acme:message code="client.clientDashboard.form.label.average-contract-budget"/>
++		</th>
++		<td>
++			<acme:print value="${contractBudgetStatistics.getAverage()}"/>
++		</td>
++	</tr>
++	<tr>
++		<th scope="row">
++			<acme:message code="client.clientDashboard.form.label.min-contract-budget"/>
++		</th>
++		<td>
++			<acme:print value="${contractBudgetStatistics.getMinimum()}"/>
++		</td>
++	</tr>
++	<tr>
++		<th scope="row">
++			<acme:message code="client.clientDashboard.form.label.max-contract-budget"/>
++		</th>
++		<td>
++			<acme:print value="${contractBudgetStatistics.getMaximum()}"/>
++		</td>
++	</tr>
++	<tr>
++		<th scope="row">
++			<acme:message code="client.clientDashboard.form.label.lin-dev-contract-budget"/>
++		</th>
++		<td>
++			<acme:print value="${contractBudgetStatistics.getDeviation()}"/>
++		</td>
++	</tr>
++	<tr>
++		<th scope="row">
++			<acme:message code="client.clientDashboard.form.label.progress-Log-with-less25"/>
++		</th>
++		<td>
++			<acme:print value="${numCompletenessProgressLogs.get('less25')}"/>
++		</td>
++	</tr>
++	<tr>
++		<th scope="row">
++			<acme:message code="client.clientDashboard.form.label.progress-Log-25to50"/>
++		</th>
++		<td>
++			<acme:print value="${numCompletenessProgressLogs.get('25to50')}"/>
++		</td>
++	</tr>
++	<tr>
++		<th scope="row">
++			<acme:message code="client.clientDashboard.form.label.progress-Log-50to75"/>
++		</th>
++		<td>
++			<acme:print value="${numCompletenessProgressLogs.get('50to75')}"/>
++		</td>
++	</tr>	
++	<tr>
++		<th scope="row">
++			<acme:message code="client.clientDashboard.form.label.progress-Log-with-over75"/>
++		</th>
++		<td>
++			<acme:print value="${numCompletenessProgressLogs.get('over75')}"/>
++		</td>
++	</tr>	
++</table>
++
++
++
++<acme:return/>
+\ No newline at end of file
+diff --git a/src/main/webapp/WEB-INF/views/client/client-dashboard/messages-en.i18n b/src/main/webapp/WEB-INF/views/client/client-dashboard/messages-en.i18n
+new file mode 100644
+index 0000000..c84f309
+--- /dev/null
++++ b/src/main/webapp/WEB-INF/views/client/client-dashboard/messages-en.i18n
+@@ -0,0 +1,11 @@
++client.client-dashboard.form.title= client Dashboard
++
++client.clientDashboard.form.label.average-contract-budget = Average budget of the contracts:
++client.clientDashboard.form.label.max-contract-budget = Maximum cost of the projects:
++client.clientDashboard.form.label.min-contract-budget = Minimum cost of the projects:
++client.clientDashboard.form.label.lin-dev-contract-budget = Standard deviation of the cost of the projects:
++
++client.clientDashboard.form.label.progress-Log-with-less25 = Number of progress logs with less than 25% completeness:
++client.clientDashboard.form.label.progress-Log-25to50 = Number of progress logs with 25% to 50% completeness:
++client.clientDashboard.form.label.progress-Log-50to75 = Number of progress logs with 50% to 75% completeness:
++client.clientDashboard.form.label.progress-Log-with-over75 = Number of progress logs with over 75% completeness:
+\ No newline at end of file
+diff --git a/src/main/webapp/WEB-INF/views/client/client-dashboard/messages-es.i18n b/src/main/webapp/WEB-INF/views/client/client-dashboard/messages-es.i18n
+new file mode 100644
+index 0000000..4f5cc7e
+--- /dev/null
++++ b/src/main/webapp/WEB-INF/views/client/client-dashboard/messages-es.i18n
+@@ -0,0 +1,11 @@
++client.client-dashboard.form.title= Panel de cliente
++
++client.clientDashboard.form.label.average-contract-budget = Media del presupuesto de los contratos:
++client.clientDashboard.form.label.max-contract-budget = Máximo del presupuesto de los contratos:
++client.clientDashboard.form.label.min-contract-budget = Mínimo del presupuesto de los contratos:
++client.clientDashboard.form.label.lin-dev-contract-budget = Desviación típica del presupuesto de los contratos:
++
++client.clientDashboard.form.label.progress-Log-with-less25 = Actas de progreso completadas a menos del 25%:
++client.clientDashboard.form.label.progress-Log-25to50 = Actas de progreso completadas entre el 25% y 50%:
++client.clientDashboard.form.label.progress-Log-50to75 = Actas de progreso completadas entre el 50% y 75%:
++client.clientDashboard.form.label.progress-Log-with-over75 = Actas de progreso completadas a mas del 75%:
+\ No newline at end of file
+diff --git a/src/main/webapp/WEB-INF/views/fragments/menu-en.i18n b/src/main/webapp/WEB-INF/views/fragments/menu-en.i18n
+index d55a5e7..68376ad 100644
+--- a/src/main/webapp/WEB-INF/views/fragments/menu-en.i18n
++++ b/src/main/webapp/WEB-INF/views/fragments/menu-en.i18n
+@@ -25,7 +25,6 @@ master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
+ master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
+ master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
+ master.menu.anonymous.list-projects = List projects
+-master.menu.anonymous.list-contracts = List contracts
+ master.menu.anonymous.list-trainingModules = List of training modules
+ 
+ # master.menu.authenticated ###################################################
+@@ -93,4 +92,5 @@ master.menu.user-account.become-consumer = Become a consumer
+ 
+ master.menu.client = Client
+ master.menu.client.contract = Contracts
++master.menu.client.client-dashboard = Client dashboard
+ master.menu.client.progress-log = Progress logs
+diff --git a/src/main/webapp/WEB-INF/views/fragments/menu-es.i18n b/src/main/webapp/WEB-INF/views/fragments/menu-es.i18n
+index eb9f9ea..4f5a0ae 100644
+--- a/src/main/webapp/WEB-INF/views/fragments/menu-es.i18n
++++ b/src/main/webapp/WEB-INF/views/fragments/menu-es.i18n
+@@ -25,7 +25,6 @@ master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
+ master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
+ master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
+ master.menu.anonymous.list-projects = Ver proyectos 
+-master.menu.anonymous.list-contracts = Ver contratos
+ master.menu.anonymous.list-trainingModules = Ver módulos de entrenamiento
+ 
+ # master.menu.authenticated ###################################################
+@@ -97,5 +96,6 @@ master.menu.user-account.become-consumer = Hazte consumidor
+ 
+ master.menu.client = Cliente
+ master.menu.client.contract = Contratos
++master.menu.client.client-dashboard = Panel de Cliente
+ master.menu.client.progress-log = Lista de progreso
+ 
+diff --git a/src/main/webapp/WEB-INF/views/fragments/menu.jsp b/src/main/webapp/WEB-INF/views/fragments/menu.jsp
+index e308499..8920c99 100644
+--- a/src/main/webapp/WEB-INF/views/fragments/menu.jsp
++++ b/src/main/webapp/WEB-INF/views/fragments/menu.jsp
+@@ -28,7 +28,6 @@
+ 			<acme:menu-suboption code="master.menu.anonymous.alvvazcon" action="https://midu.dev/"/>
+ 			<acme:menu-separator/>
+ 			<acme:menu-suboption code="master.menu.anonymous.list-projects" action="/any/project/list"/>
+-			<acme:menu-suboption code="master.menu.anonymous.list-contracts" action="/any/contract/list"/>
+ 			<acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
+ 		</acme:menu-option>
+ 
+@@ -80,6 +79,7 @@
+ 		
+ 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
+ 			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list"/>
++			<acme:menu-suboption code="master.menu.client.client-dashboard" action="/client/client-dashboard/show"/>
+ 			<acme:menu-suboption code="master.menu.client.progress-log" action="/client/progress-logs/list-all"/>			
+ 		</acme:menu-option>
+ 		
