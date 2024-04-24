@@ -1,12 +1,15 @@
 
 package acme.features.manager.project;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
-import acme.features.manager.userstory.ManagerUserStoryRepository;
+import acme.entities.projects.UserStory;
 import acme.roles.Manager;
 
 @Service
@@ -15,45 +18,80 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryRepository repository;
+	private ManagerProjectRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		// TODO Auto-generated method stub
-		super.authorise();
+
+		boolean status;
+		int projectId;
+		Project project;
+		Manager manager;
+
+		projectId = super.getRequest().getData("id", int.class);
+		project = this.repository.findOneProjectById(projectId);
+		manager = project == null ? null : project.getManager();
+
+		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		// TODO Auto-generated method stub
-		super.load();
+		Project object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneProjectById(id);
+
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final Project object) {
-		// TODO Auto-generated method stub
-		super.bind(object);
+		assert object != null;
+		super.bind(object, "code", "title", "projectAbstract", "link", "cost", "indication");
+
 	}
 
 	@Override
 	public void validate(final Project object) {
-		// TODO Auto-generated method stub
-		super.validate(object);
+		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("indication"))
+			super.state(object.isIndication() == false, "indication", "manager.project.form.error.hasFatalError");
+
+		Collection<UserStory> userStories;
+		int totalUserStories;
+
+		userStories = this.repository.findAllUserStoriesByProjectId(object.getId());
+		boolean allUserStoriesPublished = userStories.stream().allMatch(us -> !us.isDraftMode());
+		totalUserStories = userStories.size();
+
+		super.state(totalUserStories >= 1, "*", "manager.project.form.error.not-enough-user-stories");
+		super.state(allUserStoriesPublished, "*", "manager.project.form.error.not-all-user-stories-published");
+
 	}
 
 	@Override
 	public void perform(final Project object) {
-		// TODO Auto-generated method stub
-		super.perform(object);
+		assert object != null;
+		object.setDraftMode(false);
+		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final Project object) {
-		// TODO Auto-generated method stub
-		super.unbind(object);
-	}
+		assert object != null;
 
+		Dataset dataset;
+
+		dataset = super.unbind(object, "code", "title", "projectAbstract", "link", "cost", "indication", "draftMode");
+
+		super.getResponse().addData(dataset);
+
+	}
 }

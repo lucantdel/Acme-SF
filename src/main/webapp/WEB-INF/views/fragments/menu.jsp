@@ -19,7 +19,7 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
-		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
+		<acme:menu-option code="master.menu.anonymous" access="isAnonymous() || isAuthenticated()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.manortper" action="https://www.wikidex.net/wiki/WikiDex"/>
 			<acme:menu-suboption code="master.menu.anonymous.lucantdel" action="https://chat.openai.com/"/>
@@ -28,16 +28,13 @@
 			<acme:menu-suboption code="master.menu.anonymous.alvvazcon" action="https://midu.dev/"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.list-projects" action="/any/project/list"/>
-
 			<acme:menu-suboption code="master.menu.anonymous.list-claims" action="/any/claim/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-sponsorships" action="/any/sponsorship/list"/>
-      <acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
+      		<acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.list-objectives" action="/authenticated/objective/list"/>
-			<acme:menu-suboption code="master.menu.authenticated.list-projects" action="/any/project/list"/>
-			<acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -50,8 +47,6 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/dashboard/show"/>
 			<acme:menu-suboption code="master.menu.administrator.list-banner" action="/administrator/banner/list"/>
-			
-
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/show"/>
 			<acme:menu-separator/>
