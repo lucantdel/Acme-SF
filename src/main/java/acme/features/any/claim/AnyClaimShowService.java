@@ -22,35 +22,23 @@ public class AnyClaimShowService extends AbstractService<Any, Claim> {
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		Claim claim;
-
-		id = super.getRequest().getData("id", int.class);
-		claim = this.repository.findOneClaimById(id);
-		status = claim != null && !claim.isDraftMode();
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		Claim object;
-		int id;
+		int id = super.getRequest().getData("id", int.class);
+		Claim claim = this.repository.findOneClaimById(id);
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneClaimById(id);
-
-		super.getBuffer().addData(object);
+		super.getBuffer().addData(claim);
 	}
-
 	@Override
 	public void unbind(final Claim object) {
 		assert object != null;
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "heading", "description", "department", "email", "link");
+		dataset = super.unbind(object, "code", "heading", "description", "department", "email", "link");
 
 		super.getResponse().addData(dataset);
 	}

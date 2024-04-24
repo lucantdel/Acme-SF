@@ -35,7 +35,6 @@ master.menu.anonymous.list-trainingModules = List of training modules
 master.menu.authenticated = Authenticated
 master.menu.authenticated.list-objectives = List objectives
 master.menu.authenticated.list-projects = List projects
-master.menu.authenticated.list-claims = List claims
 master.menu.authenticated.list-trainingModules = List of training modules
 
 # master.menu.administrator ###################################################

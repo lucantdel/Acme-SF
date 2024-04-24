@@ -57,8 +57,6 @@ public class Claim extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	protected boolean			draftMode;
-
 	// Derived attributes ----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------

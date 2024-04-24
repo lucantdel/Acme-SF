@@ -5,10 +5,20 @@
 
 <acme:form>
 	<acme:input-textbox code="any.claim.form.label.code" path="code"/>
-	<acme:input-moment code="any.claim.form.label.instantiationMoment" path="instantiationMoment"/>
 	<acme:input-textbox code="any.claim.form.label.heading" path="heading"/>
 	<acme:input-textarea code="any.claim.form.label.description" path="description"/>
 	<acme:input-textarea code="any.claim.form.label.department" path="department"/>
-	<acme:input-textbox code="any.claim.form.label.email" path="email"/>
+	<acme:input-email code="any.claim.form.label.email" path="email"/>
 	<acme:input-url code="any.claim.form.label.link" path="link"/>
+	
+
+
+	<jstl:choose>
+		
+		<jstl:when test="${_command == 'create'}">
+			<acme:input-checkbox code="any.claim.form.label.confirm" path="confirm"/>	
+			<acme:submit code="any.claim.form.button.publish" action="/any/claim/create"/>
+		</jstl:when>		
+	</jstl:choose>	
+	
 </acme:form>
