@@ -27,16 +27,21 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 
 	@Override
 	public void authorise() {
-		// TODO
-		//		boolean status;
-		//		int masterId;
-		//		ProjectUserStory pus;
-		//
-		//		masterId = super.getRequest().getData("id", int.class);
-		//		pus = this.repository.findOneProjectUserStoryById(masterId);
-		//		status = pus != null;
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 * El proyecto de la relacion que aparecen debe pertenecer al manager logueado
+		 */
+		boolean status;
+		ProjectUserStory pus;
+		Manager manager;
 
-		super.getResponse().setAuthorised(true);
+		pus = this.repository.findOneProjectUserStoryById(super.getRequest().getData("id", int.class));
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+
+		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class //
+			&& pus.getProject().getManager().equals(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -64,7 +69,7 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 
 		projects = this.repository.findProjectsByManagerId(managerId);
-		userStories = this.repository.findUserStoriesByManagerId(managerId);
+		userStories = this.repository.findAllUserStories();
 
 		projectChoices = SelectChoices.from(projects, "title", object.getProject());
 		userStoryChoices = SelectChoices.from(userStories, "title", object.getUserStory());

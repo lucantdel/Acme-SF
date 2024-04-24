@@ -27,6 +27,9 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 
 	@Override
 	public void authorise() {
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 */
 		boolean status;
 
 		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class;
@@ -52,8 +55,25 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 
 	@Override
 	public void validate(final ProjectUserStory object) {
-		// TODO: Mensajes de error por restricciones
+		/*
+		 * No deben existir relaciones repetidas, es decir, mismo proyecto e historia de usuario
+		 */
 		assert object != null;
+		Project project;
+		UserStory userStory;
+
+		project = object.getProject();
+		userStory = object.getUserStory();
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			ProjectUserStory existing;
+
+			existing = this.repository.findOneAssignmentByProjectIdAndUserStoryId(project.getId(), userStory.getId());
+			super.state(existing == null, "project", "manager.project-user-story.form.error.existing-assignment");
+
+			// TODO: Necesaria? Si en las choices solo incluyo proyectos en borrador nunca se llamará a este error
+			super.state(project.isDraftMode(), "project", "manager.project-user-story.form.error.create-assignment-published-project");
+		}
 	}
 
 	@Override
@@ -76,8 +96,10 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 
-		projects = this.repository.findProjectsByManagerId(managerId);
-		userStories = this.repository.findUserStoriesByManagerId(managerId);
+		// TODO: que projects deben mostrarse? todos o solo los no publicados
+		// projects = this.repository.findProjectsByManagerId(managerId);
+		projects = this.repository.findDraftModeProjectsByManagerId(managerId);
+		userStories = this.repository.findAllUserStories();
 
 		projectChoices = SelectChoices.from(projects, "title", object.getProject());
 		userStoryChoices = SelectChoices.from(userStories, "title", object.getUserStory());

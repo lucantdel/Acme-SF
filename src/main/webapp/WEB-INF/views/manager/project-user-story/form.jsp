@@ -6,13 +6,13 @@
 <acme:form>	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|delete')}">
-			<acme:input-select code="manager.project-user-story.form.label.project" path="project" choices="${projectChoices}" readonly="true"/>
-			<acme:input-select code="manager.project-user-story.form.label.user-story" path="userStory" choices="${userStoryChoices}" readonly="true"/>
+			<acme:input-select code="manager.project-user-story.form.label.project-title" path="project" choices="${projectChoices}" readonly="true"/>
+			<acme:input-select code="manager.project-user-story.form.label.user-story-title" path="userStory" choices="${userStoryChoices}" readonly="true"/>
 			<acme:submit code="manager.project-user-story.form.button.delete" action="/manager/project-user-story/delete"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:input-select code="manager.project-user-story.form.label.project" path="project" choices="${projectChoices}"/>
-			<acme:input-select code="manager.project-user-story.form.label.user-story" path="userStory" choices="${userStoryChoices}"/>
+			<acme:input-select code="manager.project-user-story.form.label.project-title" path="project" choices="${projectChoices}"/>
+			<acme:input-select code="manager.project-user-story.form.label.user-story-title" path="userStory" choices="${userStoryChoices}"/>
 			<acme:submit code="manager.project-user-story.form.button.create" action="/manager/project-user-story/create"/>
 		</jstl:when>
 	</jstl:choose>

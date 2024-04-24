@@ -15,25 +15,34 @@ import acme.roles.Manager;
 @Repository
 public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 
-	@Query("select pus from ProjectUserStory pus where pus.id = :id")
-	ProjectUserStory findOneProjectUserStoryById(int id);
+	@Query("select pus from ProjectUserStory pus where pus.id = :projectUserStoryId")
+	ProjectUserStory findOneProjectUserStoryById(int projectUserStoryId);
 
-	@Query("select pus from ProjectUserStory pus where pus.project.manager.id = :id and pus.userStory.manager.id = :id")
-	Collection<ProjectUserStory> findProjectUserStoryByManagerId(int id);
+	@Query(" select pus from ProjectUserStory pus where pus.project.id = :projectId and pus.userStory.id = :userStoryId")
+	ProjectUserStory findOneAssignmentByProjectIdAndUserStoryId(int projectId, int userStoryId);
 
-	@Query("select m from Manager m where m.id = :id")
-	Manager findOneManagerById(int id);
+	@Query("select pus from ProjectUserStory pus where pus.project.manager.id = :managerId")
+	Collection<ProjectUserStory> findProjectUserStoriesByManagerId(int managerId);
 
-	@Query("select p from Project p where p.id = :id")
-	Project findOneProjectById(int id);
+	@Query("select m from Manager m where m.id = :managerId")
+	Manager findOneManagerById(int managerId);
 
-	@Query("select p from Project p where p.manager.id = :id")
-	Collection<Project> findProjectsByManagerId(int id);
+	@Query("select p from Project p where p.id = :projectId")
+	Project findOneProjectById(int projectId);
 
-	@Query("select us from UserStory us where us.id = :id")
-	UserStory findOneUserStoryById(int id);
+	@Query("select p from Project p where p.manager.id = :managerId")
+	Collection<Project> findProjectsByManagerId(int managerId);
 
-	@Query("select us from UserStory us where us.manager.id = :id")
-	Collection<UserStory> findUserStoriesByManagerId(int id);
+	@Query("select p from Project p where p.manager.id = :managerId and p.draftMode = true")
+	Collection<Project> findDraftModeProjectsByManagerId(int managerId);
+
+	@Query("select us from UserStory us where us.id = :userStoryId")
+	UserStory findOneUserStoryById(int userStoryId);
+
+	@Query("select us from UserStory us")
+	Collection<UserStory> findAllUserStories();
+
+	//	@Query("select us from UserStory us where us.manager.id = :managerId")
+	//	Collection<UserStory> findAllUserStoriesByManagerId(int managerId);
 
 }
