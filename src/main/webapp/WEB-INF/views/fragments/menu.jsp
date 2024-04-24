@@ -28,7 +28,6 @@
 			<acme:menu-suboption code="master.menu.anonymous.alvvazcon" action="https://midu.dev/"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.list-projects" action="/any/project/list"/>
-			<acme:menu-suboption code="master.menu.anonymous.list-contracts" action="/any/contract/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-trainingModules" action="/any/training-module/list"/>
 		</acme:menu-option>
 
@@ -80,6 +79,7 @@
 		
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
 			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list"/>
+			<acme:menu-suboption code="master.menu.client.client-dashboard" action="/client/client-dashboard/show"/>
 			<acme:menu-suboption code="master.menu.client.progress-log" action="/client/progress-logs/list-all"/>			
 		</acme:menu-option>
 		

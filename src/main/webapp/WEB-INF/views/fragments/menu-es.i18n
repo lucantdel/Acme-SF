@@ -25,7 +25,6 @@ master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
 master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 master.menu.anonymous.list-projects = Ver proyectos 
-master.menu.anonymous.list-contracts = Ver contratos
 master.menu.anonymous.list-trainingModules = Ver módulos de entrenamiento
 
 # master.menu.authenticated ###################################################
@@ -97,5 +96,6 @@ master.menu.user-account.become-consumer = Hazte consumidor
 
 master.menu.client = Cliente
 master.menu.client.contract = Contratos
+master.menu.client.client-dashboard = Panel de Cliente
 master.menu.client.progress-log = Lista de progreso
 
