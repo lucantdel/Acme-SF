@@ -1,0 +1,15 @@
+authenticated.risk.list.title = Listado de Riesgos
+authenticated.risk.form.title = Detalles de riesgo
+
+authenticated.risk.list.label.reference = Referencia
+authenticated.risk.list.label.value = Valor
+authenticated.risk.list.label.identificationDate = Fecha de Identificación
+
+authenticated.risk.form.label.reference = Referencia:
+authenticated.risk.form.label.identificationDate = Fecha de Identificación:
+authenticated.risk.form.label.impact = Impacto:
+authenticated.risk.form.label.probability = Probabilidad:
+authenticated.risk.form.label.description = Descripción:
+authenticated.risk.form.label.value = Valor:
+authenticated.risk.form.label.optionalLink = Link:
+authenticated.risk.form.placeholder.probability= Debe valer entre 0,0-100,0

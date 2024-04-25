@@ -35,6 +35,7 @@ master.menu.authenticated = Autentificado
 master.menu.authenticated.list-objectives = Ver objectivos
 master.menu.authenticated.list-projects = Ver proyectos
 master.menu.authenticated.list-trainingModules = Ver módulos de entrenamiento
+master.menu.authenticated.list-risks = Ver riesgos
 
 # master.menu.administrator ###################################################
 
