@@ -24,10 +24,12 @@ auditor.codeAudit.form.label.project = Project:
 auditor.codeAudit.form.label.draftMode = DraftMode
 auditor.codeAudit.form.label.Mark = Mark
 
-auditor.codeAudit.form.button.create = Create
+auditor.codeAudit.form.button.create = Create AuditRecord
 auditor.codeAudit.form.button.delete = Delete
 auditor.codeAudit.form.button.update = Update
 auditor.codeAudit.form.button.publish = Publish
+auditor.auditRecord.list.button.list = List AuditRecords
+
 
 auditor.codeAudit.error.Mark = Mark must be at least C
 

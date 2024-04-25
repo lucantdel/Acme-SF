@@ -1,12 +1,16 @@
 
 package acme.features.auditor.codeAudits;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.codeAudits.CodeAudit;
+import acme.entities.projects.Project;
 import acme.roles.Auditor;
 
 @Service
@@ -54,8 +58,16 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 		assert object != null;
 
 		Dataset dataset;
+		SelectChoices projectsChoices;
+		Collection<Project> projects;
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode");
+		projects = this.repository.findAllProjects();
+		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
+
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
+		dataset.put("project", projectsChoices.getSelected().getKey());
+		dataset.put("projects", projectsChoices);
+
 		super.getResponse().addData(dataset);
 	}
 

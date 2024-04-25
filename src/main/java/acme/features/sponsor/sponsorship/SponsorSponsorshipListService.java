@@ -2,6 +2,7 @@
 package acme.features.sponsor.sponsorship;
 
 import java.util.Collection;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +31,11 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 	@Override
 	public void load() {
 		Collection<Sponsorship> objects;
+		int sponsorId;
 
-		objects = this.repository.findPublishedSponsorships();
+		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		objects = this.repository.findSponsorshipsBySponsorId(sponsorId);
 
 		super.getBuffer().addData(objects);
 	}
@@ -42,9 +46,14 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 
 		Dataset dataset;
 
-		//dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link");
-		// para que solo se vena las importantes
 		dataset = super.unbind(object, "code", "moment", "amount", "type");
+
+		if (object.isDraftMode()) {
+			final Locale local = super.getRequest().getLocale();
+			dataset.put("draftMode", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");
+		} else
+			dataset.put("draftMode", "No");
+
 		super.getResponse().addData(dataset);
 	}
 

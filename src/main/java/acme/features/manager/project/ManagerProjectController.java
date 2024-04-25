@@ -16,7 +16,7 @@ public class ManagerProjectController extends AbstractController<Manager, Projec
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectListService	listService;
+	private ManagerProjectListMineService	listService;
 
 	@Autowired
 	private ManagerProjectShowService	showService;

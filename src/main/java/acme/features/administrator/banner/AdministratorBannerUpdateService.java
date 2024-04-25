@@ -42,6 +42,45 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 	@Override
 	public void validate(final Banner object) {
 		assert object != null;
+
+		if (object.getDisplayPeriodStart() != null && object.getDisplayPeriodEnd() != null && object.getUpdateMoment() != null) {
+
+			if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
+				super.state(!object.getUpdateMoment().before(object.getDisplayPeriodStart()), "updateMoment", "administrator.banner.error.updateMoment");
+
+			if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
+				super.state(!object.getUpdateMoment().after(object.getDisplayPeriodEnd()), "updateMoment", "administrator.banner.error.updateMoment2");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayPeriodStart"))
+				super.state(object.validateDisplayPeriod() == true, "displayPeriodStart", "administrator.banner.error.periodStart");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
+				super.state(object.validateDisplayPeriod() == true, "displayPeriodEnd", "administrator.banner.error.periodEnd");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
+				super.state(!object.getDisplayPeriodStart().after(object.getDisplayPeriodEnd()), "displayPeriodEnd", "administrator.banner.error.periodEnd2");
+
+		}
+		if (object.getUpdateMoment() == null) {
+			if (!super.getBuffer().getErrors().hasErrors("displayPeriodStart"))
+				super.state(object.validateDisplayPeriod() == true, "displayPeriodStart", "administrator.banner.error.periodStart");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
+				super.state(object.validateDisplayPeriod() == true, "displayPeriodEnd", "administrator.banner.error.periodEnd");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
+				super.state(!object.getDisplayPeriodStart().after(object.getDisplayPeriodEnd()), "displayPeriodEnd", "administrator.banner.error.periodEnd2");
+
+		}
+		if (object.getDisplayPeriodStart() == null) {
+			if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
+				super.state(object.getDisplayPeriodStart() != null, "updateMoment", "administrator.banner.error.updateMoment3");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
+				super.state(object.getDisplayPeriodStart() != null, "displayPeriodEnd", "administrator.banner.error.periodEnd3");
+
+		}
+
 	}
 
 	@Override

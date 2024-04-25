@@ -49,7 +49,7 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
-		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode");
+		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
 
 	}
 	@Override
@@ -70,7 +70,9 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode");
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
+		dataset.put("project", object.getProject().getCode());
+
 		super.getResponse().addData(dataset);
 	}
 

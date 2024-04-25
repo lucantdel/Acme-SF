@@ -1,0 +1,25 @@
+client.contract.list.title = Listing of contracts
+
+client.contract.form.title = Contract form
+
+client.contract.list.label.code = Code
+client.contract.list.label.moment = Instantiation Moment
+client.contract.list.label.provider = Provider Name
+client.contract.list.label.customer = Customer Name
+client.contract.list.label.project = Project
+
+client.contract.form.label.code = Code
+client.contract.form.label.moment = Instantiation Moment
+client.contract.form.label.provider = Provider Name
+client.contract.form.label.customer = Customer Name
+client.contract.form.label.goals = Goals
+client.contract.form.label.budget = Budget
+client.contract.form.label.project = Project
+client.contract.form.label.draftMode = Draft Mode
+
+client.contract.list.button.create = Create
+
+client.contract.form.button.create = Create
+client.contract.form.button.update = Update
+client.contract.form.button.delete = Delete
+client.contract.form.button.publish = Publish

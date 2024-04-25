@@ -37,14 +37,13 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findAuditRecordById(id);
-
 		super.getBuffer().addData(object);
 	}
 	@Override
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit");
+		super.bind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode");
 	}
 	@Override
 	public void validate(final AuditRecord object) {
@@ -62,8 +61,9 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		assert object != null;
 
 		Dataset dataset;
+		System.out.println(object.getCodeAudit().getCode() + "update");
 
-		dataset = super.unbind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit", "auditor");
+		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode", "auditor");
 
 		super.getResponse().addData(dataset);
 	}

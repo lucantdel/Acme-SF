@@ -42,7 +42,7 @@ public class AuditorCodeAuditListService extends AbstractService<Auditor, CodeAu
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "execution", "type", "project", "auditor");
-		String mark = object.Mark(this.repository.getScoreOfAsociatedAuditRecords(object));
+		String mark = object.Mark(this.repository.getScoreOfAsociatedPublishedAuditRecords(object));
 		dataset.put("Mark", mark);
 
 		super.getResponse().addData(dataset);
