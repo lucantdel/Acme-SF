@@ -7,6 +7,7 @@
 	<acme:list-column code="any.claim.list.label.code" path="code" width="33%"/>
 	<acme:list-column code="any.claim.list.label.instantiationMoment" path="instantiationMoment" width="33%"/>
 	<acme:list-column code="any.claim.list.label.heading" path="heading" width="33%"/>
+	<acme:list-payload path="payload"/>
 </acme:list>
 
 <jstl:if test="${_command == 'list'}">

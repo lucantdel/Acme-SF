@@ -8,4 +8,5 @@
 	<acme:list-column code="any.sponsorship.list.label.moment" path="moment" width="25%"/>
 	<acme:list-column code="any.sponsorship.list.label.amount" path="amount" width="25%"/>
 	<acme:list-column code="any.sponsorship.list.label.type" path="type" width="25%"/>
+	<acme:list-payload path="payload"/>
 </acme:list>
