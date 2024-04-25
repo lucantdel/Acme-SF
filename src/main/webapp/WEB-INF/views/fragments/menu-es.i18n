@@ -15,6 +15,14 @@ master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
 
+# master.menu.any #############################################################
+
+master.menu.any = Cualquiera
+master.menu.any.list-projects = Ver proyectos 
+master.menu.any.list-claims = Ver reclamaciones
+master.menu.any.list-sponsorships = Ver patrocinios
+master.menu.any.list-trainingModules = Ver módulos de entrenamiento
+
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anónimo
@@ -24,17 +32,12 @@ master.menu.anonymous.lucantdel = 29536902A: Antoñanzas del Villar, Lucas
 master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
 master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
-master.menu.anonymous.list-projects = Ver proyectos 
-master.menu.anonymous.list-claims = Ver reclamaciones
-master.menu.anonymous.list-sponsorships = Ver patrocinios
-master.menu.anonymous.list-trainingModules = Ver módulos de entrenamiento
+
 
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.list-objectives = Ver objectivos
-master.menu.authenticated.list-projects = Ver proyectos
-master.menu.authenticated.list-trainingModules = Ver módulos de entrenamiento
 
 # master.menu.administrator ###################################################
 

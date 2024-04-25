@@ -8,6 +8,7 @@
 	<acme:list-column code="manager.project.list.label.title" path="title" width="25%"/>
 	<acme:list-column code="manager.project.list.label.cost" path="cost" width="25%"/>
 	<acme:list-column code="manager.project.list.label.draftMode" path="draftMode" width="25%"/>
+	<acme:list-payload path="payload"/>
 </acme:list>
 
 <jstl:if test="${_command == 'list'}">

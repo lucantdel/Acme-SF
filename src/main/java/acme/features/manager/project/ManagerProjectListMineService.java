@@ -60,8 +60,15 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 		assert object != null;
 
 		Dataset dataset;
+		String payload;
 
 		dataset = super.unbind(object, "code", "title", "cost");
+		payload = String.format(//
+			"%s; %s; %s", //
+			object.getProjectAbstract(), //
+			object.getManager().getIdentity().getFullName(), //
+			object.getLink());
+		dataset.put("payload", payload);
 
 		// Cambiar true o false por si o no
 		if (object.isDraftMode()) {

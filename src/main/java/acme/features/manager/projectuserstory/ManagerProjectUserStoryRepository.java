@@ -37,9 +37,12 @@ public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 	Collection<Project> findDraftModeProjectsByManagerId(int managerId);
 
 	@Query("select us from UserStory us where us.id = :userStoryId")
-	UserStory findOneUserStoryById(int userStoryId);
+	UserStory findOneUserStoriesById(int userStoryId);
+
+	@Query("select us from UserStory us where us.manager.id = :managerId")
+	Collection<UserStory> findUserStoriesByManagerId(int managerId);
 
 	@Query("select us from UserStory us")
-	Collection<UserStory> findAllUserStories();
+	Collection<UserStory> findAllPublishedUserStories();
 
 }

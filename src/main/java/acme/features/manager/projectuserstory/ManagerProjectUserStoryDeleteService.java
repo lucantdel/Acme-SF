@@ -2,6 +2,7 @@
 package acme.features.manager.projectuserstory;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -90,6 +91,8 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 		int managerId;
 		Collection<Project> projects;
 		Collection<UserStory> userStories;
+		Collection<UserStory> publishedUserStories;
+		Collection<UserStory> myUserStories;
 		SelectChoices projectChoices;
 		SelectChoices userStoryChoices;
 		Dataset dataset;
@@ -97,7 +100,11 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 
 		projects = this.repository.findProjectsByManagerId(managerId);
-		userStories = this.repository.findAllUserStories();
+
+		publishedUserStories = this.repository.findAllPublishedUserStories();
+		myUserStories = this.repository.findUserStoriesByManagerId(managerId);
+		userStories = new HashSet<>(publishedUserStories);
+		userStories.addAll(myUserStories);
 
 		projectChoices = SelectChoices.from(projects, "title", object.getProject());
 		userStoryChoices = SelectChoices.from(userStories, "title", object.getUserStory());

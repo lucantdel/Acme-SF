@@ -2,6 +2,8 @@
 package acme.features.manager.projectuserstory;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,7 +73,8 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 			existing = this.repository.findOneProjectUserStoryByProjectIdAndUserStoryId(project.getId(), userStory.getId());
 			super.state(existing == null, "project", "manager.project-user-story.form.error.existing-assignment");
 
-			// TODO: Necesaria? Si en las choices solo incluyo proyectos en borrador nunca se llamará a este error
+			// Necesaria? Si en las choices solo incluyo proyectos en borrador nunca se llamará a este error
+			// La dejo por si acaso
 			super.state(project.isDraftMode(), "project", "manager.project-user-story.form.error.create-assignment-published-project");
 		}
 	}
@@ -89,17 +92,21 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 
 		int managerId;
 		Collection<Project> projects;
-		Collection<UserStory> userStories;
+		Set<UserStory> userStories;
+		Collection<UserStory> publishedUserStories;
+		Collection<UserStory> myUserStories;
 		SelectChoices projectChoices;
 		SelectChoices userStoryChoices;
 		Dataset dataset;
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 
-		// TODO: que projects deben mostrarse? todos o solo los no publicados
-		// projects = this.repository.findProjectsByManagerId(managerId);
 		projects = this.repository.findDraftModeProjectsByManagerId(managerId);
-		userStories = this.repository.findAllUserStories();
+
+		publishedUserStories = this.repository.findAllPublishedUserStories();
+		myUserStories = this.repository.findUserStoriesByManagerId(managerId);
+		userStories = new HashSet<>(publishedUserStories);
+		userStories.addAll(myUserStories);
 
 		projectChoices = SelectChoices.from(projects, "title", object.getProject());
 		userStoryChoices = SelectChoices.from(userStories, "title", object.getUserStory());

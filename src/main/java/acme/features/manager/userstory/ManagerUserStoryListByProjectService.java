@@ -62,8 +62,16 @@ public class ManagerUserStoryListByProjectService extends AbstractService<Manage
 		assert object != null;
 
 		Dataset dataset;
+		String payload;
 
 		dataset = super.unbind(object, "title", "estimatedCost", "priority");
+		payload = String.format(//
+			"%s; %s; %s; %s", //
+			object.getDescription(), //
+			object.getManager().getIdentity().getFullName(), //
+			object.getAcceptanceCriteria(), //
+			object.getLink());
+		dataset.put("payload", payload);
 
 		// Cambiar true o false por si o no
 		if (object.isDraftMode()) {
