@@ -15,6 +15,14 @@ master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
 
+# master.menu.any #############################################################
+
+master.menu.any = Cualquiera
+master.menu.any.list-projects = Ver proyectos 
+master.menu.any.list-claims = Ver reclamaciones
+master.menu.any.list-sponsorships = Ver patrocinios
+master.menu.any.list-trainingModules = Ver módulos de entrenamiento
+
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anónimo
@@ -24,17 +32,13 @@ master.menu.anonymous.lucantdel = 29536902A: Antoñanzas del Villar, Lucas
 master.menu.anonymous.mohabu2 = Y5061984C: Abulatifa Jd , Mohanad
 master.menu.anonymous.jualopvei = 78137010F: López Veiga , Juan Carlos
 master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
-master.menu.anonymous.list-projects = Ver proyectos 
-master.menu.anonymous.list-claims = Ver reclamaciones
-master.menu.anonymous.list-sponsorships = Ver patrocinios
-master.menu.anonymous.list-trainingModules = Ver módulos de entrenamiento
+
 
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.list-objectives = Ver objectivos
-master.menu.authenticated.list-projects = Ver proyectos
-master.menu.authenticated.list-trainingModules = Ver módulos de entrenamiento
+master.menu.authenticated.list-risks = Ver riesgos
 
 # master.menu.administrator ###################################################
 
@@ -44,12 +48,11 @@ master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
-
-master.menu.administrator.list-risks = Ver de riesgos
-master.menu.administrator.list-banner = listado de banners
-master.menu.administrator.list-risks = Ver riesgos
-
 master.menu.administrator.system-configuration = Configuración del Sistema
+
+master.menu.administrator.list-banner = Ver banners
+master.menu.administrator.list-risks = Ver riesgos
+master.menu.administrator.list-objectives = Ver objetivos
 
 # master.menu.provider ########################################################
 
@@ -67,7 +70,7 @@ master.menu.manager = Manager
 master.menu.manager.list-my-projects = Ver mis proyectos
 master.menu.manager.list-my-user-stories = Ver mis historias de usuario
 master.menu.manager.list-my-project-user-story = Ver mis relaciones proyecto - historia de usuario
-master.menu.manager.manager-dashboard = Dashboard
+master.menu.manager.manager-dashboard = Panel de indicadores
 
 # master.menu.sponsor #########################################################
 

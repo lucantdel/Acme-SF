@@ -24,7 +24,14 @@ public class AuthenticatedObjectiveListService extends AbstractService<Authentic
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		/*
+		 * El usuario debe estar logueado
+		 */
+		boolean status;
+
+		status = super.getRequest().getPrincipal().isAuthenticated();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -41,8 +48,15 @@ public class AuthenticatedObjectiveListService extends AbstractService<Authentic
 		assert object != null;
 
 		Dataset dataset;
+		String payload;
 
 		dataset = super.unbind(object, "title", "startMoment", "endMoment", "priority");
+		payload = String.format(//
+			"%s; %s; %s", //
+			object.getDescription(), //
+			object.isStatus(), //
+			object.getOptionalLink());
+		dataset.put("payload", payload);
 
 		super.getResponse().addData(dataset);
 	}
