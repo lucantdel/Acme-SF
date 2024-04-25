@@ -25,7 +25,22 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 * Los proyectos que aparecen deben pertenecer al manager logueado
+		 */
+		boolean status;
+		int managerId;
+		Collection<Project> projects;
+
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class;
+
+		projects = this.repository.findProjectsByManagerId(managerId);
+		for (Project p : projects)
+			status = status && p.getManager().equals(this.repository.findOneManagerById(managerId));
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -45,9 +60,17 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 		assert object != null;
 
 		Dataset dataset;
+		String payload;
 
 		dataset = super.unbind(object, "code", "title", "cost");
+		payload = String.format(//
+			"%s; %s; %s", //
+			object.getProjectAbstract(), //
+			object.getManager().getIdentity().getFullName(), //
+			object.getLink());
+		dataset.put("payload", payload);
 
+		// Cambiar true o false por si o no
 		if (object.isDraftMode()) {
 			final Locale local = super.getRequest().getLocale();
 			dataset.put("draftMode", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");

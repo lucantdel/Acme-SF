@@ -11,3 +11,7 @@ manager.project-user-story.form.label.user-story-title = User story title
 
 manager.project-user-story.form.button.create = Crear
 manager.project-user-story.form.button.delete = Eliminar
+
+manager.project-user-story.form.error.existing-project-assignment = No se pueden crear asignaciones repetidas
+manager.project-user-story.form.error.create-assignment-published-project = No se puede crear una asignación cuyo proyecto está publicado
+manager.project-user-story.form.error.delete-assignment-published-project = No se puede eliminar una asignación cuyo proyecto está publicado
