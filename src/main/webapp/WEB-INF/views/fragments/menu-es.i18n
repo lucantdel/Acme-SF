@@ -38,6 +38,7 @@ master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.list-objectives = Ver objectivos
+master.menu.authenticated.list-risks = Ver riesgos
 
 # master.menu.administrator ###################################################
 
