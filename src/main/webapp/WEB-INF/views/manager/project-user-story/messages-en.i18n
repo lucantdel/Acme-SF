@@ -1,0 +1,17 @@
+manager.project-user-story.list.title = Project - User Story relation list
+manager.project-user-story.form.title = Project - User Story relation form
+
+manager.project-user-story.list.label.project-title = Project title
+manager.project-user-story.list.label.user-story-title = User story title
+
+manager.project-user-story.list.button.create = Create
+
+manager.project-user-story.form.label.project-title = Project title
+manager.project-user-story.form.label.user-story-title = User story title
+
+manager.project-user-story.form.button.create = Create
+manager.project-user-story.form.button.delete = Delete
+
+manager.project-user-story.form.error.existing-assignment = Cannot create an existing assignment
+manager.project-user-story.form.error.create-assignment-published-project = Cannot create an assignment that includes a published project
+manager.project-user-story.form.error.delete-assignment-published-project = Cannot delete an assignment that includes a published project

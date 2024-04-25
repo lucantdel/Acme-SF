@@ -24,13 +24,13 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 
 	@Override
 	public void authorise() {
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 */
 		boolean status;
-		int id;
-		UserStory userStory;
 
-		id = super.getRequest().getData("id", int.class);
-		userStory = this.repository.findOneUserStoryById(id);
-		status = userStory != null;
+		status = super.getRequest().getPrincipal().hasRole(Manager.class);
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -49,13 +49,22 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 	public void unbind(final UserStory object) {
 		assert object != null;
 
-		SelectChoices choices;
+		SelectChoices priorities;
 		Dataset dataset;
+		boolean isMine;
+		UserStory us;
+		Manager manager;
 
-		choices = SelectChoices.from(UserStoryPriority.class, object.getPriority());
+		us = this.repository.findOneUserStoryById(super.getRequest().getData("id", int.class));
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+
+		isMine = us.getManager().equals(manager);
+
+		priorities = SelectChoices.from(UserStoryPriority.class, object.getPriority());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
-		dataset.put("priorities", choices);
+		dataset.put("priorities", priorities);
+		dataset.put("isMine", isMine);
 
 		super.getResponse().addData(dataset);
 	}

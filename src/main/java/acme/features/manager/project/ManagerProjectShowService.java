@@ -22,13 +22,19 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 
 	@Override
 	public void authorise() {
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 * El proyecto que aparece debe pertenecer al manager logueado
+		 */
 		boolean status;
-		int masterId;
 		Project project;
+		Manager manager;
 
-		masterId = super.getRequest().getData("id", int.class);
-		project = this.repository.findOneProjectById(masterId);
-		status = project != null;
+		project = this.repository.findOneProjectById(super.getRequest().getData("id", int.class));
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+
+		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class //
+			&& project.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}

@@ -24,13 +24,13 @@ public class AuthenticatedObjectiveShowService extends AbstractService<Authentic
 
 	@Override
 	public void authorise() {
+		/*
+		 * El usuario debe estar logueado
+		 */
 		boolean status;
-		int id;
-		Objective objective;
 
-		id = super.getRequest().getData("id", int.class);
-		objective = this.repository.findOneObjectiveById(id);
-		status = objective != null;
+		status = super.getRequest().getPrincipal().isAuthenticated();
+
 		super.getResponse().setAuthorised(status);
 	}
 
