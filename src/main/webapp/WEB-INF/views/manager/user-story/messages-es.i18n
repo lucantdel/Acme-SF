@@ -19,3 +19,5 @@ manager.user-story.form.button.create = Crear
 manager.user-story.form.button.update = Actualizar
 manager.user-story.form.button.delete = Eliminar
 manager.user-story.form.button.publish = Publicar
+
+manager.user-story.form.error.negative-estimated-cost = Debe ser mayor que 0
