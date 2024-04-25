@@ -25,6 +25,7 @@ public class AuditorAuditRecordListMineService extends AbstractService<Auditor, 
 	}
 	@Override
 	public void load() {
+
 		Collection<AuditRecord> objects;
 		Principal principal;
 		principal = super.getRequest().getPrincipal();

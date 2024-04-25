@@ -25,6 +25,8 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 	}
 	@Override
 	public void load() {
+		System.out.println(this.repository.avgPeriod() / (1000 * 60));
+
 		AuditorDashboard dashboard;
 		int totalNumberOfCodeAuditsDynamic;
 		int totalNumberOfCodeAuditsStatic;
@@ -33,10 +35,10 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		Integer maximunNumberOfAuditRecords;
 		List<Integer> numberOfAuditRecords;
 		Double deviationOfAuditRecords;
-		Double maximumTimeOfThePeriodlength;
-		Double avegageTimeOfThePeriodlength;
-		Double minimunTimeOfThePeriodlength;
-		Double deviationTimeOfThePeriodlength;
+		Long maximumTimeOfThePeriodlength;
+		Long avegageTimeOfThePeriodlength;
+		Long minimunTimeOfThePeriodlength;
+		Long deviationTimeOfThePeriodlength;
 
 		numberOfAuditRecords = this.repository.numberOfAuditRecord();
 		maximunNumberOfAuditRecords = numberOfAuditRecords.stream().max(Comparator.comparingInt(Integer::intValue)).orElseThrow(null);
@@ -49,10 +51,10 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		totalNumberOfCodeAuditsStatic = this.repository.totalNumberOfCodeAuditsStatic();
 		//averageNumberOfAuditRecords = this.repository.averageNumberOfAuditRecords();
 		//deviationOfAuditRecords = this.repository.deviationOfAuditRecords();
-		//		maximumTimeOfThePeriodlength = this.repository.maximumTimeOfThePeriodlength();
-		//		avegageTimeOfThePeriodlength = this.repository.avegageTimeOfThePeriodlength();
-		//		minimunTimeOfThePeriodlength = this.repository.minimunTimeOfThePeriodlength();
-		//		deviationTimeOfThePeriodlength = this.repository.deviationTimeOfThePeriodlength();
+		maximumTimeOfThePeriodlength = this.repository.maxPeriod();
+		avegageTimeOfThePeriodlength = this.repository.avgPeriod();
+		minimunTimeOfThePeriodlength = this.repository.minPeriod();
+		deviationTimeOfThePeriodlength = this.repository.stddevPeriod();
 		dashboard = new AuditorDashboard();
 		dashboard.setTotalNumberOfCodeAuditsDynamic(totalNumberOfCodeAuditsDynamic);
 		dashboard.setTotalNumberOfCodeAuditsStatic(totalNumberOfCodeAuditsStatic);
@@ -60,10 +62,10 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		dashboard.setMaximunNumberOfAuditRecords(maximunNumberOfAuditRecords);
 		dashboard.setMinimunNumberOfAuditRecords(minimunNumberOfAuditRecords);
 		dashboard.setDeviationOfAuditRecords(deviationOfAuditRecords);
-		//		dashboard.setMaximumTimeOfThePeriodlength(maximumTimeOfThePeriodlength);
-		//		dashboard.setAvegageTimeOfThePeriodlength(avegageTimeOfThePeriodlength);
-		//		dashboard.setMinimunTimeOfThePeriodlength(minimunTimeOfThePeriodlength);
-		//		dashboard.setDeviationTimeOfThePeriodlength(deviationTimeOfThePeriodlength);
+		dashboard.setMaximumTimeOfThePeriodlength(maximumTimeOfThePeriodlength / (1000 * 60));
+		dashboard.setAvegageTimeOfThePeriodlength(avegageTimeOfThePeriodlength / (1000 * 60));
+		dashboard.setMinimunTimeOfThePeriodlength(minimunTimeOfThePeriodlength / 1000);
+		dashboard.setDeviationTimeOfThePeriodlength(deviationTimeOfThePeriodlength / (1000 * 60));
 
 		super.getBuffer().addData(dashboard);
 
@@ -75,10 +77,8 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 
 		dataset = super.unbind(object, //
 			"totalNumberOfCodeAuditsDynamic", "totalNumberOfCodeAuditsStatic",//
-			"averageNumberOfAuditRecords", "maximunNumberOfAuditRecords", "minimunNumberOfAuditRecords", "deviationOfAuditRecords");
-		//"averageNumberOfAuditRecords", "minimunNumberOfAuditRecords", "maximunNumberOfAuditRecords", "deviationOfAuditRecords");
-		//,//
-		//			"maximumTimeOfThePeriodlength", "avegageTimeOfThePeriodlength", "minimunTimeOfThePeriodlength", "deviationTimeOfThePeriodlength");
+			"averageNumberOfAuditRecords", "maximunNumberOfAuditRecords", "minimunNumberOfAuditRecords", "deviationOfAuditRecords",//
+			"maximumTimeOfThePeriodlength", "avegageTimeOfThePeriodlength", "minimunTimeOfThePeriodlength", "deviationTimeOfThePeriodlength");
 
 		super.getResponse().addData(dataset);
 

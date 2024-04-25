@@ -32,5 +32,4 @@ auditor.auditRecord.error.period = Period must be at least 1h long.
 auditor.auditRecord.error.period2 = The finishDate cant be before the StartDate
 auditor.auditRecord.error.period3 = The StartDate must begin before the finishDate
 auditor.auditRecord.error.periodN = A period must have Start and Finish dates
-auditor.auditRecord.error.periodN2 = A period must have Start and Finish dates
 auditor.auditRecord.error.duplicated = CoudAR is unique

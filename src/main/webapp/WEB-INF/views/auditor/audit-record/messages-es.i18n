@@ -11,7 +11,7 @@ auditor.auditRecord.list.button.create = Crear
 
 
 
-auditor.auditRecord.form.label.codeAR = Codigo:
+auditor.auditRecord.form.label.codeAR = CodigoAR:
 auditor.auditRecord.form.label.startDate = Fecha Inicio:
 auditor.auditRecord.form.label.finishDate = Fecha Final:
 auditor.auditRecord.form.label.score = Puntuacion:
@@ -24,6 +24,10 @@ auditor.auditRecord.form.button.create = Crear
 auditor.auditRecord.form.button.update = Editar
 auditor.auditRecord.form.button.delete = Borrar
 
+auditor.auditRecord.error.period2 = La fecha final debe ser posterior a la de inicio
+auditor.auditRecord.error.period3 = La fecha de inicio debe ser anterior a la final
+auditor.auditRecord.error.periodN = El periodo debe tener fecha inicial y final
+auditor.auditRecord.error.duplicated = El CodigoAR no puede ser repetido
 
 
 auditor.auditRecord.error.period = El periodo debe durar al menos 1h.

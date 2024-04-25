@@ -59,6 +59,9 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	public void validate(final AuditRecord object) {
 		assert object != null;
 
+		System.out.println(object.getFinishDate());
+		System.out.println(object.getStartDate());
+
 		if (!super.getBuffer().getErrors().hasErrors("codeAR")) {
 			AuditRecord existing;
 			existing = this.rp.findOneAuditRecordByCode(object.getCodeAR());
@@ -79,7 +82,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 				super.state(object.getStartDate() != null, "finishDate", "auditor.auditRecord.error.periodN");
 		if (object.getFinishDate() == null)
 			if (!super.getBuffer().getErrors().hasErrors("startDate"))
-				super.state(object.getFinishDate() != null, "startDate", "auditor.auditRecord.error.periodN2");
+				super.state(object.getFinishDate() != null, "startDate", "auditor.auditRecord.error.periodN");
 	}
 
 	@Override

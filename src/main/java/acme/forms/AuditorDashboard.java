@@ -22,10 +22,10 @@ public class AuditorDashboard extends AbstractForm {
 	Integer						maximunNumberOfAuditRecords;
 	Double						deviationOfAuditRecords;
 
-	Double						avegageTimeOfThePeriodlength;
-	Double						deviationTimeOfThePeriodlength;
-	Double						minimunTimeOfThePeriodlength;
-	Double						maximumTimeOfThePeriodlength;
+	Long						avegageTimeOfThePeriodlength;
+	Long						deviationTimeOfThePeriodlength;
+	Long						minimunTimeOfThePeriodlength;
+	Long						maximumTimeOfThePeriodlength;
 	// TODO Auto-generated method stub
 
 	// Derived attributes -----------------------------------------------------

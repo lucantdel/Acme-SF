@@ -83,7 +83,7 @@ master.menu.developer.developer-dashboard = Dashboard
 master.menu.auditor = Auditor
 master.menu.auditor.list-mine-code-audits = List my code audits
 master.menu.auditor.list-mine-audit-records = List my Audit Records
-master.menu.auditor.auditor-dashboard = My Dashboard
+master.menu.auditor.auditor-dashboard = Dashboard
 
 # master.menu.user-account ####################################################
 

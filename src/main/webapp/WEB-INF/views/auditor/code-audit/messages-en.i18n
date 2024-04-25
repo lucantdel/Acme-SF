@@ -13,8 +13,6 @@ auditor.codeAudit.list.button.create = Create
 
 
 
-
-
 auditor.codeAudit.form.label.code = Code:
 auditor.codeAudit.form.label.execution = Execution:
 auditor.codeAudit.form.label.type = Type:
@@ -28,8 +26,6 @@ auditor.codeAudit.form.button.create = Create AuditRecord
 auditor.codeAudit.form.button.delete = Delete
 auditor.codeAudit.form.button.update = Update
 auditor.codeAudit.form.button.publish = Publish
-auditor.auditRecord.list.button.list = List AuditRecords
-
 
 auditor.codeAudit.error.Mark = Mark must be at least C
 

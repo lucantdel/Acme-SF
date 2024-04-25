@@ -45,9 +45,7 @@
 			<acme:submit code="auditor.codeAudit.form.button.update" action="/auditor/code-audit/update"/>
 			<acme:submit code="auditor.codeAudit.form.button.delete" action="/auditor/code-audit/delete"/>
 			<acme:submit code="auditor.codeAudit.form.button.publish" action="/auditor/code-audit/publish"/>
-			<acme:submit code="auditor.auditRecord.form.button.create" action="/auditor/audit-record/create"/>
-			<acme:submit code="auditor.auditRecord.list.button.list" action="/auditor/audit-record/list"/>
-			
+			<acme:submit code="auditor.auditRecord.form.button.create" action="/auditor/audit-record/create"/>			
 			
 			
 		</jstl:when>
