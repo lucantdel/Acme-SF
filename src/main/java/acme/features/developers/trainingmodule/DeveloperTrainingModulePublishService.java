@@ -12,6 +12,7 @@ import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
 import acme.entities.trainingModule.Difficulty;
 import acme.entities.trainingModule.TrainingModule;
+import acme.entities.trainingSession.TrainingSession;
 import acme.roles.Developer;
 
 @Service
@@ -79,6 +80,11 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
+		Collection<TrainingSession> sessiones;
+		sessiones = this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId());
+
+		for (TrainingSession ses : sessiones)
+			ses.setDraftMode(false);
 
 		object.setDraftMode(false);
 		this.repository.save(object);
