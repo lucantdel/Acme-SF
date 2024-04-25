@@ -1,16 +1,44 @@
-sponsor.sponsorship.list.title = Listado de patrocinios
+sponsor.sponsorship.list.title = Listado de mis patrocinios
 sponsor.sponsorship.form.title = Detalles de Patrocinios
 
+#Listado
 sponsor.sponsorship.list.label.code = Código
 sponsor.sponsorship.list.label.moment = Momento
+sponsor.sponsorship.list.label.startDuration = Duración Inicial
+sponsor.sponsorship.list.label.finalDuration = Duración Final
 sponsor.sponsorship.list.label.amount = Cantidad
 sponsor.sponsorship.list.label.type = Tipo
+sponsor.sponsorship.list.label.email = Correo Electrónico
+sponsor.sponsorship.list.label.link = Enlace
+sponsor.sponsorship.list.label.project = Projecto
+sponsor.sponsorship.list.label.draft-mode = Editable
 
+sponsor.sponsorship.list.button.create-form = Crear patrocinio
+
+
+#Form
 sponsor.sponsorship.form.label.code = Código:
 sponsor.sponsorship.form.label.moment = Momento:
 sponsor.sponsorship.form.label.startDuration = Duración Inicial:
 sponsor.sponsorship.form.label.finalDuration = Duración Final:
 sponsor.sponsorship.form.label.amount = Cantidad:
 sponsor.sponsorship.form.label.type = Tipo:
-sponsor.sponsorship.form.label.email = Correo Electrónico:
-sponsor.sponsorship.form.label.link = Enlace:
+sponsor.sponsorship.form.label.email = Correo Electrónico (opcional):
+sponsor.sponsorship.form.label.link = Enlace (opcional):
+sponsor.sponsorship.form.label.project = Projecto:
+
+sponsor.sponsorship.form.button.invoices-list = Listar facturas
+
+sponsor.sponsorship.form.button.update = Actualizar
+sponsor.sponsorship.form.button.delete = Eliminar
+sponsor.sponsorship.form.button.publish = Publicar
+#sponsor.sponsorship.form.button.invoices-list = Listar facturas
+
+sponsor.sponsorship.form.button.create-sponsorship = Crear
+
+sponsor.sponsorship.form.error.duplicated = Este código existe ya
+sponsor.sponsorship.form.error.duration-start-date-not-valid = El inicio de la fecha de duración debe ser posterior a la de momento
+sponsor.sponsorship.form.error.duration-not-valid = La duración del patrocinio debe ser de al menos un mes. La fecha de inicio debe ser anterior a la final
+sponsor.sponsorship.form.error.amount-must-be-positive = La cantidad de dinero debe ser positiva
+sponsor.sponsorship.form.error.sponsorship-amount-and-invoices-total-amount-not-equal = La cantidad total del patrocinio y la suma del valor de las facturas deben ser iguales
+sponsor.sponsorship.form.error.currency-not-supported = La moneda elegida no es soportada por el sistema

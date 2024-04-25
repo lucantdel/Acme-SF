@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
+import acme.entities.sponsorships.SponsorshipType;
 import acme.roles.Sponsor;
 
 @Service
@@ -44,9 +47,15 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		Dataset dataset;
+		SelectChoices choices;
+		SelectChoices projectsChoices;
+		Collection<Project> projects;
 
-		dataset = super.unbind(object, "code", "moment", "amount", "type");
+		Dataset dataset;
+		choices = SelectChoices.from(SponsorshipType.class, object.getType());
+		projects = this.repository.findAllProjects();
+		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
+		dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "draftMode", "project");
 
 		if (object.isDraftMode()) {
 			final Locale local = super.getRequest().getLocale();
@@ -54,7 +63,11 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 		} else
 			dataset.put("draftMode", "No");
 
+		dataset.put("sponsorshipType", choices);
+		dataset.put("project", projectsChoices.getSelected().getKey());
+		dataset.put("projects", projectsChoices);
 		super.getResponse().addData(dataset);
+
 	}
 
 }

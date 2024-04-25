@@ -18,6 +18,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.entities.projects.Project;
 import acme.roles.Sponsor;
 import lombok.Getter;
@@ -53,7 +54,7 @@ public class Sponsorship extends AbstractEntity {
 	protected Date				finalDuration;
 
 	@Min(0)
-	protected double			amount;
+	protected Money				amount;
 
 	@NotNull
 	protected SponsorshipType	type;
