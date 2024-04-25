@@ -24,6 +24,9 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 
 	@Override
 	public void authorise() {
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 */
 		boolean status;
 
 		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class;
@@ -53,8 +56,16 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 
 	@Override
 	public void validate(final UserStory object) {
-		// TODO: Mensajes de error por restricciones
+		/*
+		 * El coste (en horas) estimado debe ser mayor que 0
+		 */
 		assert object != null;
+		// TODO: Necesario? ya se comprueba la entidad y tiene su error correspondiente
+		if (!super.getBuffer().getErrors().hasErrors("estimatedCost")) {
+			int ec;
+			ec = object.getEstimatedCost();
+			super.state(ec > 0, "estimatedCost", "manager.user-story.form.error.negative-estimated-cost");
+		}
 	}
 
 	@Override

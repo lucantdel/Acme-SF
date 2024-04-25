@@ -25,17 +25,20 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 
 	@Override
 	public void authorise() {
-		boolean status = true;
-		Collection<UserStory> uss;
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 * Las historias de usuario que aparecen deben pertenecer al manager logueado
+		 */
+		boolean status;
 		int managerId;
-		Manager manager;
+		Collection<UserStory> userStories;
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class;
 
-		uss = this.repository.findUserStoriesByManagerId(managerId);
-		manager = this.repository.findOneManagerById(managerId);
-		for (UserStory us : uss)
-			status = us.getManager().equals(manager) && status;
+		userStories = this.repository.findUserStoriesByManagerId(managerId);
+		for (UserStory us : userStories)
+			status = status && us.getManager().equals(this.repository.findOneManagerById(managerId));
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -59,6 +62,7 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 
 		dataset = super.unbind(object, "title", "estimatedCost", "priority");
 
+		// Cambiar true o false por si o no
 		if (object.isDraftMode()) {
 			final Locale local = super.getRequest().getLocale();
 			dataset.put("draftMode", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");

@@ -37,7 +37,7 @@ public class ManagerProjectUserStoryListMineService extends AbstractService<Mana
 
 		pus = this.repository.findProjectUserStoriesByManagerId(managerId);
 		for (ProjectUserStory p : pus)
-			status = status && p.getProject().getManager() == this.repository.findOneManagerById(managerId);
+			status = status && p.getProject().getManager().equals(this.repository.findOneManagerById(managerId));
 
 		super.getResponse().setAuthorised(status);
 	}

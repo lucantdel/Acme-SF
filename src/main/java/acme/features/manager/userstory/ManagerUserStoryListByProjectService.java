@@ -26,16 +26,22 @@ public class ManagerUserStoryListByProjectService extends AbstractService<Manage
 
 	@Override
 	public void authorise() {
+		/*
+		 * Comprobar que el usuario logueado es Manager
+		 * El proyecto al que pertenecen las historias de usuario que aparecen deben pertenecer al manager logueado
+		 */
 		boolean status;
+		int managerId;
 		int masterId;
-		Manager manager;
 		Project project;
-		// TODO: comprobar tambien que todas las historias de usuario que aparecen son del manager logueado
+
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+
 		masterId = super.getRequest().getData("masterId", int.class);
-		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		project = this.repository.findOneProjectById(masterId);
 
-		status = project.getManager().equals(manager);
+		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class //
+			&& project.getManager().equals(this.repository.findOneManagerById(managerId));
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -59,6 +65,7 @@ public class ManagerUserStoryListByProjectService extends AbstractService<Manage
 
 		dataset = super.unbind(object, "title", "estimatedCost", "priority");
 
+		// Cambiar true o false por si o no
 		if (object.isDraftMode()) {
 			final Locale local = super.getRequest().getLocale();
 			dataset.put("draftMode", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");

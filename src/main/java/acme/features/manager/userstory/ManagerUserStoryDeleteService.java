@@ -1,12 +1,15 @@
 
 package acme.features.manager.userstory;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.projects.ProjectUserStory;
 import acme.entities.projects.UserStory;
 import acme.entities.projects.UserStoryPriority;
 import acme.roles.Manager;
@@ -24,13 +27,20 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 	@Override
 	public void authorise() {
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 * La historia de usuario que aparece debe pertenecer al manager logueado
+		 * La historia de usuario debe estar en modo borrador
+		 */
 		boolean status;
 		UserStory us;
 		Manager manager;
 
 		us = this.repository.findOneUserStoryById(super.getRequest().getData("id", int.class));
 		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
-		status = us.getManager().equals(manager) && us.isDraftMode();
+
+		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class //
+			&& us.getManager().equals(manager) && us.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,15 +65,19 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 	@Override
 	public void validate(final UserStory object) {
-		// TODO: Mensajes de error por restricciones
 		assert object != null;
 	}
 
 	@Override
 	public void perform(final UserStory object) {
-		// TODO: comprobar si hay dependencias con otras entidades y eliminarlas
+		/*
+		 * Eliminar las asignaciones cuya historia de usuario sea la que se va a eliminar
+		 */
 		assert object != null;
 
+		Collection<ProjectUserStory> pus = this.repository.findProjectUserStoryByUserStoryId(object.getId());
+
+		this.repository.deleteAll(pus);
 		this.repository.delete(object);
 	}
 

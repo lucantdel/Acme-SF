@@ -48,6 +48,7 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 
 		dataset = super.unbind(object, "code", "title", "cost");
 
+		// Cambiar true o false por si o no
 		if (object.isDraftMode()) {
 			final Locale local = super.getRequest().getLocale();
 			dataset.put("draftMode", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");
