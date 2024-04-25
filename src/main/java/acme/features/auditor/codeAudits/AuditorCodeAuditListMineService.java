@@ -43,11 +43,20 @@ public class AuditorCodeAuditListMineService extends AbstractService<Auditor, Co
 		assert object != null;
 
 		Dataset dataset;
+		String payload;
 
 		dataset = super.unbind(object, "code", "execution", "type", "auditor");
 		String mark = object.Mark(this.repository.getScoreOfAsociatedPublishedAuditRecords(object));
 		dataset.put("Mark", mark);
 		dataset.put("project", object.getProject().getCode());
+		payload = String.format(//
+			"%s    %s    %s",//
+			object.getCorrectiveActions(),//
+			object.getOptionalLink(),//
+			object.getAuditor().getUserAccount().getUsername());
+
+		dataset.put("payload", payload);
+		System.out.println(dataset);
 
 		super.getResponse().addData(dataset);
 	}

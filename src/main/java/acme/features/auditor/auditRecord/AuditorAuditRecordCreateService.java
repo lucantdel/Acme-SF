@@ -26,10 +26,8 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	@Override
 	public void authorise() {
 		int id;
-		CodeAudit codeAudit;
 		Auditor auditor;
 		id = Integer.valueOf(super.getRequest().getData().values().stream().collect(Collectors.toList()).get(0).toString());
-		codeAudit = this.repository.findCodeAuditById(id);
 		auditor = this.repository.getAuditorbyCodeAuditId(id);
 		boolean autorizacion = auditor.getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername());
 		super.getResponse().setAuthorised(autorizacion);
