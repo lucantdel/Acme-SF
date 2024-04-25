@@ -1,23 +1,23 @@
 
-package acme.features.authenticated.objective;
+package acme.features.administrator.objective;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
+import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.objectives.Objective;
 
 @Service
-public class AuthenticatedObjectiveListService extends AbstractService<Authenticated, Objective> {
+public class AdministratorObjectiveListService extends AbstractService<Administrator, Objective> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedObjectiveRepository repository;
+	private AdministratorObjectiveRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -25,11 +25,11 @@ public class AuthenticatedObjectiveListService extends AbstractService<Authentic
 	@Override
 	public void authorise() {
 		/*
-		 * El usuario debe estar logueado
+		 * El usuario debe tener el rol Administrator
 		 */
 		boolean status;
 
-		status = super.getRequest().getPrincipal().isAuthenticated();
+		status = super.getRequest().getPrincipal().hasRole(Administrator.class);
 
 		super.getResponse().setAuthorised(status);
 	}

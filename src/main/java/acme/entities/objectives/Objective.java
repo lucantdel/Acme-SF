@@ -25,7 +25,11 @@ import lombok.Setter;
 @Setter
 public class Objective extends AbstractEntity {
 
+	// Serialisation identifier -----------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
+
+	// Attributes -------------------------------------------------------------
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
@@ -42,6 +46,7 @@ public class Objective extends AbstractEntity {
 	@Enumerated(EnumType.STRING)
 	private ObjectivePriority	priority;
 
+	// to indicate whether it is critical or not
 	private boolean				status;
 
 	@Past
@@ -55,5 +60,9 @@ public class Objective extends AbstractEntity {
 
 	@URL
 	private String				optionalLink;
+
+	// Derived attributes ----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
 
 }

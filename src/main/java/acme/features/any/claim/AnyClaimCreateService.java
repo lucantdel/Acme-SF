@@ -60,7 +60,7 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			final boolean duplicatedCode = this.repository.findPublishedClaims().stream().anyMatch(e -> e.getCode().equals(object.getCode()));
 
-			super.state(!duplicatedCode, "code", "any.claim.form.error.duplicated-code = Duplicated code");
+			super.state(!duplicatedCode, "code", "any.claim.form.error.duplicated-code");
 		}
 
 	}

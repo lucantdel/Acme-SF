@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.objective;
+package acme.features.administrator.objective;
 
 import java.util.Collection;
 
@@ -10,7 +10,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.objectives.Objective;
 
 @Repository
-public interface AuthenticatedObjectiveRepository extends AbstractRepository {
+public interface AdministratorObjectiveRepository extends AbstractRepository {
 
 	@Query("select o from Objective o where o.id = :id")
 	Objective findOneObjectiveById(int id);

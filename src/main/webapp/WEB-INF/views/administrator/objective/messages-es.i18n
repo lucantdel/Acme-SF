@@ -1,0 +1,19 @@
+administrator.objective.list.title = Listado de objectivos
+administrator.objective.form.title = Detalles de objectivo
+
+administrator.objective.list.label.title = Título
+administrator.objective.list.label.startMoment = Inicio
+administrator.objective.list.label.endMoment = Fin
+administrator.objective.list.label.priority = Prioridad
+
+administrator.objective.form.label.title = Título:
+administrator.objective.form.label.description = Descripción:
+administrator.objective.form.label.priority = Prioridad:
+administrator.objective.form.label.status = Estado (crítico)
+administrator.objective.form.label.instantiationMoment = Momento de instanciación:
+administrator.objective.form.label.startMoment = Inicio:
+administrator.objective.form.label.endMoment = Fin:
+administrator.objective.form.label.optionalLink = Enlace opcional:
+administrator.objective.form.label.confirmation = Confirmación
+
+administrator.objective.form.button.create = Crear

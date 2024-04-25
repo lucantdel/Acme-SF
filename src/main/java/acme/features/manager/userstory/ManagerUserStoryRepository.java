@@ -8,25 +8,29 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.projects.Project;
+import acme.entities.projects.ProjectUserStory;
 import acme.entities.projects.UserStory;
 import acme.roles.Manager;
 
 @Repository
 public interface ManagerUserStoryRepository extends AbstractRepository {
 
-	@Query("select pus.userStory from ProjectUserStory pus where pus.project.id = :id")
-	Collection<UserStory> findUserStoriesByProjectId(int id);
+	@Query("select us from UserStory us where us.id = :userStoryId")
+	UserStory findOneUserStoryById(int userStoryId);
 
-	@Query("select us from UserStory us where us.manager.id = :id")
-	Collection<UserStory> findUserStoriesByManagerId(int id);
+	@Query("select pus.userStory from ProjectUserStory pus where pus.project.id = :projectId")
+	Collection<UserStory> findUserStoriesByProjectId(int projectId);
 
-	@Query("select us from UserStory us where us.id = :id")
-	UserStory findOneUserStoryById(int id);
+	@Query("select us from UserStory us where us.manager.id = :managerId")
+	Collection<UserStory> findUserStoriesByManagerId(int managerId);
 
-	@Query("select p from Project p where p.id = :id")
-	Project findOneProjectById(int id);
+	@Query("select p from Project p where p.id = :projectId")
+	Project findOneProjectById(int projectId);
 
-	@Query("select m from Manager m where m.id = :id")
-	Manager findManagerById(int id);
+	@Query("select m from Manager m where m.id = :managerId")
+	Manager findOneManagerById(int managerId);
+
+	@Query("select pus from ProjectUserStory pus where pus.userStory.id = :userStoryId")
+	Collection<ProjectUserStory> findProjectUserStoryByUserStoryId(int userStoryId);
 
 }
