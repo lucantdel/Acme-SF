@@ -1,6 +1,8 @@
 
 package acme.features.manager.project;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,17 +25,21 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 	@Override
 	public void authorise() {
-
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 * El proyecto que aparece debe pertenecer al manager logueado
+		 * El proyecto debe estar en estado borrador
+		 */
 		boolean status;
-		int projectId;
 		Project project;
 		Manager manager;
 
-		projectId = super.getRequest().getData("id", int.class);
-		project = this.repository.findOneProjectById(projectId);
-		manager = project == null ? null : project.getManager();
+		project = this.repository.findOneProjectById(super.getRequest().getData("id", int.class));
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 
-		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class //
+			&& project.getManager().equals(manager) && project.isDraftMode();
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -55,25 +61,30 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 	@Override
 	public void validate(final Project object) {
+		/*
+		 * No puede haber proyectos con el mismo codigo
+		 * No se pueden introducir cantidades negativas
+		 * La divisa introducida debe existir en el sistema
+		 */
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			final int proyectId = super.getRequest().getData("id", int.class);
-			final boolean duplicatedCode = this.repository.findAllProjects().stream().filter(e -> e.getId() != proyectId).anyMatch(e -> e.getCode().equals(object.getCode()));
+			Optional<Project> existing;
 
-			super.state(!duplicatedCode, "code", "manager.project.form.error.duplicated-code");
+			existing = this.repository.findOneProjectByCode(object.getCode());
+			if (existing.isPresent())
+				super.state(existing.get() == null, "code", "manager.project.form.error.duplicated-code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			Double amount;
 			amount = object.getCost().getAmount();
-			super.state(amount >= 0, "cost", "manager.project.form.error.negativeCost");
+			super.state(amount >= 0, "cost", "manager.project.form.error.negative-cost");
 
-			final SystemConfiguration systemConfig = this.repository.findActualSystemConfiguration();
+			final SystemConfiguration sc = this.repository.findActualSystemConfiguration();
 			final String currency = object.getCost().getCurrency();
-			super.state(systemConfig.getAcceptedCurrencies().contains(currency), "cost", "manager.project.form.error.currency");
+			super.state(sc.getAcceptedCurrencies().contains(currency), "cost", "manager.project.form.error.not-accepted-currency");
 		}
-
 	}
 
 	@Override

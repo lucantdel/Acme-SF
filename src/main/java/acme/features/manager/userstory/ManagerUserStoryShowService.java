@@ -26,17 +26,10 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 	public void authorise() {
 		/*
 		 * El rol del usuario logueado debe ser Manager
-		 * La historia de usuario que aparece debe pertenecer al manager logueado
 		 */
 		boolean status;
-		UserStory us;
-		Manager manager;
 
-		us = this.repository.findOneUserStoryById(super.getRequest().getData("id", int.class));
-		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
-
-		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class //
-			&& us.getManager().equals(manager);
+		status = super.getRequest().getPrincipal().hasRole(Manager.class);
 
 		super.getResponse().setAuthorised(status);
 	}

@@ -68,7 +68,7 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			ProjectUserStory existing;
 
-			existing = this.repository.findOneAssignmentByProjectIdAndUserStoryId(project.getId(), userStory.getId());
+			existing = this.repository.findOneProjectUserStoryByProjectIdAndUserStoryId(project.getId(), userStory.getId());
 			super.state(existing == null, "project", "manager.project-user-story.form.error.existing-assignment");
 
 			// TODO: Necesaria? Si en las choices solo incluyo proyectos en borrador nunca se llamará a este error

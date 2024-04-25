@@ -19,10 +19,10 @@ public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 	ProjectUserStory findOneProjectUserStoryById(int projectUserStoryId);
 
 	@Query(" select pus from ProjectUserStory pus where pus.project.id = :projectId and pus.userStory.id = :userStoryId")
-	ProjectUserStory findOneAssignmentByProjectIdAndUserStoryId(int projectId, int userStoryId);
+	ProjectUserStory findOneProjectUserStoryByProjectIdAndUserStoryId(int projectId, int userStoryId);
 
 	@Query("select pus from ProjectUserStory pus where pus.project.manager.id = :managerId")
-	Collection<ProjectUserStory> findProjectUserStoriesByManagerId(int managerId);
+	Collection<ProjectUserStory> findProjectUserStoryByManagerId(int managerId);
 
 	@Query("select m from Manager m where m.id = :managerId")
 	Manager findOneManagerById(int managerId);

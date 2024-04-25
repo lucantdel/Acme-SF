@@ -35,7 +35,7 @@ public class ManagerProjectUserStoryListMineService extends AbstractService<Mana
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class;
 
-		pus = this.repository.findProjectUserStoriesByManagerId(managerId);
+		pus = this.repository.findProjectUserStoryByManagerId(managerId);
 		for (ProjectUserStory p : pus)
 			status = status && p.getProject().getManager().equals(this.repository.findOneManagerById(managerId));
 
@@ -49,7 +49,7 @@ public class ManagerProjectUserStoryListMineService extends AbstractService<Mana
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 
-		objects = this.repository.findProjectUserStoriesByManagerId(managerId);
+		objects = this.repository.findProjectUserStoryByManagerId(managerId);
 
 		super.getBuffer().addData(objects);
 	}

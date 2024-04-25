@@ -25,17 +25,21 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 	@Override
 	public void authorise() {
-
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 * El proyecto que aparece debe pertenecer al manager logueado
+		 * El proyecto debe estar en estado borrador
+		 */
 		boolean status;
-		int projectId;
 		Project project;
 		Manager manager;
 
-		projectId = super.getRequest().getData("id", int.class);
-		project = this.repository.findOneProjectById(projectId);
-		manager = project == null ? null : project.getManager();
+		project = this.repository.findOneProjectById(super.getRequest().getData("id", int.class));
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 
-		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class //
+			&& project.getManager().equals(manager) && project.isDraftMode();
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -53,32 +57,41 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Override
 	public void bind(final Project object) {
 		assert object != null;
-		super.bind(object, "code", "title", "projectAbstract", "link", "cost", "indication");
 
+		super.bind(object, "code", "title", "projectAbstract", "link", "cost", "indication");
 	}
 
 	@Override
 	public void validate(final Project object) {
+		/*
+		 * No puede tener errores criticos (indication debe ser false)
+		 * Tiene que tener al menos una historia de usuario
+		 * Todas las historias de usuario deben estar publicadas
+		 */
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("indication"))
-			super.state(object.isIndication() == false, "indication", "manager.project.form.error.hasFatalError");
+			super.state(!object.isIndication(), "indication", "manager.project.form.error.has-fatal-error");
 
 		Collection<UserStory> userStories;
 		int totalUserStories;
+		boolean allUserStoriesPublished;
 
-		userStories = this.repository.findAllUserStoriesByProjectId(object.getId());
-		boolean allUserStoriesPublished = userStories.stream().allMatch(us -> !us.isDraftMode());
+		userStories = this.repository.findUserStoriesByProjectId(object.getId());
+
 		totalUserStories = userStories.size();
 
-		super.state(totalUserStories >= 1, "*", "manager.project.form.error.not-enough-user-stories");
-		super.state(allUserStoriesPublished, "*", "manager.project.form.error.not-all-user-stories-published");
+		allUserStoriesPublished = userStories.stream().allMatch(us -> !us.isDraftMode());
 
+		super.state(totalUserStories >= 1, "*", "manager.project.form.error.not-enough-user-stories");
+
+		super.state(allUserStoriesPublished, "*", "manager.project.form.error.not-all-user-stories-published");
 	}
 
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
+
 		object.setDraftMode(false);
 		this.repository.save(object);
 	}

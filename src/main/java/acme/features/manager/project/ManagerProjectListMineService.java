@@ -25,7 +25,22 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 * Los proyectos que aparecen deben pertenecer al manager logueado
+		 */
+		boolean status;
+		int managerId;
+		Collection<Project> projects;
+
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class;
+
+		projects = this.repository.findProjectsByManagerId(managerId);
+		for (Project p : projects)
+			status = status && p.getManager().equals(this.repository.findOneManagerById(managerId));
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

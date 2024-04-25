@@ -29,7 +29,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		 */
 		boolean status;
 
-		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class;
+		status = super.getRequest().getPrincipal().hasRole(Manager.class);
 
 		super.getResponse().setAuthorised(status);
 	}

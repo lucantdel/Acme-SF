@@ -25,6 +25,9 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 	@Override
 	public void authorise() {
+		/*
+		 * El rol del usuario logueado debe ser Manager
+		 */
 		boolean status;
 
 		status = super.getRequest().getPrincipal().hasRole(Manager.class);
@@ -54,6 +57,11 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 	@Override
 	public void validate(final Project object) {
+		/*
+		 * No puede haber proyectos con el mismo codigo
+		 * No se pueden introducir cantidades negativas
+		 * La divisa introducida debe existir en el sistema
+		 */
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
@@ -61,20 +69,18 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 			existing = this.repository.findOneProjectByCode(object.getCode());
 			if (existing.isPresent())
-				super.state(existing.get() == null, "code", "manager.project.form.error.duplicated");
-
+				super.state(existing.get() == null, "code", "manager.project.form.error.duplicated-code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			Double amount;
 			amount = object.getCost().getAmount();
-			super.state(amount >= 0, "cost", "manager.project.form.error.negativeCost");
+			super.state(amount >= 0, "cost", "manager.project.form.error.negative-cost");
 
-			final SystemConfiguration systemConfig = this.repository.findActualSystemConfiguration();
+			final SystemConfiguration sc = this.repository.findActualSystemConfiguration();
 			final String currency = object.getCost().getCurrency();
-			super.state(systemConfig.getAcceptedCurrencies().contains(currency), "cost", "manager.project.form.error.currency");
+			super.state(sc.getAcceptedCurrencies().contains(currency), "cost", "manager.project.form.error.not-accepted-currency");
 		}
-
 	}
 
 	@Override
