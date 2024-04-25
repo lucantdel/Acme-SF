@@ -1,16 +1,16 @@
-authenticated.objective.list.title = Listing of objectives
-authenticated.objective.form.title = Objective form
+administrator.objective.list.title = Listing of objectives
+administrator.objective.form.title = Objective form
 
-authenticated.objective.list.label.title = Title
-authenticated.objective.list.label.startMoment = Start moment
-authenticated.objective.list.label.endMoment = End moment
-authenticated.objective.list.label.priority = Priority
+administrator.objective.list.label.title = Title
+administrator.objective.list.label.startMoment = Start moment
+administrator.objective.list.label.endMoment = End moment
+administrator.objective.list.label.priority = Priority
 
-authenticated.objective.form.label.title = Title:
-authenticated.objective.form.label.description = Description:
-authenticated.objective.form.label.priority = Priority:
-authenticated.objective.form.label.status = Status (critical)
-authenticated.objective.form.label.instantiationMoment = Instantiation moment:
-authenticated.objective.form.label.startMoment = Start moment:
-authenticated.objective.form.label.endMoment = End moment:
-authenticated.objective.form.label.optionalLink = Optional link:
+administrator.objective.form.label.title = Title:
+administrator.objective.form.label.description = Description:
+administrator.objective.form.label.priority = Priority:
+administrator.objective.form.label.status = Status (critical)
+administrator.objective.form.label.instantiationMoment = Instantiation moment:
+administrator.objective.form.label.startMoment = Start moment:
+administrator.objective.form.label.endMoment = End moment:
+administrator.objective.form.label.optionalLink = Optional link:
