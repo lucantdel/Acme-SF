@@ -47,7 +47,7 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit", "auditor");
+		super.bind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode", "codeAudit", "auditor");
 	}
 	@Override
 	public void validate(final AuditRecord object) {
@@ -67,7 +67,7 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit", "auditor");
+		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode", "codeAudit", "auditor");
 
 		super.getResponse().addData(dataset);
 	}

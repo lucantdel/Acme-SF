@@ -51,16 +51,17 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
-		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project");
+		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink");
 
 	}
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+		System.out.println(object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object)).trim().equals("F"));
 
 		if (!super.getBuffer().getErrors().hasErrors("Mark"))
 
-			super.state(!object.Mark(this.rp.getScoreOfAsociatedAuditRecords(object)).trim().equals("F") && !object.Mark(this.rp.getScoreOfAsociatedAuditRecords(object)).trim().equals("F-"), "Mark", "auditor.codeAudit.error.Mark");
+			super.state(!object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object)).trim().equals("F") && !object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object)).trim().equals("F-"), "Mark", "auditor.codeAudit.error.Mark");
 	}
 	@Override
 	public void perform(final CodeAudit object) {
@@ -74,7 +75,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode");
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 

@@ -25,12 +25,16 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		boolean status;
 		int id;
 		CodeAudit codeAudit;
+		Auditor auditor;
 
 		id = super.getRequest().getData("id", int.class);
 		codeAudit = this.rp.findCodeAuditById(id);
-		status = codeAudit != null;
+		auditor = codeAudit == null ? null : codeAudit.getAuditor();
 
-		super.getResponse().setAuthorised(status);
+		status = codeAudit != null;
+		boolean autorizacion = auditor.getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername());
+
+		super.getResponse().setAuthorised(autorizacion && status);
 	}
 
 	@Override
@@ -50,9 +54,11 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode", "auditor");
-		String mark = object.Mark(this.repository.getScoreOfAsociatedAuditRecords(object));
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode", "auditor");
+		String mark = object.Mark(this.repository.getScoreOfAsociatedPublishedAuditRecords(object));
 		dataset.put("Mark", mark);
+		dataset.put("project", object.getProject().getCode());
+
 		super.getResponse().addData(dataset);
 	}
 }
