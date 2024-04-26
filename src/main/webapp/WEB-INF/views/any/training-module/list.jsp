@@ -8,4 +8,5 @@
 	<acme:list-column code="any.trainingModule.list.label.creationMoment" path="creationMoment" width="40%"/>
 	<acme:list-column code="any.trainingModule.list.label.difficultyLevel" path="difficultyLevel" width="20%"/>
 	<acme:list-column code="any.trainingModule.list.label.project" path="project" width="20%"/>
+	<acme:list-payload path="payload"/>
 </acme:list>

@@ -10,7 +10,7 @@
 	<acme:list-column code="developer.trainingModule.list.label.project" path="project" width="15%"/>
 	<acme:list-column code="developer.trainingModule.list.label.numberOfTrainingSessions" path="numberOfTrainingSessions" width="10%"/>
 	<acme:list-column code="developer.trainingModule.list.label.draftMode" path="draftMode" width="15%"/>
-	
+	<acme:list-payload path="payload"/>
 </acme:list>
 <acme:button code="developer.trainingModule.list.button.create" action="/developer/training-module/create"/>
 	
