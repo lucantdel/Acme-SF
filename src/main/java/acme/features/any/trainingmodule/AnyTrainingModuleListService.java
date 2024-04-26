@@ -40,9 +40,20 @@ public class AnyTrainingModuleListService extends AbstractService<Any, TrainingM
 		assert object != null;
 
 		Dataset dataset;
+		String payload;
 
 		dataset = super.unbind(object, "code", "creationMoment", "developer", "difficultyLevel");
 		dataset.put("project", object.getProject().getCode());
+		payload = String.format(//
+			"%s; %s; %s; %s; %s", //
+			object.getDetails(), //
+			object.getUpdateMoment(), //
+			object.getLink(), //
+			object.getTotalEstimatedTime(), //
+			object.getDeveloper());
+
+		dataset.put("payload", payload);
+
 		super.getResponse().addData(dataset);
 	}
 }

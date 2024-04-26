@@ -1,9 +1,9 @@
 key,code,moment,start-duration,final-duration,amount,type,email,link,draftMode,key:project,key:sponsor
-sponsorship-01,ABC-123,2021/10/28 13:00,2025/09/27 13:00,2025/11/27 13:00,10000,FINANCIAL,amazon@gmail.com,https://www.amazon.es/,false,project-01,sponsor-01
-sponsorship-02,AAA-111,2021/10/29 13:00,2025/09/28 13:00,2025/11/27 13:00,100,INKIND,hp@gmail.com,https://www.hp.es/,false,project-02,sponsor-01
-sponsorship-03,BBB-222,2021/10/30 13:00,2025/09/29 13:00,2025/11/27 13:00,1000,FINANCIAL,apple@gmail.com,https://www.apple.es/,false,project-03,sponsor-01
-sponsorship-04,CCC-333,2021/10/11 13:00,2025/09/30 13:00,2025/11/27 13:00,200,INKIND,discord@gmail.com,https://www.discord.es/,false,project-04,sponsor-01
-sponsorship-05,DEF-456,2021/10/01 13:00,2025/01/01 13:00,2026/03/01 13:00,1,INKIND,lacaixa@gmail.com,https://www.lacaixa.es/,true,project-05,sponsor-02
-sponsorship-06,DDD-444,2021/10/03 13:00,2025/02/12 13:00,2026/02/01 13:00,33,FINANCIAL,netflix@gmail.com,https://www.netflix.es/,false,project-06,sponsor-02
-sponsorship-07,EEE-555,2021/10/04 13:00,2025/03/13 13:00,2026/06/01 13:00,44,INKIND,hbo@gmail.com,https://www.hbo.es/,false,project-07,sponsor-02
-sponsorship-08,FFF-666,2021/10/05 13:00,2025/01/14 13:00,2026/07/01 13:00,55,FINANCIAL,primevideo@gmail.com,https://www.primevideo.es/,false,project-08,sponsor-02
+sponsorship-01,ABC-123,2021/10/28 13:00,2025/09/27 13:00,2025/11/27 13:00,780 USD,FINANCIAL,amazon@gmail.com,https://www.amazon.es/,true,project-01,sponsor-01
+sponsorship-02,AAA-111,2021/10/29 13:00,2025/09/28 13:00,2025/11/27 13:00,100 EUR,INKIND,hp@gmail.com,https://www.hp.es/,false,project-02,sponsor-01
+sponsorship-03,BBB-222,2021/10/30 13:00,2025/09/29 13:00,2025/11/27 13:00,1000 GBP,FINANCIAL,apple@gmail.com,https://www.apple.es/,false,project-03,sponsor-01
+sponsorship-04,CCC-333,2021/10/11 13:00,2025/09/30 13:00,2025/11/27 13:00,200 GBP,INKIND,discord@gmail.com,https://www.discord.es/,false,project-04,sponsor-01
+sponsorship-05,DEF-456,2021/10/01 13:00,2025/01/01 13:00,2026/03/01 13:00,3000 USD,INKIND,lacaixa@gmail.com,https://www.lacaixa.es/,false,project-05,sponsor-02
+sponsorship-06,DDD-444,2021/10/03 13:00,2025/02/12 13:00,2026/02/01 13:00,33 USD,FINANCIAL,netflix@gmail.com,https://www.netflix.es/,false,project-06,sponsor-02
+sponsorship-07,EEE-555,2021/10/04 13:00,2025/03/13 13:00,2026/06/01 13:00,44 USD,INKIND,hbo@gmail.com,https://www.hbo.es/,false,project-07,sponsor-02
+sponsorship-08,FFF-666,2021/10/05 13:00,2025/01/14 13:00,2026/07/01 13:00,55 USD,FINANCIAL,primevideo@gmail.com,https://www.primevideo.es/,false,project-08,sponsor-02

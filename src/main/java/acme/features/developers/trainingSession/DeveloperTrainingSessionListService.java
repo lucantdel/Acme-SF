@@ -43,9 +43,24 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		assert object != null;
 
 		Dataset dataset;
+		int tmID;
+		final boolean showCreate;
+		String payload;
 
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod");
+		showCreate = object.getTrainingModule().isDraftMode();
+		tmID = super.getRequest().getData("trainingModuleId", int.class);
 
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "draftMode");
+		payload = String.format(//
+			"%s; %s; %s; %s", //
+			object.getLocation(), //
+			object.getInstructor(), //
+			object.getContactEmail(), //
+			object.getLink());
+		dataset.put("payload", payload);
+
+		super.getResponse().addGlobal("showCreate", showCreate);
+		super.getResponse().addGlobal("trainingModuleId", tmID);
 		super.getResponse().addData(dataset);
 	}
 }

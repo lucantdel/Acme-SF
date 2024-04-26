@@ -21,7 +21,7 @@ master.menu.any = Any
 master.menu.any.list-projects = List projects
 master.menu.any.list-claims = List claims
 master.menu.any.list-sponsorships = List sponsorships
-master.menu.any.list-trainingModules = List of training modules
+master.menu.any.list-trainingModules = List training modules
 
 # master.menu.anonymous #######################################################
 
@@ -37,6 +37,7 @@ master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.list-objectives = List objectives
+master.menu.authenticated.list-risks = List of risks
 
 # master.menu.administrator ###################################################
 
@@ -46,9 +47,11 @@ master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
-master.menu.administrator.list-risks = List of risks
-master.menu.administrator.list-banner = List of banners
 master.menu.administrator.system-configuration = System Configuration
+
+master.menu.administrator.list-risks = List risks
+master.menu.administrator.list-banner = List banners
+master.menu.administrator.list-objectives = List objectives
 
 # master.menu.provider ########################################################
 
@@ -84,8 +87,12 @@ master.menu.developer.developer-dashboard = Dashboard
 
 master.menu.auditor = Auditor
 master.menu.auditor.list-mine-code-audits = List my code audits
+<<<<<<< HEAD
 master.menu.auditor.list-mine-audit-records = List my Audit Records
 master.menu.auditor.auditor-dashboard = Dashboard
+=======
+master.menu.auditor.list-mine-audit-records = List my audit records
+>>>>>>> refs/heads/main
 
 # master.menu.user-account ####################################################
 

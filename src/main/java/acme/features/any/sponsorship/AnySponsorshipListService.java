@@ -41,10 +41,21 @@ public class AnySponsorshipListService extends AbstractService<Any, Sponsorship>
 		assert object != null;
 
 		Dataset dataset;
+		String payload;
 
 		//dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link");
 		// para que solo se vena las importantes
 		dataset = super.unbind(object, "code", "moment", "amount", "type");
+		payload = String.format(//
+			"%s; %s; %s; %s; %s; %s;", //
+			object.getStartDuration(), //
+			object.getFinalDuration(), //
+			object.getEmail(), //
+			object.getLink(), //
+			object.getProject().getCode(), //
+			object.getSponsor().getName());
+		dataset.put("payload", payload);
+
 		super.getResponse().addData(dataset);
 	}
 

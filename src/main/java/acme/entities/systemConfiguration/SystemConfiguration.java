@@ -18,10 +18,10 @@ public class SystemConfiguration extends AbstractEntity {
 
 	@Pattern(regexp = "^([A-Z]{3},)*[A-Z]{3}$")
 	@NotNull
-	protected String			acceptedCurrencies;
+	public String				acceptedCurrencies;
 
 	@Pattern(regexp = "^[A-Z]{3}$")
 	@NotNull
-	protected String			systemCurrency;
+	public String				systemCurrency;
 
 }

@@ -38,6 +38,7 @@ master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.list-objectives = Ver objectivos
+master.menu.authenticated.list-risks = Ver riesgos
 
 # master.menu.administrator ###################################################
 
@@ -47,12 +48,11 @@ master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
-
-master.menu.administrator.list-risks = Ver de riesgos
-master.menu.administrator.list-banner = listado de banners
-master.menu.administrator.list-risks = Ver riesgos
-
 master.menu.administrator.system-configuration = Configuración del Sistema
+
+master.menu.administrator.list-banner = Ver banners
+master.menu.administrator.list-risks = Ver riesgos
+master.menu.administrator.list-objectives = Ver objetivos
 
 # master.menu.provider ########################################################
 

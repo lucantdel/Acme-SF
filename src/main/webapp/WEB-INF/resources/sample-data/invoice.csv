@@ -1,3 +1,13 @@
 key,key:sponsorship,code,registration-time,due-date,quantity,tax,link
-invoice-01,sponsorship-01,IN-1234-5678,2021/09/27 13:00,2021/07/27 13:00,10000,20,https://www.amazon.es/
-invoice-02,sponsorship-02,IN-0001-9999,2021/09/28 22:00,2021/07/28 13:00,1,0,https://www.netflix.es/
+invoice-01,sponsorship-01,IN-1000-2000,2021/09/27 13:00,2021/07/27 13:00,50.00 USD,30,https://www.amazon.es/
+invoice-02,sponsorship-01,IN-2000-3000,2021/11/27 13:00,2021/06/27 13:00,250.00 USD,30,https://www.amazon.es/
+invoice-03,sponsorship-01,IN-3000-4000,2021/12/27 13:00,2021/10/27 13:00,300.00 USD,30,https://www.amazon.es/
+invoice-04,sponsorship-02,IN-4000-5000,2021/05/27 13:00,2021/03/07 13:00,60.00 EUR,30,https://www.amazon.es/
+invoice-05,sponsorship-02,IN-5000-6000,2021/08/27 13:00,2021/06/08 13:00,30.00 EUR,30,https://www.amazon.es/
+invoice-06,sponsorship-02,IN-6000-7000,2021/09/27 13:00,2021/04/09 13:00,10.00 EUR,30,https://www.amazon.es/
+invoice-07,sponsorship-03,IN-7000-8000,2021/06/28 22:00,2021/03/26 13:00,100.00 GBP,21,https://www.netflix.es/
+invoice-08,sponsorship-03,IN-8000-9000,2021/06/28 22:00,2021/03/27 13:00,300.00 GBP,21,https://www.netflix.es/
+invoice-09,sponsorship-03,IN-9000-1001,2021/06/28 22:00,2021/03/28 13:00,600.00 GBP,21,https://www.netflix.es/
+invoice-10,sponsorship-05,IN-1001-1002,2021/06/28 22:00,2021/03/26 13:00,1100.00 GBP,21,https://www.netflix.es/
+invoice-11,sponsorship-05,IN-1002-1003,2021/06/28 22:00,2021/03/27 13:00,900.00 GBP,21,https://www.netflix.es/
+invoice-12,sponsorship-05,IN-1003-1004,2021/06/28 22:00,2021/03/28 13:00,1000.00 GBP,21,https://www.netflix.es/

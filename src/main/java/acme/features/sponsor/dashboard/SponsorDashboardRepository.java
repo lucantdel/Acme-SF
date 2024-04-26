@@ -1,45 +1,39 @@
 
 package acme.features.sponsor.dashboard;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.client.data.datatypes.Money;
 import acme.client.repositories.AbstractRepository;
+import acme.entities.invoices.Invoice;
+import acme.entities.sponsorships.Sponsorship;
+import acme.entities.systemConfiguration.SystemConfiguration;
+import acme.roles.Sponsor;
 
 @Repository
 public interface SponsorDashboardRepository extends AbstractRepository {
 
-	// Número total de facturas con un impuesto menor o igual al 21.00%
-	@Query("select count(i) from Invoice i where i.tax <= 21.0")
-	int totalNumberOfInvoicesWithLowTax();
-	// Número total de patrocinios con un enlace
-	@Query("select count(sph) from Sponsorship sph where sph.link IS NOT NULL")
-	int totalNumberOfSponsorshipsWithLink();
+	@Query("select s from Sponsor s where s.id = :sponsorId")
+	Sponsor findSponsorById(int sponsorId);
 
-	// Promedio, desviación, mínimo y máximo del monto de los patrocinios
-	@Query("select avg(sph.amount) from Sponsorship sph")
-	double avgSponsorshipsAmount();
+	@Query("select s from Sponsorship s where s.sponsor.id = :sponsorId")
+	Collection<Sponsorship> findManySponsorshipsBySponsorId(int sponsorId);
 
-	@Query("select stddev(sph.amount) from Sponsorship sph")
-	double devSponsorshipsAmount();
+	@Query("select i from Invoice i where i.sponsorship.sponsor.id = :sponsorId")
+	Collection<Invoice> findManyInvoicesBySponsorId(int sponsorId);
 
-	@Query("select min(sph.amount) from Sponsorship sph")
-	double minSponsorshipsAmount();
+	// cantidades de dinero por entidad
+	@Query("select s.amount from Sponsorship s where s.sponsor.id = :sponsorId and s.draftMode = false")
+	Collection<Money> findManyPublishedAmountsBySponsorId(int sponsorId);
 
-	@Query("select max(sph.amount) from Sponsorship sph")
-	double maxSponsorshipsAmount();
+	@Query("select i.quantity from Invoice i where i.sponsorship.sponsor.id = :sponsorId and i.draftMode = false")
+	Collection<Money> findManyPublishedQuantitiesBySponsorId(int sponsorId);
 
-	// Promedio, desviación, mínimo y máximo de la cantidad de facturas
-	@Query("select avg(i.quantity) from Invoice i")
-	double avgInvoicesQuantity();
-
-	@Query("select stddev(i.quantity) from Invoice i")
-	double devInvoicesQuantity();
-
-	@Query("select min(i.quantity) from Invoice i")
-	double minInvoicesQuantity();
-
-	@Query("select max(i.quantity) from Invoice i")
-	double maxInvoicesQuantity();
+	@Query("select s from SystemConfiguration s")
+	List<SystemConfiguration> findSystemConfiguration();
 
 }

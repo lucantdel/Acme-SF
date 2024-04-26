@@ -41,8 +41,16 @@ public class AnyClaimListService extends AbstractService<Any, Claim> {
 		assert object != null;
 
 		Dataset dataset;
+		String payload;
 
 		dataset = super.unbind(object, "code", "instantiationMoment", "heading");
+		payload = String.format(//
+			"%s; %s; %s; %s", //
+			object.getDescription(), //
+			object.getDepartment(), //
+			object.getEmail(), //
+			object.getLink());
+		dataset.put("payload", payload);
 
 		super.getResponse().addData(dataset);
 	}

@@ -8,4 +8,5 @@
 	<acme:list-column code="authenticated.objective.list.label.startMoment" path="startMoment" width="25%"/>
 	<acme:list-column code="authenticated.objective.list.label.endMoment" path="endMoment" width="25%"/>
 	<acme:list-column code="authenticated.objective.list.label.priority" path="priority" width="25%"/>
+	<acme:list-payload path="payload"/>
 </acme:list>

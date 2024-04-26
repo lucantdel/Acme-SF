@@ -1,16 +1,45 @@
-sponsor.sponsorship.list.title = Listing of sponsorships
+sponsor.sponsorship.list.title = Listing of my sponsorships
 sponsor.sponsorship.form.title = Sponsorship form
 
+#Listado
 sponsor.sponsorship.list.label.code = Code
 sponsor.sponsorship.list.label.moment = Moment
+sponsor.sponsorship.list.label.startDuration = Start Duration
+sponsor.sponsorship.list.label.finalDuration = Final Duration
 sponsor.sponsorship.list.label.amount = Amount
 sponsor.sponsorship.list.label.type = Type
+sponsor.sponsorship.list.label.email = Email
+sponsor.sponsorship.list.label.link = Link
+sponsor.sponsorship.list.label.project = Project
+sponsor.sponsorship.list.label.draft-mode = Editable
 
+sponsor.sponsorship.list.button.create-form = Create Sponsorship
+
+
+
+#Form
 sponsor.sponsorship.form.label.code = Code:
 sponsor.sponsorship.form.label.moment = Moment:
 sponsor.sponsorship.form.label.startDuration = Start Duration:
 sponsor.sponsorship.form.label.finalDuration = Final Duration:
 sponsor.sponsorship.form.label.amount = Amount:
 sponsor.sponsorship.form.label.type = Type:
-sponsor.sponsorship.form.label.email = Email:
-sponsor.sponsorship.form.label.link = Link:
+sponsor.sponsorship.form.label.email = Email (optional):
+sponsor.sponsorship.form.label.link = Link (optional):
+sponsor.sponsorship.form.label.project = Project:
+
+sponsor.sponsorship.form.button.invoices-list = List invoices
+
+sponsor.sponsorship.form.button.update = Update
+sponsor.sponsorship.form.button.delete = Delete
+sponsor.sponsorship.form.button.publish = Publish
+#sponsor.sponsorship.form.button.invoices-list = List invoices
+
+sponsor.sponsorship.form.button.create-sponsorship = Create
+
+sponsor.sponsorship.form.error.duplicated = This code already exists
+sponsor.sponsorship.form.error.duration-start-date-not-valid = The start date of the duration must be after the present date
+sponsor.sponsorship.form.error.duration-not-valid = The sponsorship duration must be at least one month. The start date must be before the end date
+sponsor.sponsorship.form.error.amount-must-be-positive = The amount of money must be positive
+sponsor.sponsorship.form.error.sponsorship-amount-and-invoices-total-amount-not-equal = The total amount of sponsorship and the sum of the invoices values ​​must be equal
+sponsor.sponsorship.form.error.currency-not-supported = Selected currency is not supported by the system
