@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <help_text/>
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>352</y>
+      <w>418</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;UserRole&gt;&gt;
+Sponsor
+--
++ name: String {NotBlank, Length(max = 75}
++ expectedBenefits: String {NotBlank, Length(max = 100)}
++ webpage: String {URL}
++ email: String {Email}
+bg=PINK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>550</x>
+      <y>352</y>
+      <w>407</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Sponsorship
+--
++ code: String {NotBlank, Unique, Pattern}
++ moment: Date {Past, NotNull, Temporal(TIMESTAMP)}
++ startDuration: Date {NotNull, Temporal(TIMESTAMP)}
++ finalDuration: Date {NotNull, Temporal(TIMESTAMP)} 
++ amount: double {Min(0)}
++ type: TypeOfSponsorship {NotNull}
++ email: String {Email}
++ link: String {URL}
+bg=CYAN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1133</x>
+      <y>352</y>
+      <w>396</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Project
+--
++ code: String {NotBlank, Unique, Pattern}
++ title: String {NotBlank, Length(max = 75)}
++ projectAbstract: String {NotBlank, Length(max = 100)}
++ indicator: boolean 
++ cost: Money {NotNull}
++ link: String {URL}
++ published: boolean
+bg=CYAN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>407</x>
+      <y>407</y>
+      <w>165</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=1..n
+creates &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>22</x>
+      <y>495</y>
+      <w>396</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+SponsorDashboard
+--
++ totalNumberOfInvoicesWithLowTax: int
++ totalNumberOfSponsorshipsWithLink: int
++ avgSponsorshipsAmount: double
++ devSponsorshipsAmount: double
++ minSponsorshipsAmount: double
++ maxSponsorshipsAmount: double
++ avgInvoicesQuantity: double
++ devInvoicesQuantity: double
++ minInvoicesQuantity: double
++ maxInvoicesQuantity: double
+bg=ORANGE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>352</x>
+      <y>187</y>
+      <w>231</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>codePattern
+
+pattern "[A-Z]{1,3}-[0-9]{3}",
+customelement=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1276</x>
+      <y>638</y>
+      <w>231</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Money type has currency and
+amount, amount needs to be
+positive, it will be checked on
+service
+customelement=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1452</x>
+      <y>517</y>
+      <w>33</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>242</y>
+      <w>77</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>50.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>946</x>
+      <y>407</y>
+      <w>209</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..n
+relatedTo &gt;</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1034</x>
+      <y>638</y>
+      <w>231</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>codePattern
+
+pattern “[A-Z]{3}-[0-9]{4}”,
+customelement=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1177</x>
+      <y>517</y>
+      <w>33</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>638</x>
+      <y>209</y>
+      <w>187</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>
+TypeOfSponsorship
+--
++ FINANCIAL
++ INKIND
+bg=MAGENTA</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>572</x>
+      <y>748</y>
+      <w>462</w>
+      <h>187</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Invoice
+--
++ code: String {NotBlank, Unique, Pattern}
++ registrationTime: Date {Past, NotNull, Temporal(TIMESTAMP)}
++ dueDate: Date {NotNull, Temporal(TIMESTAMP)} 
+- totalAmount: double {Min(0),Transient}
++ quantity: double {NotNull,Min(0)}
++ tax: double {Min(0)}
++ link: String {URL}
+bg=CYAN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>759</x>
+      <y>539</y>
+      <w>154</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=1..n
+isBilledThrough v</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>858</x>
+      <y>187</y>
+      <w>220</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>duration is after the moment,
+at least one month long
+customelement=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>869</x>
+      <y>242</y>
+      <w>88</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;100.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>451</x>
+      <y>1067</y>
+      <w>231</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>codePattern
+
+pattern “IN-[0-9]{4}-[0-9]{4}”,
+customelement=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>605</x>
+      <y>924</y>
+      <w>33</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>693</x>
+      <y>1067</y>
+      <w>264</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>dueDate is at least one month ahead
+the registration time
+customelement=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>968</x>
+      <y>1012</y>
+      <w>242</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>totalAmount is calculated 
+by adding together the quantity 
+and the tax applied
+customelement=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>748</x>
+      <y>924</y>
+      <w>33</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1023</x>
+      <y>891</y>
+      <w>88</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;110.0</additional_attributes>
+  </element>
+</diagram>
