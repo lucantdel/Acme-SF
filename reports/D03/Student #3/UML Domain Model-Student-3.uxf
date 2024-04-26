@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>186</x>
+      <y>408</y>
+      <w>264</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+_TrainingModule_
+--
++ code: String {Unique, NotBlank,Pattern([A-Z]{1,3}-[0-9]{3})}
++ creationMoment: Date {NotNull, Past, Temporal(TIMESTAMP)}
++ details: String {NotBlank, Length(1,100)}
++ difficultyLevel: Dificulty {NotNull}
++ updateMoment: Date {Past, Temporal(TIMESTAMP)}
++ link: String {URL}
++ totalEstimatedTime: Integer {NotNull, Min(35)}
++ draftMode: Boolean {NotNull} 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>270</y>
+      <w>78</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumerator&gt;&gt;
+bg=yellow
+_Difficulty_
+--
++Basic
++Intermediate
++Advanced
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>0</x>
+      <y>396</y>
+      <w>168</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>The updateMoment must be any moment
+after creationMoment
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>162</x>
+      <y>408</y>
+      <w>36</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>186</x>
+      <y>240</y>
+      <w>252</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+_TrainingSession_
+--
++ code: String {Unique, NotBlank,Pattern(TS-[A-Z]{1,3}-[0-9]{3})}
++ startPeriod: Date {NotNull, Temporal(TIMESTAMP)}
++ endPeriod: Date {NotNull, Temporal(TIMESTAMP)}
++ location: String {NotBlank, Length(1,75)}
++ instructor: String {NotBlank, Length(1,75)}
++ contactEmail: String {NotBlank, Email}
++ link: String {URL}
++ draftMode: Boolean {NotNull}
+ 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>0</x>
+      <y>258</y>
+      <w>168</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>The startPeriod must be at the very least 
+one week after creationMoment
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>162</x>
+      <y>270</y>
+      <w>36</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>162</x>
+      <y>282</y>
+      <w>36</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;100.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>0</x>
+      <y>324</y>
+      <w>168</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>The endPeriod must be at the very least 
+one week after startPeriod
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>312</x>
+      <y>348</y>
+      <w>78</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2= 1..*
+Composed Of ^</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>606</x>
+      <y>432</y>
+      <w>192</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;UserRole&gt;&gt;
+_Developer_
+--
++ degree: String {NotBlank,L ength(0,75)}
++ specialisation: String {NotBlank,Length(0,100)}
++ skills: String {NotBlank,Length(0,100)}
++ contactEmail: String {NotBlank, Email}
++ link: String {URL}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>444</x>
+      <y>462</y>
+      <w>174</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1= 0..*
+m2= 1
+is managed &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>534</x>
+      <y>390</y>
+      <w>60</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>bg=pink
+&lt;&lt;Entity&gt;&gt;
+_Project_
+--
+          ·
+          ·
+          ·
+          ·
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>444</x>
+      <y>414</y>
+      <w>102</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2= 1..*
+is about &gt;</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>0</x>
+      <y>450</y>
+      <w>168</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>the totalTime is calculated by adding all 
+the periods of the TrainingSessions 
+associated to the same TrainingModules 
+together. 
+It will be measured in whole hours. 
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>162</x>
+      <y>480</y>
+      <w>36</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>588</x>
+      <y>270</y>
+      <w>204</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+StudentDashboard
+--
++ totalNumberOfTrainingSessionsWithLink: Integer
++ totalNumberOfTrainingSessionsWithLink: Integer
++ averageTimeByTM: Double
++ minimumTimeByTM: Double
++ maximumTimeByTM: Double
++ standardDeviationTimeByTM: Double
+bg=ORANGE</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
