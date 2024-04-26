@@ -2,6 +2,7 @@
 package acme.features.auditor.auditRecord;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,10 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 	}
 	@Override
 	public void load() {
+		int id;
+		id = Integer.valueOf(super.getRequest().getData().values().stream().collect(Collectors.toList()).get(0).toString());
 		Collection<AuditRecord> objects;
-		objects = this.rp.findAllAuditRecords();
+		objects = this.rp.findAllAuditRecordsByCodeAuditId(id);
 		super.getBuffer().addData(objects);
 	}
 	@Override
@@ -34,7 +37,8 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "score", "draftMode", "codeAudit");
+		dataset = super.unbind(object, "codeAR", "score", "draftMode");
+		dataset.put("codeAuditCode", object.getCodeAudit().getCode());
 
 		super.getResponse().addData(dataset);
 	}

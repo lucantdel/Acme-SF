@@ -34,7 +34,7 @@ public class AuditRecord extends AbstractEntity {
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "AU-[0-9]{4}-[0-9]{3}")
-	protected String			code;
+	protected String			codeAR;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
@@ -48,7 +48,7 @@ public class AuditRecord extends AbstractEntity {
 	protected String			score;
 
 	@URL
-	protected String			optionalLink;
+	protected String			Link;
 
 	protected boolean			draftMode;
 
@@ -57,8 +57,9 @@ public class AuditRecord extends AbstractEntity {
 	public boolean validatePeriod() {
 		boolean res = true;
 		if (this.startDate != null && this.finishDate != null) {
-			long differenceInHours = (this.finishDate.getTime() - this.startDate.getTime()) / 3600;
-			if (differenceInHours < 1)
+			long diferenciaEnMilisegundos = Math.abs(this.finishDate.getTime() - this.startDate.getTime());
+			long diferenciaEnHoras = diferenciaEnMilisegundos / (1000 * 60 * 60);
+			if (diferenciaEnHoras < 1)
 				res = false;
 		}
 		return res;

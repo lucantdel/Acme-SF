@@ -13,22 +13,22 @@ auditor.codeAudit.list.button.create = Create
 
 
 
-
-
 auditor.codeAudit.form.label.code = Code:
 auditor.codeAudit.form.label.execution = Execution:
-auditor.codeAudit.form.label.type = Type:
+auditor.codeAudit.form.label.type = Static/Dinamic:
 auditor.codeAudit.form.label.correctiveActions = Correctiveactions:
 auditor.codeAudit.form.label.optionalLink = OptionalLink:
 auditor.codeAudit.form.label.project = Project:
 auditor.codeAudit.form.label.draftMode = DraftMode
 auditor.codeAudit.form.label.Mark = Mark
 
-auditor.codeAudit.form.button.create = Create
+auditor.codeAudit.form.button.create = Create AuditRecord
 auditor.codeAudit.form.button.delete = Delete
 auditor.codeAudit.form.button.update = Update
 auditor.codeAudit.form.button.publish = Publish
 
 auditor.codeAudit.error.Mark = Mark must be at least C
+auditor.codeAudit.error.duplicated = Code must be unique
+auditor.codeAudit.error.draftMode = Must be in draftMode
 
 

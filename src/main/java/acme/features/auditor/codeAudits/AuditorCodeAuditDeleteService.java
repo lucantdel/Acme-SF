@@ -1,6 +1,7 @@
 
 package acme.features.auditor.codeAudits;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.codeAudits.AuditRecord;
 import acme.entities.codeAudits.CodeAudit;
+import acme.entities.projects.Project;
 import acme.roles.Auditor;
 
 @Service
@@ -29,9 +32,10 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 
 		ca = this.repository.findCodeAuditById(masterId);
 		auditor = ca == null ? null : ca.getAuditor();
-		status = ca != null && ca.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
+		status = ca != null && super.getRequest().getPrincipal().hasRole(auditor);
+		boolean autorizacion = auditor.getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername());
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(status && autorizacion);
 	}
 	@Override
 	public void load() {
@@ -49,12 +53,14 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
-		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode");
+		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
 
 	}
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.isDraftMode() == true, "draftMode", "auditor.codeAudit.error.draftMode");
 	}
 	@Override
 	public void perform(final CodeAudit object) {
@@ -69,8 +75,15 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 		assert object != null;
 
 		Dataset dataset;
+		SelectChoices projectsChoices;
+		Collection<Project> projects;
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode");
+		projects = this.repository.findAllProjects();
+		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
+
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
+		dataset.put("project", projectsChoices.getSelected().getKey());
+		dataset.put("projects", projectsChoices);
 		super.getResponse().addData(dataset);
 	}
 

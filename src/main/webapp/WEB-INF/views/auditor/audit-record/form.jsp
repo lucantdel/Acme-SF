@@ -4,13 +4,13 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-		<acme:input-textbox code="auditor.auditRecord.form.label.code" path="code"/>
+		<acme:input-textbox code="auditor.auditRecord.form.label.codeAR" path="codeAR"/>
 		<acme:input-textbox code="auditor.auditRecord.form.label.startDate" path="startDate"/>
 		<acme:input-textbox code="auditor.auditRecord.form.label.finishDate" path="finishDate"/>
 		<acme:input-textbox code="auditor.auditRecord.form.label.score" path="score"/>
-		<acme:input-textbox code="auditor.auditRecord.form.label.optionalLink" path="optionalLink"/>
-		<acme:input-textbox code="auditor.auditRecord.form.label.draftMode" path="draftMode"/>
-		<acme:input-textbox code="auditor.auditRecord.form.label.codeAudit" path="codeAudit"/>
+		<acme:input-textbox code="auditor.auditRecord.form.label.link" path="link"/>
+		<acme:input-textbox code="auditor.auditRecord.form.label.draftMode" path="draftMode" readonly="true"/>
+		<acme:input-textbox code="auditor.auditRecord.form.label.codeAudit" path="codeAuditCode" readonly="true"/>
 		
 		
 		

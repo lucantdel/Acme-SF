@@ -7,26 +7,35 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.codeAudits.AuditRecord;
+import acme.features.auditor.codeAudits.AuditorCodeAuditRepository;
 import acme.roles.Auditor;
 
 @Service
 public class AuditorAuditRecordShowService extends AbstractService<Auditor, AuditRecord> {
 
 	@Autowired
-	private AuditorAuditRecordRepository rp;
+	private AuditorAuditRecordRepository	rp;
+
+	@Autowired
+	protected AuditorCodeAuditRepository	repository;
 
 
 	@Override
 	public void authorise() {
+
 		boolean status;
-		int id;
-		AuditRecord auditRecord;
+		int masterId;
+		AuditRecord ra;
+		Auditor auditor;
+		masterId = super.getRequest().getData("id", int.class);
 
-		id = super.getRequest().getData("id", int.class);
-		auditRecord = this.rp.findAuditRecordById(id);
-		status = auditRecord != null;
+		ra = this.rp.findAuditRecordById(masterId);
+		auditor = ra == null ? null : ra.getAuditor();
+		status = ra != null && super.getRequest().getPrincipal().hasRole(auditor);
 
-		super.getResponse().setAuthorised(status);
+		boolean autorizacion = auditor.getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername());
+
+		super.getResponse().setAuthorised(status && autorizacion);
 	}
 	@Override
 	public void load() {
@@ -45,7 +54,8 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit", "auditor");
+		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode", "auditor");
+		dataset.put("codeAuditCode", object.getCodeAudit().getCode());
 
 		super.getResponse().addData(dataset);
 
