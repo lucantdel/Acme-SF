@@ -10,8 +10,9 @@
 		<acme:list-column code="auditor.codeAudit.list.label.project" path="project"/>
 		<acme:list-column code="auditor.codeAudit.list.label.auditor" path="auditor"/>
 		<acme:list-column code="auditor.codeAudit.list.label.Mark" path="Mark"/>
-		
+		<acme:list-payload path="payload"/>
 </acme:list>
+
 
 <jstl:if test="${_command == 'list-mine'}">
 	<acme:button code="auditor.codeAudit.list.button.create" action="/auditor/code-audit/create"/>

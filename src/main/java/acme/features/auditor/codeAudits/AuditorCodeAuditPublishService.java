@@ -1,12 +1,16 @@
 
 package acme.features.auditor.codeAudits;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.codeAudits.CodeAudit;
+import acme.entities.projects.Project;
 import acme.features.auditor.auditRecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
@@ -30,9 +34,10 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 
 		ca = this.repository.findCodeAuditById(masterId);
 		auditor = ca == null ? null : ca.getAuditor();
-		status = ca != null && ca.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
+		status = ca != null && super.getRequest().getPrincipal().hasRole(auditor);
+		boolean autorizacion = auditor.getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername());
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(status && autorizacion);
 	}
 
 	@Override
@@ -51,17 +56,24 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
-		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project");
+		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink");
 
 	}
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+		String mark = object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object));
 
-		if (!super.getBuffer().getErrors().hasErrors("Mark"))
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.isDraftMode() == true, "draftMode", "auditor.codeAudit.error.draftMode");
 
-			super.state(!object.Mark(this.rp.getScoreOfAsociatedAuditRecords(object)).trim().equals("F") && !object.Mark(this.rp.getScoreOfAsociatedAuditRecords(object)).trim().equals("F-"), "Mark", "auditor.codeAudit.error.Mark");
+		if (mark != null)
+			if (!super.getBuffer().getErrors().hasErrors("Mark"))
+				super.state(!object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object)).trim().equals("F") && !object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object)).trim().equals("F-"), "Mark", "auditor.codeAudit.error.Mark");
+		if (mark == null)
+			super.state(object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object)) != null, "Mark", "auditor.codeAudit.error.Mark");
 	}
+
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
@@ -73,8 +85,17 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		assert object != null;
 
 		Dataset dataset;
+		SelectChoices projectsChoices;
+		Collection<Project> projects;
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode");
+		projects = this.repository.findAllProjects();
+		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
+
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
+		String mark = object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object));
+		dataset.put("Mark", mark);
+		dataset.put("project", projectsChoices.getSelected().getKey());
+		dataset.put("projects", projectsChoices);
 		super.getResponse().addData(dataset);
 	}
 

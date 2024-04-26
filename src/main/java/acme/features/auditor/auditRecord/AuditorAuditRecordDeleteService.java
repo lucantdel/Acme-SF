@@ -7,13 +7,17 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.codeAudits.AuditRecord;
+import acme.features.auditor.codeAudits.AuditorCodeAuditRepository;
 import acme.roles.Auditor;
 
 @Service
 public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, AuditRecord> {
 
 	@Autowired
-	private AuditorAuditRecordRepository repository;
+	private AuditorAuditRecordRepository	repository;
+
+	@Autowired
+	protected AuditorCodeAuditRepository	rp;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -28,9 +32,11 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 
 		ra = this.repository.findAuditRecordById(masterId);
 		auditor = ra == null ? null : ra.getAuditor();
-		status = ra != null && ra.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
+		status = ra != null && super.getRequest().getPrincipal().hasRole(auditor);
 
-		super.getResponse().setAuthorised(status);
+		boolean autorizacion = auditor.getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername());
+
+		super.getResponse().setAuthorised(status && autorizacion);
 	}
 
 	@Override
@@ -47,11 +53,13 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit", "auditor");
+		super.bind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode", "codeAudit", "auditor");
 	}
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.isDraftMode() == true, "draftMode", "auditor.auditRecord.error.draftMode");
 	}
 	@Override
 	public void perform(final AuditRecord object) {
@@ -67,7 +75,7 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startDate", "finishDate", "score", "optionalLink", "draftMode", "codeAudit", "auditor");
+		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode", "codeAudit", "auditor");
 
 		super.getResponse().addData(dataset);
 	}

@@ -2,7 +2,7 @@ auditor.audit-record.list.title = Listing of Audit Records
 auditor.audit-record.form.title = Audit Records form
 
 
-auditor.auditRecord.list.label.code = Code
+auditor.auditRecord.list.label.codeAR = CodeAR
 auditor.auditRecord.list.label.score = Score:
 auditor.auditRecord.list.label.codeAudit = CodeAudit:
 auditor.auditRecord.list.label.draftMode = DraftMode:
@@ -12,15 +12,15 @@ auditor.auditRecord.list.button.create = Create
 
 
 
-auditor.auditRecord.form.label.code = Code:
+auditor.auditRecord.form.label.codeAR = Code:
 auditor.auditRecord.form.label.startDate = StartDate:
 auditor.auditRecord.form.label.finishDate = FinishDate:
 auditor.auditRecord.form.label.score = Score:
 auditor.auditRecord.form.label.codeAudit = CodeAudit:
 auditor.auditRecord.form.label.draftMode = DraftMode:
-auditor.auditRecord.form.label.optionalLink = OptionalLink:
+auditor.auditRecord.form.label.link = link:
 
-auditor.auditRecord.form.button.create = Create
+auditor.auditRecord.form.button.create = Create AuditRecord
 auditor.auditRecord.form.button.update = Update
 auditor.auditRecord.form.button.delete = Delete
 auditor.auditRecord.form.button.publish = Publish
@@ -29,3 +29,8 @@ auditor.auditRecord.form.button.publish = Publish
 
 
 auditor.auditRecord.error.period = Period must be at least 1h long.
+auditor.auditRecord.error.period2 = The finishDate cant be before the StartDate
+auditor.auditRecord.error.period3 = The StartDate must begin before the finishDate
+auditor.auditRecord.error.periodN = A period must have Start and Finish dates
+auditor.auditRecord.error.duplicated = CoudAR is unique
+auditor.auditRecord.error.draftMode = The Audit Record must be in draftMode

@@ -89,6 +89,7 @@ master.menu.developer.developer-dashboard = Panel de indicadores
 master.menu.auditor = Auditor
 master.menu.auditor.list-mine-code-audits = Ver mis auditorias de codigo
 master.menu.auditor.list-mine-audit-records = Ver mis Records de auditorias
+master.menu.auditor.auditor-dashboard = Panel de indicadores
 
 
 # master.menu.user-account ####################################################
@@ -99,6 +100,8 @@ master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.manager = Datos de manager
+master.menu.user-account.become-manager = Hazte manager
 
 # master.menu.client #############################################
 

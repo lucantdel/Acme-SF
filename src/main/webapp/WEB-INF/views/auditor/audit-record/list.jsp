@@ -4,14 +4,10 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-		<acme:list-column code="auditor.auditRecord.list.label.code" path="code"/>
-		<acme:list-column code="auditor.auditRecord.list.label.score" path="score"/>
-		<acme:list-column code="auditor.auditRecord.list.label.draftMode" path="draftMode"/>
-		<acme:list-column code="auditor.auditRecord.list.label.codeAudit" path="codeAudit"/>
-		
-		
+		<acme:list-column code="auditor.auditRecord.list.label.codeAR" path="codeAR" width="25%"/>
+		<acme:list-column code="auditor.auditRecord.list.label.score" path="score" width="25%"/>
+		<acme:list-column code="auditor.auditRecord.list.label.draftMode" path="draftMode" width="25%"/>
+		<acme:list-column code="auditor.auditRecord.list.label.codeAudit" path="codeAudit" width="25%"/>	
+		<acme:list-payload path="payload"/>			
 </acme:list>
 
-<jstl:if test="${_command == 'list-mine'}">
-	<acme:button code="auditor.auditRecord.list.button.create" action="/auditor/audit-record/create"/>
-</jstl:if>	

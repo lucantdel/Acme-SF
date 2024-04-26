@@ -14,18 +14,19 @@ public class AuditorDashboard extends AbstractForm {
 	private static final long	serialVersionUID	= 1L;
 	// Attributes -------------------------------------------------------------
 
-	Integer						totalNumberOfCodeAuditsStatic;
-	Integer						totalNumberOfCodeAuditsDinamic;
-	Integer						totalNumbreOfTypesOfAuditRecords;
+	int							totalNumberOfCodeAuditsStatic;
+	int							totalNumberOfCodeAuditsDynamic;
 
 	Double						averageNumberOfAuditRecords;
 	Integer						minimunNumberOfAuditRecords;
 	Integer						maximunNumberOfAuditRecords;
+	Double						deviationOfAuditRecords;
 
-	Double						avegageTimeOfThePeriodLenght;
-	Double						deviationTimeOfThePeriodLenght;
-	Double						minimunTimeOfThePeriodLenght;
-	Double						maximumTimeOfThePeriodLenght;
+	Long						avegageTimeOfThePeriodlength;
+	Long						deviationTimeOfThePeriodlength;
+	Long						minimunTimeOfThePeriodlength;
+	Long						maximumTimeOfThePeriodlength;
+	// TODO Auto-generated method stub
 
 	// Derived attributes -----------------------------------------------------
 

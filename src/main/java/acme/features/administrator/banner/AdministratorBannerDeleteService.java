@@ -20,7 +20,8 @@ public class AdministratorBannerDeleteService extends AbstractService<Administra
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean autorizacion = super.getRequest().getPrincipal().getActiveRole().getName() == "acme.client.data.accounts.Administrator";
+		super.getResponse().setAuthorised(autorizacion);
 	}
 
 	@Override

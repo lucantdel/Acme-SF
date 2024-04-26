@@ -13,15 +13,18 @@ auditor.codeAudit.list.button.create = Crear
 
 auditor.codeAudit.form.label.code = Codigo:
 auditor.codeAudit.form.label.execution = Tiempo de ejecucion:
-auditor.codeAudit.form.label.type = Tipo:
+auditor.codeAudit.form.label.type = Static/Dinamic:
 auditor.codeAudit.form.label.correctiveActions = Acciones correctivas:
 auditor.codeAudit.form.label.optionalLink = Link Opcional:
 auditor.codeAudit.form.label.project = Proyecto:
 auditor.codeAudit.form.label.draftMode = Modo Borrador
+auditor.codeAudit.form.label.Mark = Nota
 
-auditor.codeAudit.form.button.create = Crear
 auditor.codeAudit.form.button.delete = Borrar
 auditor.codeAudit.form.button.update = Editar
 auditor.codeAudit.form.button.publish = Publicar
+auditor.auditRecord.form.button.create = Crear Record de Auditoria
 
 auditor.codeAudit.error.Mark = La nota debe ser porlomenos una C
+auditor.codeAudit.error.duplicated = El codigo no se puede repetir
+auditor.codeAudit.error.draftMode = Debe estar en modo borrador
