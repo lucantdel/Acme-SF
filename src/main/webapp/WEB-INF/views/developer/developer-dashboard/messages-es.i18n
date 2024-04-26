@@ -2,5 +2,14 @@ developer.developer-dashboard.form.title = Panel de indicadores de desarollador
 
 developer.developer-dashboard.form.title.general-indicators = Indicadores generales
 
-developer.developer-dashboard.form.label.total-number-tm-with-update-moment = Numero total de modulos de entrenamiento con fecha de actualización
-developer.developer-dashboard.form.label.total-number-ts-with-link = Numero total de sesiones de entrenamiento con un enlace
+developer.developer-dashboard.form.label.total-number-tm-with-update-moment = Numero total de modulos de entrenamiento con fecha de actualización:
+developer.developer-dashboard.form.label.total-number-ts-with-link = Numero total de sesiones de entrenamiento con un enlace:
+developer.dashboard.form.label.averageTimeByTM = Media del tiempo total estimado de los modulos de entrenamiento:
+developer.dashboard.form.label.minimumTimeByTM = MIN tiempo estimado:
+developer.dashboard.form.label.maximumTimeByTM = Max tiempo estimado:
+developer.dashboard.form.label.standardDeviationTimeByTM = Desviación standard del tiempo total estimado de los modulos de entrenamiento:
+
+
+
+
+
