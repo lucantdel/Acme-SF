@@ -6,6 +6,8 @@ authenticated.objective.list.label.startMoment = Start moment
 authenticated.objective.list.label.endMoment = End moment
 authenticated.objective.list.label.priority = Priority
 
+administrator.objective.list.button.create = Create
+
 authenticated.objective.form.label.title = Title:
 authenticated.objective.form.label.description = Description:
 authenticated.objective.form.label.priority = Priority:
@@ -15,5 +17,3 @@ authenticated.objective.form.label.startMoment = Start moment:
 authenticated.objective.form.label.endMoment = End moment:
 authenticated.objective.form.label.optionalLink = Optional link:
 administrator.objective.form.label.confirmation = Confirmation
-
-administrator.objective.form.button.create = Create

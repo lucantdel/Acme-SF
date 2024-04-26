@@ -1,6 +1,8 @@
 
 package acme.forms;
 
+import java.util.Map;
+
 import acme.client.data.AbstractForm;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,12 +27,10 @@ public class ManagerDashboard extends AbstractForm {
 	int							minUserStoryEstimatedCost;
 	int							maxUserStoryEstimatedCost;
 
-	// TODO: HAY QUE CAMBIAR TODOS LOS DE ABAJO A TIPO Money
-
-	double						avgProjectCost;
-	double						devProjectCost;
-	double						minProjectCost;
-	double						maxProjectCost;
+	Map<String, Double>			avgProjectCost;
+	Map<String, Double>			devProjectCost;
+	Map<String, Double>			minProjectCost;
+	Map<String, Double>			maxProjectCost;
 
 	// Derived attributes -----------------------------------------------------
 
