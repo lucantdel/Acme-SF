@@ -55,6 +55,7 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 		choices = SelectChoices.from(SponsorshipType.class, object.getType());
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
+		// "sponsor" no hace falta ya que es el mismo
 		dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "draftMode", "project");
 
 		if (object.isDraftMode()) {
@@ -64,7 +65,7 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 			dataset.put("draftMode", "No");
 
 		dataset.put("sponsorshipType", choices);
-		dataset.put("project", projectsChoices.getSelected().getKey());
+		dataset.put("project", projectsChoices.getSelected().getLabel());
 		dataset.put("projects", projectsChoices);
 		super.getResponse().addData(dataset);
 

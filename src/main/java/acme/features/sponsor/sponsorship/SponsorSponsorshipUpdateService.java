@@ -130,8 +130,8 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
 		dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "draftMode", "project");
 
-		dataset.put("type", types);
-		dataset.put("project", projectsChoices.getSelected().getKey());
+		dataset.put("sponsorshipType", types);
+		dataset.put("project", projectsChoices.getSelected().getLabel());
 		dataset.put("projects", projectsChoices);
 		super.getResponse().addData(dataset);
 
