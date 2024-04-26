@@ -7,13 +7,17 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.codeAudits.AuditRecord;
+import acme.features.auditor.codeAudits.AuditorCodeAuditRepository;
 import acme.roles.Auditor;
 
 @Service
 public class AuditorAuditRecordPublishService extends AbstractService<Auditor, AuditRecord> {
 
 	@Autowired
-	protected AuditorAuditRecordRepository repository;
+	protected AuditorAuditRecordRepository	repository;
+
+	@Autowired
+	protected AuditorCodeAuditRepository	rp;
 
 
 	@Override
@@ -26,9 +30,11 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 
 		ra = this.repository.findAuditRecordById(masterId);
 		auditor = ra == null ? null : ra.getAuditor();
-		status = ra != null && ra.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
+		status = ra != null && super.getRequest().getPrincipal().hasRole(auditor);
 
-		super.getResponse().setAuthorised(status);
+		boolean autorizacion = auditor.getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername());
+
+		super.getResponse().setAuthorised(status && autorizacion);
 	}
 	@Override
 	public void load() {
@@ -49,6 +55,9 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.isDraftMode() == true, "draftMode", "auditor.auditRecord.error.draftMode");
+
 	}
 	@Override
 	public void perform(final AuditRecord object) {

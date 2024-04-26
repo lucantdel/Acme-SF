@@ -13,8 +13,12 @@
 		<acme:input-textbox code="auditor.codeAudit.form.label.correctiveActions" path="correctiveActions"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.optionalLink" path="optionalLink"/>
 		<acme:input-select code="auditor.codeAudit.form.label.project" path="project" choices="${projects}"/>
+		<acme:input-textbox code="auditor.codeAudit.form.label.draftMode" path="draftMode" readonly="true"/>
+		
 		
 	</jstl:if>
+	
+	
 	<jstl:if test="${_command == 'delete'}">
 
 		<acme:input-textbox code="auditor.codeAudit.form.label.code" path="code"/>
@@ -22,6 +26,8 @@
 		<acme:input-textbox code="auditor.codeAudit.form.label.type" path="type"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.correctiveActions" path="correctiveActions"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.optionalLink" path="optionalLink"/>
+		<acme:input-textbox code="auditor.codeAudit.form.label.draftMode" path="draftMode" readonly="true"/>
+		
 		
 	</jstl:if>
 			<jstl:if test="${acme:anyOf(_command, 'show|publish')}">
@@ -31,7 +37,7 @@
 		<acme:input-textbox code="auditor.codeAudit.form.label.type" path="type"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.correctiveActions" path="correctiveActions"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.optionalLink" path="optionalLink"/>
-		<acme:input-textbox code="auditor.codeAudit.form.label.project" path="project" readonly="true"/>
+		<acme:input-select code="auditor.codeAudit.form.label.project" path="project" choices="${projects}"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.Mark" path="Mark" readonly="true"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.draftMode" path="draftMode" readonly="true"/>
 	

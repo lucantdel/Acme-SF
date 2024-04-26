@@ -57,9 +57,6 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	public void validate(final AuditRecord object) {
 		assert object != null;
 
-		System.out.println(object.getFinishDate());
-		System.out.println(object.getStartDate());
-
 		if (!super.getBuffer().getErrors().hasErrors("codeAR")) {
 			AuditRecord existing;
 			existing = this.rp.findOneAuditRecordByCode(object.getCodeAR());

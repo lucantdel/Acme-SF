@@ -33,3 +33,4 @@ auditor.auditRecord.error.period2 = The finishDate cant be before the StartDate
 auditor.auditRecord.error.period3 = The StartDate must begin before the finishDate
 auditor.auditRecord.error.periodN = A period must have Start and Finish dates
 auditor.auditRecord.error.duplicated = CoudAR is unique
+auditor.auditRecord.error.draftMode = The Audit Record must be in draftMode

@@ -11,5 +11,5 @@ auditor.dashboard.form.title.period-audit-records-indicators = Audit Records tim
 
 auditor.dashboard.form.label.max-period-audit-records = Maximun time period of Audit Records in hours
 auditor.dashboard.form.label.min-period-audit-records = Minimun time period of Audit Records in minutes
-auditor.dashboard.form.label.avr-period-audit-records = Maximun time period of Audit Records in hours
+auditor.dashboard.form.label.avr-period-audit-records = Average time period of Audit Records in hours
 auditor.dashboard.form.label.dev-period-audit-records = Deviation of time period of Audit Records in hours
