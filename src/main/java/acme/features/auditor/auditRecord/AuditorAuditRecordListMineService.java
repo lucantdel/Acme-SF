@@ -51,7 +51,6 @@ public class AuditorAuditRecordListMineService extends AbstractService<Auditor, 
 			object.getLink(),//
 			object.getAuditor().getUserAccount().getUsername());//
 		dataset.put("payload", payload);
-		System.out.println(payload);
 
 		super.getResponse().addData(dataset);
 	}

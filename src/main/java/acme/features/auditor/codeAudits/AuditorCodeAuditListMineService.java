@@ -53,11 +53,8 @@ public class AuditorCodeAuditListMineService extends AbstractService<Auditor, Co
 			"%s    %s    %s",//
 			object.getCorrectiveActions(),//
 			object.getOptionalLink(),//
-			object.getAuditor().getUserAccount().getUsername());
-
+			object.getAuditor().getUserAccount().getUsername());//
 		dataset.put("payload", payload);
-		System.out.println(dataset);
-
 		super.getResponse().addData(dataset);
 	}
 }
