@@ -76,7 +76,6 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 
 	@Override
 	public void perform(final UserStory object) {
-		// TODO: comprobar si hay dependencias con otras entidades y actualizarlas
 		assert object != null;
 
 		this.repository.save(object);
@@ -88,11 +87,20 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 
 		SelectChoices priorities;
 		Dataset dataset;
+		boolean isMine;
+		UserStory us;
+		Manager manager;
+
+		us = this.repository.findOneUserStoryById(super.getRequest().getData("id", int.class));
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+
+		isMine = us.getManager().equals(manager);
 
 		priorities = SelectChoices.from(UserStoryPriority.class, object.getPriority());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
 		dataset.put("priorities", priorities);
+		dataset.put("isMine", isMine);
 
 		super.getResponse().addData(dataset);
 	}
