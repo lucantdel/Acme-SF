@@ -18,7 +18,10 @@ public class AdministratorBannerShowService extends AbstractService<Administrato
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+
+		boolean autorizacion = super.getRequest().getPrincipal().getActiveRole().getName() == "acme.client.data.accounts.Administrator";
+		super.getResponse().setAuthorised(autorizacion);
+
 	}
 	@Override
 	public void load() {
