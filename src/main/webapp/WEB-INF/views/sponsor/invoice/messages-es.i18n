@@ -1,0 +1,34 @@
+sponsor.invoice.list.title = Listado de tus facturas
+sponsor.invoice.form.title = Formulario de factura
+
+#Form
+sponsor.invoice.form.label.code = Código:
+sponsor.invoice.form.label.registration-time = Momento de registro:
+sponsor.invoice.form.label.due-date = Fecha de vencimiento:
+sponsor.invoice.form.label.quantity = Cantidad:
+sponsor.invoice.form.label.tax = Impuesto:
+sponsor.invoice.form.label.link = Enlace (opcional):
+
+sponsor.invoice.form.button.update = Actualizar
+sponsor.invoice.form.button.delete = Eliminar
+sponsor.invoice.form.button.publish = Publicar
+
+sponsor.invoice.form.button.create-invoice = Crear
+
+
+#Listado
+sponsor.invoice.list.label.code = Código
+sponsor.invoice.list.label.registration-time = Momento de registro
+sponsor.invoice.list.label.due-date = Fecha de vencimiento
+sponsor.invoice.list.label.quantity = Cantidad
+sponsor.invoice.list.label.tax = Impuesto
+sponsor.invoice.list.label.link = Enlace (opcional)
+sponsor.invoice.list.label.draftMode = Editable
+sponsor.invoice.list.label.total-amount = Cantidad total (con impuesto aplicado)
+
+sponsor.invoice.list.button.create-form = Create invoice
+
+sponsor.invoice.form.error.duplicated = Este código ya existe
+sponsor.invoice.form.error.due-date-not-valid = La fecha de vencimiento debe ser posterior a la de registro. La duración debe ser de al menos un mes
+sponsor.invoice.form.error.quantity-must-be-positive = La cantidad de dinero debe ser positiva
+sponsor.invoice.form.error.currency-not-supported = La moneda elegida no es soportada por el sistema

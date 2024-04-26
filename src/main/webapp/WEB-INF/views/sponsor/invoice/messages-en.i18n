@@ -1,0 +1,34 @@
+sponsor.invoice.list.title = Listing of my invoices
+sponsor.invoice.form.title = Invoice form
+
+#Form
+sponsor.invoice.form.label.code = Code:
+sponsor.invoice.form.label.registration-time = Registration time:
+sponsor.invoice.form.label.due-date = Due date:
+sponsor.invoice.form.label.quantity = Quantity:
+sponsor.invoice.form.label.tax = Tax:
+sponsor.invoice.form.label.link = Link (optional):
+
+sponsor.invoice.form.button.update = Update
+sponsor.invoice.form.button.delete = Delete
+sponsor.invoice.form.button.publish = Publish
+
+sponsor.invoice.form.button.create-invoice = Create
+
+
+#Listado
+sponsor.invoice.list.label.code = Code
+sponsor.invoice.list.label.registration-time = Registration time
+sponsor.invoice.list.label.due-date = Due date
+sponsor.invoice.list.label.quantity = Quantity
+sponsor.invoice.list.label.tax = Tax
+sponsor.invoice.list.label.link = Link
+sponsor.invoice.list.label.draftMode = Editable
+sponsor.invoice.list.label.total-amount = Total amount (including tax)
+
+sponsor.invoice.list.button.create-form = Create invoice
+
+sponsor.invoice.form.error.duplicated = This code already exists
+sponsor.invoice.form.error.due-date-not-valid = Due date must be ahead registration time. It must be at least one month long
+sponsor.invoice.form.error.quantity-must-be-positive = Quantity must be positive
+sponsor.invoice.form.error.currency-not-supported = Selected currency is not supported by the system
