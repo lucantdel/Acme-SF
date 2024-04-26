@@ -1,0 +1,13 @@
+any.contract.list.title = Published contracts
+any.contract.form.title = contract details
+any.contract.list.label.code = Code
+any.contract.list.label.providerName = Provider Name
+any.contract.list.label.budget = Budget
+
+any.contract.form.label.code = Code
+any.contract.form.label.provider = Provider Name
+any.contract.form.label.customer = Customer Name
+any.contract.form.label.goals = Goals
+any.contract.form.label.budget = Budget
+
+any.contract.progressLogs = Progress Logs

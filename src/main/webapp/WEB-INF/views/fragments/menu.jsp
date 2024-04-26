@@ -24,6 +24,8 @@
 			<acme:menu-suboption code="master.menu.any.list-claims" action="/any/claim/list"/>
 			<acme:menu-suboption code="master.menu.any.list-sponsorships" action="/any/sponsorship/list"/>
       		<acme:menu-suboption code="master.menu.any.list-trainingModules" action="/any/training-module/list"/>
+      		<acme:menu-suboption code="master.menu.any.contract" action="/any/contract/list"/>
+      		
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">

@@ -1,0 +1,14 @@
+
+any.contract.list.title = Contratos publicados
+any.contract.form.title = Detalles del contrato
+any.contract.list.label.code = Codigo
+any.contract.list.label.providerName = Nombre de proveedor
+any.contract.list.label.budget = Presupuesto
+
+any.contract.form.label.code = Codigo
+any.contract.form.label.provider = Nombre de proveedor
+any.contract.form.label.customer = Nombre de cliente
+any.contract.form.label.goals = Metas
+any.contract.form.label.budget = Presupuesto
+
+any.contract.progressLogs = Actas de progreso
