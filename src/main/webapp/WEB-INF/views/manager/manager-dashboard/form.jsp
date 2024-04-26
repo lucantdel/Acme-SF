@@ -14,11 +14,9 @@
 		</th>
 		<jstl:forEach var="entry" items="${avgProjectCost}">
 			<tr>
-				<th scope="row">
-					${entry.key}
-				</th>
 				<td>
 					<acme:print value="${entry.value}"/>
+					<acme:print value="${entry.key}"/>
 				</td>
 			</tr>
 		</jstl:forEach>
@@ -29,11 +27,9 @@
 		</th>
 		<jstl:forEach var="entry" items="${devProjectCost}">
 			<tr>
-				<th scope="row">
-					${entry.key}
-				</th>
 				<td>
 					<acme:print value="${entry.value}"/>
+					<acme:print value="${entry.key}"/>
 				</td>
 			</tr>
 		</jstl:forEach>
@@ -44,11 +40,9 @@
 		</th>
 		<jstl:forEach var="entry" items="${minProjectCost}">
 			<tr>
-				<th scope="row">
-					${entry.key}
-				</th>
 				<td>
 					<acme:print value="${entry.value}"/>
+					<acme:print value="${entry.key}"/>
 				</td>
 			</tr>
 		</jstl:forEach>
@@ -59,11 +53,9 @@
 		</th>
 		<jstl:forEach var="entry" items="${maxProjectCost}">
 			<tr>
-				<th scope="row">
-					${entry.key}
-				</th>
 				<td>
 					<acme:print value="${entry.value}"/>
+					<acme:print value="${entry.key}"/>
 				</td>
 			</tr>
 		</jstl:forEach>
