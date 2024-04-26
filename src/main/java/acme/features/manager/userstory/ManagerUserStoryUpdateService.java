@@ -76,7 +76,6 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 
 	@Override
 	public void perform(final UserStory object) {
-		// TODO: comprobar si hay dependencias con otras entidades y actualizarlas
 		assert object != null;
 
 		this.repository.save(object);

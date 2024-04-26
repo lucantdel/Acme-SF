@@ -1,8 +1,6 @@
 
 package acme.features.manager.project;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,7 +54,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	public void bind(final Project object) {
 		assert object != null;
 
-		super.bind(object, "code", "title", "projectAbstract", "link", "cost", "indicator");
+		super.bind(object, "code", "title", "projectAbstract", "link", "cost", "indication");
 	}
 
 	@Override
@@ -69,11 +67,10 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Optional<Project> existing;
+			final int proyectId = super.getRequest().getData("id", int.class);
+			final boolean duplicatedCode = this.repository.findAllProjects().stream().filter(e -> e.getId() != proyectId).anyMatch(e -> e.getCode().equals(object.getCode()));
 
-			existing = this.repository.findOneProjectByCode(object.getCode());
-			if (existing.isPresent())
-				super.state(existing.get() == null, "code", "manager.project.form.error.duplicated-code");
+			super.state(!duplicatedCode, "code", "manager.project.form.error.duplicated-code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
@@ -98,7 +95,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	public void unbind(final Project object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "code", "title", "projectAbstract", "link", "cost", "indicator", "draftMode");
+		Dataset dataset = super.unbind(object, "code", "title", "projectAbstract", "link", "cost", "indication", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}
