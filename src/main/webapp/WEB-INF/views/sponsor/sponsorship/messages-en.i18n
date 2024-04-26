@@ -16,7 +16,6 @@ sponsor.sponsorship.list.label.draft-mode = Editable
 sponsor.sponsorship.list.button.create-form = Create Sponsorship
 
 
-
 #Form
 sponsor.sponsorship.form.label.code = Code:
 sponsor.sponsorship.form.label.moment = Moment:

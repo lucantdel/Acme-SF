@@ -76,6 +76,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 		Collection<Invoice> invoices;
 
+		// cascade if delete
 		invoices = this.repository.findAllInvoicesBySponsorshipId(object.getId());
 		this.repository.deleteAll(invoices);
 		this.repository.delete(object);
