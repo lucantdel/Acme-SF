@@ -4,6 +4,9 @@ developer.training-session.form.title = Detalles de Sesiones de Entrenamiento
 developer.trainingSession.list.label.code = Código
 developer.trainingSession.list.label.startPeriod =  Fecha Inicio
 developer.trainingSession.list.label.endPeriod = Fecha Fín
+developer.trainingSession.list.label.draftMode = Es Borrador
+
+developer.trainingSession.list.button.create = Crear
 
 developer.trainingSession.form.label.code = Código:
 developer.trainingSession.form.label.startPeriod = Fecha Inicio:
@@ -12,3 +15,12 @@ developer.trainingSession.form.label.location = Localizción:
 developer.trainingSession.form.label.instructor = Instructor:
 developer.trainingSession.form.label.contactEmail = Correo de Contacto:
 developer.trainingSession.form.label.link = Link:
+
+developer.trainingSession.form.button.create = Crear
+developer.trainingSession.form.button.publish = Publicar
+developer.trainingSession.form.button.update = Actualizar
+developer.trainingSession.form.button.delete = Borrar
+
+developer.training-session.form.error.duplicated-ts-code = Este codigo ya esta cogido, introduzca otro
+developer.training-session.form.error.startPeriod = The start date must be at least one week after the creation moment of the module
+developer.training-session.form.error.endPeriod = The end date must be at least one week after the start period.

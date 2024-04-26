@@ -19,7 +19,6 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.trainingModule.TrainingModule;
-import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -61,6 +60,9 @@ public class TrainingSession extends AbstractEntity {
 	@URL
 	protected String			link;
 
+	@NotNull
+	protected boolean			draftMode;
+
 	// Derived attributes ----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
@@ -69,11 +71,5 @@ public class TrainingSession extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	protected TrainingModule	trainingModule;
-
-	@NotNull
-	@Valid
-	@ManyToOne()
-
-	protected Developer			developer;
 
 }

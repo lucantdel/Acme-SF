@@ -29,8 +29,17 @@
 		<jstl:when test="${_command == 'show' && draftMode == false}">
 				<acme:button code="developer.trainingModule.form.button.training-session-list" action="/developer/training-session/list?trainingModuleId=${id}"/>
 		</jstl:when>
+		
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
-			<acme:button code="developer.trainingModule.form.button.training-session-list" action="/developer/training-session/list?trainingModuleId=${id}"/>
+
+			<jstl:if test="${_command == 'show'}">
+				<jstl:if test="${numberOfTrainingSessions==0}">
+					<acme:button  code="developer.trainingModule.form.button.training-session-createFIRST" action="/developer/training-session/create?trainingModuleId=${id}"/>		
+				</jstl:if>
+				<jstl:if test="${numberOfTrainingSessions>0}">
+					<acme:button code="developer.trainingModule.form.button.training-session-list" action="/developer/training-session/list?trainingModuleId=${id}"/>		
+				</jstl:if>
+			</jstl:if>
 			<acme:submit code="developer.trainingModule.form.button.update" action="/developer/training-module/update"/>
 			<acme:submit code="developer.trainingModule.form.button.delete" action="/developer/training-module/delete"/>
 			<acme:submit code="developer.trainingModule.form.button.publish" action="/developer/training-module/publish"/>
