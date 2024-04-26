@@ -4,10 +4,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>276</x>
-      <y>372</y>
+      <x>186</x>
+      <y>408</y>
       <w>264</w>
-      <h>126</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -16,20 +16,19 @@ _TrainingModule_
 + code: String {Unique, NotBlank,Pattern([A-Z]{1,3}-[0-9]{3})}
 + creationMoment: Date {NotNull, Past, Temporal(TIMESTAMP)}
 + details: String {NotBlank, Length(1,100)}
-
 + difficultyLevel: Dificulty {NotNull}
-
 + updateMoment: Date {Past, Temporal(TIMESTAMP)}
 + link: String {URL}
-+ / totalTime: Integer {Min(0)} 
++ totalEstimatedTime: Integer {NotNull, Min(35)}
++ draftMode: Boolean {NotNull} 
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>534</x>
-      <y>306</y>
+      <x>462</x>
+      <y>270</y>
       <w>78</w>
       <h>66</h>
     </coordinates>
@@ -47,8 +46,8 @@ _Difficulty_
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>90</x>
-      <y>360</y>
+      <x>0</x>
+      <y>396</y>
       <w>168</w>
       <h>30</h>
     </coordinates>
@@ -60,8 +59,8 @@ after creationMoment
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>372</y>
+      <x>162</x>
+      <y>408</y>
       <w>36</w>
       <h>78</h>
     </coordinates>
@@ -71,10 +70,10 @@ after creationMoment
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>276</x>
-      <y>204</y>
+      <x>186</x>
+      <y>240</y>
       <w>252</w>
-      <h>102</h>
+      <h>114</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -87,14 +86,16 @@ _TrainingSession_
 + instructor: String {NotBlank, Length(1,75)}
 + contactEmail: String {NotBlank, Email}
 + link: String {URL}
++ draftMode: Boolean {NotNull}
+ 
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>90</x>
-      <y>222</y>
+      <x>0</x>
+      <y>258</y>
       <w>168</w>
       <h>30</h>
     </coordinates>
@@ -107,8 +108,8 @@ one week after creationMoment
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>234</y>
+      <x>162</x>
+      <y>270</y>
       <w>36</w>
       <h>18</h>
     </coordinates>
@@ -118,8 +119,8 @@ one week after creationMoment
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>246</y>
+      <x>162</x>
+      <y>282</y>
       <w>36</w>
       <h>72</h>
     </coordinates>
@@ -129,8 +130,8 @@ one week after creationMoment
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>90</x>
-      <y>288</y>
+      <x>0</x>
+      <y>324</y>
       <w>168</w>
       <h>30</h>
     </coordinates>
@@ -142,28 +143,27 @@ one week after startPeriod
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>402</x>
-      <y>300</y>
+      <x>312</x>
+      <y>348</y>
       <w>78</w>
-      <h>84</h>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
 m2= 1..*
 Composed Of ^</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>216</y>
+      <x>606</x>
+      <y>432</y>
       <w>192</w>
-      <h>78</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;UserRole&gt;&gt;
-
 _Developer_
 --
 + degree: String {NotBlank,L ength(0,75)}
@@ -177,21 +177,21 @@ _Developer_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
-      <y>246</y>
-      <w>120</w>
+      <x>444</x>
+      <y>462</y>
+      <w>174</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
 m1= 0..*
 m2= 1
 is managed &gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>696</x>
+      <x>534</x>
       <y>390</y>
       <w>60</w>
       <h>66</h>
@@ -210,22 +210,22 @@ _Project_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>534</x>
+      <x>444</x>
       <y>414</y>
-      <w>174</w>
+      <w>102</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
 m2= 1..*
 is about &gt;</panel_attributes>
-    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>90</x>
-      <y>414</y>
+      <x>0</x>
+      <y>450</y>
       <w>168</w>
       <h>60</h>
     </coordinates>
@@ -241,25 +241,26 @@ It will be measured in whole hours.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>444</y>
+      <x>162</x>
+      <y>480</y>
       <w>36</w>
-      <h>30</h>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;40.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;40.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>300</y>
+      <x>588</x>
+      <y>270</y>
       <w>204</w>
-      <h>84</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 StudentDashboard
 --
++ totalNumberOfTrainingSessionsWithLink: Integer
 + totalNumberOfTrainingSessionsWithLink: Integer
 + averageTimeByTM: Double
 + minimumTimeByTM: Double
