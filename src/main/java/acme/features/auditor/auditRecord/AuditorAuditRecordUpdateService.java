@@ -92,7 +92,6 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		assert object != null;
 
 		Dataset dataset;
-		System.out.println(object.getCodeAudit().getCode() + "update");
 
 		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode", "auditor");
 
