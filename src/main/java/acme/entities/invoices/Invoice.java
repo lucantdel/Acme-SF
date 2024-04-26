@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,6 +20,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.entities.sponsorships.Sponsorship;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,22 +46,22 @@ public class Invoice extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				registrationTime;
 
-	// al menos un mes de antelación al registrationTime
-
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				dueDate;
 
+	@Valid
 	@NotNull
-	// cantidad no nula, no puede ser min(0)
-	@Min(1)
-	protected double			quantity;
+	protected Money				quantity;
 
 	@Min(0)
-	protected double			tax;
+	@Max(100)
+	private double				tax;
 
 	@URL
 	protected String			link;
+
+	protected boolean			draftMode;
 
 	// Derived attributes -----------------------------------------------------
 
@@ -66,7 +69,7 @@ public class Invoice extends AbstractEntity {
 	@Min(0)
 	@Transient
 	public double totalAmount() {
-		return this.quantity + this.tax;
+		return this.quantity.getAmount() + this.quantity.getAmount() * (this.tax / 100);
 	}
 
 	// Relationships ----------------------------------------------------------

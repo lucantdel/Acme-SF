@@ -51,7 +51,9 @@ public class AnySponsorshipListService extends AbstractService<Any, Sponsorship>
 			object.getStartDuration(), //
 			object.getFinalDuration(), //
 			object.getEmail(), //
-			object.getLink(), object.getProject().getCode(), object.getSponsor().getName());
+			object.getLink(), //
+			object.getProject().getCode(), //
+			object.getSponsor().getName());
 		dataset.put("payload", payload);
 
 		super.getResponse().addData(dataset);
