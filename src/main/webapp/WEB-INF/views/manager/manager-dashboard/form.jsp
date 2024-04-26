@@ -12,33 +12,53 @@
 		<th scope="row">
 			<acme:message code="manager.dashboard.form.label.avg-project-cost"/>
 		</th>
-		<td>
-			<acme:print value="${avgProjectCost}"/>
-		</td>
+		<jstl:forEach var="entry" items="${avgProjectCost}">
+			<tr>
+				<td>
+					<acme:print value="${entry.value}"/>
+					<acme:print value="${entry.key}"/>
+				</td>
+			</tr>
+		</jstl:forEach>
 	</tr>
 	<tr>
 		<th scope="row">
 			<acme:message code="manager.dashboard.form.label.dev-project-cost"/>
 		</th>
-		<td>
-			<acme:print value="${devProjectCost}"/>
-		</td>
+		<jstl:forEach var="entry" items="${devProjectCost}">
+			<tr>
+				<td>
+					<acme:print value="${entry.value}"/>
+					<acme:print value="${entry.key}"/>
+				</td>
+			</tr>
+		</jstl:forEach>
 	</tr>
 	<tr>
 		<th scope="row">
 			<acme:message code="manager.dashboard.form.label.min-project-cost"/>
 		</th>
-		<td>
-			<acme:print value="${minProjectCost}"/>
-		</td>
+		<jstl:forEach var="entry" items="${minProjectCost}">
+			<tr>
+				<td>
+					<acme:print value="${entry.value}"/>
+					<acme:print value="${entry.key}"/>
+				</td>
+			</tr>
+		</jstl:forEach>
 	</tr>
 	<tr>
 		<th scope="row">
 			<acme:message code="manager.dashboard.form.label.max-project-cost"/>
 		</th>
-		<td>
-			<acme:print value="${maxProjectCost}"/>
-		</td>
+		<jstl:forEach var="entry" items="${maxProjectCost}">
+			<tr>
+				<td>
+					<acme:print value="${entry.value}"/>
+					<acme:print value="${entry.key}"/>
+				</td>
+			</tr>
+		</jstl:forEach>
 	</tr>	
 </table>
 
@@ -112,7 +132,7 @@
 					{
 						ticks : {
 							suggestedMin : 0,
-							suggestedMax : 5
+							suggestedMax : 3  
 						}
 					}
 				]
