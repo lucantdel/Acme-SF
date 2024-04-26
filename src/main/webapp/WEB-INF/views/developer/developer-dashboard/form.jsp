@@ -24,6 +24,39 @@
 			<acme:print value="${totalNumberOfTrainingSessionsWithLink}"/>
 		</td>
 	</tr>
+	
+	<tr>
+		<th scope="row">
+			<acme:message code="developer.dashboard.form.label.averageTimeByTM"/>
+		</th>
+	<td>
+			<acme:print value="${averageTimeByTM}"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="developer.dashboard.form.label.minimumTimeByTM"/>
+		</th>
+		<td>
+			<acme:print value="${minimumTimeByTM}"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="developer.dashboard.form.label.maximumTimeByTM"/>
+		</th>
+		<td>
+			<acme:print value="${maximumTimeByTM}"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="developer.dashboard.form.label.standardDeviationTimeByTM"/>
+		</th>
+		<td>
+			<acme:print value="${standardDeviationTimeByTM}"/>
+		</td>
+	</tr>
 
 </table>
 
