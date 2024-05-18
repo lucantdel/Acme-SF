@@ -36,6 +36,8 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		objects = this.repository.findAllTrainingSessionBytrainingModuleId(moduleId);
 
 		super.getBuffer().addData(objects);
+		System.out.println(super.getRequest());
+
 	}
 
 	@Override

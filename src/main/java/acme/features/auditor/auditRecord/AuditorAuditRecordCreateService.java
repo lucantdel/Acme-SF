@@ -31,6 +31,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		auditor = this.repository.getAuditorbyCodeAuditId(id);
 		boolean autorizacion = auditor.getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername());
 		super.getResponse().setAuthorised(autorizacion);
+
 	}
 	@Override
 	public void load() {
@@ -56,6 +57,10 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
+		CodeAudit ca;
+		Integer id;
+		id = Integer.valueOf(super.getRequest().getData().values().stream().collect(Collectors.toList()).get(0).toString());
+		ca = this.repository.findCodeAuditById(id);
 
 		if (!super.getBuffer().getErrors().hasErrors("codeAR")) {
 			AuditRecord existing;
@@ -71,6 +76,10 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 
 			if (!super.getBuffer().getErrors().hasErrors("startDate"))
 				super.state(object.getStartDate().before(object.getFinishDate()), "startDate", "auditor.auditRecord.error.period3");
+
+			if (!super.getBuffer().getErrors().hasErrors("startDate"))
+				super.state(ca.getExecution().before(object.getStartDate()), "startDate", "auditor.auditRecord.error.execution");
+
 		}
 		if (object.getStartDate() == null)
 			if (!super.getBuffer().getErrors().hasErrors("finishDate"))

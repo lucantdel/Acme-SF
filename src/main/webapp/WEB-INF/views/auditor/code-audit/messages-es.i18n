@@ -26,5 +26,5 @@ auditor.codeAudit.form.button.publish = Publicar
 auditor.auditRecord.form.button.create = Crear Record de Auditoria
 
 auditor.codeAudit.error.Mark = La nota debe ser porlomenos una C
-auditor.codeAudit.error.duplicated = El codigo no se puede repetir
+auditor.codeAudit.error.duplicated = El codigo no puede ser repetido
 auditor.codeAudit.error.draftMode = Debe estar en modo borrador
