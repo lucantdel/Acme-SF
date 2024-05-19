@@ -53,8 +53,6 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select sc from SystemConfiguration sc")
 	SystemConfiguration findActualSystemConfiguration();
 
-	//Delete
-	// TODO: Corregir consultas
 	@Query("select c from Contract c where c.project.id = :id")
 	Collection<Contract> findManyContractsByProjectId(int id);
 
