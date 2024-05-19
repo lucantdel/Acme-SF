@@ -56,8 +56,8 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		Map<String, Double> maxProjectCost;
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findAllProjectsByManagerId(managerId);
-		userStories = this.repository.findAllUserStoriesByManagerId(managerId);
+		projects = this.repository.findAllPublishedProjectsByManagerId(managerId);
+		userStories = this.repository.findAllPublishedUserStoriesByManagerId(managerId);
 
 		avgProjectCost = new HashMap<>();
 		devProjectCost = new HashMap<>();
