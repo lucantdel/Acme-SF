@@ -25,6 +25,8 @@
 			<acme:menu-suboption code="master.menu.any.list-sponsorships" action="/any/sponsorship/list"/>
       		<acme:menu-suboption code="master.menu.any.list-trainingModules" action="/any/training-module/list"/>
       		<acme:menu-suboption code="master.menu.any.contract" action="/any/contract/list"/>
+      		<acme:menu-suboption code="master.menu.any.list-code-audit" action="/any/code-audit/list"/>
+      		
       		
 		</acme:menu-option>
 		

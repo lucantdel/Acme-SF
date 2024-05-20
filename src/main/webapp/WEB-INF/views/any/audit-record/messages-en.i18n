@@ -1,0 +1,17 @@
+any.audit-record.list.title = Listing of Audit Records
+any.audit-record.form.title = Audit Records form
+
+
+any.auditRecord.list.label.codeAR = CodeAR
+any.auditRecord.list.label.score = Score:
+any.auditRecord.list.label.codeAudit = CodeAudit:
+any.auditRecord.list.label.published = Published:
+
+
+any.auditRecord.form.label.codeAR = Code:
+any.auditRecord.form.label.startDate = StartDate:
+any.auditRecord.form.label.finishDate = FinishDate:
+any.auditRecord.form.label.score = Score:
+any.auditRecord.form.label.codeAudit = CodeAudit:
+any.auditRecord.form.label.published = Published:
+any.auditRecord.form.label.link = link:

@@ -1,0 +1,22 @@
+any.code-audit.list.title = Listado de auditorias de codigo
+any.code-audit.form.title = Detalles de auditorias de codigo
+
+any.codeAudit.list.label.code = Codigo
+any.codeAudit.list.label.execution = Tiempo de ejecucion
+any.codeAudit.list.label.type = Tipo
+any.codeAudit.list.label.project = Proyecto
+any.codeAudit.list.label.auditor = Auditor
+any.codeAudit.list.label.Mark = Nota
+any.codeAudit.list.button.create = Crear
+
+any.codeAudit.form.button.audit-record-list = listado de Records de auditorias
+
+
+any.codeAudit.form.label.code = Codigo:
+any.codeAudit.form.label.execution = Tiempo de ejecucion:
+any.codeAudit.form.label.type = Static/Dinamic:
+any.codeAudit.form.label.correctiveActions = Acciones correctivas:
+any.codeAudit.form.label.optionalLink = Link Opcional:
+any.codeAudit.form.label.project = Proyecto:
+any.codeAudit.form.label.published = Publico:
+any.codeAudit.form.label.Mark = Nota
