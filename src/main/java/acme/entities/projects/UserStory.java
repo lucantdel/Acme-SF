@@ -46,6 +46,7 @@ public class UserStory extends AbstractEntity {
 	protected UserStoryPriority	priority;
 
 	@URL
+	@Length(max = 255)
 	protected String			link;
 
 	protected boolean			draftMode;
