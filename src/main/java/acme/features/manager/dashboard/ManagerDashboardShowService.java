@@ -47,8 +47,8 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 
 		double avgUserStoryEstimatedCost;
 		double devUserStoryEstimatedCost;
-		int minUserStoryEstimatedCost;
-		int maxUserStoryEstimatedCost;
+		double minUserStoryEstimatedCost;
+		double maxUserStoryEstimatedCost;
 
 		Map<String, Double> avgProjectCost;
 		Map<String, Double> devProjectCost;
@@ -76,10 +76,10 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		couldUserStories = 0;
 		wontUserStories = 0;
 
-		avgUserStoryEstimatedCost = 0.;
-		devUserStoryEstimatedCost = 0.;
-		minUserStoryEstimatedCost = 0;
-		maxUserStoryEstimatedCost = 0;
+		avgUserStoryEstimatedCost = Double.NaN;
+		devUserStoryEstimatedCost = Double.NaN;
+		minUserStoryEstimatedCost = Double.NaN;
+		maxUserStoryEstimatedCost = Double.NaN;
 
 		if (!userStories.isEmpty()) {
 			mustUserStories = this.repository.mustUserStories(managerId);

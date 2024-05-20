@@ -44,10 +44,10 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 	double devUserStoryEstimatedCost(int managerId);
 
 	@Query("select min(us.estimatedCost) from UserStory us where us.manager.id = :managerId and us.draftMode = false")
-	int minUserStoryEstimatedCost(int managerId);
+	double minUserStoryEstimatedCost(int managerId);
 
 	@Query("select max(us.estimatedCost) from UserStory us where us.manager.id = :managerId and us.draftMode = false")
-	int maxUserStoryEstimatedCost(int managerId);
+	double maxUserStoryEstimatedCost(int managerId);
 
 	@Query("select p from Project p where p.manager.id = :managerId and p.draftMode = false")
 	Collection<Project> findAllPublishedProjectsByManagerId(int managerId);
