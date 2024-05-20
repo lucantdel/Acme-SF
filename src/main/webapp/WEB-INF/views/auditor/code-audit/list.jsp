@@ -13,7 +13,7 @@
 		<acme:list-payload path="payload"/>
 </acme:list>
 
-
 <jstl:if test="${_command == 'list-mine'}">
-	<acme:button code="auditor.codeAudit.list.button.create" action="/auditor/code-audit/create"/>
+			<acme:button code="auditor.codeAudit.list.button.create" action="/auditor/code-audit/create"/>			
 </jstl:if>	
+	

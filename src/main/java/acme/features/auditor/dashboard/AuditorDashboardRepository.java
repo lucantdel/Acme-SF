@@ -11,27 +11,27 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface AuditorDashboardRepository extends AbstractRepository {
 
-	@Query("SELECT COUNT(ca) FROM CodeAudit ca WHERE ca.type = acme.entities.codeAudits.CodeAuditsStatus.Dinamic")
-	int totalNumberOfCodeAuditsDynamic();
+	@Query("SELECT COUNT(ca) FROM CodeAudit ca WHERE ca.type = acme.entities.codeAudits.CodeAuditsStatus.Dinamic and ca.auditor.id = :auditorId")
+	int totalNumberOfCodeAuditsDynamic(int auditorId);
 
-	@Query("SELECT COUNT(ca) FROM CodeAudit ca WHERE ca.type = acme.entities.codeAudits.CodeAuditsStatus.Static")
-	int totalNumberOfCodeAuditsStatic();
+	@Query("SELECT COUNT(ca) FROM CodeAudit ca WHERE ca.type = acme.entities.codeAudits.CodeAuditsStatus.Static and ca.auditor.id = :auditorId")
+	int totalNumberOfCodeAuditsStatic(int auditorId);
 
-	@Query("SELECT COUNT(ar) FROM AuditRecord ar group by ar.codeAudit")
-	List<Integer> numberOfAuditRecord();
+	@Query("SELECT COUNT(ar) FROM AuditRecord ar where ar.auditor.id = :auditorId group by ar.codeAudit ")
+	List<Integer> numberOfAuditRecord(int auditorId);
 
-	@Query("select max(a.finishDate - a.startDate) FROM AuditRecord a")
-	Long maxPeriod();
+	@Query("select max(a.finishDate - a.startDate) FROM AuditRecord a where a.auditor.id = :auditorId")
+	Long maxPeriod(int auditorId);
 
-	@Query("select min(a.finishDate - a.startDate) FROM AuditRecord a")
-	Long minPeriod();
-	@Query("select a.finishDate - a.startDate FROM AuditRecord a")
-	List<Long> Period();
+	@Query("select min(a.finishDate - a.startDate) FROM AuditRecord a where a.auditor.id = :auditorId")
+	Long minPeriod(int auditorId);
+	@Query("select a.finishDate - a.startDate FROM AuditRecord a where a.auditor.id = :auditorId")
+	List<Long> Period(int auditorId);
 
-	@Query("select avg(a.finishDate - a.startDate) FROM AuditRecord a")
-	Long avgPeriod();
+	@Query("select avg(a.finishDate - a.startDate) FROM AuditRecord a where a.auditor.id = :auditorId")
+	Long avgPeriod(int auditorId);
 
-	@Query("select stddev(a.finishDate - a.startDate) FROM AuditRecord a")
-	Long stddevPeriod();
+	@Query("select stddev(a.finishDate - a.startDate) FROM AuditRecord a where a.auditor.id = :auditorId")
+	Long stddevPeriod(int auditorId);
 
 }

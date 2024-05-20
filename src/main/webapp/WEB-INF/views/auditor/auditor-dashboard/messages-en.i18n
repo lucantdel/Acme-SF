@@ -1,5 +1,7 @@
 auditor.auditor-dashboard.form.title = Code Audit and Audit Records Indicators
 
+auditor.dashboard.form.title.code-audits-indicators = Code Audits Indicators
+
 auditor.dashboard.form.label.code-audits-dinamic = Number of CodeAudits type Dinamic
 auditor.dashboard.form.label.code-audits-static = Number of CodeAudits type Static
 auditor.dashboard.form.label.avr-audit-records = Average Number of AuditRecords per Code Audit

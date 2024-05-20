@@ -41,7 +41,7 @@ public class AuditorAuditRecordListMineService extends AbstractService<Auditor, 
 		Dataset dataset;
 		String payload;
 
-		dataset = super.unbind(object, "codeAR", "score", "draftMode");
+		dataset = super.unbind(object, "codeAR", "score", "published");
 		dataset.put("codeAudit", object.getCodeAudit().getCode());
 
 		payload = String.format(//

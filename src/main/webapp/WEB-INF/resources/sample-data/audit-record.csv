@@ -1,4 +1,4 @@
-key,codeAR,startDate,finishDate,score,link,key:code-audit,key:auditor,draftMode
+key,codeAR,startDate,finishDate,score,link,key:code-audit,key:auditor,published
 audit-record-01,AU-1234-321,"2021/10/08 12:00","2021/10/08 16:00","F",http://example.com/audit-001,code-audit-01,auditor-01,true
 audit-record-02,AU-1743-980,"2021/10/07 12:00","2021/10/07 16:00","A+",http://example.com/audit-002,code-audit-02,auditor-02,true
 audit-record-03,AU-9876-000,"2021/10/06 12:00","2021/10/06 16:00","B",http://example.com/audit-003,code-audit-03,auditor-01,true

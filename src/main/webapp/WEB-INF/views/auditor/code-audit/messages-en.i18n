@@ -19,16 +19,16 @@ auditor.codeAudit.form.label.type = Static/Dinamic:
 auditor.codeAudit.form.label.correctiveActions = Correctiveactions:
 auditor.codeAudit.form.label.optionalLink = OptionalLink:
 auditor.codeAudit.form.label.project = Project:
-auditor.codeAudit.form.label.draftMode = DraftMode
+auditor.codeAudit.form.label.published = Published
 auditor.codeAudit.form.label.Mark = Mark
 
 auditor.codeAudit.form.button.create = Create AuditRecord
+auditor.codeAudit.form.button.audit-record-list = List AuditRecords
+
 auditor.codeAudit.form.button.delete = Delete
 auditor.codeAudit.form.button.update = Update
 auditor.codeAudit.form.button.publish = Publish
 
 auditor.codeAudit.error.Mark = Mark must be at least C
-auditor.codeAudit.error.duplicated = Code must be unique
-auditor.codeAudit.error.draftMode = Must be in draftMode
-
-
+auditor.codeAudit.error.duplicated = Code already in use
+auditor.codeAudit.error.published = Must not be published

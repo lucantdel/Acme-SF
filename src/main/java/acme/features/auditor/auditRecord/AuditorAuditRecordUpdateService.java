@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.codeAudits.AuditRecord;
+import acme.entities.codeAudits.CodeAudit;
 import acme.features.auditor.codeAudits.AuditorCodeAuditRepository;
 import acme.roles.Auditor;
 
@@ -49,13 +50,16 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode");
+		super.bind(object, "codeAR", "startDate", "finishDate", "score", "link", "published");
 	}
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode() == true, "draftMode", "auditor.auditRecord.error.draftMode");
+		CodeAudit ca;
+		ca = this.rp.findCodeAuditByCode(object.getCodeAudit().getCode());
+
+		if (!super.getBuffer().getErrors().hasErrors("published"))
+			super.state(object.isPublished() == false, "published", "auditor.auditRecord.error.published");
 
 		if (!super.getBuffer().getErrors().hasErrors("codeAR")) {
 			AuditRecord existing;
@@ -71,6 +75,8 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 
 			if (!super.getBuffer().getErrors().hasErrors("startDate"))
 				super.state(object.getStartDate().before(object.getFinishDate()), "startDate", "auditor.auditRecord.error.period3");
+			if (!super.getBuffer().getErrors().hasErrors("startDate"))
+				super.state(ca.getExecution().before(object.getStartDate()), "startDate", "auditor.auditRecord.error.execution");
 		}
 		if (object.getStartDate() == null)
 			if (!super.getBuffer().getErrors().hasErrors("finishDate"))
@@ -92,8 +98,9 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		assert object != null;
 
 		Dataset dataset;
+		System.out.println(object.getCodeAudit().getCode() + "update");
 
-		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode", "auditor");
+		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "published", "auditor");
 
 		super.getResponse().addData(dataset);
 	}
