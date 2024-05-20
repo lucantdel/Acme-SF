@@ -1,15 +1,22 @@
 
 package acme.features.auditor.dashboard;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.codeAudits.AuditRecord;
+import acme.entities.codeAudits.CodeAudit;
+import acme.roles.Auditor;
 
 @Repository
 public interface AuditorDashboardRepository extends AbstractRepository {
+
+	@Query("select a from Auditor a where a.userAccount.id = :id")
+	Auditor findAuditorById(int id);
 
 	@Query("SELECT COUNT(ca) FROM CodeAudit ca WHERE ca.type = acme.entities.codeAudits.CodeAuditsStatus.Dinamic and ca.auditor.id = :auditorId")
 	int totalNumberOfCodeAuditsDynamic(int auditorId);
@@ -33,5 +40,11 @@ public interface AuditorDashboardRepository extends AbstractRepository {
 
 	@Query("select stddev(a.finishDate - a.startDate) FROM AuditRecord a where a.auditor.id = :auditorId")
 	Long stddevPeriod(int auditorId);
+
+	@Query("select ca from CodeAudit ca where ca.auditor.id = :id")
+	Collection<CodeAudit> findAllCodeAuditsByAuditorId(int id);
+
+	@Query("select ar from AuditRecord ar where ar.auditor.id = :id")
+	Collection<AuditRecord> findAllAuditRecordsByAuditorId(int id);
 
 }

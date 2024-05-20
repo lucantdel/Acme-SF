@@ -16,3 +16,5 @@ auditor.dashboard.form.label.max-period-audit-records = Maximo Periodo de tiempo
 auditor.dashboard.form.label.min-period-audit-records = Minimo Periodo de tiempo en minutos
 auditor.dashboard.form.label.avr-period-audit-records = Periodo de tiempo medio en horas
 auditor.dashboard.form.label.dev-period-audit-records = Desviacion media del periodo de timepo en horas
+
+auditor.dashboard.form.label.error = No procede
