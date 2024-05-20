@@ -23,6 +23,7 @@ master.menu.any.list-claims = List claims
 master.menu.any.list-sponsorships = List sponsorships
 master.menu.any.list-trainingModules = List training modules
 master.menu.any.contract = List Contracts
+master.menu.any.list-code-audit = List Published Code Audits
 
 
 # master.menu.anonymous #######################################################
