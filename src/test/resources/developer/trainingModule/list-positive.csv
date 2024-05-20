@@ -1,0 +1,16 @@
+recordIndex,code,creationMoment,difficultyLevel,project,numberOfTrainingSessions,draftMode
+0,CDE-123,2021/02/15 08:43,Basic,project-01,3,false
+1,SDA-422,2021/03/07 14:27,Intermediate,project-02,2,true
+2,SDW-335,2021/05/22 19:12,Advanced,project-03,1,true
+3,AAA-100,2021/07/11 23:35,Basic,project-02,5,true
+4,VGE-569,2021/09/30 07:58,Intermediate,project-01,0,true
+5,ZZZ-989,2021/11/18 13:45,Advanced,project-03,6,true
+6,ZPU-559,2021/12/25 17:22,Basic,project-01,1,false
+7,BDI-999,2022/01/19 09:31,Intermediate,project-02,2,true
+8,PYV-248,2022/03/03 21:40,Advanced,project-01,4,false
+9,PPU-856,2022/04/14 10:55,Basic,project-01,2,false
+10,NAM-256,2022/05/29 15:06,Intermediate,project-02,1,false
+11,ASD-998,2022/06/17 18:48,Advanced,project-01,1,true
+12,WEV-852,2022/07/07 04:19,Basic,project-01,3,true
+13,VDR-330,2022/07/23 20:05,Intermediate,project-01,2,false
+14,BTY-448,2022/07/29 12:59,Advanced,project-03,3,true
