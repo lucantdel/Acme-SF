@@ -106,6 +106,8 @@ master.menu.user-account.manager = Datos de manager
 master.menu.user-account.become-manager = Hazte manager
 master.menu.user-account.become-developer = Hazte developer
 master.menu.user-account.developer = Datos de developer
+master.menu.user-account.become-auditor = Hazte auditor
+master.menu.user-account.auditor = Datos de auditor
 
 # master.menu.client #############################################
 

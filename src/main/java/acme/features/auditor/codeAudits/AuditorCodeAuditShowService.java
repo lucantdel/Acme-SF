@@ -63,7 +63,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		projects = this.rp.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode", "auditor");
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "published", "auditor");
 		String mark = object.Mark(this.repository.getScoreOfAsociatedPublishedAuditRecords(object));
 		dataset.put("Mark", mark);
 		dataset.put("project", projectsChoices.getSelected().getKey());

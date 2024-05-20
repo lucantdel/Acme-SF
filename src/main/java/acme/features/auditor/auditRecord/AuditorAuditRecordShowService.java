@@ -54,7 +54,7 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode", "auditor");
+		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "published", "auditor");
 		dataset.put("codeAuditCode", object.getCodeAudit().getCode());
 
 		super.getResponse().addData(dataset);

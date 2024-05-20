@@ -64,8 +64,8 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		assert object != null;
 		String mark = object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object));
 
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode() == true, "draftMode", "auditor.codeAudit.error.draftMode");
+		if (!super.getBuffer().getErrors().hasErrors("published"))
+			super.state(object.isPublished() == false, "published", "auditor.codeAudit.error.published");
 
 		if (mark != null)
 			if (!super.getBuffer().getErrors().hasErrors("Mark"))
@@ -77,7 +77,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
-		object.setDraftMode(false);
+		object.setPublished(true);
 		this.repository.save(object);
 	}
 	@Override
@@ -91,7 +91,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "published");
 		String mark = object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object));
 		dataset.put("Mark", mark);
 		dataset.put("project", projectsChoices.getSelected().getKey());

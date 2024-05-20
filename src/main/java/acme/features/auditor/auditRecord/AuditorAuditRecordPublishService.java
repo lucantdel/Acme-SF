@@ -50,19 +50,19 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode");
+		super.bind(object, "codeAR", "startDate", "finishDate", "score", "link", "published");
 	}
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode() == true, "draftMode", "auditor.auditRecord.error.draftMode");
+		if (!super.getBuffer().getErrors().hasErrors("published"))
+			super.state(object.isPublished() == false, "published", "auditor.auditRecord.error.published");
 
 	}
 	@Override
 	public void perform(final AuditRecord object) {
 		assert object != null;
-		object.setDraftMode(false);
+		object.setPublished(true);
 
 		this.repository.save(object);
 	}
@@ -73,7 +73,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "draftMode");
+		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "published");
 		dataset.put("codeAuditCode", object.getCodeAudit().getCode());
 
 		super.getResponse().addData(dataset);

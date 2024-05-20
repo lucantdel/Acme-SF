@@ -53,14 +53,14 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
-		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
+		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "published");
 
 	}
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode() == true, "draftMode", "auditor.codeAudit.error.draftMode");
+		if (!super.getBuffer().getErrors().hasErrors("published"))
+			super.state(object.isPublished() == false, "published", "auditor.codeAudit.error.published");
 	}
 	@Override
 	public void perform(final CodeAudit object) {
@@ -81,7 +81,7 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "published");
 		dataset.put("project", projectsChoices.getSelected().getKey());
 		dataset.put("projects", projectsChoices);
 		super.getResponse().addData(dataset);

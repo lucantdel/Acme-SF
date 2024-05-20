@@ -1,0 +1,9 @@
+authenticated.auditor.form.title = Auditor form
+
+authenticated.auditor.form.label.firm = Firm
+authenticated.auditor.form.label.profesionalId = Profesional Id
+authenticated.auditor.form.label.certifications = Certifications
+authenticated.auditor.form.label.optionalLink = Link
+
+authenticated.auditor.form.button.create = Create
+authenticated.auditor.form.button.update = Update

@@ -26,7 +26,7 @@ public interface AuditorAuditRecordRepository extends AbstractRepository {
 	@Query("select a from AuditRecord a where a.codeAudit.id = :id")
 	Collection<AuditRecord> findAllAuditRecordsByCodeAuditId(int id);
 
-	@Query("SELECT a.score FROM AuditRecord a WHERE a.codeAudit = :ca AND a.draftMode = false")
+	@Query("SELECT a.score FROM AuditRecord a WHERE a.codeAudit = :ca AND a.published = true")
 	List<String> getScoreOfAsociatedPublishedAuditRecords(CodeAudit ca);
 
 	@Query("select a from AuditRecord a where a.codeAR = :code")

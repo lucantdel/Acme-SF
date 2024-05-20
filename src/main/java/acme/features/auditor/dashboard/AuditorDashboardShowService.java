@@ -25,7 +25,9 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 	}
 	@Override
 	public void load() {
-		System.out.println(this.repository.avgPeriod() / (1000 * 60));
+
+		int auditorId;
+		auditorId = super.getRequest().getPrincipal().getActiveRoleId();
 
 		AuditorDashboard dashboard;
 		int totalNumberOfCodeAuditsDynamic;
@@ -40,21 +42,18 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		Long minimunTimeOfThePeriodlength;
 		Long deviationTimeOfThePeriodlength;
 
-		numberOfAuditRecords = this.repository.numberOfAuditRecord();
+		numberOfAuditRecords = this.repository.numberOfAuditRecord(auditorId);
 		maximunNumberOfAuditRecords = numberOfAuditRecords.stream().max(Comparator.comparingInt(Integer::intValue)).orElseThrow(null);
 		minimunNumberOfAuditRecords = numberOfAuditRecords.stream().min(Comparator.comparingInt(Integer::intValue)).orElseThrow(null);
 		averageNumberOfAuditRecords = numberOfAuditRecords.stream().mapToInt(Integer::intValue).average().orElse(0.0);
 		deviationOfAuditRecords = AuditorDashboardShowService.calcularDesvioEstandar(numberOfAuditRecords);
-		//System.out.println(this.repository.Periodlengthlist());
 
-		totalNumberOfCodeAuditsDynamic = this.repository.totalNumberOfCodeAuditsDynamic();
-		totalNumberOfCodeAuditsStatic = this.repository.totalNumberOfCodeAuditsStatic();
-		//averageNumberOfAuditRecords = this.repository.averageNumberOfAuditRecords();
-		//deviationOfAuditRecords = this.repository.deviationOfAuditRecords();
-		maximumTimeOfThePeriodlength = this.repository.maxPeriod();
-		avegageTimeOfThePeriodlength = this.repository.avgPeriod();
-		minimunTimeOfThePeriodlength = this.repository.minPeriod();
-		deviationTimeOfThePeriodlength = this.repository.stddevPeriod();
+		totalNumberOfCodeAuditsDynamic = this.repository.totalNumberOfCodeAuditsDynamic(auditorId);
+		totalNumberOfCodeAuditsStatic = this.repository.totalNumberOfCodeAuditsStatic(auditorId);
+		maximumTimeOfThePeriodlength = this.repository.maxPeriod(auditorId);
+		avegageTimeOfThePeriodlength = this.repository.avgPeriod(auditorId);
+		minimunTimeOfThePeriodlength = this.repository.minPeriod(auditorId);
+		deviationTimeOfThePeriodlength = this.repository.stddevPeriod(auditorId);
 		dashboard = new AuditorDashboard();
 		dashboard.setTotalNumberOfCodeAuditsDynamic(totalNumberOfCodeAuditsDynamic);
 		dashboard.setTotalNumberOfCodeAuditsStatic(totalNumberOfCodeAuditsStatic);

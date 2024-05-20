@@ -1,5 +1,8 @@
 auditor.auditor-dashboard.form.title = Indicadores de Auditorias de codigo  y Registros de Auditorias
 
+auditor.dashboard.form.title.code-audits-indicators = Indicadores de Auditorias de Codigo
+
+
 auditor.dashboard.form.label.code-audits-dinamic = Numero de Auditorias de codigo de tipo Dinamic
 auditor.dashboard.form.label.code-audits-static = Numero de Auditorias de codigo de tipo Static
 auditor.dashboard.form.label.avr-audit-records = Media de Registros de Auditorias por Auditoria de Codigo

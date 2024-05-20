@@ -34,19 +34,25 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 		auditor = this.repository.findOneAuditorById(super.getRequest().getPrincipal().getActiveRoleId());
 		super.getBuffer().addData(object);
 		object.setAuditor(auditor);
-		object.setDraftMode(true);
+		//object.setPublished(false);
 	}
 
 	@Override
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
-		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode");
+		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "published");
 
 	}
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("Code")) {
+			CodeAudit existing;
+			existing = this.repository.findCodeAuditByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "auditor.codeAudit.error.duplicated");
+		}
 	}
 	@Override
 	public void perform(final CodeAudit object) {
@@ -64,7 +70,7 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "published");
 		dataset.put("project", projectsChoices.getSelected().getKey());
 		dataset.put("projects", projectsChoices);
 
