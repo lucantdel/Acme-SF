@@ -66,7 +66,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		 * El coste (en horas) estimado debe ser mayor que 0
 		 */
 		assert object != null;
-		// TODO: Necesario? ya se comprueba la entidad y tiene su error correspondiente
+		// Necesario? ya se comprueba la entidad y tiene su error correspondiente
 		if (!super.getBuffer().getErrors().hasErrors("estimatedCost")) {
 			int ec;
 			ec = object.getEstimatedCost();

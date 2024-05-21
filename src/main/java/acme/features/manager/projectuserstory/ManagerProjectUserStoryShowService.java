@@ -68,6 +68,7 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 		SelectChoices projectChoices;
 		SelectChoices userStoryChoices;
 		Dataset dataset;
+		boolean projectDraftMode;
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 
@@ -81,9 +82,12 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 		projectChoices = SelectChoices.from(projects, "title", object.getProject());
 		userStoryChoices = SelectChoices.from(userStories, "title", object.getUserStory());
 
+		projectDraftMode = object.getProject().isDraftMode();
+
 		dataset = super.unbind(object, "project", "userStory");
 		dataset.put("projectChoices", projectChoices);
 		dataset.put("userStoryChoices", userStoryChoices);
+		dataset.put("projectDraftMode", projectDraftMode);
 
 		super.getResponse().addData(dataset);
 	}
