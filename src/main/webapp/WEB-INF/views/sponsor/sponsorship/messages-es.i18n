@@ -4,12 +4,7 @@ sponsor.sponsorship.form.title = Detalles de Patrocinios
 #Listado
 sponsor.sponsorship.list.label.code = Código
 sponsor.sponsorship.list.label.moment = Momento
-sponsor.sponsorship.list.label.startDuration = Duración Inicial
-sponsor.sponsorship.list.label.finalDuration = Duración Final
 sponsor.sponsorship.list.label.amount = Cantidad
-sponsor.sponsorship.list.label.type = Tipo
-sponsor.sponsorship.list.label.email = Correo Electrónico
-sponsor.sponsorship.list.label.link = Enlace
 sponsor.sponsorship.list.label.project = Projecto
 sponsor.sponsorship.list.label.draft-mode = Editable
 
@@ -36,9 +31,19 @@ sponsor.sponsorship.form.button.publish = Publicar
 
 sponsor.sponsorship.form.button.create-sponsorship = Crear
 
-sponsor.sponsorship.form.error.duplicated = Este código existe ya
-sponsor.sponsorship.form.error.duration-start-date-not-valid = El inicio de la fecha de duración debe ser posterior a la de momento
-sponsor.sponsorship.form.error.duration-not-valid = La duración del patrocinio debe ser de al menos un mes. La fecha de inicio debe ser anterior a la final
-sponsor.sponsorship.form.error.amount-must-be-positive = La cantidad de dinero debe ser positiva
-sponsor.sponsorship.form.error.sponsorship-amount-and-invoices-total-amount-not-equal = La cantidad total del patrocinio y la suma del valor de las facturas deben ser iguales
-sponsor.sponsorship.form.error.currency-not-supported = La moneda elegida no es soportada por el sistema
+sponsor.sponsorhsip.form.error.duplicate = Este código ya existe.
+sponsor.sponsorhsip.form.error.period = La duración del patrocinio debe ser de al menos un mes.
+sponsor.sponsorhsip.form.error.startDuration = La fecha de inicio debe ser después del momento de creación.
+sponsor.sponsorhsip.form.error.finalDuration = La fecha de fin debe ser posterior a la de inicio.
+sponsor.sponsorhsip.form.error.nullStart = Debe tener fecha de inicio.
+sponsor.sponsorhsip.form.error.nullFinal = Debe tener fecha de fin.
+sponsor.sponsorship.form.error.amount-must-be-positive = La cantidad de dinero debe ser positiva.
+sponsor.sponsorship.form.error.currency-not-supported = La moneda elegida no es soportada por el sistema.
+sponsor.sponsorship.form.error.invoices = Todas las facturas deben estar publicadas y que sus cantidades con impuestos sumen la cantidad a pagar.
+sponsor.sponsorship.form.error.published = Imposible modificar un patrocinio ya publicado.
+sponsor.sponsorship.form.error.currencyChange = Imposible modificar la moneda de pago con facturas ya publicadas.
+sponsor.sponsorship.form.error.amountOutOfBounds = La cantidad debe encontrarse entre 0.00 y 1000000.00, para tener una realista.
+sponsor.sponsorship.form.error.deleteWithPublishedInvoices = Imposible borrar un patrocinio con facturas ya publicadas.
+sponsor.sponsorship.form.error.dateOutOfBounds = Todas las fechas deben ser anteriores a 2201/01/01 00:00, ya que sino es una fecha no realista.
+sponsor.sponsorship.form.error.startDurationBeforeEndDate = La fecha de inicio debe ser anterior a la de fin.
+sponsor.sponsorship.form.error.startDurationOutOfBounds = Debe ser anterior a 2200/12/25 00:00, ya que sino es una fecha no realista.

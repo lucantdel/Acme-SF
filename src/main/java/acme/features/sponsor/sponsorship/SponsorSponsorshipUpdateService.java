@@ -30,15 +30,14 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	@Override
 	public void authorise() {
 		boolean status;
-		Sponsorship sponsorship;
+		Sponsorship sph;
 		Sponsor sponsor;
 
-		sponsorship = this.repository.findOneSponsorshipById(super.getRequest().getData("id", int.class));
-		sponsor = sponsorship == null ? null : this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
+		sph = this.repository.findOneSponsorshipById(super.getRequest().getData("id", int.class));
 
-		status = super.getRequest().getPrincipal().getActiveRole() == Sponsor.class //
-			&& sponsorship.getSponsor().equals(sponsor) && sponsorship.isDraftMode();
-		//		status = sponsorship != null && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
+		sponsor = sph == null ? null : this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
+		status = sph != null && super.getRequest().getPrincipal().getActiveRole() == Sponsor.class && sph.getSponsor().equals(sponsor) //
+			&& sph.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -77,28 +76,49 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Sponsorship existing;
-
-			existing = this.repository.findOneSponsorshipByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
+			Sponsorship sponsorshipSameCode;
+			sponsorshipSameCode = this.repository.findSponsorshipByCode(object.getCode());
+			if (sponsorshipSameCode != null) {
+				int id = sponsorshipSameCode.getId();
+				super.state(id == object.getId(), "code", "sponsor.sponsorship.form.error.duplicate");
+			}
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("startDuration"))
-			super.state(MomentHelper.isAfter(object.getStartDuration(), object.getMoment()), "startDuration", "sponsor.sponsorship.form.error.duration-start-date-not-valid");
+		String dateString = "2201/01/01 00:00";
+		Date futureMostDate = MomentHelper.parse(dateString, "yyyy/MM/dd HH:mm");
+		dateString = "2200/12/25 00:00";
+		Date latestStartDate = MomentHelper.parse(dateString, "yyyy/MM/dd HH:mm");
 
-		if (!super.getBuffer().getErrors().hasErrors("finalDuration")) {
-			Date startDuration;
-			Date finalDuration;
-			boolean isMinimumDuration;
-			boolean finalDurationIsAfterStart;
+		if (object.getStartDuration() != null && object.getFinalDuration() != null) {
 
-			startDuration = object.getStartDuration();
-			finalDuration = object.getFinalDuration();
-			isMinimumDuration = MomentHelper.isLongEnough(startDuration, finalDuration, 1, ChronoUnit.MONTHS);
-			finalDurationIsAfterStart = MomentHelper.isAfter(finalDuration, startDuration);
+			if (!super.getBuffer().getErrors().hasErrors("startDuration"))
+				super.state(MomentHelper.isAfter(object.getStartDuration(), object.getMoment()), "startDuration", "sponsor.sponsorship.form.error.startDuration");
 
-			super.state(isMinimumDuration && finalDurationIsAfterStart, "startDuration", "sponsor.sponsorship.form.error.duration-not-valid");
+			// para rangos
+			if (!super.getBuffer().getErrors().hasErrors("startDuration"))
+				super.state(MomentHelper.isBefore(object.getStartDuration(), latestStartDate), "startDuration", "sponsor.sponsorship.form.error.startDurationOutOfBounds");
+			// sino es es antes, estaria empezando un sp detro de muchisimo tiempo, inviable.
+
+			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
+				super.state(MomentHelper.isAfter(object.getFinalDuration(), object.getMoment()), "finalDuration", "sponsor.sponsorship.form.error.finalDuration");
+
+			if (!super.getBuffer().getErrors().hasErrors("startDuration"))
+				super.state(MomentHelper.isBefore(object.getStartDuration(), object.getFinalDuration()), "startDuration", "sponsor.sponsorship.form.error.startDurationBeforeEndDate");
+			// para rangos
+			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
+				super.state(MomentHelper.isBefore(object.getFinalDuration(), futureMostDate), "finalDuration", "sponsor.sponsorship.form.error.dateOutOfBounds");
+			// sino es es antes, estaria empezando un sp detro de muchisimo tiempo, inviable.
+
+			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
+				super.state(MomentHelper.isLongEnough(object.getStartDuration(), object.getFinalDuration(), 1, ChronoUnit.MONTHS), "finalDuration", "sponsor.sponsorship.form.error.period");
+
 		}
+		if (object.getStartDuration() == null)
+			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
+				super.state(object.getStartDuration() != null, "finalDuration", "sponsor.sponsorhsip.form.error.nullStart");
+		if (object.getFinalDuration() == null)
+			if (!super.getBuffer().getErrors().hasErrors("startDuration"))
+				super.state(object.getFinalDuration() != null, "startDuration", "sponsor.sponsorhsip.form.error.nullFinal");
 
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {
 			super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.amount-must-be-positive");
@@ -107,6 +127,26 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 			super.state(foundCurrency, "amount", "sponsor.sponsorship.form.error.currency-not-supported");
 		}
+
+		if (object.getAmount() != null) {
+			if (!super.getBuffer().getErrors().hasErrors("amount"))
+				super.state(object.getAmount().getAmount() <= 1000000.00 && object.getAmount().getAmount() >= 0.00, "amount", "sponsor.sponsorship.form.error.amountOutOfBounds");
+
+			if (!super.getBuffer().getErrors().hasErrors("amount"))
+				super.state(this.repository.countPublishedInvoicesBySponsorshipId(object.getId()) == 0 || object.getAmount().getCurrency().equals(this.repository.findOneSponsorshipById(object.getId()).getAmount().getCurrency()), "amount",
+					"sponsor.sponsorship.form.error.currencyChange");
+
+			if (!super.getBuffer().getErrors().hasErrors("amount")) {
+				super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.amount-must-be-positive");
+				List<SystemConfiguration> sc = this.repository.findSystemConfiguration();
+				final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getAmount().getCurrency()));
+
+				super.state(foundCurrency, "amount", "sponsor.sponsorship.form.error.currency-not-supported");
+			}
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("published"))
+			super.state(object.isDraftMode(), "code", "sponsor.sponsorship.form.error.published");
 	}
 
 	@Override
@@ -128,7 +168,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		types = SelectChoices.from(SponsorshipType.class, object.getType());
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
-		dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "draftMode", "project");
+		dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "draftMode");
 
 		dataset.put("sponsorshipType", types);
 		dataset.put("project", projectsChoices.getSelected().getLabel());

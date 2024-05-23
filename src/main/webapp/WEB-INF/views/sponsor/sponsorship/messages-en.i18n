@@ -4,12 +4,7 @@ sponsor.sponsorship.form.title = Sponsorship form
 #Listado
 sponsor.sponsorship.list.label.code = Code
 sponsor.sponsorship.list.label.moment = Moment
-sponsor.sponsorship.list.label.startDuration = Start Duration
-sponsor.sponsorship.list.label.finalDuration = Final Duration
 sponsor.sponsorship.list.label.amount = Amount
-sponsor.sponsorship.list.label.type = Type
-sponsor.sponsorship.list.label.email = Email
-sponsor.sponsorship.list.label.link = Link
 sponsor.sponsorship.list.label.project = Project
 sponsor.sponsorship.list.label.draft-mode = Editable
 
@@ -36,9 +31,19 @@ sponsor.sponsorship.form.button.publish = Publish
 
 sponsor.sponsorship.form.button.create-sponsorship = Create
 
-sponsor.sponsorship.form.error.duplicated = This code already exists
-sponsor.sponsorship.form.error.duration-start-date-not-valid = The start date of the duration must be after the present date
-sponsor.sponsorship.form.error.duration-not-valid = The sponsorship duration must be at least one month. The start date must be before the end date
-sponsor.sponsorship.form.error.amount-must-be-positive = The amount of money must be positive
-sponsor.sponsorship.form.error.sponsorship-amount-and-invoices-total-amount-not-equal = The total amount of sponsorship and the sum of the invoices values ​​must be equal
-sponsor.sponsorship.form.error.currency-not-supported = Selected currency is not supported by the system
+sponsor.sponsorhsip.form.error.duplicate = This code already exists.
+sponsor.sponsorhsip.form.error.period = The duration of the sponsorship must be at least one month.
+sponsor.sponsorhsip.form.error.startDuration = The start date must be after the time of creation.
+sponsor.sponsorhsip.form.error.finalDuration = The end date must be after the start date.
+sponsor.sponsorhsip.form.error.nullStart = Must have a start date.
+sponsor.sponsorhsip.form.error.nullFinal = Must have an end date.
+sponsor.sponsorship.form.error.amount-must-be-positive = The amount of money must be positive.
+sponsor.sponsorship.form.error.currency-not-supported = Selected currency is not supported by the system.
+sponsor.sponsorship.form.error.invoices = All invoices must be published and their taxable amounts must add up to the amount due.
+sponsor.sponsorship.form.error.published = It is impossible to modify an already published sponsorship.
+sponsor.sponsorship.form.error.currencyChange = It is impossible to change the currency of payment with invoices already published.
+sponsor.sponsorship.form.error.amountOutOfBounds = The amount must be between 0.00 and 1000000.00, to be realistic.
+sponsor.sponsorship.form.error.deleteWithPublishedInvoices = Impossible to delete a sponsorship with invoices already published.
+sponsor.sponsorship.form.error.dateOutOfBounds = All dates must be before 01/22/01/01 00:00, otherwise it is an unrealistic date.
+sponsor.sponsorship.form.error.startDurationBeforeEndDate = The start date must be prior to the end date.
+sponsor.sponsorship.form.error.startDurationOutOfBounds = It must be before 2200/12/25 00:00, otherwise it is an unrealistic date.
