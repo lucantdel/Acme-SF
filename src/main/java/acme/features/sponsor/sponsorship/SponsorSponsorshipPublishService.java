@@ -69,44 +69,16 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("amount")) {
-			Double amount = object.getAmount().getAmount();
-			Double total = 0.0;
-			boolean allPublished = true;
-			Collection<Invoice> invoices = this.repository.findAllInvoicesBySponsorshipId(object.getId());
-			for (Invoice i : invoices)
-				if (!i.isDraftMode())
-					total += i.totalAmount().getAmount();
-				else
-					allPublished = false;
-
-			super.state(amount.equals(total) && allPublished, "amount", "sponsor.sponsorship.form.error.invoices");
-
-		}
-		if (object.getAmount() != null) {
-			if (!super.getBuffer().getErrors().hasErrors("amount"))
-				super.state(object.getAmount().getAmount() <= 1000000.00 && object.getAmount().getAmount() >= 0.00, "amount", "sponsor.sponsorship.form.error.amountOutOfBounds");
-
-			if (!super.getBuffer().getErrors().hasErrors("amount"))
-				super.state(this.repository.countPublishedInvoicesBySponsorshipId(object.getId()) == 0 || object.getAmount().getCurrency().equals(this.repository.findOneSponsorshipById(object.getId()).getAmount().getCurrency()), "amount",
-					"sponsor.sponsorship.form.error.currencyChange");
-
-			List<SystemConfiguration> sc = this.repository.findSystemConfiguration();
-			final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getAmount().getCurrency()));
-
-			super.state(foundCurrency, "amount", "sponsor.sponsorship.form.error.currency-not-supported");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode(), "code", "sponsor.sponsorship.form.error.published");
-
+		//Code 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Sponsorship sponsorshipSameCode;
 			sponsorshipSameCode = this.repository.findSponsorshipByCode(object.getCode());
 			if (sponsorshipSameCode != null) {
-				// si ese spSame de la base de datos no es nulo,
-				// es porque debe ser exactamente el mismo que tomamos en la peticion para publicar
-				// luego sus ids deben ser los mismos
+				// si ese spSame de la base de datos (que hemos encontrado buscando por el code de la peticion) no es nulo (es decir, no exisíta ya),
+				// es porque este encontrado debe ser exactamente el mismo que tomamos en la peticion para publicarlo (y no otro con el mismo code pero siendo diferente)
+				// luego sus ids deben ser los mismos.
+				// Sino, debe saltar el error ya que tienen el mismo id y son dos diferentes.
+
 				int id = sponsorshipSameCode.getId();
 				super.state(id == object.getId(), "code", "sponsor.sponsorship.form.error.duplicate");
 				// si no tienen el mismo id es porque tienen el mismo code pero son distintos
@@ -114,6 +86,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			}
 		}
 
+		//Fechas
 		// vamos a tomar valores de fechas para restringir los valores 
 		// dentro de unos rangos viables de tiempo
 		String dateString = "2201/01/01 00:00";
@@ -152,25 +125,45 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			if (!super.getBuffer().getErrors().hasErrors("startDuration"))
 				super.state(object.getFinalDuration() != null, "startDuration", "sponsor.sponsorhsip.form.error.nullFinal");
 
-		//		if (!super.getBuffer().getErrors().hasErrors("amount")) {
-		//			super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.amount-must-be-positive");
-		//			List<SystemConfiguration> sc = this.repository.findSystemConfiguration();
-		//			final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getAmount().getCurrency()));
-		//
-		//			super.state(foundCurrency, "amount", "sponsor.sponsorship.form.error.currency-not-supported");
-		//		}
-		//		{
-		//			Collection<Invoice> invoices;
-		//			double sponsorshipAmount;
-		//			double invoicesTotalAmount;
-		//
-		//			invoices = this.repository.findPublishedInvoicesBySponsorshipId(object.getId());
-		//			sponsorshipAmount = object.getAmount().getAmount();
-		//			invoicesTotalAmount = invoices.stream().mapToDouble(i -> i.totalAmount().getAmount()).sum();
-		//
-		//			super.state(sponsorshipAmount == invoicesTotalAmount, "*", "sponsor.sponsorship.form.error.sponsorship-amount-and-invoices-total-amount-not-equal");
-		//		}
+		//Cantidad
+		if (object.getAmount() != null) {
+
+			if (!super.getBuffer().getErrors().hasErrors("amount"))
+				super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.amount-must-be-positive");
+
+			if (!super.getBuffer().getErrors().hasErrors("amount")) {
+				List<SystemConfiguration> sc = this.repository.findSystemConfiguration();
+				final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getAmount().getCurrency()));
+				super.state(foundCurrency, "amount", "sponsor.sponsorship.form.error.currency-not-supported");
+			}
+
+			if (!super.getBuffer().getErrors().hasErrors("amount"))
+				super.state(object.getAmount().getAmount() <= 1000000.00 && object.getAmount().getAmount() >= 0.00, "amount", "sponsor.sponsorship.form.error.amountOutOfBounds");
+
+			//			if (!super.getBuffer().getErrors().hasErrors("amount"))
+			//				super.state(this.repository.countPublishedInvoicesBySponsorshipId(object.getId()) == 0 || object.getAmount().getCurrency().equals(this.repository.findOneSponsorshipById(object.getId()).getAmount().getCurrency()), "amount",
+			//					"sponsor.sponsorship.form.error.currencyChange");
+
+			if (!super.getBuffer().getErrors().hasErrors("amount")) {
+				Double amount = object.getAmount().getAmount();
+				Double total = 0.0;
+				boolean allPublished = true;
+				Collection<Invoice> invoices = this.repository.findAllInvoicesBySponsorshipId(object.getId());
+				for (Invoice i : invoices)
+					if (!i.isDraftMode())
+						total += i.totalAmount().getAmount();
+					else
+						allPublished = false;
+
+				super.state(amount.equals(total) && allPublished, "amount", "sponsor.sponsorship.form.error.invoices");
+			}
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.isDraftMode(), "code", "sponsor.sponsorship.form.error.published");
+
 	}
+
 	@Override
 	public void perform(final Sponsorship object) {
 		assert object != null;

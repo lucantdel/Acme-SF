@@ -59,7 +59,7 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 
 		invoice = this.repository.findOneInvoiceByCode(object.getCode());
 		currency = invoice.getQuantity().getCurrency();
-		amount = invoice.totalAmount();
+		amount = invoice.totalAmount().getAmount();
 
 		totalAmount.setAmount(amount);
 		totalAmount.setCurrency(currency);

@@ -74,6 +74,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
+		//Code 
 		// comprobar que no exista un patrocinio con code igual antes
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Sponsorship existing;
@@ -81,6 +82,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicate");
 		}
 
+		//Fechas
 		String dateString = "2201/01/01 00:00";
 		Date futureMostDate = MomentHelper.parse(dateString, "yyyy/MM/dd HH:mm");
 		dateString = "2200/12/25 00:00";
@@ -108,7 +110,6 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
 				super.state(MomentHelper.isLongEnough(object.getStartDuration(), object.getFinalDuration(), 1, ChronoUnit.MONTHS), "finalDuration", "sponsor.sponsorship.form.error.period");
-
 		}
 		if (object.getStartDuration() == null)
 			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
@@ -117,6 +118,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			if (!super.getBuffer().getErrors().hasErrors("startDuration"))
 				super.state(object.getFinalDuration() != null, "startDuration", "sponsor.sponsorhsip.form.error.nullFinal");
 
+		//Cantidad
 		if (object.getAmount() != null) {
 			if (!super.getBuffer().getErrors().hasErrors("amount"))
 				super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.amount-must-be-positive");
@@ -124,7 +126,6 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			if (!super.getBuffer().getErrors().hasErrors("amount")) {
 				List<SystemConfiguration> sc = this.repository.findSystemConfiguration();
 				final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getAmount().getCurrency()));
-
 				super.state(foundCurrency, "amount", "sponsor.sponsorship.form.error.currency-not-supported");
 			}
 

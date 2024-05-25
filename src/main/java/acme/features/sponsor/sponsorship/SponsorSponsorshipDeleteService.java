@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.invoices.Invoice;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
+import acme.entities.sponsorships.SponsorshipType;
 import acme.roles.Sponsor;
 
 @Service
@@ -36,7 +38,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	}
 
 	@Override
-	// creo uno nuevo y lo relleno segun el que me han dado
+	// tomo el que me han dado a eliminar
 	public void load() {
 		Sponsorship object;
 		int id;
@@ -57,9 +59,10 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
+		object.setProject(project);
 
 		super.bind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "project");
-		//object.setProject(project); en este caso no le asigno project ya que lo vamos a eliminar
+
 	}
 
 	@Override
@@ -75,7 +78,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 		Collection<Invoice> invoices;
 
-		// cascade if delete
+		// OnDelete.Cascade
 		invoices = this.repository.findAllInvoicesBySponsorshipId(object.getId());
 		this.repository.deleteAll(invoices);
 		this.repository.delete(object);
@@ -85,7 +88,18 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "draftMode", "project");
+		SelectChoices choices;
+		SelectChoices projectsChoices;
+		Collection<Project> projects;
+
+		choices = SelectChoices.from(SponsorshipType.class, object.getType());
+		projects = this.repository.findAllProjects();
+		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
+
+		dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "project");
+		dataset.put("sponsorshipType", choices);
+		dataset.put("project", projectsChoices.getSelected().getLabel());
+		dataset.put("projects", projectsChoices);
 		super.getResponse().addData(dataset);
 	}
 

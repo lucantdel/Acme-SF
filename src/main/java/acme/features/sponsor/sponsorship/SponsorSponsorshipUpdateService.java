@@ -86,19 +86,21 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
+		//Code 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Sponsorship sponsorshipSameCode;
 			sponsorshipSameCode = this.repository.findSponsorshipByCode(object.getCode());
 			if (sponsorshipSameCode != null) {
-				// comprobar que si los dos sponsorship tienen el mismo code
-				// debe ser porque son el mismo (y si no habia en la base de datos es porque no existía y devolvia null)
-				// Pero si es distinto de null habrá devuelto algo
-				//y vemos que sea exactamente el mismo comprobando que tengan los mismos ids.
+				// si ese spSame de la base de datos (que hemos encontrado buscando por el code de la peticion) no es nulo (es decir, no exisíta ya),
+				// es porque este encontrado debe ser exactamente el mismo que tomamos en la peticion para publicarlo (y no otro con el mismo code pero siendo diferente)
+				// luego sus ids deben ser los mismos.
+				// Sino, debe saltar el error ya que tienen el mismo id y son dos diferentes.
 				int id = sponsorshipSameCode.getId();
 				super.state(id == object.getId(), "code", "sponsor.sponsorship.form.error.duplicate");
 			}
 		}
 
+		//Fechas
 		String dateString = "2201/01/01 00:00";
 		Date futureMostDate = MomentHelper.parse(dateString, "yyyy/MM/dd HH:mm");
 		dateString = "2200/12/25 00:00";
@@ -126,7 +128,6 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
 				super.state(MomentHelper.isLongEnough(object.getStartDuration(), object.getFinalDuration(), 1, ChronoUnit.MONTHS), "finalDuration", "sponsor.sponsorship.form.error.period");
-
 		}
 		if (object.getStartDuration() == null)
 			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
@@ -135,14 +136,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			if (!super.getBuffer().getErrors().hasErrors("startDuration"))
 				super.state(object.getFinalDuration() != null, "startDuration", "sponsor.sponsorhsip.form.error.nullFinal");
 
-		if (!super.getBuffer().getErrors().hasErrors("amount")) {
-			super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.amount-must-be-positive");
-			List<SystemConfiguration> sc = this.repository.findSystemConfiguration();
-			final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getAmount().getCurrency()));
-
-			super.state(foundCurrency, "amount", "sponsor.sponsorship.form.error.currency-not-supported");
-		}
-
+		//Cantidad
 		if (object.getAmount() != null) {
 			if (!super.getBuffer().getErrors().hasErrors("amount"))
 				super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.amount-must-be-positive");
@@ -150,15 +144,15 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			if (!super.getBuffer().getErrors().hasErrors("amount")) {
 				List<SystemConfiguration> sc = this.repository.findSystemConfiguration();
 				final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getAmount().getCurrency()));
-
 				super.state(foundCurrency, "amount", "sponsor.sponsorship.form.error.currency-not-supported");
 			}
+
 			if (!super.getBuffer().getErrors().hasErrors("amount"))
 				super.state(object.getAmount().getAmount() <= 1000000.00 && object.getAmount().getAmount() >= 0.00, "amount", "sponsor.sponsorship.form.error.amountOutOfBounds");
 
-			if (!super.getBuffer().getErrors().hasErrors("amount"))
-				super.state(this.repository.countPublishedInvoicesBySponsorshipId(object.getId()) == 0 || object.getAmount().getCurrency().equals(this.repository.findOneSponsorshipById(object.getId()).getAmount().getCurrency()), "amount",
-					"sponsor.sponsorship.form.error.currencyChange");
+			//			if (!super.getBuffer().getErrors().hasErrors("amount"))
+			//				super.state(this.repository.countPublishedInvoicesBySponsorshipId(object.getId()) == 0 || object.getAmount().getCurrency().equals(this.repository.findOneSponsorshipById(object.getId()).getAmount().getCurrency()), "amount",
+			//					"sponsor.sponsorship.form.error.currencyChange");
 
 		}
 
