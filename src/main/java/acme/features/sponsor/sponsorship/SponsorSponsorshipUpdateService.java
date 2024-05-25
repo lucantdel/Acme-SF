@@ -43,7 +43,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	}
 
 	@Override
-	// creo uno nuevo y lo relleno segun el que me han dado
+	// tomo el que me han dado
 	public void load() {
 		Sponsorship object;
 		int id;
@@ -51,11 +51,18 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneSponsorshipById(id);
 
+		Date updateMoment;
+		updateMoment = MomentHelper.getCurrentMoment();
+		object.setMoment(updateMoment);
+
 		super.getBuffer().addData(object);
+
 	}
 
 	@Override
-	// enseño en el formulario el objeto para actualizarlo
+	// cargo o actualizo el objeto con  lo que el principal me mete por el formulario desde sus imputs
+	// para validarlos  tenniendo un objeto como tal y poder hacer comprobaciones
+	// con el framework y despues con el validate.
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
@@ -64,6 +71,10 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
+
+		Date updateMoment;
+		updateMoment = MomentHelper.getCurrentMoment();
+		object.setMoment(updateMoment);
 
 		super.bind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "project");
 		object.setProject(project);
@@ -79,6 +90,10 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			Sponsorship sponsorshipSameCode;
 			sponsorshipSameCode = this.repository.findSponsorshipByCode(object.getCode());
 			if (sponsorshipSameCode != null) {
+				// comprobar que si los dos sponsorship tienen el mismo code
+				// debe ser porque son el mismo (y si no habia en la base de datos es porque no existía y devolvia null)
+				// Pero si es distinto de null habrá devuelto algo
+				//y vemos que sea exactamente el mismo comprobando que tengan los mismos ids.
 				int id = sponsorshipSameCode.getId();
 				super.state(id == object.getId(), "code", "sponsor.sponsorship.form.error.duplicate");
 			}
@@ -130,22 +145,24 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 		if (object.getAmount() != null) {
 			if (!super.getBuffer().getErrors().hasErrors("amount"))
+				super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.amount-must-be-positive");
+
+			if (!super.getBuffer().getErrors().hasErrors("amount")) {
+				List<SystemConfiguration> sc = this.repository.findSystemConfiguration();
+				final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getAmount().getCurrency()));
+
+				super.state(foundCurrency, "amount", "sponsor.sponsorship.form.error.currency-not-supported");
+			}
+			if (!super.getBuffer().getErrors().hasErrors("amount"))
 				super.state(object.getAmount().getAmount() <= 1000000.00 && object.getAmount().getAmount() >= 0.00, "amount", "sponsor.sponsorship.form.error.amountOutOfBounds");
 
 			if (!super.getBuffer().getErrors().hasErrors("amount"))
 				super.state(this.repository.countPublishedInvoicesBySponsorshipId(object.getId()) == 0 || object.getAmount().getCurrency().equals(this.repository.findOneSponsorshipById(object.getId()).getAmount().getCurrency()), "amount",
 					"sponsor.sponsorship.form.error.currencyChange");
 
-			if (!super.getBuffer().getErrors().hasErrors("amount")) {
-				super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.amount-must-be-positive");
-				List<SystemConfiguration> sc = this.repository.findSystemConfiguration();
-				final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getAmount().getCurrency()));
-
-				super.state(foundCurrency, "amount", "sponsor.sponsorship.form.error.currency-not-supported");
-			}
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("published"))
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(object.isDraftMode(), "code", "sponsor.sponsorship.form.error.published");
 	}
 

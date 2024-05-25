@@ -51,9 +51,9 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneSponsorshipById(id);
 
-		Date instantiationMoment;
-		instantiationMoment = MomentHelper.getCurrentMoment();
-		object.setMoment(instantiationMoment);
+		Date publishMoment;
+		publishMoment = MomentHelper.getCurrentMoment();
+		object.setMoment(publishMoment);
 
 		super.getBuffer().addData(object);
 	}
@@ -61,7 +61,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	@Override
 	public void bind(final Sponsorship object) {
 		assert object != null;
-		super.bind(object, "code", "startDuration", "finalDuration", "type", "amount", "email", "link", "project");
+		super.bind(object, "code", "moment", "startDuration", "finalDuration", "type", "amount", "email", "link", "project");
 
 	}
 

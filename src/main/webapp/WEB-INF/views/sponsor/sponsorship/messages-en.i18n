@@ -31,12 +31,12 @@ sponsor.sponsorship.form.button.publish = Publish
 
 sponsor.sponsorship.form.button.create-sponsorship = Create
 
-sponsor.sponsorhsip.form.error.duplicate = This code already exists.
-sponsor.sponsorhsip.form.error.period = The duration of the sponsorship must be at least one month.
-sponsor.sponsorhsip.form.error.startDuration = The start date must be after the time of creation.
-sponsor.sponsorhsip.form.error.finalDuration = The end date must be after the start date.
-sponsor.sponsorhsip.form.error.nullStart = Must have a start date.
-sponsor.sponsorhsip.form.error.nullFinal = Must have an end date.
+sponsor.sponsorship.form.error.duplicate = This code already exists.
+sponsor.sponsorship.form.error.period = The duration of the sponsorship must be at least one month.
+sponsor.sponsorship.form.error.startDuration = The start date must be after the time of creation.
+sponsor.sponsorship.form.error.finalDuration = The end date must be after the start date.
+sponsor.sponsorship.form.error.nullStart = Must have a start date.
+sponsor.sponsorship.form.error.nullFinal = Must have an end date.
 sponsor.sponsorship.form.error.amount-must-be-positive = The amount of money must be positive.
 sponsor.sponsorship.form.error.currency-not-supported = Selected currency is not supported by the system.
 sponsor.sponsorship.form.error.invoices = All invoices must be published and their taxable amounts must add up to the amount due.
