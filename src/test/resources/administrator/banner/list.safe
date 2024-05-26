@@ -1,0 +1,6 @@
+request-id,request-method,request-path,request-query,request-payload,response-status,response-content-type,response-payload,response-oops,pre-handle-timestamp,post-handle-timestamp,"after-completion-timestamp"
+# RESET
+# BEGIN TEST CLASS "TestAnalyser"
+# BEGIN TEST CASE "test"
+# END TEST CASE "test"
+# END TEST CLASS "TestAnalyser"
