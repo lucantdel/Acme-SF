@@ -40,8 +40,7 @@ public class ManagerUserStoryListByProjectService extends AbstractService<Manage
 		masterId = super.getRequest().getData("masterId", int.class);
 		project = this.repository.findOneProjectById(masterId);
 
-		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class //
-			&& project.getManager().equals(this.repository.findOneManagerById(managerId));
+		status = super.getRequest().getPrincipal().hasRole(Manager.class) && project.getManager().equals(this.repository.findOneManagerById(managerId));
 
 		super.getResponse().setAuthorised(status);
 	}

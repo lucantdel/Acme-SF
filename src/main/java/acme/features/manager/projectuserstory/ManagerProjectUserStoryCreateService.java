@@ -34,7 +34,7 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		 */
 		boolean status;
 
-		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class;
+		status = super.getRequest().getPrincipal().hasRole(Manager.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -59,13 +59,18 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	public void validate(final ProjectUserStory object) {
 		/*
 		 * No deben existir relaciones repetidas, es decir, mismo proyecto e historia de usuario
+		 * No se pueden crear asignaciones a proyectos ya publicados
+		 * No se pueden crear asignaciones a proyectos de otros managers
+		 * No se pueden crear asignaciones con historias de usuario no publicadas de otros managers
 		 */
 		assert object != null;
 		Project project;
 		UserStory userStory;
+		Manager manager;
 
 		project = object.getProject();
 		userStory = object.getUserStory();
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			ProjectUserStory existing;
@@ -77,7 +82,12 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 			// Necesaria? Si en las choices solo incluyo proyectos en borrador nunca se llamará a este error
 			// La dejo por si acaso
 			super.state(project.isDraftMode(), "project", "manager.project-user-story.form.error.create-assignment-published-project");
+
+			super.state(project.getManager().equals(manager), "*", "manager.project-user-story.form.error.wrong-manager-project");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("userStory") && userStory != null)
+			super.state(userStory.getManager().equals(manager) || !userStory.isDraftMode(), "userStory", "manager.project-user-story.form.error.wrong-manager-userStory");
 	}
 
 	@Override

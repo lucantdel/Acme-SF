@@ -32,13 +32,16 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 		boolean status;
 		int managerId;
 		Collection<Project> projects;
+		Manager manager;
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		manager = this.repository.findOneManagerById(managerId);
+
 		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class;
 
 		projects = this.repository.findProjectsByManagerId(managerId);
 		for (Project p : projects)
-			status = status && p.getManager().equals(this.repository.findOneManagerById(managerId));
+			status = status && p.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
