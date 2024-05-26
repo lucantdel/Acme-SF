@@ -11,5 +11,11 @@
 		<acme:list-payload path="payload"/>			
 </acme:list>
 
+<jstl:if test="${_command == 'list'}">
+			<acme:button code="auditor.auditRecord.list.button.create" action="/auditor/audit-record/create?codeAuditId=${codeAuditId}"/>			
+</jstl:if>	
+
+
+
 
 	

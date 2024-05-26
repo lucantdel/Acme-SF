@@ -57,6 +57,10 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		assert object != null;
 		CodeAudit ca;
 		ca = this.rp.findCodeAuditByCode(object.getCodeAudit().getCode());
+		if (object.getLink() != null)
+			if (!super.getBuffer().getErrors().hasErrors("link"))
+				if (object.getLink().length() > 255)
+					super.state(object.getLink().length() <= 255, "link", "auditor.auditRecord.error.Link");
 
 		if (!super.getBuffer().getErrors().hasErrors("published"))
 			super.state(object.isPublished() == false, "published", "auditor.auditRecord.error.published");
@@ -98,9 +102,8 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		assert object != null;
 
 		Dataset dataset;
-		System.out.println(object.getCodeAudit().getCode() + "update");
-
 		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "published", "auditor");
+		dataset.put("codeAudit", object.getCodeAudit().getCode());
 
 		super.getResponse().addData(dataset);
 	}

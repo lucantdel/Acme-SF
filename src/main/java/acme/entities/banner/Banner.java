@@ -25,35 +25,35 @@ public class Banner extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
 	@NotNull
-	private Date				updateMoment;
+	protected Date				updateMoment;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
 	@NotNull
-	private Date				displayPeriodStart;
+	protected Date				displayPeriodStart;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				displayPeriodEnd;
+	protected Date				displayPeriodEnd;
 
 	@URL
 	@Length(max = 255)
-	private String				picture;
+	protected String			picture;
 
 	@NotBlank
 	@Length(max = 75)
-	private String				slogan;
+	protected String			slogan;
 
 	@URL
 	@Length(max = 255)
-	private String				webDoc;
+	protected String			webDoc;
 
 	// Derived attributes -----------------------------------------------------
 
