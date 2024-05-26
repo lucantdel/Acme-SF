@@ -31,3 +31,7 @@ auditor.codeAudit.form.button.audit-record-list = Listar Registro de Auditoria
 auditor.codeAudit.error.Mark = La nota debe ser porlomenos una C
 auditor.codeAudit.error.duplicated = El codigo no puede ser repetido
 auditor.codeAudit.error.published = No puede estar publico
+auditor.codeAudit.error.execution = Debe tener fecha de ejecucion
+auditor.codeAudit.form.error.not-enough-audit-records = Debe tener al menos 1 Registro de Auditoria publicado.
+auditor.codeAudit.form.error.not-all-audit-records-published = Todos los Registros de auditoria deben ser publicados.
+auditor.codeAudit.error.execution2 = Hay Registros de Auditoria con Fecha anterior

@@ -2,6 +2,7 @@
 package acme.features.auditor.codeAudits;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -39,5 +40,8 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 
 	@Query("select c from CodeAudit c where c.code = :code")
 	CodeAudit findCodeAuditByCode(String code);
+
+	@Query("select ar.startDate from AuditRecord ar where ar.codeAudit = :ca")
+	List<Date> getAllStartDates(CodeAudit ca);
 
 }

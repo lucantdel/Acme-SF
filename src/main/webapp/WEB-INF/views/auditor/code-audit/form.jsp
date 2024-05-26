@@ -51,7 +51,6 @@
 			<acme:submit code="auditor.codeAudit.form.button.delete" action="/auditor/code-audit/delete"/>
 			<acme:submit code="auditor.codeAudit.form.button.publish" action="/auditor/code-audit/publish"/>
 			<acme:button code="auditor.codeAudit.form.button.audit-record-list" action="/auditor/audit-record/list?codeAuditId=${id}"/>				
-			<acme:submit code="auditor.codeAudit.form.button.create" action="/auditor/audit-record/create"/>			
 			
 			
 		</jstl:when>
@@ -74,6 +73,7 @@
 		<acme:input-textbox code="auditor.codeAudit.form.label.correctiveActions" path="correctiveActions" readonly="true"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.optionalLink" path="optionalLink" readonly="true"/>
 		<acme:input-select code="auditor.codeAudit.form.label.project" path="project" choices="${projects}" readonly="true"/>
+		<acme:input-textbox code="auditor.codeAudit.form.label.Mark" path="Mark" readonly="true"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.published" path="published" readonly="true"/>
 		
 		<jstl:if test="${_command == 'show'}">

@@ -38,6 +38,7 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 		boolean autorizacion = auditor.getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername());
 
 		super.getResponse().setAuthorised(status && autorizacion);
+		super.getResponse().addGlobal("codeAuditId", masterId);
 
 	}
 	@Override
@@ -52,9 +53,10 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 	@Override
 	public void unbind(final AuditRecord object) {
 		assert object != null;
-
+		int caID;
 		Dataset dataset;
 		String payload;
+		caID = super.getRequest().getData("codeAuditId", int.class);
 
 		dataset = super.unbind(object, "codeAR", "score", "published");
 		dataset.put("codeAudit", object.getCodeAudit().getCode());
@@ -66,6 +68,8 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 			object.getLink(),//
 			object.getAuditor().getUserAccount().getUsername());//
 		dataset.put("payload", payload);
+
+		super.getResponse().addGlobal("codeAuditId", caID);
 
 		super.getResponse().addData(dataset);
 	}
