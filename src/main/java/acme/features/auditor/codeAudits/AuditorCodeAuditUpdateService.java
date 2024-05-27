@@ -1,7 +1,10 @@
 
 package acme.features.auditor.codeAudits;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,6 +65,19 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 			CodeAudit existing;
 			existing = this.repository.findCodeAuditByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "auditor.codeAudit.error.duplicated");
+		}
+		if (object.getExecution() == null)
+			if (!super.getBuffer().getErrors().hasErrors("execution"))
+				super.state(object.getExecution() != null, "execution", "auditor.codeAudit.error.execution");
+
+		if (object.getExecution() != null) {
+			List<Date> startDates = this.repository.getAllStartDates(object);
+			List<Date> ls = new ArrayList<>();
+			for (int i = 0; i < startDates.size(); i++)
+				if (object.getExecution().after(startDates.get(i)))
+					ls.add(startDates.get(i));
+			if (!super.getBuffer().getErrors().hasErrors("execution"))
+				super.state(ls.size() == 0, "execution", "auditor.codeAudit.error.execution2");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("published"))

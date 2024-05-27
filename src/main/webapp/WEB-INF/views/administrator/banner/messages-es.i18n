@@ -31,4 +31,5 @@ administrator.banner.error.periodStart = No puede tener una fecha de inicio de p
 administrator.banner.error.updateMoment = El momento de editado no puede ser antes de la fecha de inicio de periodo
 administrator.banner.error.updateMoment2 = El momento de editado no puede ser despues de la fecha de fin de periodo
 administrator.banner.error.updateMoment3 = No puede haber fecha de editado sin fecha de inicio de periodo
+administrator.banner.error.period = El periodo no puede acabar antes de empezar
 

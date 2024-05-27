@@ -53,6 +53,10 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 			existing = this.repository.findCodeAuditByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "auditor.codeAudit.error.duplicated");
 		}
+
+		if (object.getExecution() == null)
+			if (!super.getBuffer().getErrors().hasErrors("execution"))
+				super.state(object.getExecution() != null, "execution", "auditor.codeAudit.error.execution");
 	}
 	@Override
 	public void perform(final CodeAudit object) {
