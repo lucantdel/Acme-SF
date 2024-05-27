@@ -2,6 +2,7 @@
 package acme.features.sponsor.invoice;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
@@ -90,12 +91,37 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 			super.state(isMinimumDuration && dueDateIsAfterRegistrationTime, "dueDate", "sponsor.invoice.form.error.due-date-not-valid");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+		if (!super.getBuffer().getErrors().hasErrors("registrationTime") && object.getSponsorship() != null)
+			super.state(MomentHelper.isBefore(object.getSponsorship().getMoment(), object.getRegistrationTime()), "registrationTime", "sponsor.invoice.form.error.date-before-moment");
+
+		if (!super.getBuffer().getErrors().hasErrors("quantity") && object.getSponsorship() != null) {
 			super.state(object.getQuantity().getAmount() > 0, "quantity", "sponsor.invoice.form.error.quantity-must-be-positive");
 			List<SystemConfiguration> sc = this.repository.findSystemConfiguration();
 			final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getQuantity().getCurrency()));
 
 			super.state(foundCurrency, "quantity", "sponsor.invoice.form.error.currency-not-supported");
+
+			super.state(object.getQuantity().getCurrency().equals(object.getSponsorship().getAmount().getCurrency()), "quantity", "sponsor.invoice.form.error.currency");
+
+			int sponsorshipId = object.getSponsorship().getId();
+
+			double sponsorshipAmount = object.getSponsorship().getAmount().getAmount();
+			Collection<Invoice> invoicesForSponsorship = this.repository.findAllPublisedInvoicesBySponsorShipsId(sponsorshipId);
+			double sumOfInvoicesTotalAmount = 0.0;
+			for (Invoice invoice : invoicesForSponsorship)
+				sumOfInvoicesTotalAmount += invoice.totalAmount().getAmount();
+
+			sumOfInvoicesTotalAmount += object.totalAmount().getAmount();
+			// para no permitir publicar la factura si lo que resta por pagar es menor que lo que se quiere publicar 
+
+			super.state(sponsorshipAmount >= sumOfInvoicesTotalAmount, "quantity", "sponsor.invoice.form.error.sponsorship-amount");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("tax")) {
+			Double tax;
+
+			tax = object.getTax();
+			super.state(100 >= tax && tax >= 0, "tax", "sponsor.invoice.form.error.invalid-tax");
+
 		}
 	}
 
@@ -114,6 +140,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
+		dataset.put("masterId", object.getSponsorship().getId());
 
 		super.getResponse().addData(dataset);
 

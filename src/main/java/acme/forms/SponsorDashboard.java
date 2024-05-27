@@ -17,10 +17,10 @@ public class SponsorDashboard extends AbstractForm {
 	// Attributes -------------------------------------------------------------
 
 	// Número total de facturas con un impuesto menor o igual al 21.00%
-	long						totalNumberOfInvoicesWithLowTax;
+	int							totalNumberOfInvoicesWithLowTax;
 
 	// Número total de patrocinios con un enlace
-	long						totalNumberOfSponsorshipsWithLink;
+	int							totalNumberOfSponsorshipsWithLink;
 
 	// Promedio, desviación, mínimo y máximo del monto de los patrocinios
 	Map<String, Double>			avgSponsorshipsAmount;
@@ -34,6 +34,7 @@ public class SponsorDashboard extends AbstractForm {
 	Map<String, Double>			minInvoicesQuantity;
 	Map<String, Double>			maxInvoicesQuantity;
 
-	String[]					supportedCurrencies;
-
+	// Posible implementacion en el form: 
+	// <acme:print value="${avgSponsorshipsAmount[defaultCurrency]}"/>
+	//String[]					defaultCurrency;
 }

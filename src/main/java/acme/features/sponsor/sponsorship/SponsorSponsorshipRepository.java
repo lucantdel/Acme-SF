@@ -17,11 +17,11 @@ import acme.roles.Sponsor;
 @Repository
 public interface SponsorSponsorshipRepository extends AbstractRepository {
 
-	@Query("select sph from Sponsorship sph where sph.id = :id")
-	Sponsorship findOneSponsorshipById(int id);
-
 	@Query("select sph from Sponsorship sph where sph.sponsor.id = :id")
 	Collection<Sponsorship> findSponsorshipsBySponsorId(int id);
+
+	@Query("select sph from Sponsorship sph where sph.id = :id")
+	Sponsorship findOneSponsorshipById(int id);
 
 	@Query("select s from Sponsor s where s.id = :sponsorId")
 	Sponsor findOneSponsorById(int sponsorId);
@@ -30,10 +30,13 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 	Project findOneProjectById(int projectId);
 
 	@Query("select s from Sponsorship s where s.code = :sponsorshipCode")
-	Sponsorship findOneSponsorshipByCode(String sponsorshipCode);
+	Sponsorship findSponsorshipByCode(String sponsorshipCode);
 
 	@Query("select i from Invoice i where i.sponsorship.id = :sponsorshipId")
 	Collection<Invoice> findAllInvoicesBySponsorshipId(int sponsorshipId);
+
+	@Query("SELECT COUNT(i) FROM Invoice i WHERE i.sponsorship.id = :id AND i.draftMode = false")
+	Integer countPublishedInvoicesBySponsorshipId(int id);
 
 	@Query("select p from Project p")
 	Collection<Project> findAllProjects();

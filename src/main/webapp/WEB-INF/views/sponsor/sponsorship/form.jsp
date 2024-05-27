@@ -16,12 +16,12 @@
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+			<acme:button code="sponsor.sponsorship.form.button.invoices-list" action="/sponsor/invoice/list?masterId=${id}"/>
 			<acme:submit code="sponsor.sponsorship.form.button.update" action="/sponsor/sponsorship/update"/>
 			<acme:submit code="sponsor.sponsorship.form.button.delete" action="/sponsor/sponsorship/delete"/>
 			<acme:submit code="sponsor.sponsorship.form.button.publish" action="/sponsor/sponsorship/publish"/>
-			<acme:button code="sponsor.sponsorship.form.button.invoices-list" action="/sponsor/invoice/list?masterId=${id}"/>
 		</jstl:when>
-				<jstl:when test="${_command == 'show' && draftMode == false}">
+		<jstl:when test="${_command == 'show' && draftMode == false}">
 			<acme:button code="sponsor.sponsorship.form.button.invoices-list" action="/sponsor/invoice/list?masterId=${id}"/>			
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">

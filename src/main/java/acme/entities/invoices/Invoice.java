@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -59,6 +60,7 @@ public class Invoice extends AbstractEntity {
 	private double				tax;
 
 	@URL
+	@Length(max = 255)
 	protected String			link;
 
 	protected boolean			draftMode;
@@ -66,10 +68,13 @@ public class Invoice extends AbstractEntity {
 	// Derived attributes -----------------------------------------------------
 
 
-	@Min(0)
 	@Transient
-	public double totalAmount() {
-		return this.quantity.getAmount() + this.quantity.getAmount() * (this.tax / 100);
+	public Money totalAmount() {
+		Double amount = this.quantity.getAmount() + this.quantity.getAmount() * (this.tax / 100);
+		Money value = new Money();
+		value.setAmount(amount);
+		value.setCurrency(this.quantity.getCurrency());
+		return value;
 	}
 
 	// Relationships ----------------------------------------------------------
