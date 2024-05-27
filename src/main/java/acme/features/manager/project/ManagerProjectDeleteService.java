@@ -99,7 +99,6 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		Collection<ProjectUserStory> pus;
 		int id = object.getId();
 
-		// SponsorShip e invoices
 		sponsorShips = this.repository.findManySponsorshipsByProjectId(id);
 		if (sponsorShips != null) {
 			Set<Integer> sponsorShipIds = sponsorShips.stream().map(AbstractEntity::getId).collect(Collectors.toSet());
@@ -108,7 +107,6 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 			this.repository.deleteAll(sponsorShips);
 		}
 
-		// Contracts y progressLogs
 		contracts = this.repository.findManyContractsByProjectId(id);
 		if (contracts != null) {
 			Set<Integer> contractIds = contracts.stream().map(AbstractEntity::getId).collect(Collectors.toSet());
@@ -117,7 +115,6 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 			this.repository.deleteAll(contracts);
 		}
 
-		//CodeAudtis y auditRecords
 		codeAudits = this.repository.findManyCodeAuditsByProjectId(id);
 		if (codeAudits != null) {
 			Set<Integer> codeAuditsIds = codeAudits.stream().map(AbstractEntity::getId).collect(Collectors.toSet());
@@ -126,7 +123,6 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 			this.repository.deleteAll(codeAudits);
 		}
 
-		//TrainingModule y TrainingSession 
 		trainingModule = this.repository.findManyTrainingModuleByProjectId(id);
 		if (trainingModule != null) {
 			Set<Integer> trainingModuleIds = trainingModule.stream().map(AbstractEntity::getId).collect(Collectors.toSet());
@@ -135,11 +131,10 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 			this.repository.deleteAll(trainingModule);
 		}
 
-		//ProjectUserStories
 		pus = this.repository.findProjectUserStoryByProjectId(id);
 		this.repository.deleteAll(pus);
-		this.repository.delete(object);
 
+		this.repository.delete(object);
 	}
 
 	@Override

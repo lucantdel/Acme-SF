@@ -36,8 +36,7 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		us = this.repository.findOneUserStoryById(super.getRequest().getData("id", int.class));
 		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 
-		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class //
-			&& us.getManager().equals(manager) && us.isDraftMode();
+		status = super.getRequest().getPrincipal().hasRole(Manager.class) && us.getManager().equals(manager) && us.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}

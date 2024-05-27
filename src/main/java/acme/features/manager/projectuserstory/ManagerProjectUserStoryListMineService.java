@@ -31,13 +31,16 @@ public class ManagerProjectUserStoryListMineService extends AbstractService<Mana
 		boolean status;
 		int managerId;
 		Collection<ProjectUserStory> pus;
+		Manager manager;
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
-		status = super.getRequest().getPrincipal().getActiveRole() == Manager.class;
+		manager = this.repository.findOneManagerById(managerId);
+
+		status = super.getRequest().getPrincipal().hasRole(Manager.class);
 
 		pus = this.repository.findProjectUserStoryByManagerId(managerId);
 		for (ProjectUserStory p : pus)
-			status = status && p.getProject().getManager().equals(this.repository.findOneManagerById(managerId));
+			status = status && p.getProject().getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}

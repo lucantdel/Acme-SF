@@ -20,3 +20,10 @@ manager.project.form.button.create =  Crear
 manager.project.form.button.delete = Eliminar
 manager.project.form.button.update = Actualizar
 manager.project.form.button.publish = Publicar
+
+manager.project.form.error.duplicated-code = El código no puede estar duplicado
+manager.project.form.error.negative-cost = El coste debe ser positivo
+manager.project.form.error.not-accepted-currency = La divisa no existe en el sistema
+manager.project.form.error.has-fatal-error = El proyecto no puede ser publicado porque tiene errores fatales
+manager.project.form.error.not-enough-user-stories = El proyecto no puede ser publicado porque no tiene historias de usuario
+manager.project.form.error.not-all-user-stories-published = El proyecto no puede ser publicado porque todas sus historias de usuario deben estar publicadas
