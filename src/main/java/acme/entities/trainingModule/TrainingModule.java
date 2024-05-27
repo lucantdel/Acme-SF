@@ -59,9 +59,7 @@ public class TrainingModule extends AbstractEntity {
 	protected String			link;
 
 	@NotNull
-	@Min(35)
-	//el debe valer como minimo 35 ya que una training session debe durar 1 semana 
-	//y hay 5 dias laborables que van desde las 9:00-17:00 con aproxiumadamente 1 hora de descanso (7 horas aprox.)
+	@Min(0)
 	protected Integer			totalEstimatedTime;
 
 	@NotNull

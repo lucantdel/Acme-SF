@@ -23,9 +23,10 @@
 		<td>
 			<acme:print value="${totalNumberOfTrainingSessionsWithLink}"/>
 		</td>
-	</tr>
+	</tr> 
 	
-	<tr>
+	<jstl:if test="${totalNumberOfTrainingModulesWithUpdateMoment != 0 && totalNumberOfTrainingSessionsWithLink != 0}">
+		<tr>
 		<th scope="row">
 			<acme:message code="developer.dashboard.form.label.averageTimeByTM"/>
 		</th>
@@ -57,6 +58,46 @@
 			<acme:print value="${standardDeviationTimeByTM}"/>
 		</td>
 	</tr>
+	</jstl:if>
+	
+	<jstl:if test="${totalNumberOfTrainingModulesWithUpdateMoment == 0 && totalNumberOfTrainingSessionsWithLink == 0}">
+	
+		<tr>
+		<th scope="row">
+			<acme:message code="developer.dashboard.form.label.averageTimeByTM"/>
+		</th>
+	<td>
+			<acme:print value="N/A"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="developer.dashboard.form.label.minimumTimeByTM"/>
+		</th>
+		<td>
+			<acme:print value="N/A"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="developer.dashboard.form.label.maximumTimeByTM"/>
+		</th>
+		<td>
+			<acme:print value="N/A"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="developer.dashboard.form.label.standardDeviationTimeByTM"/>
+		</th>
+		<td>
+			<acme:print value="N/A"/>
+		</td>
+	</tr>
+	
+	</jstl:if>
+		
+	
 
 </table>
 

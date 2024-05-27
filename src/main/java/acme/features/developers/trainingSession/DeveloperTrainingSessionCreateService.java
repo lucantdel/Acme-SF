@@ -31,13 +31,14 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		TrainingModule trainingModule;
 
 		trainingModuleId = super.getRequest().getData("trainingModuleId", int.class);
+
 		trainingModule = this.repository.findOneTrainingModuleByTmId(trainingModuleId);
+
 		status = trainingModule != null && trainingModule.isDraftMode() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 
 	}
-
 	@Override
 	public void load() {
 		TrainingSession object;
