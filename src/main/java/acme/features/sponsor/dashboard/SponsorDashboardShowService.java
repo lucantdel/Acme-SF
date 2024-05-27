@@ -84,6 +84,9 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 		totalNumberOfInvoicesWithLowTax = 0;
 		totalNumberOfSponsorshipsWithLink = 0;
 
+		totalNumberOfInvoicesWithLowTax = this.repository.findInvoicesTax21(super.getRequest().getPrincipal().getActiveRoleId());
+		totalNumberOfSponsorshipsWithLink = this.repository.findSponsorshipsWithLink(super.getRequest().getPrincipal().getActiveRoleId());
+
 		// 		String defaultCurrency = this.repository.findConfiguration().getDefaultCurrency();
 		// podria hacer el find en el repositorio para meterla como indice tipo avgSponsorshipsAmount[defaultCurrency]
 		// y los atributos del sponsordashboard serían Double simplemente
