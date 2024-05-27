@@ -1,7 +1,5 @@
 sponsor.sponsor-dashboard.form.title = Sponsor dashboard
 
-sponsor.dashboard.form.title.general-indicators = General indicators for published sponsorships and invoices
-
 sponsor.dashboard.form.label.sponsorship-general-indicators = General indicators for published sponsorships with currency
 sponsor.dashboard.form.label.sponsorship-link = Total number of sponsorships with a link
 sponsor.dashboard.form.label.avg-sponsorship-amount = Average amount of the sponsorships

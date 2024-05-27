@@ -1,7 +1,5 @@
 sponsor.sponsor-dashboard.form.title = Panel de patrocinadores
 
-sponsor.dashboard.form.title.general-indicators = Indicadores generales de patrocinios y facturas publicadas
-
 sponsor.dashboard.form.label.sponsorship-general-indicators = General indicators for published sponsorships with currency
 sponsor.dashboard.form.label.sponsorship-link = Número total de patrocinios con enlace
 sponsor.dashboard.form.label.avg-sponsorship-amount = Promedio del importe de los patrocinios

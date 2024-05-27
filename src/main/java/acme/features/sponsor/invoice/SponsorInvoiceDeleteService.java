@@ -21,15 +21,18 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	public void authorise() {
 
 		boolean status;
-		int masterId;
-		Sponsorship sph;
+		int invoiceId;
 		Sponsor sponsor;
+		Sponsorship sph;
+		Invoice invoice;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		sph = this.repository.findOneSponsorshipById(masterId);
+		invoiceId = super.getRequest().getData("id", int.class);
+		sph = this.repository.findOneSponsorshipByInvoiceId(invoiceId);
 		sponsor = this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
+		invoice = this.repository.findOneInvoiceById(invoiceId);
 		status = sph != null && //
 			sph.isDraftMode() && //
+			invoice.isDraftMode() && //
 			super.getRequest().getPrincipal().getActiveRole() == Sponsor.class //
 			&& sph.getSponsor().equals(sponsor);
 
@@ -74,7 +77,7 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
-		dataset.put("masterId", object.getSponsorship().getId());
+		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 
 		super.getResponse().addData(dataset);
 

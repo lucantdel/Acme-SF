@@ -25,21 +25,20 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	@Override
 	public void authorise() {
 		boolean status;
-		Sponsorship sponsorship;
+		Sponsorship sph;
 		Sponsor sponsor;
 
-		sponsorship = this.repository.findOneSponsorshipById(super.getRequest().getData("id", int.class));
-		sponsor = sponsorship == null ? null : this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
+		sph = this.repository.findOneSponsorshipById(super.getRequest().getData("id", int.class));
 
-		status = super.getRequest().getPrincipal().getActiveRole() == Sponsor.class //
-			&& sponsorship.getSponsor().equals(sponsor) && sponsorship.isDraftMode();
-		//		status = sponsorship != null && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
+		sponsor = sph == null ? null : this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
+		status = sph != null && super.getRequest().getPrincipal().getActiveRole() == Sponsor.class && sph.getSponsor().equals(sponsor) //
+			&& sph.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
-	// creo uno nuevo y lo relleno segun el que me han dado
+	// tomo el que me han dado a eliminar
 	public void load() {
 		Sponsorship object;
 		int id;
@@ -60,14 +59,17 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
+		object.setProject(project);
 
 		super.bind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "project");
-		//object.setProject(project); en este caso no le asigno project ya que lo vamos a eliminar
+
 	}
 
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code"))
+			super.state(this.repository.countPublishedInvoicesBySponsorshipId(object.getId()) == 0, "code", "sponsor.sponsorship.form.error.deleteWithPublishedInvoices");
 	}
 
 	@Override
@@ -76,7 +78,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 		Collection<Invoice> invoices;
 
-		// cascade if delete
+		// OnDelete.Cascade
 		invoices = this.repository.findAllInvoicesBySponsorshipId(object.getId());
 		this.repository.deleteAll(invoices);
 		this.repository.delete(object);
@@ -85,22 +87,20 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	@Override
 	public void unbind(final Sponsorship object) {
 		assert object != null;
-
-		SelectChoices types;
+		Dataset dataset;
+		SelectChoices choices;
 		SelectChoices projectsChoices;
 		Collection<Project> projects;
 
-		Dataset dataset;
-		types = SelectChoices.from(SponsorshipType.class, object.getType());
+		choices = SelectChoices.from(SponsorshipType.class, object.getType());
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
-		dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "draftMode", "project");
 
-		dataset.put("type", types);
-		dataset.put("project", projectsChoices.getSelected().getKey());
+		dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "project");
+		dataset.put("sponsorshipType", choices);
+		dataset.put("project", projectsChoices.getSelected().getLabel());
 		dataset.put("projects", projectsChoices);
 		super.getResponse().addData(dataset);
-
 	}
 
 }

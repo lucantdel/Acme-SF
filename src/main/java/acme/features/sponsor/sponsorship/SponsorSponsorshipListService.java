@@ -50,13 +50,14 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 		SelectChoices choices;
 		SelectChoices projectsChoices;
 		Collection<Project> projects;
+		String payload;
 
 		Dataset dataset;
 		choices = SelectChoices.from(SponsorshipType.class, object.getType());
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
 		// "sponsor" no hace falta ya que es el mismo
-		dataset = super.unbind(object, "code", "moment", "startDuration", "finalDuration", "amount", "type", "email", "link", "draftMode", "project");
+		dataset = super.unbind(object, "code", "moment", "amount", "project", "draftMode");
 
 		if (object.isDraftMode()) {
 			final Locale local = super.getRequest().getLocale();
@@ -67,6 +68,15 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 		dataset.put("sponsorshipType", choices);
 		dataset.put("project", projectsChoices.getSelected().getLabel());
 		dataset.put("projects", projectsChoices);
+
+		payload = String.format(//
+			"%s; %s; %s; %s; %s", //
+			object.getStartDuration(), //
+			object.getFinalDuration(), //
+			object.getType(), //
+			object.getLink(), //
+			object.getEmail());
+		dataset.put("payload", payload);
 		super.getResponse().addData(dataset);
 
 	}
