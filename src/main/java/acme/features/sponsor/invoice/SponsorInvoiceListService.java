@@ -51,11 +51,12 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 	@Override
 	public void unbind(final Invoice object) {
 		assert object != null;
-		Money totalAmount = new Money();
-		Invoice invoice;
 		Dataset dataset;
+		Invoice invoice;
+		Money totalAmount = new Money();
 		double amount;
 		String currency;
+		String payload;
 
 		invoice = this.repository.findOneInvoiceByCode(object.getCode());
 		currency = invoice.getQuantity().getCurrency();
@@ -63,16 +64,22 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 
 		totalAmount.setAmount(amount);
 		totalAmount.setCurrency(currency);
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
-
+		dataset = super.unbind(object, "code", "tax", "registrationTime", "dueDate", "draftMode");
 		if (object.isDraftMode()) {
 			final Locale local = super.getRequest().getLocale();
 			dataset.put("draftMode", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");
 		} else
 			dataset.put("draftMode", "No");
-
 		dataset.put("totalAmount", totalAmount);
+
+		payload = String.format(//
+			"%s; %s", //
+			object.getQuantity(), //
+			object.getLink());
+
+		dataset.put("payload", payload);
 		super.getResponse().addData(dataset);
+
 	}
 
 	@Override
@@ -90,5 +97,4 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
 	}
-
 }

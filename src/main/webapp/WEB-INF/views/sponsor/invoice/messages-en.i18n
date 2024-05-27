@@ -6,7 +6,7 @@ sponsor.invoice.form.label.code = Code:
 sponsor.invoice.form.label.registration-time = Registration time:
 sponsor.invoice.form.label.due-date = Due date:
 sponsor.invoice.form.label.quantity = Quantity:
-sponsor.invoice.form.label.tax = Tax:
+sponsor.invoice.form.label.tax = Tax (%):
 sponsor.invoice.form.label.link = Link (optional):
 
 sponsor.invoice.form.button.update = Update
@@ -21,14 +21,18 @@ sponsor.invoice.list.label.code = Code
 sponsor.invoice.list.label.registration-time = Registration time
 sponsor.invoice.list.label.due-date = Due date
 sponsor.invoice.list.label.quantity = Quantity
-sponsor.invoice.list.label.tax = Tax
+sponsor.invoice.list.label.tax = Tax (%)
 sponsor.invoice.list.label.link = Link
 sponsor.invoice.list.label.draftMode = Editable
 sponsor.invoice.list.label.total-amount = Total amount (including tax)
 
 sponsor.invoice.list.button.create-form = Create invoice
 
-sponsor.invoice.form.error.duplicated = This code already exists
-sponsor.invoice.form.error.due-date-not-valid = Due date must be ahead registration time. It must be at least one month long
-sponsor.invoice.form.error.quantity-must-be-positive = Quantity must be positive
-sponsor.invoice.form.error.currency-not-supported = Selected currency is not supported by the system
+sponsor.invoice.form.error.duplicated = This code already exists.
+sponsor.invoice.form.error.due-date-not-valid = Due date must be ahead registration time. It must be at least one month long.
+sponsor.invoice.form.error.date-before-moment = The registration date must be after the sponsorship moment.
+sponsor.invoice.form.error.quantity-must-be-positive = Quantity must be positive.
+sponsor.invoice.form.error.currency-not-supported = Selected currency is not supported by the system.
+sponsor.invoice.form.error.currency = The currency of payment cannot be different from the currency used to pay for the sponsorship.
+sponsor.invoice.form.error.sponsorship-amount = Total sponsorship amount exceeded.
+sponsor.invoice.form.error.invalid-tax = The tax must be between 0 and 100.
