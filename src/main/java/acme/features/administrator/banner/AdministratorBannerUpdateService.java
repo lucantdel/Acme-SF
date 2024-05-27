@@ -53,21 +53,34 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 				super.state(!object.getUpdateMoment().after(object.getDisplayPeriodEnd()), "updateMoment", "administrator.banner.error.updateMoment2");
 
 			if (!super.getBuffer().getErrors().hasErrors("displayPeriodStart"))
-				super.state(object.validateDisplayPeriod() == true, "displayPeriodStart", "administrator.banner.error.periodStart");
+				super.state(object.getDisplayPeriodStart().before(object.getDisplayPeriodEnd()), "displayPeriodStart", "administrator.banner.error.periodStart");
 
 			if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
-				super.state(object.validateDisplayPeriod() == true, "displayPeriodEnd", "administrator.banner.error.periodEnd");
+				super.state(object.getDisplayPeriodEnd().after(object.getDisplayPeriodStart()), "displayPeriodEnd", "administrator.banner.error.period");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayPeriodStart"))
+				super.state(object.validateDisplayPeriod() == true, "displayPeriodStart", "administrator.banner.error.periodEnd2");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
+				super.state(object.validateDisplayPeriod() == true, "displayPeriodEnd", "administrator.banner.error.periodEnd2");
 
 			if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
 				super.state(!object.getDisplayPeriodStart().after(object.getDisplayPeriodEnd()), "displayPeriodEnd", "administrator.banner.error.periodEnd2");
 
 		}
 		if (object.getUpdateMoment() == null) {
+
 			if (!super.getBuffer().getErrors().hasErrors("displayPeriodStart"))
-				super.state(object.validateDisplayPeriod() == true, "displayPeriodStart", "administrator.banner.error.periodStart");
+				super.state(object.getDisplayPeriodStart().before(object.getDisplayPeriodEnd()), "displayPeriodStart", "administrator.banner.error.periodStart");
 
 			if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
-				super.state(object.validateDisplayPeriod() == true, "displayPeriodEnd", "administrator.banner.error.periodEnd");
+				super.state(object.getDisplayPeriodEnd().after(object.getDisplayPeriodStart()), "displayPeriodEnd", "administrator.banner.error.period");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayPeriodStart"))
+				super.state(object.validateDisplayPeriod() == true, "displayPeriodStart", "administrator.banner.error.periodEnd2");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
+				super.state(object.validateDisplayPeriod() == true, "displayPeriodEnd", "administrator.banner.error.periodEnd2");
 
 			if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
 				super.state(!object.getDisplayPeriodStart().after(object.getDisplayPeriodEnd()), "displayPeriodEnd", "administrator.banner.error.periodEnd2");
