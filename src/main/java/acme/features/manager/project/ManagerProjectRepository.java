@@ -13,7 +13,7 @@ import acme.entities.codeAudits.AuditRecord;
 import acme.entities.codeAudits.CodeAudit;
 import acme.entities.contract.Contract;
 import acme.entities.invoices.Invoice;
-import acme.entities.progress_logs.ProgressLogs;
+import acme.entities.progressLogs.ProgressLog;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
 import acme.entities.projects.UserStory;
@@ -56,8 +56,8 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select c from Contract c where c.project.id = :id")
 	Collection<Contract> findManyContractsByProjectId(int id);
 
-	@Query("select pl from ProgressLogs pl where pl.contract.id IN :ids")
-	Collection<ProgressLogs> findManyProgressLogsByContractIds(Set<Integer> ids);
+	@Query("select pl from ProgressLog pl where pl.contract.id IN :ids")
+	Collection<ProgressLog> findManyProgressLogsByContractIds(Set<Integer> ids);
 
 	@Query("select ss from Sponsorship ss where ss.project.id = :id")
 	Collection<Sponsorship> findManySponsorshipsByProjectId(int id);

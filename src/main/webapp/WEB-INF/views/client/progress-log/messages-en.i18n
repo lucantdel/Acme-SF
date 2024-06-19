@@ -1,0 +1,30 @@
+client.progress-log.list.title= List of its progress logs
+
+client.progressLog.list.label.recordId = Record Id
+client.progressLog.list.label.completeness = Completeness
+client.progressLog.list.label.registrationMoment = Registration Moment
+client.progressLog.list.label.responsiblePerson = Responsible Person
+client.progressLog.list.label.draftMode = DraftMode
+
+client.progressLog.list.button.create = Create Progress Log
+
+#############################################################################
+
+client.progress-log.form.title= Progress Log details
+
+client.progress-log.form.label.recordId = Record Id
+client.progress-log.form.label.completeness = Completeness
+client.progress-log.form.label.comment = Comment
+client.progress-log.form.label.registrationMoment = Registration Moment
+client.progress-log.form.label.responsiblePerson = Responsible Person
+
+client.progress-log.form.button.update = Update
+client.progress-log.form.button.delete = Delete
+client.progress-log.form.button.publish = Publish
+client.progress-log.form.button.create = Create
+
+client.progress-log.form.placeholder.comment = Make a comment
+
+client.progress-log.form.error.duplicated = This id is already in use.
+client.progress-log.form.error.completeness-too-low = The latest completeness that was assigned to this contract was higher or equal than this value. Please ensure that the completeness value is higher than the previous value
+client.progress-log.form.error.registration-moment-must-be-later = The time of registration of progress reports must be after the time of instantiation of the contract to which it is associated.

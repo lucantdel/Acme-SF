@@ -1,8 +1,8 @@
 
 package acme.roles;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -20,34 +20,30 @@ import lombok.Setter;
 @Setter
 public class Client extends AbstractRole {
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
+	/*
+	 * Attributes
+	 */
 
-	public enum Type {
-		COMPANY, INDIVIDUAL
-	}
-
-
-	@NotNull
-	@Pattern(regexp = "CLI-[0-9]{4}", message = "Identification must match pattern CLI-[0-9]{4}")
+	@Column(unique = true)
 	@NotBlank
-	private String	identification;
+	@Pattern(regexp = "^CLI-[0-9]{4}$")
+	private String				identification;
 
-	@NotNull
 	@NotBlank
 	@Length(max = 75)
-	private String	companyName;
+	private String				companyName;
 
 	@NotNull
-	@Valid
-	private Type	type;
+	private ClientType			type;
 
-	@NotNull
 	@Email
 	@NotBlank
-	private String	email;
+	@Length(max = 255)
+	private String				email;
 
 	@URL
-	private String	optionalLink;
-
+	@Length(max = 255)
+	private String				link;
 }

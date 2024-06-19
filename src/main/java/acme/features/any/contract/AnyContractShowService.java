@@ -1,7 +1,7 @@
 
 package acme.features.any.contract;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,41 +9,63 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
-import acme.entities.progress_logs.ProgressLogs;
+import acme.entities.projects.Project;
 
 @Service
 public class AnyContractShowService extends AbstractService<Any, Contract> {
 
 	@Autowired
-	protected AnyContractRepository repository;
+	private AnyContractRepository repository;
 
 
 	@Override
 	public void authorise() {
-		Contract object;
+
+		boolean status;
 		int id;
+		Contract contract;
+
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findContractById(id);
-		super.getResponse().setAuthorised(!object.getDraftMode());
+		contract = this.repository.findOneContractById(id);
+
+		status = contract != null && !contract.isDraftMode();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
+
 		Contract object;
 		int id;
+
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findContractById(id);
+		object = this.repository.findOneContractById(id);
+
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final Contract object) {
 		assert object != null;
+
+		int contractId;
+		Collection<Project> projects;
+		SelectChoices choices;
+
+		contractId = super.getRequest().getData("id", int.class);
+		projects = this.repository.findOneProjectByContractId(contractId);
+
+		choices = SelectChoices.from(projects, "code", object.getProject());
+
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "provider", "customer", "goals", "budget");
-		final List<ProgressLogs> progressLogs = (List<ProgressLogs>) this.repository.findProgressLogsByContract(object.getId());
-		dataset.put("hasProgressLogs", !progressLogs.isEmpty());
+
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+
 		super.getResponse().addData(dataset);
 	}
 

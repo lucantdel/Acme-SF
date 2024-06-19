@@ -2,6 +2,8 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,13 +13,14 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
 import acme.entities.projects.Project;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.roles.Client;
 
 @Service
 public class ClientContractCreateService extends AbstractService<Client, Contract> {
 
 	@Autowired
-	private ClientContractRepository repository;
+	private ClientContractRepository clientContractRepository;
 
 
 	@Override
@@ -27,57 +30,87 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void load() {
-		Contract contract;
+
+		Contract contract = new Contract();
 		Client client;
 
-		client = this.repository.getClientById(super.getRequest().getPrincipal().getActiveRoleId());
-		contract = new Contract();
+		client = this.clientContractRepository.findOneClientById(super.getRequest().getPrincipal().getActiveRoleId());
+
 		contract.setDraftMode(true);
 		contract.setClient(client);
+
 		super.getBuffer().addData(contract);
+
 	}
 
 	@Override
 	public void bind(final Contract object) {
+
 		assert object != null;
 
 		int projectId;
 		Project project;
 
 		projectId = super.getRequest().getData("project", int.class);
-		project = this.repository.getProjectById(projectId);
+		object.setDraftMode(true);
+		project = this.clientContractRepository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "moment", "provider", "customer", "goals", "budget", "project");
+		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
 		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final Contract object) {
+
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Contract existing;
+
+			existing = this.clientContractRepository.findOneContractByCode(object.getCode());
+			super.state(existing == null, "code", "client.contract.form.error.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
+			if (object.getProject() != null)
+				super.state(object.getBudget().getCurrency().equals(object.getProject().getCost().getCurrency()), "budget", "client.contract.form.error.different-currency");
+
+			List<SystemConfiguration> sc = this.clientContractRepository.findSystemConfiguration();
+			final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getBudget().getCurrency()));
+
+			super.state(foundCurrency, "budget", "client.contract.form.error.currency-not-suported");
+
+		}
+
 	}
 
 	@Override
 	public void perform(final Contract object) {
+
 		assert object != null;
-		this.repository.save(object);
+		this.clientContractRepository.save(object);
 	}
 
 	@Override
 	public void unbind(final Contract object) {
+
 		assert object != null;
+
+		Collection<Project> projects;
+		SelectChoices choices;
+
+		projects = this.clientContractRepository.findAllProjects();
+
+		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "provider", "customer", "goals", "budget");
-		final SelectChoices choices = new SelectChoices();
-		Collection<Project> projects;
-		projects = this.repository.getPublishedProjects();
-		for (final Project p : projects)
-			choices.add(Integer.toString(p.getId()), p.getCode() + " - " + p.getTitle(), false);
-
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
-		super.getResponse().addData(dataset);
 
+		super.getResponse().addData(dataset);
 	}
 
 }

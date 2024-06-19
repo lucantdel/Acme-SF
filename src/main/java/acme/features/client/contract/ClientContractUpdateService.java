@@ -1,75 +1,114 @@
 
 package acme.features.client.contract;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Stream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
+import acme.entities.projects.Project;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.roles.Client;
 
 @Service
 public class ClientContractUpdateService extends AbstractService<Client, Contract> {
 
 	@Autowired
-	protected ClientContractRepository repository;
+	ClientContractRepository clientContractRepository;
 
 
 	@Override
 	public void authorise() {
-		Contract object;
-		int id;
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.getContractById(id);
-		final Principal principal = super.getRequest().getPrincipal();
-		final int userAccountId = principal.getAccountId();
-		super.getResponse().setAuthorised(object.getClient().getUserAccount().getId() == userAccountId && object.getDraftMode());
+		boolean status;
+		int masterId;
+		Contract contract;
+		Client client;
+
+		masterId = super.getRequest().getData("id", int.class);
+		contract = this.clientContractRepository.findOneContractById(masterId);
+		client = contract == null ? null : contract.getClient();
+		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Contract object;
-		object = new Contract();
-		object.setDraftMode(true);
-		super.getBuffer().addData(object);
+		Contract contract;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+
+		contract = this.clientContractRepository.findOneContractById(id);
+
+		super.getBuffer().addData(contract);
 	}
 
 	@Override
 	public void bind(final Contract object) {
 		assert object != null;
 
-		Contract object2;
-		int id;
+		int projectId;
+		Project project;
 
-		id = super.getRequest().getData("id", int.class);
-		object2 = this.repository.getContractById(id);
-		object.setProject(object2.getProject());
-		object.setClient(object2.getClient());
-		super.bind(object, "code", "provider", "moment", "customer", "goals", "budget");
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.clientContractRepository.findOneProjectById(projectId);
+
+		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Contract existing;
+
+			existing = this.clientContractRepository.findOneContractByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
+			if (object.getProject() != null)
+				super.state(object.getBudget().getCurrency().equals(object.getProject().getCost().getCurrency()), "budget", "client.contract.form.error.different-currency");
+			List<SystemConfiguration> sc = this.clientContractRepository.findSystemConfiguration();
+			final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getBudget().getCurrency()));
+
+			super.state(foundCurrency, "budget", "client.contract.form.error.currency-not-suported");
+
+		}
 	}
 
 	@Override
 	public void perform(final Contract object) {
 		assert object != null;
-
-		this.repository.save(object);
+		this.clientContractRepository.save(object);
 	}
 
 	@Override
 	public void unbind(final Contract object) {
 		assert object != null;
 
-		Dataset dataset;
-		dataset = super.unbind(object, "code", "moment", "provider", "customer", "goals", "budget", "project", "client", "draftMode");
+		Collection<Project> projects;
+		SelectChoices choices;
 
-		dataset.put("projectTitle", object.getProject().getCode());
+		projects = this.clientContractRepository.findAllProjects();
+		choices = SelectChoices.from(projects, "code", object.getProject());
+
+		Dataset dataset;
+
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+
 		super.getResponse().addData(dataset);
 	}
 

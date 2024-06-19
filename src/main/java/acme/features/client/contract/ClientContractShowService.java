@@ -1,30 +1,39 @@
 
 package acme.features.client.contract;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
+import acme.entities.projects.Project;
 import acme.roles.Client;
 
 @Service
 public class ClientContractShowService extends AbstractService<Client, Contract> {
 
 	@Autowired
-	protected ClientContractRepository repository;
+	ClientContractRepository repository;
 
 
 	@Override
 	public void authorise() {
-		Contract contract;
-		int id;
-		boolean status;
+		Boolean status;
+		int masterId;
+		Contract c;
+		Client client;
 
-		id = super.getRequest().getData("id", int.class);
-		contract = this.repository.getContractById(id);
-		status = contract != null;
+		masterId = super.getRequest().getData("id", int.class);
+		c = this.repository.findOneContractById(masterId);
+		client = c == null ? null : c.getClient();
+		int activeClientId = super.getRequest().getPrincipal().getActiveRoleId();
+		Client activeClient = this.repository.findOneClientById(activeClientId);
+		boolean clientOwnsContract = c.getClient() == activeClient;
+		status = c != null && clientOwnsContract && c.isDraftMode() || super.getRequest().getPrincipal().hasRole(client);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -35,7 +44,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.getContractById(id);
+		object = this.repository.findOneContractById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -44,10 +53,27 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 	public void unbind(final Contract object) {
 		assert object != null;
 
+		int contractId;
+		Collection<Project> projects;
+		SelectChoices choices;
+
+		if (object.isDraftMode())
+			projects = this.repository.findAllProjects();
+		else {
+			contractId = super.getRequest().getData("id", int.class);
+			projects = this.repository.findOneProjectByContractId(contractId);
+
+		}
+
+		choices = SelectChoices.from(projects, "code", object.getProject());
+
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "provider", "customer", "goals", "budget", "project", "draftMode");
-		dataset.put("projectTitle", object.getProject().getCode());
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+
 		super.getResponse().addData(dataset);
 	}
+
 }

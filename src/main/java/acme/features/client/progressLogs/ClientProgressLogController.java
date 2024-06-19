@@ -1,5 +1,5 @@
 
-package acme.features.client.progresslog;
+package acme.features.client.progressLogs;
 
 import javax.annotation.PostConstruct;
 
@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.progress_logs.ProgressLogs;
+import acme.entities.progressLogs.ProgressLog;
 import acme.roles.Client;
 
 @Controller
-public class ClientProgressLogController extends AbstractController<Client, ProgressLogs> {
+public class ClientProgressLogController extends AbstractController<Client, ProgressLog> {
 
 	@Autowired
 	protected ClientProgressLogListService		listService;
@@ -31,9 +31,6 @@ public class ClientProgressLogController extends AbstractController<Client, Prog
 	@Autowired
 	protected ClientProgressLogDeleteService	deleteService;
 
-	@Autowired
-	protected ClientProgressLogListAllService	listAllService;
-
 
 	@PostConstruct
 	protected void initialise() {
@@ -42,7 +39,7 @@ public class ClientProgressLogController extends AbstractController<Client, Prog
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("delete", this.deleteService);
 		super.addBasicCommand("update", this.updateService);
+
 		super.addCustomCommand("publish", "update", this.publishService);
-		super.addCustomCommand("list-all", "list", this.listAllService);
 	}
 }

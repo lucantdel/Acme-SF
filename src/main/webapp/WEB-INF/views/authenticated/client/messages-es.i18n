@@ -1,12 +1,12 @@
+authenticated.client.form.title = Detalles de cliente
 
-authenticated.client.form.title = Detalles del cliente
+authenticated.client.form.label.identification = Identificador
+authenticated.client.form.label.companyName = Nombre de la compañía
+authenticated.client.form.label.type = Tipo
+authenticated.client.form.label.email = Email 
+authenticated.client.form.label.link = Link
 
-authenticated.client.form.label.identification = Identificacion
-authenticated.client.form.label.companyName = Nombre de la entidad
-authenticated.client.form.label.type = tipo
-authenticated.client.form.label.email = correo
-authenticated.client.form.label.link = Enlace
-
-authenticated.client.form.button.create = Crear
+authenticated.client.form.button.create = Registrar
 authenticated.client.form.button.update = Actualizar
-authenticated.client.form.error.identification = la identificacion esta duplicada, escoga otra
+
+authenticated.client.form.error.duplicated = Este código ya está en uso
