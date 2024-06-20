@@ -1,0 +1,9 @@
+authenticated.sponsor.form.title = Detalles de patrocinador
+
+authenticated.sponsor.form.label.name = Nombre:
+authenticated.sponsor.form.label.expectedBenefits = Beneficios esperados:
+authenticated.sponsor.form.label.webpage = Página web:
+authenticated.sponsor.form.label.email = Correo Electrónico:
+
+authenticated.sponsor.form.button.create = Registrar
+authenticated.sponsor.form.button.update = Actualizar

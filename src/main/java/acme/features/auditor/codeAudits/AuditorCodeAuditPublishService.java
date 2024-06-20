@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.codeAudits.AuditRecord;
 import acme.entities.codeAudits.CodeAudit;
 import acme.entities.projects.Project;
 import acme.features.auditor.auditRecord.AuditorAuditRecordRepository;
@@ -72,6 +73,19 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 				super.state(!object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object)).trim().equals("F") && !object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object)).trim().equals("F-"), "Mark", "auditor.codeAudit.error.Mark");
 		if (mark == null)
 			super.state(object.Mark(this.rp.getScoreOfAsociatedPublishedAuditRecords(object)) != null, "Mark", "auditor.codeAudit.error.Mark");
+
+		Collection<AuditRecord> auditRecords;
+		int totalAuditRecords;
+		boolean allAuditRecordsPublished;
+
+		auditRecords = this.rp.findAllAuditRecordsByCodeAuditId(object.getId());
+		totalAuditRecords = auditRecords.size();
+
+		allAuditRecordsPublished = auditRecords.stream().allMatch(ar -> ar.isPublished());
+
+		super.state(totalAuditRecords >= 1, "*", "auditor.codeAudit.form.error.not-enough-audit-records");
+
+		super.state(allAuditRecordsPublished, "*", "auditor.codeAudit.form.error.not-all-audit-records-published");
 	}
 
 	@Override

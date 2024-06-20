@@ -6,7 +6,7 @@ sponsor.invoice.form.label.code = Código:
 sponsor.invoice.form.label.registration-time = Momento de registro:
 sponsor.invoice.form.label.due-date = Fecha de vencimiento:
 sponsor.invoice.form.label.quantity = Cantidad:
-sponsor.invoice.form.label.tax = Impuesto:
+sponsor.invoice.form.label.tax = Impuesto (%):
 sponsor.invoice.form.label.link = Enlace (opcional):
 
 sponsor.invoice.form.button.update = Actualizar
@@ -21,14 +21,18 @@ sponsor.invoice.list.label.code = Código
 sponsor.invoice.list.label.registration-time = Momento de registro
 sponsor.invoice.list.label.due-date = Fecha de vencimiento
 sponsor.invoice.list.label.quantity = Cantidad
-sponsor.invoice.list.label.tax = Impuesto
+sponsor.invoice.list.label.tax = Impuesto (%)
 sponsor.invoice.list.label.link = Enlace (opcional)
 sponsor.invoice.list.label.draftMode = Editable
 sponsor.invoice.list.label.total-amount = Cantidad total (con impuesto aplicado)
 
 sponsor.invoice.list.button.create-form = Create invoice
 
-sponsor.invoice.form.error.duplicated = Este código ya existe
-sponsor.invoice.form.error.due-date-not-valid = La fecha de vencimiento debe ser posterior a la de registro. La duración debe ser de al menos un mes
-sponsor.invoice.form.error.quantity-must-be-positive = La cantidad de dinero debe ser positiva
-sponsor.invoice.form.error.currency-not-supported = La moneda elegida no es soportada por el sistema
+sponsor.invoice.form.error.duplicated = Este código ya existe.
+sponsor.invoice.form.error.due-date-not-valid = La fecha de vencimiento debe ser posterior a la de registro. La duración debe ser de al menos un mes.
+sponsor.invoice.form.error.date-before-moment = La fecha de inscripción debe ser posterior al momento del apadrinamiento.
+sponsor.invoice.form.error.quantity-must-be-positive = La cantidad de dinero debe ser positiva.
+sponsor.invoice.form.error.currency-not-supported = La moneda elegida no es soportada por el sistema.
+sponsor.invoice.form.error.currency = La moneda de pago no puede ser distinta a la que se usa para pagar el patrocinio.
+sponsor.invoice.form.error.sponsorship-amount = Importe total del patrocinio superado.
+sponsor.invoice.form.error.invalid-tax = El impuesto debe estar comprendido entre 0 y 100.

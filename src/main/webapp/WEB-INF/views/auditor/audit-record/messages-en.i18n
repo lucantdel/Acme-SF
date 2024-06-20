@@ -29,9 +29,12 @@ auditor.auditRecord.form.button.publish = Publish
 
 
 
+
 auditor.auditRecord.error.period = Period must be at least 1h long.
 auditor.auditRecord.error.period2 = The finishDate cant be before the StartDate
 auditor.auditRecord.error.period3 = The StartDate must begin before the finishDate
 auditor.auditRecord.error.periodN = A period must have Start and Finish dates
 auditor.auditRecord.error.duplicated = CoudAR already in use
 auditor.auditRecord.error.published = The Audit Record must be in published
+auditor.auditRecord.error.Link = Length must be between 0 and 255. 
+auditor.auditRecord.error.execution = The audit Record must start after its Code Audit

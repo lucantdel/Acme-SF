@@ -29,5 +29,6 @@ auditor.auditRecord.error.period3 = La fecha de inicio debe ser anterior a la fi
 auditor.auditRecord.error.periodN = El periodo debe tener fecha inicial y final
 auditor.auditRecord.error.duplicated = El CodigoAR no puede ser repetido
 auditor.auditRecord.error.published = Debe no estar publicado
+auditor.auditRecord.error.execution = El periodo del Registro de auditoria debe empezar despues de la auditoria de codigo.
 
 auditor.auditRecord.error.period = El periodo debe durar al menos 1h.

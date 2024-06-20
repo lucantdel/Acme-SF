@@ -32,3 +32,7 @@ auditor.codeAudit.form.button.publish = Publish
 auditor.codeAudit.error.Mark = Mark must be at least C
 auditor.codeAudit.error.duplicated = Code already in use
 auditor.codeAudit.error.published = Must not be published
+auditor.codeAudit.error.execution = Must have execution date
+auditor.codeAudit.form.error.not-enough-audit-records = Must have at least 1 Audit Record published
+auditor.codeAudit.form.error.not-all-audit-records-published = Not all Audit Records are published
+auditor.codeAudit.error.execution2 = There are Adudit Records with earlyer StartDates

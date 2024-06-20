@@ -27,7 +27,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	public void authorise() {
 		int id;
 		Auditor auditor;
-		id = Integer.valueOf(super.getRequest().getData().values().stream().collect(Collectors.toList()).get(0).toString());
+		id = super.getRequest().getData("codeAuditId", int.class);
 		auditor = this.repository.getAuditorbyCodeAuditId(id);
 		boolean autorizacion = auditor.getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername());
 		super.getResponse().setAuthorised(autorizacion);
@@ -39,7 +39,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		Integer id;
 		Auditor auditor;
 		CodeAudit codeAudit;
-		id = Integer.valueOf(super.getRequest().getData().values().stream().collect(Collectors.toList()).get(0).toString());
+		id = super.getRequest().getData("codeAuditId", int.class);
 		object = new AuditRecord();
 		codeAudit = this.repository.findCodeAuditById(id);
 		auditor = this.repository.getAuditorbyCodeAuditId(id);
@@ -87,6 +87,11 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		if (object.getFinishDate() == null)
 			if (!super.getBuffer().getErrors().hasErrors("startDate"))
 				super.state(object.getFinishDate() != null, "startDate", "auditor.auditRecord.error.periodN");
+
+		if (object.getLink() != null)
+			if (!super.getBuffer().getErrors().hasErrors("link"))
+				if (object.getLink().length() > 255)
+					super.state(object.getLink().length() <= 255, "link", "auditor.auditRecord.error.Link");
 	}
 
 	@Override
@@ -98,12 +103,16 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	@Override
 	public void unbind(final AuditRecord object) {
 		assert object != null;
+		int caID;
+		caID = super.getRequest().getData("codeAuditId", int.class);
 
 		Dataset dataset;
 
 		dataset = super.unbind(object, "codeAR", "startDate", "finishDate", "score", "link", "published");
 
 		dataset.put("codeAuditCode", object.getCodeAudit().getCode());
+
+		super.getResponse().addGlobal("codeAuditId", caID);
 
 		super.getResponse().addData(dataset);
 	}

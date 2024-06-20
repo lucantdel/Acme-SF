@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <help_text/>
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>50</x>
+      <y>220</y>
+      <w>360</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;UserRole&gt;&gt;
+Manager
+--
++ degree: String {NotBlank, Length(max = 75}
++ overview: String {NotBlank, Length(max = 100)}
++ certifications: String {NotBlank, Length(max = 100)}
++ link: String {URL}
+bg=PINK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>530</x>
+      <y>220</y>
+      <w>360</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Project
+--
++ code: String {NotBlank, Unique, Pattern}
++ title: String {NotBlank, Length(max = 75)}
++ projectAbstract: String {NotBlank, Length(max = 100)}
++ indicator: boolean 
++ cost: Money {NotNull}
++ link: String {URL}
++ draftMode: boolean
+bg=CYAN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1020</x>
+      <y>220</y>
+      <w>360</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+UserStory
+--
++ title: String {NotBlank, Length(max = 75)}
++ description: String {NotBlank, Length(max = 100)}
++ estimatedCost: int {Positive}
++ acceptanceCriteria: String {NotBlank, Length(max = 100)}
++ priority: UserStoryPriority
++ link: String {URL}
++ draftMode: boolean
+bg=CYAN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>270</y>
+      <w>160</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=0..n
+m2=0..n
+ aggregates &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>270</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..n
+creates &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>50</x>
+      <y>350</y>
+      <w>360</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+ManagerDashboard
+--
++ mustUserStories: int
++ shouldUserStories: int
++ couldUserStories: int
++ wontUserStories: int
++ avgUserStoryEstimatedCost: double
++ devUserStoryEstimatedCost: double
++ minUserStoryEstimatedCost: int
++ maxUserStoryEstimatedCost: int
++ avgProjectCost: Map&lt;String, Double&gt;
++ devProjectCost: Map&lt;String, Double&gt;
++ minProjectCost: Map&lt;String, Double&gt;
++ maxProjectCost: Map&lt;String, Double&gt;
+bg=ORANGE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>530</x>
+      <y>440</y>
+      <w>210</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>codePattern
+
+pattern “[A-Z]{3}[0-9]{4}”,
+customelement=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>530</x>
+      <y>510</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Money type has currency and
+amount, amount needs to be
+positive, it will be checked on
+service
+customelement=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>730</x>
+      <y>380</y>
+      <w>70</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>50.0;10.0;50.0;170.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>380</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1020</x>
+      <y>400</y>
+      <w>150</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+UserStoryPriority
+--
++ MUST
++ SHOULD
++ COULD
++ WONT
+bg=MAGENTA</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>140</y>
+      <w>1040</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..n
+elicits &gt;</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;20.0;1000.0;20.0;1000.0;80.0</additional_attributes>
+  </element>
+</diagram>

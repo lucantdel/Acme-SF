@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Acme-SF-D03</name>
+	<name>Acme-SF</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -35,6 +35,11 @@
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
 	<linkedResources>
+		<link>
+			<name>Acme-Framework-24.5.0</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/Frameworks/Acme-Framework-24.5.0/target/classes</locationURI>
+		</link>
 		<link>
 			<name>classes</name>
 			<type>2</type>

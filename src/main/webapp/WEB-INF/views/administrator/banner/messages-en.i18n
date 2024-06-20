@@ -30,6 +30,6 @@ administrator.banner.error.periodStart = The Start Date must not be after the En
 administrator.banner.error.updateMoment = The Update moment cant be before the Start Date
 administrator.banner.error.updateMoment2 = The Update moment cant be after the End Date
 administrator.banner.error.updateMoment3 = There cant be an update date whitout start date
-
+administrator.banner.error.period = Period end date cant be before Period start date.
 
 
