@@ -27,4 +27,3 @@ client.progress-log.form.placeholder.comment = Haz un comentario
 
 client.progress-log.form.error.duplicated = Este identificador ya está en uso.
 client.progress-log.form.error.completeness-too-low = El último valor de completitud que se asignó a este contrato fue mayor o igual que este valor. Asegúrese de que el valor de completitud sea mayor que el valor anterior
-client.progress-log.form.error.registration-moment-must-be-later = El momento de registro de los informes de progreso debe ser sdespués del momento de instanciación del contrato al que está asociado.

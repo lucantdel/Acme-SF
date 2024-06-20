@@ -2,6 +2,7 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
@@ -55,7 +57,9 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		object.setDraftMode(true);
 		project = this.clientContractRepository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		super.bind(object, "code", "providerName", "customerName", "goals", "budget");
+		final Date cMoment = MomentHelper.getCurrentMoment();
+		object.setInstantiationMoment(cMoment);
 		object.setProject(project);
 	}
 
@@ -72,6 +76,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			super.state(object.getBudget().getAmount() < 1000000, "budget", "client.contract.form.error.max-budget");
 			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
 			if (object.getProject() != null)
 				super.state(object.getBudget().getCurrency().equals(object.getProject().getCost().getCurrency()), "budget", "client.contract.form.error.different-currency");
@@ -100,13 +105,13 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		Collection<Project> projects;
 		SelectChoices choices;
 
-		projects = this.clientContractRepository.findAllProjects();
+		projects = this.clientContractRepository.findAllProjectsDraftModeFalse();
 
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

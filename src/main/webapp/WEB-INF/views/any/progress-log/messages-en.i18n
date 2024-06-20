@@ -12,5 +12,4 @@ any.progress-log.form.title = Progress Log Details
 any.progress-log.form.label.recordId = Record Id
 any.progress-log.form.label.completeness = Completeness
 any.progress-log.form.label.comment = Comment
-any.progress-log.form.label.registrationMoment = Registration Moment
 any.progress-log.form.label.responsiblePerson = Responsible Person

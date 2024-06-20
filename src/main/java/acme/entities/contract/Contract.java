@@ -42,6 +42,7 @@ public class Contract extends AbstractEntity {
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
+	@Length(max = 255)
 	private String				code;
 
 	@Past

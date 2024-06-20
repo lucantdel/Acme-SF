@@ -1,10 +1,13 @@
 
 package acme.features.client.progressLogs;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.contract.Contract;
 import acme.entities.progressLogs.ProgressLog;
@@ -56,7 +59,9 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	@Override
 	public void bind(final ProgressLog object) {
 		assert object != null;
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		super.bind(object, "recordId", "completeness", "comment", "responsiblePerson");
+		final Date cMoment = MomentHelper.getCurrentMoment();
+		object.setRegistrationMoment(cMoment);
 	}
 
 	@Override
@@ -76,8 +81,6 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 			existing = this.repository.findPublishedProgressLogWithMaxCompletenessPublished(object.getContract().getId()).orElse(0.);
 			super.state(object.getCompleteness() > existing, "completeness", "client.progress-log.form.error.completeness-too-low");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
-			super.state(object.getRegistrationMoment().after(object.getContract().getInstantiationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");
 
 	}
 
@@ -94,7 +97,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "responsiblePerson", "draftMode");
 
 		dataset.put("masterId", object.getContract().getId());
 		dataset.put("draftMode", object.isDraftMode());

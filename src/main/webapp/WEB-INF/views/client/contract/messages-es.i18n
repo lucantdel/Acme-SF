@@ -16,7 +16,6 @@ client.contract.list.button.create-contract=Crear contrato
 client.contract.form.title= Detalles del contrato
 
 client.contract.form.label.code = Código
-client.contract.form.label.instantiationMoment = Fecha de creación
 client.contract.form.label.providerName = Proveedor
 client.contract.form.label.customerName = Cliente
 client.contract.form.label.goals = Objetivos
@@ -33,6 +32,7 @@ client.contract.form.placeholder.goals = Define los objetivos
 
 client.contract.form.error.duplicated = Este código ya está en uso.
 client.contract.form.error.negative-amount =  No se permiten cantidades negativas.
+client.contract.form.error.max-budget = Max cantidad is 1000 000
 client.contract.form.error.different-currency = La divisa seleccionada no coincide con la divisa del proyecto.
 client.contract.form.error.currency-not-suported = Moneda no compatible. Las monedas admitidas son EUR, USD y GBP.
 client.contract.form.error.excededBudget = El presupuesto supera el coste del proyecto. Introduzca un presupuesto que no supere las limitaciones presupuestarias del proyecto.

@@ -41,7 +41,7 @@ public class ClientContractListMineService extends AbstractService<Client, Contr
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project.code", "draftMode");
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget", "project.code", "draftMode");
 
 		if (object.isDraftMode()) {
 			final Locale local = super.getRequest().getLocale();

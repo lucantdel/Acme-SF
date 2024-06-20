@@ -5,7 +5,6 @@
 
 <acme:form>
 	<acme:input-textbox code="client.contract.form.label.code" path="code" placeholder="ABC-123"/>
-	<acme:input-moment code="client.contract.form.label.instantiationMoment" path="instantiationMoment"/>
 	<acme:input-textbox code="client.contract.form.label.providerName" path="providerName" placeholder="Marcos Ruiz"/>	
 	<acme:input-textbox code="client.contract.form.label.customerName" path="customerName" placeholder="Antonio Bernal"/>	
 	<acme:input-textarea code="client.contract.form.label.goals" path="goals" placeholder="client.contract.form.placeholder.goals"/>

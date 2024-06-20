@@ -39,7 +39,7 @@ public class AnyContractListService extends AbstractService<Any, Contract> {
 		Dataset dataset;
 		String payload;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project.code");
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget", "project.code");
 
 		payload = String.format(//
 			"%s;", //

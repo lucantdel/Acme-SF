@@ -7,6 +7,5 @@
 	<acme:input-textbox code="any.progress-log.form.label.recordId" path="recordId"/>
 	<acme:input-double code="any.progress-log.form.label.completeness" path="completeness"/>
 	<acme:input-textarea code="any.progress-log.form.label.comment" path="comment"/>
-	<acme:input-moment code="any.progress-log.form.label.registrationMoment" path="registrationMoment" />
 	<acme:input-textbox code="any.progress-log.form.label.responsiblePerson" path="responsiblePerson"/>
 </acme:form>

@@ -27,4 +27,3 @@ client.progress-log.form.placeholder.comment = Make a comment
 
 client.progress-log.form.error.duplicated = This id is already in use.
 client.progress-log.form.error.completeness-too-low = The latest completeness that was assigned to this contract was higher or equal than this value. Please ensure that the completeness value is higher than the previous value
-client.progress-log.form.error.registration-moment-must-be-later = The time of registration of progress reports must be after the time of instantiation of the contract to which it is associated.

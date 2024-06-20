@@ -51,7 +51,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "registrationMoment", "responsiblePerson", "draftMode");
+		dataset = super.unbind(object, "recordId", "completeness", "responsiblePerson", "draftMode");
 
 		if (object.isDraftMode()) {
 			final Locale local = super.getRequest().getLocale();

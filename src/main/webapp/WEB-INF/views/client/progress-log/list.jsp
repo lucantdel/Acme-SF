@@ -6,7 +6,6 @@
 <acme:list>
 	<acme:list-column code="client.progressLog.list.label.recordId" path="recordId" width="20%"/>
 	<acme:list-column code="client.progressLog.list.label.completeness" path="completeness" width="20%"/>
-	<acme:list-column code="client.progressLog.list.label.registrationMoment" path="registrationMoment" width="20%"/>
 	<acme:list-column code="client.progressLog.list.label.responsiblePerson" path="responsiblePerson" width="20%"/>
 	<acme:list-column code="client.progressLog.list.label.draftMode" path="draftMode" width="20%"/>
 </acme:list>

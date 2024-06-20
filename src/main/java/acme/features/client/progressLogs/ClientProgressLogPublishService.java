@@ -60,7 +60,7 @@ public class ClientProgressLogPublishService extends AbstractService<Client, Pro
 		progressLogId = super.getRequest().getData("id", int.class);
 		Contract contract = this.repository.findOneContractByProgressLogId(progressLogId);
 
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		super.bind(object, "recordId", "completeness", "comment", "responsiblePerson");
 		object.setContract(contract);
 	}
 
@@ -79,9 +79,6 @@ public class ClientProgressLogPublishService extends AbstractService<Client, Pro
 				existing2 = this.repository.findPublishedProgressLogWithMaxCompletenessPublished(object.getContract().getId()).orElse(0.);
 				super.state(object.getCompleteness() > existing2, "completeness", "client.progress-log.form.error.completeness-too-low");
 			}
-			if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
-				super.state(object.getRegistrationMoment().after(object.getContract().getInstantiationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");
-
 		}
 	}
 

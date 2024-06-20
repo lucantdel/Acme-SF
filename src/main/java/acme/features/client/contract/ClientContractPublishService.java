@@ -60,7 +60,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.clientContractRepository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		super.bind(object, "code", "providerName", "customerName", "goals", "budget");
 		object.setProject(project);
 	}
 
@@ -79,6 +79,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 					super.state(object.getBudget().getCurrency().equals(object.getProject().getCost().getCurrency()), "budget", "client.contract.form.error.different-currency");
 				super.state(this.checkContractsAmountsLessThanProjectCost(object), "budget", "client.contract.form.error.excededBudget");
 				super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
+				super.state(object.getBudget().getAmount() < 1000000, "budget", "client.contract.form.error.max-budget");
 
 				List<SystemConfiguration> sc = this.clientContractRepository.findSystemConfiguration();
 				final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getBudget().getCurrency()));
@@ -125,7 +126,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
