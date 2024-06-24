@@ -15,9 +15,7 @@ import acme.entities.contract.Contract;
 public class AnyContractListService extends AbstractService<Any, Contract> {
 
 	@Autowired
-	protected AnyContractRepository repository;
-
-	// AbstractService interface ----------------------------------------------
+	private AnyContractRepository repository;
 
 
 	@Override
@@ -27,10 +25,11 @@ public class AnyContractListService extends AbstractService<Any, Contract> {
 
 	@Override
 	public void load() {
-		Collection<Contract> objects;
-		objects = this.repository.findPublishedContracts();
+		Collection<Contract> publishedContracts;
 
-		super.getBuffer().addData(objects);
+		publishedContracts = this.repository.findAllPublishedContracts();
+
+		super.getBuffer().addData(publishedContracts);
 	}
 
 	@Override
@@ -38,9 +37,16 @@ public class AnyContractListService extends AbstractService<Any, Contract> {
 		assert object != null;
 
 		Dataset dataset;
+		String payload;
 
-		dataset = super.unbind(object, "code", "provider", "budget");
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget", "project.code");
+
+		payload = String.format(//
+			"%s;", //
+			object.getClient().getIdentification());
+		dataset.put(payload, payload);
 
 		super.getResponse().addData(dataset);
 	}
+
 }

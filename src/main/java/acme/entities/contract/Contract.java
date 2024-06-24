@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -26,6 +28,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(indexes = {
+	@Index(columnList = "client_id"), @Index(columnList = "project_id"), @Index(columnList = "code")
+})
 public class Contract extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -34,30 +39,25 @@ public class Contract extends AbstractEntity {
 	 * Attributes
 	 */
 
-	@NotNull
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
+	@Length(max = 255)
 	private String				code;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				moment;
+	private Date				instantiationMoment;
 
-	@NotNull
 	@NotBlank
 	@Length(max = 75)
-	@Column(name = "provider_name", length = 75)
-	private String				provider;
+	private String				providerName;
 
-	@NotNull
 	@NotBlank
 	@Length(max = 75)
-	@Column(name = "customer_name", length = 75)
-	private String				customer;
+	private String				customerName;
 
-	@NotNull
 	@NotBlank
 	@Length(max = 100)
 	private String				goals;
@@ -65,7 +65,11 @@ public class Contract extends AbstractEntity {
 	@NotNull
 	private Money				budget;
 
-	private Boolean				draftMode;
+	private boolean				draftMode;
+
+	/*
+	 * Relations
+	 */
 
 	@NotNull
 	@Valid

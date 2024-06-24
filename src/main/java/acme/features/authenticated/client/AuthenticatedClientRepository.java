@@ -11,10 +11,13 @@ import acme.roles.Client;
 @Repository
 public interface AuthenticatedClientRepository extends AbstractRepository {
 
-	@Query("select ua from UserAccount ua where ua.id = :id")
+	@Query("select ua from UserAccount ua where ua.id= :id")
 	UserAccount findOneUserAccountById(int id);
 
-	@Query("select m from Client m where m.userAccount.id = :id")
+	@Query("select c from Client c where c.userAccount.id = :id")
 	Client findOneClientByUserAccountId(int id);
+
+	@Query("select c from Client c where c.identification = :identification")
+	Client findOneClientByIdentification(String identification);
 
 }

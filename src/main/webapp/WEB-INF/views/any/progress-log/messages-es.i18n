@@ -1,0 +1,15 @@
+any.progress-log.list.title = Registros de progreso publicados
+
+any.progressLog.list.label.recordId = Identificador del registro
+any.progressLog.list.label.completeness = Completitud
+any.progressLog.list.label.registrationMoment = Momento del registro
+any.progressLog.list.label.responsiblePerson = Persona Responsable
+
+##########################################################################
+
+any.progress-log.form.title = Detalles del registro de progreso
+
+any.progress-log.form.label.recordId = Identificador del registro
+any.progress-log.form.label.completeness = Completitud
+any.progress-log.form.label.comment = Comentario
+any.progress-log.form.label.responsiblePerson = Persona Responsable

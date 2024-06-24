@@ -14,10 +14,10 @@ import acme.entities.contract.Contract;
 public class AnyContractController extends AbstractController<Any, Contract> {
 
 	@Autowired
-	protected AnyContractListService	listService;
+	private AnyContractListService	listService;
 
 	@Autowired
-	protected AnyContractShowService	showService;
+	private AnyContractShowService	showService;
 
 
 	@PostConstruct
@@ -25,4 +25,5 @@ public class AnyContractController extends AbstractController<Any, Contract> {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 	}
+
 }

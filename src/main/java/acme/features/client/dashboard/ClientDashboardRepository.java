@@ -1,41 +1,33 @@
 
 package acme.features.client.dashboard;
 
-import java.util.Optional;
+import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.client.data.datatypes.Money;
 import acme.client.repositories.AbstractRepository;
-import acme.roles.Client;
+import acme.entities.contract.Contract;
+import acme.entities.progressLogs.ProgressLog;
+import acme.entities.systemConfiguration.SystemConfiguration;
 
 @Repository
 public interface ClientDashboardRepository extends AbstractRepository {
 
-	@Query("select count(pl) from ProgressLogs pl where pl.contract.client = :client and pl.completenessPercentage <=25 and pl.draftMode=false")
-	Optional<Integer> findNumOfprogressLogsLess25(Client client);
+	@Query("select pl from ProgressLog pl")
+	Collection<ProgressLog> findAllProgressLogs();
 
-	@Query("select count(pl) from ProgressLogs pl where pl.contract.client = :client and pl.completenessPercentage <= 50 and 25 <= pl.completenessPercentage and pl.draftMode=false")
-	Optional<Integer> findNumOfProgressLogsWithRate25To50(Client client);
+	@Query("select c from Contract c")
+	Collection<Contract> findAllContracts();
 
-	@Query("select count(pl) from ProgressLogs pl where pl.contract.client = :client and pl.completenessPercentage <= 75 and 50 <= pl.completenessPercentage and pl.draftMode=false")
-	Optional<Integer> findNumOfProgressLogsWithRate50To75(Client client);
+	@Query("select c from Contract c where c.client.id = :clientId")
+	Collection<Contract> findManyContractsByClientId(int clientId);
 
-	@Query("select count(pl) from ProgressLogs pl where pl.contract.client = :client and 75 <= pl.completenessPercentage and pl.draftMode=false")
-	Optional<Integer> findNumOfProgressLogsWithRateOver75(Client client);
+	@Query("select c.budget from Contract c where c.client.id = :clientId and c.draftMode = false")
+	Collection<Money> findManyBudgetsByClientId(int clientId);
 
-	@Query("select avg(c.budget.amount) from Contract c where c.client = :client and c.draftMode=false")
-	Optional<Double> findAverageContractBudget(Client client);
-
-	@Query("select max(c.budget.amount) from Contract c where c.client = :client and c.draftMode=false")
-	Optional<Double> findMaxContractBudget(Client client);
-
-	@Query("select min(c.budget.amount) from Contract c where c.client = :client and c.draftMode=false")
-	Optional<Double> findMinContractBudget(Client client);
-
-	@Query("select stddev(c.budget.amount) from Contract c where c.client = :client and c.draftMode=false")
-	Optional<Double> findLinearDevContractBudget(Client client);
-
-	@Query("select m from Client m where m.userAccount.id = :id")
-	Client findOneClientByUserAccountId(int id);
+	@Query("select s from SystemConfiguration s")
+	List<SystemConfiguration> findSystemConfiguration();
 }

@@ -1,11 +1,14 @@
-client.client-dashboard.form.title= Panel de cliente
+client.client-dashboard.form.title = Panel de Indicadores de cliente
 
-client.clientDashboard.form.label.average-contract-budget = Media del presupuesto de los contratos:
-client.clientDashboard.form.label.max-contract-budget = Máximo del presupuesto de los contratos:
-client.clientDashboard.form.label.min-contract-budget = Mínimo del presupuesto de los contratos:
-client.clientDashboard.form.label.lin-dev-contract-budget = Desviación típica del presupuesto de los contratos:
+client.dashboard.form.title.general-indicators = Indicadores generales para registros de progreso publicados
 
-client.clientDashboard.form.label.progress-Log-with-less25 = Actas de progreso completadas a menos del 25%:
-client.clientDashboard.form.label.progress-Log-25to50 = Actas de progreso completadas entre el 25% y 50%:
-client.clientDashboard.form.label.progress-Log-50to75 = Actas de progreso completadas entre el 50% y 75%:
-client.clientDashboard.form.label.progress-Log-with-over75 = Actas de progreso completadas a mas del 75%:
+client.dashboard.form.label.progress-log-less-than-25 = Número de registros de progreso publicados con completitud por debajo del 25%
+client.dashboard.form.label.progress-log-between-25-50 = Número de registros de progreso publicados con completitud entre el 25% y el 50%
+client.dashboard.form.label.progress-log-between-50-75 = Número de registros de progreso publicados con completitud entre el 50% y el 75%
+client.dashboard.form.label.progress-log-above-75 = Número de registros de progreso publicados con completitud por encima del 75%
+
+client.dashboard.form.label.contract-indicators =Indicadores generales para contratos publicados 
+client.dashboard.form.label.contract-average = Presupuesto promedio de contratos publicados
+client.dashboard.form.label.contract-deviation = Desviación de los contratos publicados
+client.dashboard.form.label.contract-minimum = Presupuesto mínimo de cada contrato publicado
+client.dashboard.form.label.contract-maximum = Presupuesto máximo de cada contrato publicado
