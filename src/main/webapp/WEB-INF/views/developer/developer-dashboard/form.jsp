@@ -25,7 +25,7 @@
 		</td>
 	</tr> 
 	
-	<jstl:if test="${totalNumberOfTrainingModulesWithUpdateMoment != 0 && totalNumberOfTrainingSessionsWithLink != 0}">
+	<jstl:if test="${averageTimeByTM!=0.0 || minimumTimeByTM!=0.0 || maximumTimeByTM!=0.0 || standardDeviationTimeByTM!=0.0 }">
 		<tr>
 		<th scope="row">
 			<acme:message code="developer.dashboard.form.label.averageTimeByTM"/>
@@ -60,7 +60,7 @@
 	</tr>
 	</jstl:if>
 	
-	<jstl:if test="${totalNumberOfTrainingModulesWithUpdateMoment == 0 && totalNumberOfTrainingSessionsWithLink == 0}">
+	<jstl:if test="${averageTimeByTM==0.0 && minimumTimeByTM==0.0 && maximumTimeByTM==0.0 && standardDeviationTimeByTM==0.0 }">
 	
 		<tr>
 		<th scope="row">

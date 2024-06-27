@@ -11,7 +11,6 @@
 	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 		<acme:input-moment code="developer.trainingModule.form.label.creationMoment" path="creationMoment" readonly="true"/>
 		<acme:input-moment code="developer.trainingModule.form.label.updateMoment" path="updateMoment" />
-		<acme:input-integer code="developer.trainingModule.form.label.numberOfTrainingSessions" path="numberOfTrainingSessions" readonly="true" />
 	</jstl:if>
 	<acme:input-textarea code="developer.trainingModule.form.label.details" path="details"/>
 	
@@ -31,15 +30,8 @@
 		</jstl:when>
 		
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
-
-			<jstl:if test="${_command == 'show'}">
-				<jstl:if test="${numberOfTrainingSessions==0}">
-					<acme:button  code="developer.trainingModule.form.button.training-session-createFIRST" action="/developer/training-session/create?trainingModuleId=${id}"/>		
-				</jstl:if>
-				
-				<acme:button code="developer.trainingModule.form.button.training-session-list" action="/developer/training-session/list?trainingModuleId=${id}"/>		
-				
-			</jstl:if>
+			
+			<acme:button code="developer.trainingModule.form.button.training-session-list" action="/developer/training-session/list?trainingModuleId=${id}"/>
 			<acme:submit code="developer.trainingModule.form.button.update" action="/developer/training-module/update"/>
 			<acme:submit code="developer.trainingModule.form.button.delete" action="/developer/training-module/delete"/>
 			<acme:submit code="developer.trainingModule.form.button.publish" action="/developer/training-module/publish"/>

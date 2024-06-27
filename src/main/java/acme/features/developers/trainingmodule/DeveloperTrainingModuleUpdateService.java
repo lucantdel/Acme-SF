@@ -47,8 +47,6 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneTrainingModuleById(id);
-		if (object.getUpdateMoment() == null)
-			object.setUpdateMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(object);
 	}
@@ -70,7 +68,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 			existing = this.repository.findOneTrainingModuleByReference(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "developer.training-module.form.error.duplicated-tm-code");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
+		if (object.getUpdateMoment() != null && object.getCreationMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
 			super.state(MomentHelper.isAfter(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateMoment");
 
 	}

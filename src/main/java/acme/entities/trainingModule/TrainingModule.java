@@ -59,7 +59,7 @@ public class TrainingModule extends AbstractEntity {
 	protected String			link;
 
 	@NotNull
-	@Min(0)
+	@Min(1)
 	protected Integer			totalEstimatedTime;
 
 	@NotNull

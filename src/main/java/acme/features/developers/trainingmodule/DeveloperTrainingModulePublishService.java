@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
@@ -62,6 +63,19 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+		//Puede que tengas q meter el validate del update moment del feat update
+		///////////////////////
+
+		Collection<TrainingSession> sessiones;
+		Boolean hayDrafts;
+
+		sessiones = this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId());
+
+		hayDrafts = sessiones.stream().allMatch(ses -> ses.isDraftMode() == false);
+
+		if (hayDrafts == false)
+			super.state(hayDrafts, "*", "developer.training-module.form.error.ts-exist-Draft");
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingModule existing;
 
@@ -72,19 +86,17 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 			int numTotalTS;
 
 			numTotalTS = (int) this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId()).stream().count();
-			super.state(0 < numTotalTS, "numberOfTrainingSessions", "developer.training-module.form.error.numberOfTrainingSessions");
+			super.state(0 < numTotalTS, "*", "developer.training-module.form.error.numberOfTrainingSessions");
 		}
+
+		if (object.getUpdateMoment() != null && object.getCreationMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
+			super.state(MomentHelper.isAfter(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateMoment");
 
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
-		Collection<TrainingSession> sessiones;
-		sessiones = this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId());
-
-		for (TrainingSession ses : sessiones)
-			ses.setDraftMode(false);
 
 		object.setDraftMode(false);
 		this.repository.save(object);

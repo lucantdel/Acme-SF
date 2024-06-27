@@ -2,13 +2,11 @@
 package acme.features.developers.trainingmodule;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
@@ -58,16 +56,22 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		Date moment = MomentHelper.getCurrentMoment();
-
-		//super.bind(object, "code", "details", "difficultyLevel", "link", "project");
-		super.bind(object, "code", "details", "difficultyLevel", "link", "project");
-		object.setCreationMoment(moment);
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "link", "project");
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+
+		Collection<TrainingSession> sessiones;
+		Boolean hayPublished;
+
+		sessiones = this.repository.findAllTrainingSessionsWithSameTrainingModuleId(object.getId());
+
+		hayPublished = sessiones.stream().anyMatch(ses -> ses.isDraftMode() == false);
+
+		if (hayPublished && sessiones.size() > 0)
+			super.state(!hayPublished, "*", "developer.training-module.form.error.ts-published");
 
 	}
 
