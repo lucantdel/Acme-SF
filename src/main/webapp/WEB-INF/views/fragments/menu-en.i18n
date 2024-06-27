@@ -22,7 +22,7 @@ master.menu.any.list-projects = List projects
 master.menu.any.list-claims = List claims
 master.menu.any.list-sponsorships = List sponsorships
 master.menu.any.list-trainingModules = List training modules
-master.menu.any.contract = List Contracts
+master.menu.any.list-contracts = List published contracts
 master.menu.any.list-code-audit = List Published Code Audits
 
 
@@ -41,6 +41,8 @@ master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 master.menu.authenticated = Authenticated
 master.menu.authenticated.list-objectives = List objectives
 master.menu.authenticated.list-risks = List of risks
+master.menu.authenticated.list-contracts = List published contracts
+
 
 # master.menu.administrator ###################################################
 
@@ -112,10 +114,10 @@ master.menu.user-account.developer = Developer data
 master.menu.user-account.become-auditor = Become a auditor
 master.menu.user-account.auditor = Auditor data
 
-
-# master.menu.client #############################################
+# master.menu.client #########################################################
 
 master.menu.client = Client
-master.menu.client.contract = Contracts
-master.menu.client.client-dashboard = Client dashboard
-master.menu.client.progress-log = Progress logs
+master.menu.client.list-contract = List my contracts
+master.menu.user-account.become-client = Become a client
+master.menu.user-account.client = Client data
+master.menu.client.dashboard = Client Dashboard

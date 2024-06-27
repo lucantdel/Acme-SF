@@ -1,4 +1,4 @@
-key,key:userAccount,identification,companyName,type,email,optionalLink
+key,key:userAccount,identification,company-name,type,email,Link
 client-01,user-account-client-01,"CLI-0015","A",COMPANY,"cli1@gmail.com",
 client-02,user-account-client-02,"CLI-8258","Ahasduodh asd",INDIVIDUAL,"cli2@gmail.com","https://sdf.com"
 client-03,user-account-client-03,"CLI-3051","B",COMPANY,"cli3@gmail.com",

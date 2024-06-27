@@ -12,13 +12,9 @@ import acme.roles.Client;
 
 @Controller
 public class ClientDashboardController extends AbstractController<Client, ClientDashboard> {
-	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	protected ClientDashboardShowService showService;
-
-	// Constructors -----------------------------------------------------------
-
 
 	@PostConstruct
 	protected void initialise() {

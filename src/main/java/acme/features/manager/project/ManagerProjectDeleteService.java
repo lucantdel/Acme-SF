@@ -15,7 +15,7 @@ import acme.entities.codeAudits.AuditRecord;
 import acme.entities.codeAudits.CodeAudit;
 import acme.entities.contract.Contract;
 import acme.entities.invoices.Invoice;
-import acme.entities.progress_logs.ProgressLogs;
+import acme.entities.progressLogs.ProgressLog;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
 import acme.entities.sponsorships.Sponsorship;
@@ -85,7 +85,7 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		assert object != null;
 
 		Collection<Contract> contracts;
-		Collection<ProgressLogs> progressLogs;
+		Collection<ProgressLog> progressLogs;
 
 		Collection<Sponsorship> sponsorShips;
 		Collection<Invoice> invoices;

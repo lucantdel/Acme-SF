@@ -22,7 +22,7 @@ master.menu.any.list-projects = Ver proyectos
 master.menu.any.list-claims = Ver reclamaciones
 master.menu.any.list-sponsorships = Ver patrocinios
 master.menu.any.list-trainingModules = Ver módulos de entrenamiento
-master.menu.any.contract = Ver Contratos
+master.menu.any.published-projects = Ver todos los proyectos publicados
 master.menu.any.list-code-audit = Ver Auditorias de Codigo publicadas
 
 
@@ -42,6 +42,8 @@ master.menu.anonymous.alvvazcon = 49731159F: Vázquez Conejo , Álvaro
 master.menu.authenticated = Autentificado
 master.menu.authenticated.list-objectives = Ver objectivos
 master.menu.authenticated.list-risks = Ver riesgos
+master.menu.authenticated.list-contracts = Ver todos los contratos publicados
+
 
 # master.menu.administrator ###################################################
 
@@ -113,10 +115,10 @@ master.menu.user-account.developer = Datos de developer
 master.menu.user-account.become-auditor = Hazte auditor
 master.menu.user-account.auditor = Datos de auditor
 
-# master.menu.client #############################################
+# master.menu.client #########################################################
 
 master.menu.client = Cliente
-master.menu.client.contract = Contratos
-master.menu.client.client-dashboard = Panel de Cliente
-master.menu.client.progress-log = Lista de progreso
-
+master.menu.client.list-contract = Ver mis contratos
+master.menu.user-account.become-client = Hazte cliente
+master.menu.user-account.client = Datos de cliente
+master.menu.client.dashboard = Panel de indicadores de cliente
