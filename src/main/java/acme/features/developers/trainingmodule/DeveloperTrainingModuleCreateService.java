@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
@@ -40,7 +39,6 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		object = new TrainingModule();
 		object.setDraftMode(true);
 		object.setDeveloper(developer);
-		object.setCreationMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(object);
 	}

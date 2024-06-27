@@ -22,5 +22,5 @@ developer.trainingSession.form.button.update = Actualizar
 developer.trainingSession.form.button.delete = Borrar
 
 developer.training-session.form.error.duplicated-ts-code = Este codigo ya esta cogido, introduzca otro
-developer.training-session.form.error.startPeriod = The start date must be at least one week after the creation moment of the module
-developer.training-session.form.error.endPeriod = The end date must be at least one week after the start period.
+developer.training-session.form.error.startPeriod = La fecha de inicio debe ser al menos una semana mas tarde a la fecha de creación del módulo
+developer.training-session.form.error.endPeriod = La fecha de fín debe ser al menos una semana mas tarde a la fecha de inicio

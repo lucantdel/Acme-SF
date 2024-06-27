@@ -23,12 +23,13 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
+		int trainingSessionId;
 		TrainingSession object;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneTrainingSessionById(id);
-		status = object != null;
+		trainingSessionId = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneTrainingSessionById(trainingSessionId);
+		status = object.getTrainingModule() != null && (!object.getTrainingModule().isDraftMode() || super.getRequest().getPrincipal().hasRole(object.getTrainingModule().getDeveloper()));
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -50,6 +51,7 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link", "draftMode");
+		dataset.put("trainingModuleId", object.getTrainingModule().getId());
 
 		super.getResponse().addData(dataset);
 	}

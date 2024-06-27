@@ -29,8 +29,10 @@ developer.trainingModule.form.button.training-session-createFIRST = Crear Primer
 
 developer.training-module.form.error.duplicated-tm-code = Este codigo ya esta cogido, introduzca otro
 developer.training-module.form.error.updateMoment = El momento de actualización debe ser despues del momento de creación
-developer.training-module.form.error.numberOfTrainingSessions = Debe de existir al menos 1 session de entrenamiento antes de poder publicar este modulo
-
+developer.training-module.form.error.numberOfTrainingSessions = Debe de existir al menos 1 sesión de entrenamiento antes de poder publicar este modulo
+developer.training-module.form.error.numberOfTrainingSessions = Debe existir al menos 1 una sesión de entrenamiento antes de poder publicar este modulo
+developer.training-module.form.error.ts-exist-Draft= No se puede publicar, existen Sessiones de Entrenamiento sin publicar asociadas a este modulo
+developer.training-module.form.error.ts-published= No se puede eliminar, hay Sesiones de Entrenamiento publicadas asociadas a este modulo
 
 
 

@@ -31,7 +31,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		trainingSessionId = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneTrainingSessionById(trainingSessionId);
-		status = object != null && object.getTrainingModule().isDraftMode() && super.getRequest().getPrincipal().hasRole(object.getTrainingModule().getDeveloper());
+		status = object.getTrainingModule() != null && object.getTrainingModule().isDraftMode() && super.getRequest().getPrincipal().hasRole(object.getTrainingModule().getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 
@@ -94,6 +94,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link", "draftMode");
+		dataset.put("trainingModuleId", object.getTrainingModule().getId());
 
 		super.getResponse().addData(dataset);
 	}

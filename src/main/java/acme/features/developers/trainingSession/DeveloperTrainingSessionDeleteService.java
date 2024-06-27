@@ -27,7 +27,7 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 
 		trainingSessionId = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneTrainingSessionById(trainingSessionId);
-		status = object != null && object.getTrainingModule().isDraftMode() && super.getRequest().getPrincipal().hasRole(object.getTrainingModule().getDeveloper());
+		status = object.getTrainingModule() != null && object.getTrainingModule().isDraftMode() && super.getRequest().getPrincipal().hasRole(object.getTrainingModule().getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 
@@ -63,6 +63,7 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 		this.repository.delete(object);
 	}
 
+	//puede que tengas que cometar/quitar el unbind
 	@Override
 	public void unbind(final TrainingSession object) {
 		assert object != null;

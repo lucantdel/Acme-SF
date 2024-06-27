@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.trainingModule.TrainingModule;
 import acme.entities.trainingSession.TrainingSession;
 import acme.roles.Developer;
 
@@ -24,7 +25,15 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int trainingModuleId;
+		TrainingModule object;
+
+		trainingModuleId = super.getRequest().getData("trainingModuleId", int.class);
+		object = this.repository.findOneTrainingModuleByTmId(trainingModuleId);
+		status = object != null && (!object.isDraftMode() || super.getRequest().getPrincipal().hasRole(object.getDeveloper()));
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -32,6 +41,7 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		Collection<TrainingSession> objects;
 		int moduleId;
 
+		System.out.println("2222222222222222FFFFFFFFFFFFFFFF555555555555");
 		moduleId = super.getRequest().getData("trainingModuleId", int.class);
 		objects = this.repository.findAllTrainingSessionBytrainingModuleId(moduleId);
 
@@ -43,12 +53,11 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		assert object != null;
 
 		Dataset dataset;
-		int tmID;
+
 		final boolean showCreate;
 		String payload;
 
 		showCreate = object.getTrainingModule().isDraftMode();
-		tmID = super.getRequest().getData("trainingModuleId", int.class);
 
 		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "draftMode");
 		payload = String.format(//
@@ -60,7 +69,20 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		dataset.put("payload", payload);
 
 		super.getResponse().addGlobal("showCreate", showCreate);
-		super.getResponse().addGlobal("trainingModuleId", tmID);
+
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void unbind(final Collection<TrainingSession> objects) {
+		assert objects != null;
+
+		int trainingModuleId;
+		//TrainingModule tMod;
+
+		trainingModuleId = super.getRequest().getData("trainingModuleId", int.class);
+		//tMod = this.repository.findOneTrainingModuleByTmId(trainingModuleId);
+		super.getResponse().addGlobal("trainingModuleId", trainingModuleId);
+
 	}
 }
