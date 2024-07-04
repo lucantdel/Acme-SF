@@ -99,10 +99,14 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 
 			super.state(foundCurrency, "quantity", "sponsor.invoice.form.error.currency-not-supported");
 
-			super.state(object.getQuantity().getCurrency().equals(object.getSponsorship().getAmount().getCurrency()), "quantity", "sponsor.invoice.form.error.currency");
-
 			int sponsorshipId = object.getSponsorship().getId();
 
+			super.state(this.repository.findAllPublisedInvoicesBySponsorShipsId(sponsorshipId).size() == 0 || object.getQuantity().getCurrency().equals(object.getSponsorship().getAmount().getCurrency()), "quantity", "sponsor.invoice.form.error.currency");
+			// La moneda que define la moneda final,  que fijará esta tanto en el sponshorship como en las invoices, será la moneda del primer invoice publicado 
+			// ( que debe a su vez estar coincidiendo con el del sponsorship en ese momento de publicación)
+
+			// Luego, si tenemos una invoice ya publicada del mismo sponsorship, la moneda a usar será la del sponsorship en ese momento ya que al publicarla pues se ha fijado esa moneda.
+			// Ya que si actualizamos la invoice a una moneda diferente a la fijada jamás podrá ser publicada y por lo tanto será inutil el crearla.
 			double sponsorshipAmount = object.getSponsorship().getAmount().getAmount();
 			Collection<Invoice> invoicesForSponsorship = this.repository.findAllPublisedInvoicesBySponsorShipsId(sponsorshipId);
 			double sumOfInvoicesTotalAmount = 0.0;
@@ -125,7 +129,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 
 	@Override
 	public void perform(final Invoice object) {
-		assert object != null;
+		//		assert object != null;
 
 		this.repository.save(object);
 	}

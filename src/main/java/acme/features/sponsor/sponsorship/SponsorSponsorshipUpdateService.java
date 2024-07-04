@@ -151,7 +151,18 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 				super.state(object.getAmount().getAmount() <= 1000000.00 && object.getAmount().getAmount() >= 0.00, "amount", "sponsor.sponsorship.form.error.amountOutOfBounds");
 
 			if (!super.getBuffer().getErrors().hasErrors("amount"))
+
+				// Si es que tiene una factura publicada ya se ha fijado en su momento que ese iba a ser su moneda.
+				// Es decir, si tenemos nuestro sponsorship con moneda X y con invoices con monedas X e Y que no estan publicadas,
+				// podremos actualizar la moneda a la moneda Y ya que no tenía el invoice de X publicado.
+				// En el momento que publicamos el invoice de moneda Y, al corresponderse con la moneda Y del Sponsorship pues será publicada. Fijando así esa moneda y no poder actualizarla otra vez a X.
+				// En ningun caso podremos publicar la invoice con la moneda X, ya que hemos fijado la moneda del Invoice a Y y no serían la misma ni podemos actualizar el sponsorship a moneda X para que  fueran las mismas.
 				super.state(this.repository.countPublishedInvoicesBySponsorshipId(object.getId()) == 0 || object.getAmount().getCurrency().equals(this.repository.findOneSponsorshipById(object.getId()).getAmount().getCurrency()), "amount",
+					// luego si tiene alguna publicada (primera condicion), es porque esa moneda del invoice correspondía con la del sponsorship en ese momento para ser publicada,
+					// luego no podrá ser actualizada a otra y damos por seguro que la moneda actual de este sponsorship es la que está fijada (segunda condición).
+
+					// si omitieramos la segunda condición teniendo subidas alguna de sus invoice, nos saltaría siempre error al ser falso, pero añadimos la segunda con OR
+					// para en caso de que sea diferente moneda ya si de error correctamente y si es la misma pues no nos salte este campo al actualizar otra parte del sponsorship.
 					"sponsor.sponsorship.form.error.currencyChange");
 
 		}
