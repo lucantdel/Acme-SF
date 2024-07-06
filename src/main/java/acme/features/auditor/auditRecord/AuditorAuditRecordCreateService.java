@@ -92,6 +92,11 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 			if (!super.getBuffer().getErrors().hasErrors("link"))
 				if (object.getLink().length() > 255)
 					super.state(object.getLink().length() <= 255, "link", "auditor.auditRecord.error.Link");
+
+		if (object.getCodeAudit() != null)
+			if (!super.getBuffer().getErrors().hasErrors("codeAuditCode"))
+				if (object.getCodeAudit().isPublished())
+					super.state(!object.getCodeAudit().isPublished(), "codeAuditCode", "auditor.auditRecord.error.CodeAudit");
 	}
 
 	@Override
