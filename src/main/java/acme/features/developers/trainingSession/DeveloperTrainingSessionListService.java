@@ -41,7 +41,6 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		Collection<TrainingSession> objects;
 		int moduleId;
 
-		System.out.println("2222222222222222FFFFFFFFFFFFFFFF555555555555");
 		moduleId = super.getRequest().getData("trainingModuleId", int.class);
 		objects = this.repository.findAllTrainingSessionBytrainingModuleId(moduleId);
 

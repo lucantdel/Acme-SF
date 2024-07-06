@@ -56,7 +56,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		super.bind(object, "code", "details", "difficultyLevel", "link", "project");
+		super.bind(object, "code", "details", "difficultyLevel", "updateMoment", "link", "project", "totalEstimatedTime");
 
 	}
 

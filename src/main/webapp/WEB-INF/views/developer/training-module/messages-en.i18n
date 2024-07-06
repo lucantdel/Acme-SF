@@ -30,7 +30,7 @@ developer.trainingModule.form.button.training-session-createFIRST = Create First
 developer.training-module.form.error.duplicated-tm-code = This code is already taken, choose another
 developer.training-module.form.error.updateMoment = The update moment must be after the creation moment
 developer.training-module.form.error.numberOfTrainingSessions = There must be at least 1 associated training session before publishing this module
-developer.training-module.form.error.ts-exist-Draft= Cannot publish, there are published Training sessions associated to this module 
+developer.training-module.form.error.ts-exist-Draft= Cannot publish, there are unpublished Training sessions associated to this module 
 developer.training-module.form.error.ts-published= Cannot delete, there are published Training sessions associated to this module 
 
 

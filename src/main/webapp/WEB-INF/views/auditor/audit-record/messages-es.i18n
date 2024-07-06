@@ -32,3 +32,4 @@ auditor.auditRecord.error.published = Debe no estar publicado
 auditor.auditRecord.error.execution = El periodo del Registro de auditoria debe empezar despues de la auditoria de codigo.
 
 auditor.auditRecord.error.period = El periodo debe durar al menos 1h.
+auditor.auditRecord.error.CodeAudit = La auditoria de codigo ya esta publicada

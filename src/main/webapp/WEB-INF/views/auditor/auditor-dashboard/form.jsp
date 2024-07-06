@@ -14,12 +14,7 @@
 		</th>
 
 		<td>
-				<jstl:if test="${totalNumberOfCodeAuditsDynamic == 0}">
-					<acme:message code="auditor.dashboard.form.label.error"/>
-				</jstl:if>
-				<jstl:if test="${totalNumberOfCodeAuditsDynamic != 0}">
 					<acme:print value="${totalNumberOfCodeAuditsDynamic}"/>
-				</jstl:if>
 				
 		</td>
 	</tr>
@@ -28,12 +23,7 @@
 			<acme:message code="auditor.dashboard.form.label.code-audits-static"/>
 		</th>
 		<td>
-				<jstl:if test="${totalNumberOfCodeAuditsStatic == 0}">
-					<acme:message code="auditor.dashboard.form.label.error"/>
-				</jstl:if>
-				<jstl:if test="${totalNumberOfCodeAuditsStatic != 0}">
 					<acme:print value="${totalNumberOfCodeAuditsStatic}"/>
-				</jstl:if>
 		</td>
 	</tr>
 	<tr>

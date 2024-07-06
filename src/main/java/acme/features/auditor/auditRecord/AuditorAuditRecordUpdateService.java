@@ -88,6 +88,11 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		if (object.getFinishDate() == null)
 			if (!super.getBuffer().getErrors().hasErrors("startDate"))
 				super.state(object.getFinishDate() != null, "startDate", "auditor.auditRecord.error.periodN");
+
+		if (object.getCodeAudit() != null)
+			if (!super.getBuffer().getErrors().hasErrors("codeAuditCode"))
+				if (object.getCodeAudit().isPublished())
+					super.state(!object.getCodeAudit().isPublished(), "codeAuditCode", "auditor.auditRecord.error.CodeAudit");
 	}
 
 	@Override

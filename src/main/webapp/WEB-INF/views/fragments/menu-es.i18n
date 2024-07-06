@@ -21,8 +21,9 @@ master.menu.any = Cualquiera
 master.menu.any.list-projects = Ver proyectos 
 master.menu.any.list-claims = Ver reclamaciones
 master.menu.any.list-sponsorships = Ver patrocinios
-master.menu.any.list-trainingModules = Ver módulos de entrenamiento
+master.menu.any.list-trainingModules = Ver módulos de entrenamiento publicados
 master.menu.any.published-projects = Ver todos los proyectos publicados
+master.menu.any.list-contracts = Ver contratos publicados
 master.menu.any.list-code-audit = Ver Auditorias de Codigo publicadas
 
 
