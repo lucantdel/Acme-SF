@@ -102,6 +102,8 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 			super.state(foundCurrency, "quantity", "sponsor.invoice.form.error.currency-not-supported");
 
 			super.state(object.getQuantity().getCurrency().equals(object.getSponsorship().getAmount().getCurrency()), "quantity", "sponsor.invoice.form.error.currency");
+			// La moneda que define la moneda final,  que fijará esta tanto en el sponshorship como en las invoices, será la moneda del primer invoice publicado 
+			// ( que debe a su vez estar coincidiendo con el del sponsorship en ese momento de publicación)
 
 			int sponsorshipId = object.getSponsorship().getId();
 

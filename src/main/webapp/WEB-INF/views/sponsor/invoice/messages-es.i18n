@@ -33,6 +33,6 @@ sponsor.invoice.form.error.due-date-not-valid = La fecha de vencimiento debe ser
 sponsor.invoice.form.error.date-before-moment = La fecha de inscripción debe ser posterior al momento del apadrinamiento.
 sponsor.invoice.form.error.quantity-must-be-positive = La cantidad de dinero debe ser positiva.
 sponsor.invoice.form.error.currency-not-supported = La moneda elegida no es soportada por el sistema.
-sponsor.invoice.form.error.currency = La moneda de pago no puede ser distinta a la que se usa para pagar el patrocinio.
+sponsor.invoice.form.error.currency = La moneda de pago no puede ser distinta a la que se usa para pagar el patrocinio si este tiene ya alguna factura publicada.
 sponsor.invoice.form.error.sponsorship-amount = Importe total del patrocinio superado.
 sponsor.invoice.form.error.invalid-tax = El impuesto debe estar comprendido entre 0 y 100.
