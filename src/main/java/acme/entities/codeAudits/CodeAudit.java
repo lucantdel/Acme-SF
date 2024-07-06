@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -44,6 +45,7 @@ public class CodeAudit extends AbstractEntity {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
+	@NotNull
 	protected Date				execution;
 
 	@NotNull
@@ -84,10 +86,12 @@ public class CodeAudit extends AbstractEntity {
 
 
 	@NotNull
+	@Valid
 	@ManyToOne(optional = false)
 	protected Project	project;
 
 	@NotNull
+	@Valid
 	@ManyToOne(optional = false)
 	protected Auditor	auditor;
 

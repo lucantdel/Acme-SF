@@ -38,3 +38,4 @@ auditor.auditRecord.error.duplicated = CoudAR already in use
 auditor.auditRecord.error.published = The Audit Record must be in published
 auditor.auditRecord.error.Link = Length must be between 0 and 255. 
 auditor.auditRecord.error.execution = The audit Record must start after its Code Audit
+auditor.auditRecord.error.CodeAudit = Code Audit already published

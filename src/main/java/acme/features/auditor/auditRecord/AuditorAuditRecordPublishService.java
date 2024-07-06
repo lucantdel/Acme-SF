@@ -90,6 +90,11 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 			if (!super.getBuffer().getErrors().hasErrors("startDate"))
 				super.state(object.getFinishDate() != null, "startDate", "auditor.auditRecord.error.periodN");
 
+		if (object.getCodeAudit() != null)
+			if (!super.getBuffer().getErrors().hasErrors("codeAuditCode"))
+				if (object.getCodeAudit().isPublished())
+					super.state(!object.getCodeAudit().isPublished(), "codeAuditCode", "auditor.auditRecord.error.CodeAudit");
+
 	}
 	@Override
 	public void perform(final AuditRecord object) {
