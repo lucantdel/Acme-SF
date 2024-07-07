@@ -101,7 +101,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		Collection<Project> projects;
 		SelectChoices choices;
 
-		projects = this.clientContractRepository.findAllProjects();
+		projects = this.clientContractRepository.findAllProjectsDraftModeFalse();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		Dataset dataset;
