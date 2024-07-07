@@ -88,7 +88,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		dateString = "2200/12/25 00:00";
 		Date latestStartDate = MomentHelper.parse(dateString, "yyyy/MM/dd HH:mm");
 
-		if (object.getStartDuration() != null && object.getFinalDuration() != null) {
+		if (object.getStartDuration() != null && object.getFinalDuration() != null && object.getMoment() != null) {
 
 			if (!super.getBuffer().getErrors().hasErrors("startDuration"))
 				super.state(MomentHelper.isAfter(object.getStartDuration(), object.getMoment()), "startDuration", "sponsor.sponsorship.form.error.startDuration");
@@ -111,12 +111,16 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
 				super.state(MomentHelper.isLongEnough(object.getStartDuration(), object.getFinalDuration(), 1, ChronoUnit.MONTHS), "finalDuration", "sponsor.sponsorship.form.error.period");
 		}
+		if (object.getMoment() == null)
+			if (!super.getBuffer().getErrors().hasErrors("moment"))
+				super.state(object.getMoment() != null, "moment", "sponsor.sponsorship.form.error.nullMoment");
+
 		if (object.getStartDuration() == null)
-			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
-				super.state(object.getStartDuration() != null, "finalDuration", "sponsor.sponsorhsip.form.error.nullStart");
-		if (object.getFinalDuration() == null)
 			if (!super.getBuffer().getErrors().hasErrors("startDuration"))
-				super.state(object.getFinalDuration() != null, "startDuration", "sponsor.sponsorhsip.form.error.nullFinal");
+				super.state(object.getStartDuration() != null, "startDuration", "sponsor.sponsorhsip.form.error.nullStart");
+		if (object.getFinalDuration() == null)
+			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
+				super.state(object.getFinalDuration() != null, "finalDuration", "sponsor.sponsorhsip.form.error.nullFinal");
 
 		//Cantidad
 		if (object.getAmount() != null) {
@@ -130,7 +134,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			}
 
 			if (!super.getBuffer().getErrors().hasErrors("amount"))
-				super.state(object.getAmount().getAmount() <= 1000000.00 && object.getAmount().getAmount() >= 0.00, "amount", "sponsor.sponsorship.form.error.amountOutOfBounds");
+				super.state(object.getAmount().getAmount() <= 1000000.00 && object.getAmount().getAmount() > 0.00, "amount", "sponsor.sponsorship.form.error.amountOutOfBounds");
 		}
 
 	}

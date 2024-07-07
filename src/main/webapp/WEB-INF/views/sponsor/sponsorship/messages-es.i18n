@@ -35,6 +35,7 @@ sponsor.sponsorship.form.error.duplicate = Este código ya existe.
 sponsor.sponsorship.form.error.period = La duración del patrocinio debe ser de al menos un mes.
 sponsor.sponsorship.form.error.startDuration = La fecha de inicio debe ser después del momento de creación.
 sponsor.sponsorship.form.error.finalDuration = La fecha de fin debe ser posterior a la de inicio.
+sponsor.sponsorship.form.error.nullMoment = Debe tener el momento.
 sponsor.sponsorship.form.error.nullStart = Debe tener fecha de inicio.
 sponsor.sponsorship.form.error.nullFinal = Debe tener fecha de fin.
 sponsor.sponsorship.form.error.amount-must-be-positive = La cantidad de dinero debe ser positiva.
