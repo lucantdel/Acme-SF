@@ -30,7 +30,7 @@ sponsor.invoice.list.button.create-form = Create invoice
 
 sponsor.invoice.form.error.duplicated = Este código ya existe.
 sponsor.invoice.form.error.due-date-not-valid = La fecha de vencimiento debe ser posterior a la de registro. La duración debe ser de al menos un mes.
-sponsor.invoice.form.error.date-before-moment = La fecha de inscripción debe ser posterior al momento del apadrinamiento.
+sponsor.invoice.form.error.date-before-moment = La fecha de inscripción debe ser posterior al momento del padrinamiento.
 sponsor.invoice.form.error.quantity-must-be-positive = La cantidad de dinero debe ser positiva.
 sponsor.invoice.form.error.currency-not-supported = La moneda elegida no es soportada por el sistema.
 sponsor.invoice.form.error.currency = La moneda de pago no puede ser distinta a la que se usa para pagar el patrocinio si este tiene ya alguna factura publicada.

@@ -77,7 +77,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 			super.state(existing == null || existing.equals(object), "code", "sponsor.invoice.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
+		if (!super.getBuffer().getErrors().hasErrors("dueDate") && object.getRegistrationTime() != null) {
 			Date registrationTime;
 			Date dueDate;
 			boolean isMinimumDuration;
@@ -104,6 +104,8 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 			super.state(object.getQuantity().getCurrency().equals(object.getSponsorship().getAmount().getCurrency()), "quantity", "sponsor.invoice.form.error.currency");
 			// La moneda que define la moneda final,  que fijará esta tanto en el sponshorship como en las invoices, será la moneda del primer invoice publicado 
 			// ( que debe a su vez estar coincidiendo con el del sponsorship en ese momento de publicación)
+			// Y el resto de veces, deberán coincidir con esta que a su vez es la del sponsorship,
+			// luego tanto la primera vez que se va publicar como el resto, es decir, siempre al publicar la moneda debe coincidir con la de su sponsorship
 
 			int sponsorshipId = object.getSponsorship().getId();
 
