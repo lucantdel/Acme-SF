@@ -58,7 +58,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		SelectChoices choices;
 
 		if (object.isDraftMode())
-			projects = this.repository.findAllProjects();
+			projects = this.repository.findAllProjectsDraftModeFalse();
 		else {
 			contractId = super.getRequest().getData("id", int.class);
 			projects = this.repository.findOneProjectByContractId(contractId);
