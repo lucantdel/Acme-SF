@@ -94,7 +94,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		dateString = "2200/12/25 00:00";
 		Date latestStartDate = MomentHelper.parse(dateString, "yyyy/MM/dd HH:mm");
 
-		if (object.getStartDuration() != null && object.getFinalDuration() != null) {
+		if (object.getStartDuration() != null && object.getFinalDuration() != null && object.getMoment() != null) {
 
 			if (!super.getBuffer().getErrors().hasErrors("startDuration"))
 				super.state(MomentHelper.isAfter(object.getStartDuration(), object.getMoment()), "startDuration", "sponsor.sponsorship.form.error.startDuration");
@@ -118,12 +118,16 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 				super.state(MomentHelper.isLongEnough(object.getStartDuration(), object.getFinalDuration(), 1, ChronoUnit.MONTHS), "finalDuration", "sponsor.sponsorship.form.error.period");
 
 		}
+		if (object.getMoment() == null)
+			if (!super.getBuffer().getErrors().hasErrors("moment"))
+				super.state(object.getMoment() != null, "moment", "sponsor.sponsorship.form.error.nullMoment");
+
 		if (object.getStartDuration() == null)
-			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
-				super.state(object.getStartDuration() != null, "finalDuration", "sponsor.sponsorhsip.form.error.nullStart");
-		if (object.getFinalDuration() == null)
 			if (!super.getBuffer().getErrors().hasErrors("startDuration"))
-				super.state(object.getFinalDuration() != null, "startDuration", "sponsor.sponsorhsip.form.error.nullFinal");
+				super.state(object.getStartDuration() != null, "startDuration", "sponsor.sponsorhsip.form.error.nullStart");
+		if (object.getFinalDuration() == null)
+			if (!super.getBuffer().getErrors().hasErrors("finalDuration"))
+				super.state(object.getFinalDuration() != null, "finalDuration", "sponsor.sponsorhsip.form.error.nullFinal");
 
 		//Cantidad
 		if (object.getAmount() != null) {
@@ -138,7 +142,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			}
 
 			if (!super.getBuffer().getErrors().hasErrors("amount"))
-				super.state(object.getAmount().getAmount() <= 1000000.00 && object.getAmount().getAmount() >= 0.00, "amount", "sponsor.sponsorship.form.error.amountOutOfBounds");
+				super.state(object.getAmount().getAmount() <= 1000000.00 && object.getAmount().getAmount() > 0.00, "amount", "sponsor.sponsorship.form.error.amountOutOfBounds");
 
 			if (!super.getBuffer().getErrors().hasErrors("amount"))
 				super.state(this.repository.countPublishedInvoicesBySponsorshipId(object.getId()) == 0 || object.getAmount().getCurrency().equals(this.repository.findOneSponsorshipById(object.getId()).getAmount().getCurrency()), "amount",

@@ -55,6 +55,7 @@ public class Invoice extends AbstractEntity {
 	@NotNull
 	protected Money				quantity;
 
+	@NotNull
 	@Min(0)
 	@Max(100)
 	private double				tax;
