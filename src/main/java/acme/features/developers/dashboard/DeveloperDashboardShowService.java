@@ -49,35 +49,44 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 		Collection<TrainingModule> modules;
 		Collection<TrainingSession> sessions;
 		id = super.getRequest().getPrincipal().getAccountId();
-		modules = this.repository.findAllTrainingModuleByDevId(id);
-		sessions = this.repository.findAllTrainingSessionByDevId(id);
+		modules = this.repository.findAllPublishedTrainingModuleByDevId(id);
+		sessions = this.repository.findAllPublishedTrainingSessionByDevId(id);
 
-		totalNumberOfTrainingModulesWithUpdateMoment = this.repository.totalNumberOfTrainingModulesWithUpdateMoment(id);
-		totalNumberOfTrainingSessionsWithLink = this.repository.totalNumberOfTrainingSessionsWithLink(id);
-
-		averageTimeByTM = this.repository.averageTimeByTM(id);
-		minimumTimeByTM = this.repository.minimumTimeByTM(id);
-		maximumTimeByTM = this.repository.maximumTimeByTM(id);
-		standardDeviationTimeByTM = this.repository.standardDeviationTimeByTM(id);
-
-		dashboard = new DeveloperDashboard();
-		dashboard.setTotalNumberOfTrainingModulesWithUpdateMoment(0);
-		dashboard.setTotalNumberOfTrainingSessionsWithLink(0);
-		dashboard.setAverageTimeByTM(0.0);
-		dashboard.setStandardDeviationTimeByTM(0.0);
-		dashboard.setMaximumTimeByTM(0.0);
-		dashboard.setMinimumTimeByTM(0.0);
+		totalNumberOfTrainingModulesWithUpdateMoment = 0;
+		totalNumberOfTrainingSessionsWithLink = 0;
+		averageTimeByTM = 0.0;
+		minimumTimeByTM = 0.0;
+		maximumTimeByTM = 0.0;
+		standardDeviationTimeByTM = 0.0;
 
 		if (!sessions.isEmpty())
-			dashboard.setTotalNumberOfTrainingModulesWithUpdateMoment(totalNumberOfTrainingModulesWithUpdateMoment);
+			totalNumberOfTrainingSessionsWithLink = this.repository.totalNumberOfTrainingSessionsWithLink(id);
 
 		if (!modules.isEmpty()) {
-			dashboard.setTotalNumberOfTrainingSessionsWithLink(totalNumberOfTrainingSessionsWithLink);
-			dashboard.setAverageTimeByTM(averageTimeByTM);
-			dashboard.setStandardDeviationTimeByTM(standardDeviationTimeByTM);
-			dashboard.setMaximumTimeByTM(maximumTimeByTM);
-			dashboard.setMinimumTimeByTM(minimumTimeByTM);
+			totalNumberOfTrainingModulesWithUpdateMoment = this.repository.totalNumberOfTrainingModulesWithUpdateMoment(id);
+
+			averageTimeByTM = this.repository.averageTimeByTM(id);
+			minimumTimeByTM = this.repository.minimumTimeByTM(id);
+			maximumTimeByTM = this.repository.maximumTimeByTM(id);
+			standardDeviationTimeByTM = this.repository.standardDeviationTimeByTM(id);
+
 		}
+
+		dashboard = new DeveloperDashboard();
+
+		dashboard.setTotalNumberOfTrainingModulesWithUpdateMoment(totalNumberOfTrainingModulesWithUpdateMoment);
+		dashboard.setTotalNumberOfTrainingSessionsWithLink(totalNumberOfTrainingSessionsWithLink);
+		/*
+		 * dashboard.setAverageTimeByTM(0.0);
+		 * dashboard.setStandardDeviationTimeByTM(0.0);
+		 * dashboard.setMaximumTimeByTM(0.0);
+		 * dashboard.setMinimumTimeByTM(0.0);
+		 */
+
+		dashboard.setAverageTimeByTM(averageTimeByTM);
+		dashboard.setStandardDeviationTimeByTM(standardDeviationTimeByTM);
+		dashboard.setMaximumTimeByTM(maximumTimeByTM);
+		dashboard.setMinimumTimeByTM(minimumTimeByTM);
 
 		super.getBuffer().addData(dashboard);
 	}
