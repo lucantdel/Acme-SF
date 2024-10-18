@@ -1,26 +1,26 @@
 key,code,instantiation-moment,provider-name,customer-name,goals,budget,draft-mode,key:project,key:client
-contract-01,BBB-301,2022/02/14 11:00,Proveedor Veinte,Cliente Veinte,Optimización de procesos,60000.0 EUR,true,project-01,client-01
-contract-02,CCC-402,2021/05/20 14:00,Proveedor Veintiuno,Cliente Veintiuno,Desarrollo de software,65713.20 USD,false,project-02,client-01
+contract-01,BBB-301,2020/02/14 11:00,Proveedor Veinte,Cliente Veinte,Optimización de procesos,60000.0 EUR,true,project-01,client-01
+contract-02,CCC-402,2019/05/20 14:00,Proveedor Veintiuno,Cliente Veintiuno,Desarrollo de software,65713.20 USD,false,project-02,client-01
 contract-03,DDD-503,2021/03/01 10:00,Proveedor Veintidós,Cliente Veintidós,Consultoría en marketing,15783.20 GBP,true,project-03,client-01
-contract-04,EEE-604,2022/06/15 16:00,Proveedor Veintitrés,Cliente Veintitrés,Servicios de diseño gráfico,12.50 EUR,true,project-01,client-01
+contract-04,EEE-604,2021/06/15 16:00,Proveedor Veintitrés,Cliente Veintitrés,Servicios de diseño gráfico,12.50 EUR,true,project-01,client-01
 contract-05,FFF-705,2021/11/11 09:30,Proveedor Veinticuatro,Cliente Veinticuatro,Desarrollo de aplicaciones móviles,713.20 USD,true,project-02,client-02
-contract-06,GGG-806,2022/05/10 13:45,Proveedor Veinticinco,Cliente Veinticinco,Servicios legales,613.20 EUR,false,project-01,client-03
+contract-06,GGG-806,2021/05/10 13:45,Proveedor Veinticinco,Cliente Veinticinco,Servicios legales,613.20 EUR,false,project-01,client-03
 contract-07,HHH-907,2021/08/20 15:00,Proveedor Veintiséis,Cliente Veintiséis,Consultoría en recursos humanos,35000.0 USD,true,project-02,client-01
-contract-08,III-108,2022/03/28 10:15,Proveedor Veintisiete,Cliente Veintisiete,Desarrollo de sitio web,5000.0 EUR,true,project-01,client-01
+contract-08,III-108,2021/03/28 10:15,Proveedor Veintisiete,Cliente Veintisiete,Desarrollo de sitio web,5000.0 EUR,true,project-01,client-01
 contract-09,JJJ-209,2021/12/01 08:30,Proveedor Veintiocho,Cliente Veintiocho,Servicios de contabilidad,13222.20 GBP,true,project-03,client-03
-contract-10,KKK-310,2022/01/15 11:20,Proveedor Veintinueve,Cliente Veintinueve,Diseño de logotipo,45000.0 EUR,true,project-01,client-01
+contract-10,KKK-310,2021/01/15 11:20,Proveedor Veintinueve,Cliente Veintinueve,Diseño de logotipo,45000.0 EUR,true,project-01,client-01
 contract-11,LLL-411,2021/09/30 14:00,Proveedor Treinta,Cliente Treinta,Desarrollo de plataforma de comercio electrónico,60000.0 GBP,false,project-03,client-02
 contract-12,MMM-512,2021/07/25 09:10,Proveedor Treinta y Uno,Cliente Treinta y Uno,Consultoría en estrategia de negocios,30000.0 EUR,true,project-01,client-01
 contract-13,NNN-613,2021/06/20 12:45,Proveedor Treinta y Dos,Cliente Treinta y Dos,Servicios de consultoría financiera,8000.0 GBP,true,project-03,client-03
 contract-37,OOO-714,2021/04/10 11:00,Proveedor Treinta y Tres,Cliente Treinta y Tres,Desarrollo de software a medida,13000.0 EUR,true,project-01,client-01
-contract-38,PPP-815,2022/02/05 14:30,Proveedor Treinta y Cuatro,Cliente Treinta y Cuatro,Consultoría en gestión de proyectos,70000.0 USD,true,project-02,client-02
+contract-38,PPP-815,2021/02/05 14:30,Proveedor Treinta y Cuatro,Cliente Treinta y Cuatro,Consultoría en gestión de proyectos,70000.0 USD,true,project-02,client-02
 contract-39,QQQ-916,2021/01/15 09:00,Proveedor Treinta y Cinco,Cliente Treinta y Cinco,Diseño de campaña publicitaria,10000.0 GBP,false,project-03,client-01
 contract-40,RRR-017,2021/03/22 10:15,Proveedor Treinta y Seis,Cliente Treinta y Seis,Servicios de traducción,12000.0 USD,true,project-02,client-01
-contract-41,SSS-118,2022/04/18 14:00,Proveedor Treinta y Siete,Cliente Treinta y Siete,Desarrollo de aplicación móvil,8500.0 GBP,true,project-03,client-03
-contract-42,TTT-219,2022/05/10 11:40,Proveedor Treinta y Ocho,Cliente Treinta y Ocho,Consultoría en diseño web,2500.0 EUR,true,project-01,client-01
+contract-41,SSS-118,2020/04/18 14:00,Proveedor Treinta y Siete,Cliente Treinta y Siete,Desarrollo de aplicación móvil,8500.0 GBP,true,project-03,client-03
+contract-42,TTT-219,2020/05/10 11:40,Proveedor Treinta y Ocho,Cliente Treinta y Ocho,Consultoría en diseño web,2500.0 EUR,true,project-01,client-01
 contract-43,UUU-320,2021/06/18 16:30,Proveedor Treinta y Nueve,Cliente Treinta y Nueve,Desarrollo de aplicación web,3000.0 GBP,true,project-03,client-02
-contract-44,VVV-421,2022/01/20 08:10,Proveedor Cuarenta,Cliente Cuarenta,Servicios de diseño gráfico,60000.0 USD,true,project-02,client-01
-contract-45,WWW-522,2022/03/15 13:20,Proveedor Cuarenta y Uno,Cliente Cuarenta y Uno,Consultoría en recursos humanos,40000.0 GBP,true,project-03,client-03
+contract-44,VVV-421,2020/01/20 08:10,Proveedor Cuarenta,Cliente Cuarenta,Servicios de diseño gráfico,60000.0 USD,true,project-02,client-01
+contract-45,WWW-522,2019/03/15 13:20,Proveedor Cuarenta y Uno,Cliente Cuarenta y Uno,Consultoría en recursos humanos,40000.0 GBP,true,project-03,client-03
 contract-46,XXX-623,2021/05/25 15:00,Proveedor Cuarenta y Dos,Cliente Cuarenta y Dos,Optimización de procesos,30000.0 EUR,true,project-01,client-01
-contract-47,YYY-724,2022/04/25 12:45,Proveedor Cuarenta y Tres,Cliente Cuarenta y Tres,Desarrollo de software,60000.0 GBP,false,project-03,client-02
+contract-47,YYY-724,2018/04/25 12:45,Proveedor Cuarenta y Tres,Cliente Cuarenta y Tres,Desarrollo de software,60000.0 GBP,false,project-03,client-02
 contract-48,ZZZ-825,2021/11/10 14:15,Proveedor Cuarenta y Cuatro,Cliente Cuarenta y Cuatro,Consultoría en marketing,5515.00 EUR,true,project-01,client-01

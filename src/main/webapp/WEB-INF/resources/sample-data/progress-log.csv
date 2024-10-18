@@ -1,10 +1,10 @@
 key,record-id,completeness,comment,registration-moment,responsible-person,draft-mode,key:contract
-progress-log-01,PG-AC-1425,6.0,a,2021/07/08 22:00,ALV,true,contract-01
-progress-log-02,PG-SD-0000,18.2,AADD,2021/10/09 17:00,A sddf,true,contract-01
-progress-log-03,PG-FD-0214,52.2,GGGGGGGGGGGGGGGGGGGGGGGGGG,2022/01/08 12:00,j,false,contract-03
-progress-log-04,PG-ZZ-0329,90.80,LJUYUTFTFAASSS,2021/11/08 12:45,lki dasoiuihe,false,contract-04
+progress-log-01,PG-AC-1425,6.0,a,2021/07/08 22:00,alvaro sanchez,true,contract-01
+progress-log-02,PG-SD-0000,18.2,AADD,2021/10/09 17:00,omar fernandez,true,contract-01
+progress-log-03,PG-FD-0214,52.2,GGGGGGGGGGGGGGGGGGGGGGGGGG,2022/01/08 12:00,juan Pérez,false,contract-03
+progress-log-04,PG-ZZ-0329,90.80,LJUYUTFTFAASSS,2021/11/08 12:45,luis Pérez,false,contract-04
 progress-log-05,PG-AQ-0027,80.00,El proyecto sigue adelante,2022/04/10 10:00,Laura Pérez,true,contract-01
-progress-log-06,PG-BG-0028,85.00,Todo marcha según lo planeado,2022/05/17 11:00,Carlos Gómez,true,contract-02
+progress-log-06,PG-BG-0028,85.00,Todo marcha según lo planeado,2022/05/17 11:00,Carlos Gómez,false,contract-02
 progress-log-07,PG-CX-0029,90.00,Casi terminamos el proyecto,2022/01/26 12:00,Ana García,true,contract-03
 progress-log-08,PG-DY-0030,95.00,Últimos detalles,2022/01/09 13:00,Juan Martínez,true,contract-04
 progress-log-09,PG-EZ-0031,100.00,Proyecto finalizado con éxito,2022/03/16 14:00,Sara López,true,contract-05
