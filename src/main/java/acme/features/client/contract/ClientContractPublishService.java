@@ -60,7 +60,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.clientContractRepository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "providerName", "customerName", "goals", "budget");
+		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
 		object.setProject(project);
 	}
 
@@ -126,7 +126,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget");
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

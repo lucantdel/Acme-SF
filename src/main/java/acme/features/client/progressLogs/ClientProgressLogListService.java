@@ -32,6 +32,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 		status = contract != null && !contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "responsiblePerson", "draftMode");
+		dataset = super.unbind(object, "recordId", "completeness", "registrationMoment", "responsiblePerson", "draftMode");
 
 		if (object.isDraftMode()) {
 			final Locale local = super.getRequest().getLocale();
@@ -78,5 +79,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
+
 	}
+
 }

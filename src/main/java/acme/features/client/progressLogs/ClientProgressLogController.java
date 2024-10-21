@@ -14,32 +14,28 @@ import acme.roles.Client;
 public class ClientProgressLogController extends AbstractController<Client, ProgressLog> {
 
 	@Autowired
-	protected ClientProgressLogListService		listService;
-
+	private ClientProgressLogListService	listService;
 	@Autowired
-	protected ClientProgressLogShowService		showService;
-
+	private ClientProgressLogShowService	showService;
 	@Autowired
-	protected ClientProgressLogCreateService	createService;
-
+	private ClientProgressLogUpdateService	updateService;
 	@Autowired
-	protected ClientProgressLogUpdateService	updateService;
-
+	private ClientProgressLogDeleteService	deleteService;
 	@Autowired
-	protected ClientProgressLogPublishService	publishService;
-
+	private ClientProgressLogPublishService	publishService;
 	@Autowired
-	protected ClientProgressLogDeleteService	deleteService;
+	private ClientProgressLogCreateService	createService;
 
 
 	@PostConstruct
-	protected void initialise() {
+	protected void intialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
-		super.addBasicCommand("create", this.createService);
-		super.addBasicCommand("delete", this.deleteService);
 		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("create", this.createService);
 
 		super.addCustomCommand("publish", "update", this.publishService);
 	}
+
 }
