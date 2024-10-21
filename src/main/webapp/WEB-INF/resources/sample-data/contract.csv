@@ -1,6 +1,6 @@
 key,code,instantiation-moment,provider-name,customer-name,goals,budget,draft-mode,key:project,key:client
-contract-01,BBB-301,2020/02/14 11:00,Proveedor Veinte,Cliente Veinte,Optimización de procesos,60000.0 EUR,true,project-01,client-01
-contract-02,CCC-402,2019/05/20 14:00,Proveedor Veintiuno,Cliente Veintiuno,Desarrollo de software,65713.20 USD,false,project-02,client-01
+contract-01,BBB-301,2020/02/14 11:00,Proveedor Veinte,Cliente Veinte,Optimización de procesos,6000.0 EUR,true,project-01,client-01
+contract-02,CCC-402,2019/05/20 14:00,Proveedor Veintiuno,Cliente Veintiuno,Desarrollo de software,6713.20 USD,false,project-02,client-01
 contract-03,DDD-503,2021/03/01 10:00,Proveedor Veintidós,Cliente Veintidós,Consultoría en marketing,15783.20 GBP,true,project-03,client-01
 contract-04,EEE-604,2021/06/15 16:00,Proveedor Veintitrés,Cliente Veintitrés,Servicios de diseño gráfico,12.50 EUR,true,project-01,client-01
 contract-05,FFF-705,2021/11/11 09:30,Proveedor Veinticuatro,Cliente Veinticuatro,Desarrollo de aplicaciones móviles,713.20 USD,true,project-02,client-02
@@ -9,7 +9,7 @@ contract-07,HHH-907,2021/08/20 15:00,Proveedor Veintiséis,Cliente Veintiséis,C
 contract-08,III-108,2021/03/28 10:15,Proveedor Veintisiete,Cliente Veintisiete,Desarrollo de sitio web,5000.0 EUR,true,project-01,client-01
 contract-09,JJJ-209,2021/12/01 08:30,Proveedor Veintiocho,Cliente Veintiocho,Servicios de contabilidad,13222.20 GBP,true,project-03,client-03
 contract-10,KKK-310,2021/01/15 11:20,Proveedor Veintinueve,Cliente Veintinueve,Diseño de logotipo,45000.0 EUR,true,project-01,client-01
-contract-11,LLL-411,2021/09/30 14:00,Proveedor Treinta,Cliente Treinta,Desarrollo de plataforma de comercio electrónico,60000.0 GBP,false,project-03,client-02
+contract-11,LLL-411,2021/09/30 14:00,Proveedor Treinta,Cliente Treinta,Desarrollo de plataforma de comercio electrónico,6000.0 GBP,false,project-03,client-02
 contract-12,MMM-512,2021/07/25 09:10,Proveedor Treinta y Uno,Cliente Treinta y Uno,Consultoría en estrategia de negocios,30000.0 EUR,true,project-01,client-01
 contract-13,NNN-613,2021/06/20 12:45,Proveedor Treinta y Dos,Cliente Treinta y Dos,Servicios de consultoría financiera,8000.0 GBP,true,project-03,client-03
 contract-37,OOO-714,2021/04/10 11:00,Proveedor Treinta y Tres,Cliente Treinta y Tres,Desarrollo de software a medida,13000.0 EUR,true,project-01,client-01
