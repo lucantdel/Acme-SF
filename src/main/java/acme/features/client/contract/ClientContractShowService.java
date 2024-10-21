@@ -58,7 +58,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		SelectChoices choices;
 
 		if (object.isDraftMode())
-			projects = this.repository.findAllProjectsDraftModeFalse();
+			projects = this.repository.findAllProjects();
 		else {
 			contractId = super.getRequest().getData("id", int.class);
 			projects = this.repository.findOneProjectByContractId(contractId);
@@ -69,7 +69,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget", "draftMode");
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

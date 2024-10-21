@@ -16,6 +16,7 @@ client.contract.list.button.create-contract=Crear contrato
 client.contract.form.title= Detalles del contrato
 
 client.contract.form.label.code = Código
+client.contract.form.label.instantiationMoment = Fecha de creación
 client.contract.form.label.providerName = Proveedor
 client.contract.form.label.customerName = Cliente
 client.contract.form.label.goals = Objetivos

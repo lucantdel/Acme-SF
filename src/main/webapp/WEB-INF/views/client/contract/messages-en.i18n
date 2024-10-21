@@ -16,11 +16,13 @@ client.contract.list.button.create-contract=Create Contract
 client.contract.form.title= Contract details
 
 client.contract.form.label.code = Code
+client.contract.form.label.instantiationMoment = Instantiation Moment
 client.contract.form.label.providerName = Provider Name
 client.contract.form.label.customerName = Customer Name
 client.contract.form.label.goals = Goals
 client.contract.form.label.budget = Budget
 client.contract.form.label.project = Project
+
 
 client.contract.form.button.update = Update 
 client.contract.form.button.delete = Delete

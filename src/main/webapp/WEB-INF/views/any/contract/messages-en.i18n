@@ -12,6 +12,7 @@ any.contract.list.label.project = Project
 any.contract.form.title = Contract Details
 
 any.contract.form.label.code = Code
+any.contract.form.label.instantiationMoment = Instantiation Moment
 any.contract.form.label.providerName = Provider Name
 any.contract.form.label.customerName = Customer Name
 any.contract.form.label.goals = Goals
