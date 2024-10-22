@@ -1,5 +1,5 @@
 key,code,instantiation-moment,provider-name,customer-name,goals,budget,draft-mode,key:project,key:client
-contract-01,BBB-301,2020/02/14 11:00,Proveedor Veinte,Cliente Veinte,Optimización de procesos,6000.0 EUR,true,project-01,client-01
+contract-01,BBB-301,2020/02/14 11:00,Proveedor Veinte,Cliente Veinte,Optimización de procesos,6000.0 EUR,false,project-01,client-01
 contract-02,CCC-402,2019/05/20 14:00,Proveedor Veintiuno,Cliente Veintiuno,Desarrollo de software,6713.20 USD,false,project-02,client-01
 contract-03,DDD-503,2021/03/01 10:00,Proveedor Veintidós,Cliente Veintidós,Consultoría en marketing,15783.20 GBP,true,project-03,client-01
 contract-04,EEE-604,2021/06/15 16:00,Proveedor Veintitrés,Cliente Veintitrés,Servicios de diseño gráfico,12.50 EUR,true,project-01,client-01

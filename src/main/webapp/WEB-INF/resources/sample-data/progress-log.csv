@@ -6,12 +6,12 @@ progress-log-04,PG-ZZ-0329,90.80,LJUYUTFTFAASSS,2021/11/08 12:45,luis Pérez,fal
 progress-log-05,PG-AQ-0027,80.00,El proyecto sigue adelante,2022/04/10 10:00,Laura Pérez,true,contract-01
 progress-log-06,PG-BG-0028,85.00,Todo marcha según lo planeado,2022/05/17 11:00,Carlos Gómez,false,contract-02
 progress-log-07,PG-CX-0029,90.00,Casi terminamos el proyecto,2022/01/26 12:00,Ana García,true,contract-03
-progress-log-08,PG-DY-0030,95.00,Últimos detalles,2022/01/09 13:00,Juan Martínez,false,contract-04
+progress-log-08,PG-DY-0030,95.00,Últimos detalles,2022/01/09 13:00,Juan Martínez,true,contract-01
 progress-log-09,PG-EZ-0031,100.00,Proyecto finalizado con éxito,2022/03/16 14:00,Sara López,false,contract-05
 progress-log-10,PG-FW-0032,10.00,Inicio del proyecto,2022/04/21 15:00,David Fernández,false,contract-06
 progress-log-11,PG-GV-0033,20.00,Primera fase completada,2022/05/11 16:00,María Rodríguez,true,contract-07
 progress-log-12,PG-HU-0034,30.00,Segunda fase en progreso,2022/06/26 17:00,Andrés Sánchez,true,contract-08
-progress-log-13,PG-IV-0035,40.00,Avances significativos,2022/06/13 18:00,Luis Hernández,false,contract-09
+progress-log-13,PG-IV-0035,40.00,Avances significativos,2022/06/13 18:00,Luis Hernández,false,contract-01
 progress-log-14,PG-JT-0036,50.00,Proyecto en la mitad del camino,2022/01/06 19:00,Elena Jiménez,false,contract-10
-progress-log-15,PG-KS-0037,60.00,Buen ritmo de trabajo,2022/03/19 20:00,Jorge Díaz,true,contract-11
+progress-log-15,PG-KS-0037,60.00,Buen ritmo de trabajo,2022/03/19 20:00,Jorge Díaz,true,contract-01
 progress-log-16,PG-LR-0038,70.00,Estamos casi allí,2022/04/21 21:00,Lucía Moreno,false,contract-12
